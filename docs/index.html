@@ -230,10 +230,10 @@ body.noscroll{overflow:hidden}
     <a class="gnb-link sub" href="https://docs.google.com/forms/d/e/1FAIpQLSdCkEn1SwTAvnc03M6mEtuhApm3kOqn1BMdI0A_H7iGOQREGg/viewform" target="_blank" rel="noopener">의견 보내기</a>
   </nav></div></header>
 <section class="hero" id="top">
-  <video class="hv" muted playsinline loop preload="auto" poster="media/hero4.jpg" data-src="media/hero4.mp4" aria-hidden="true"></video>
+  <video class="hv" muted playsinline loop preload="none" poster="media/hero4.jpg" aria-hidden="true"></video>
   <div class="inner hero-in">
     <p class="eyebrow">PSAT · 법학적성시험 · 중등교사 임용시험<i></i></p>
-    <span class="h-old old" lang="okm">곶 됴코 여름 하ᄂᆞ니</span>
+    <span class="jar91" aria-hidden="true"></span><span class="h-old old" lang="okm">곶 됴코 여름 하ᄂᆞ니</span>
     <span class="h-gloss">꽃 좋고 열매 많으니</span>
     <p class="h-lead">뿌리 깊은 공부가 꽃과 열매를 맺는 곳. 국어 능력을 묻는 공직·법학·교직 시험의 기출을 소재와 유형으로 찾아봅니다.</p>
     <form class="sform" id="sform" role="search"><input id="q" type="search" placeholder="소재·분야·발문으로 찾기" aria-label="검색"><button type="submit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>검색</button></form>
@@ -879,5 +879,90 @@ body.past-hero .gnb .logo-text .logo-sub,.gnb.menu-open .logo-text .logo-sub{col
   ['mousedown','keydown','touchstart'].forEach(function(t){ window.addEventListener(t,stop,{passive:true}); });
 })();
 </script>
+<style id="v91-baekja">
+/* v91 시안 — 조선 백자: 흰 바탕, 먹빛 글씨, 청화 한 가지 색, 가는 선. 문제은행·논술·곶 공통 덧입힘 */
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#FEFEFD; --bg-sub:#F6F6F4; --bg-input:#FFFFFF; --paper:#FFFFFF;
+    --line:#E7E7E4; --line-strong:#D2D2CD;
+    --text:#262625; --text-sub:#62625E; --text-faint:#9A9A95;
+    --ink:#262625; --sub:#62625E; --faint:#9A9A95; --soft:#F6F6F4;
+    --brand:#2F4F7F; --brand-strong:#223B61; --brand-soft:#ECEEF1;
+    --point:#A44A3F;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#FEFEFD; --bg-sub:#F6F6F4; --bg-input:#FFFFFF; --paper:#FFFFFF;
+  --line:#E7E7E4; --line-strong:#D2D2CD;
+  --text:#262625; --text-sub:#62625E; --text-faint:#9A9A95;
+  --brand:#2F4F7F; --brand-strong:#223B61; --brand-soft:#ECEEF1; --point:#A44A3F;
+}
+body{background:var(--bg)!important}
+.inner{max-width:none!important;padding-inline:clamp(20px,3.2vw,56px)!important}
+.sec-head h2,.content > section > h2,.nb-sec h2,#ttl{font-family:"Noto Serif KR","AppleMyungjo","Batang",serif!important;font-weight:600!important;letter-spacing:-.01em!important}
+
+/* 머리 메뉴: 늘 흰 바탕 + 가는 선 */
+.gnb{position:sticky!important;top:0!important;margin-bottom:0!important;background:color-mix(in srgb,var(--bg) 94%,transparent)!important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)!important;box-shadow:none!important;color:var(--text)!important}
+.gnb .logo-old,.gnb .logo .old{color:var(--text)!important;font-weight:500!important}
+.gnb .logo-gloss,.gnb .logo small{color:var(--text-faint)!important}
+.gnb .logo-text .logo-sub,.gnb .logo .logo-sub{color:var(--text-sub)!important;border-color:var(--line-strong)!important}
+.gnb-link{color:var(--text-sub)!important;font-weight:500!important}
+.gnb-link.sub{color:var(--text-faint)!important;font-weight:400!important}
+.gnb-link:hover,.gnb-link.active{color:var(--text)!important}
+.gnb-link.active::after{background:var(--brand)!important;height:2px!important;bottom:-1px!important;border-radius:0!important}
+.gnb-link .cnt,.gnb-count{background:var(--bg-sub)!important;color:var(--text-faint)!important}
+.gnb-menu{color:var(--text)!important}
+
+/* 첫 화면: 영상 대신 달항아리 하나 */
+.hero::before,.hero::after{display:none!important}
+.hero{background:var(--bg)!important;color:var(--text)!important;min-height:0!important;display:block!important;overflow:visible!important}
+.hero .hero-media,.hero video,.hero .poster,.hero .hero-shade,.hero .hero-ctl,.hero .vctl,.hero .eyebrow,.hero .hero-eyebrow,.hero .hero-copy,.hero .h-verse{display:none!important}
+.hero-inner,.hero-in{display:flex!important;flex-direction:column;align-items:center;text-align:center;padding:52px 0 36px!important}
+.jar91{display:block;width:150px;height:142px;margin:0 auto 22px;border-radius:50% 50% 47% 47% / 54% 54% 46% 46%;
+  background:radial-gradient(ellipse at 38% 30%,#FFFFFF 0%,#FBFBFA 40%,#EEEEEB 78%,#E3E3DF 100%);
+  box-shadow:0 20px 32px -20px rgba(40,40,38,.30),inset -10px -14px 24px rgba(120,120,115,.10);position:relative}
+.jar91::before{content:"";position:absolute;left:50%;top:-6px;width:58px;height:10px;transform:translateX(-50%);border-radius:50%;background:#EBEBE7;box-shadow:inset 0 2px 3px rgba(0,0,0,.08)}
+.t91,.hero .h-old{font-family:"OldHangulTitle","YongbiTitle","Noto Serif KR",serif!important;font-size:clamp(32px,3.6vw,46px)!important;line-height:1.2!important;font-weight:400!important;color:var(--text)!important;margin:0!important}
+.g91,.hero .h-gloss{display:block;font-size:15px!important;color:var(--text-faint)!important;letter-spacing:.04em;margin:6px 0 26px!important;opacity:1!important}
+.hero h1#bandTitle{display:none!important}
+.hero .sub,.hero .h-lead{color:var(--text-sub)!important;font-size:14.5px!important;max-width:44em;margin:0 auto 16px!important}
+.hero .search-form,.hero .sform{width:min(640px,100%);max-width:none!important;height:52px!important;padding:0!important;border:1px solid var(--line-strong)!important;border-radius:999px!important;background:var(--bg-input)!important;box-shadow:none!important;overflow:hidden}
+.hero .search-form:focus-within,.hero .sform:focus-within{border-color:var(--brand)!important;box-shadow:none!important}
+.hero .search-form input,.hero .sform input{color:var(--text)!important;padding:0 22px!important;font-size:15.5px!important}
+.hero .search-form button,.hero .sform button{background:none!important;color:var(--brand)!important;border-left:1px solid var(--line)!important;border-radius:0!important;width:auto!important;padding:0 22px!important;font-weight:500!important}
+.hero .search-form button svg,.hero .sform button svg{display:none}
+.hero .suggest{justify-content:center}
+.hero .suggest span,.hero .suggest > b{color:var(--text-faint)!important}
+.hero .suggest button{background:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:1px solid var(--line)!important;color:var(--text-sub)!important;font-weight:400!important}
+.hero .suggest button:hover{border-color:var(--brand)!important;color:var(--brand)!important}
+.hero .stat-line{color:var(--text-faint)!important;margin-top:14px}
+.hero .stat-line b,.hero .stat-line strong{color:var(--text-sub)!important}
+
+/* 바로 가기 카드: 그림자 없이 가는 선 */
+.quick,.banners{margin-top:8px!important;position:static!important;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))!important}
+.quick .qk,.banners .bn{background:var(--bg-input)!important;border:1px solid var(--line)!important;border-radius:14px!important;box-shadow:none!important;transform:none!important}
+.quick .qk:hover,.banners .bn:hover{border-color:var(--brand)!important;box-shadow:none!important}
+.qk-k,.bn .k{color:var(--brand)!important;font-weight:500!important}
+.qk b,.bn b{font-weight:600!important}
+.bn .st.on{background:none!important;border:1px solid var(--line)!important;color:var(--text-faint)!important;font-weight:500!important}
+
+/* 왼쪽 조건·목록: 회색 판 대신 가는 선 */
+.side-box,.sbox{background:var(--bg-input)!important;border:1px solid var(--line)!important;border-radius:14px!important}
+.result-row:hover,.list-r .row:hover{background:var(--bg-sub)!important}
+.btn-fill,.qbtn.on{background:var(--brand)!important;color:#fff!important}
+
+/* 아래 띠: 검은 판 대신 흰 바탕 */
+footer{background:var(--bg)!important;color:var(--text-faint)!important;border-top:1px solid var(--line)}
+footer .old,footer .foot-name,footer .foot-verse,footer strong{color:var(--text-sub)!important}
+footer a{color:var(--text-sub)!important}
+footer .guide,footer .guide summary,footer .guide p,footer h2{color:var(--text-sub)!important}
+footer .guide details{border-color:var(--line)!important;background:none!important}
+.foot-line,.foot-top{border-color:var(--line)!important}
+</style>
+<link rel="stylesheet" href="/middle-korean/css/kme-tools.css?v=91">
+<script>window.KME_TOOLS={root:"body",keyPath:true,classBtn:true};</script>
+<script src="/middle-korean/js/config.js?v=91"></script>
+<script src="/middle-korean/js/ink.js?v=91"></script>
+<script src="/middle-korean/js/live.js?v=91"></script>
 </body>
 </html>
