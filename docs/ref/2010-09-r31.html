@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>경제 성장의 원인 · 지문 그림 자료</title>
+<meta name="description" content="2010학년도 9월 모의평가 언어 독서 31~32번 「경제 성장의 원인」 지문을 시험지 그림과 움직이는 그림으로 이해하는 참고 자료">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ref.css?v=d042145e">
+<style>.read{padding-bottom:300px}@media (max-width:900px){.read{padding-bottom:320px}}</style>
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a href="../suneung.html" id="back">문제은행으로</a>
+  <div class="right"><span class="where">2010학년도 9월 모의평가 언어 독서 31~32번</span><button type="button" class="tog" id="tog" aria-pressed="false">그림 함께 보기</button></div>
+</div></header>
+
+<div class="wrap">
+  <main class="read">
+    <h1 class="title" id="title">경제 성장의 원인</h1>
+    <p class="intro">지문을 먼저 읽고, 이해가 막히는 문단에서 ‘그림으로 보기’를 누르세요. 그림은 문단을 따라 바뀝니다.</p>
+    <div class="gate" id="gate" role="status" hidden></div>
+    <p class="p" data-scene="corr"><span class="no">1문단</span>(가) 많은 경제학자들은 제도의 발달이 경제 성장의 중요한 원인이라고 생각해 왔다. 예를 들어 재산권 제도가 발달하면 투자나 혁신에 대한 보상이 잘 이루어져 경제 성장에 도움이 된다는 것이다. 그러나 이를 입증하기는 쉽지 않다. 제도의 발달 수준과 소득 수준 사이에 상관관계가 있다 하더라도, <mark>제도는 경제 성장에 영향을 줄 수도 있지만 경제 성장으로부터 영향을 받을 수도 있으므로 그 인과관계를 판단하기 어렵기 때문이다</mark>.</p>
+    <p class="p" data-scene="geo"><span class="no">2문단</span>(나) 그런데 최근에 각국의 소득 수준이 위도나 기후 등의 지리적 조건과 밀접한 상관관계를 가진다는 통계적 증거들이 제시되었다. <mark>제도와 달리 지리적 조건은 소득 수준의 영향을 받지 않는다</mark>. 이 때문에 지리적 조건이 사람들의 건강이나 생산성 등과 같은 <mark>직접적인 경로를 통해 경제 성장에 영향을 끼친다는 해석</mark>이 설득력을 얻게 되었다.</p>
+    <p class="p" data-scene="rev"><span class="no">3문단</span>(다) 제도를 중시하는 경제학자들은, 지리적 조건이 직접적인 원인이라면 경제 성장에 더 유리한 지리적 조건을 가진 나라가 예나 지금이나 소득 수준이 더 높아야 하지만 <mark>그렇지 않은 사례가 많다는 사실에 주목하였다</mark>. 이들은 ‘지리적 조건과 소득 수준 사이의 상관관계’와 함께 이러한 ‘소득 수준의 역전 현상’을 동시에 설명하려면, <mark>제도가 경제 성장의 직접적인 원인이고 지리적 조건은 제도의 발달 방향에 영향을 주는 간접적인 경로를 통해</mark> 경제 성장과 관계를 맺는 것으로 보아야 한다고 주장한다. 다시 말해 지리적 조건은 지금의 경제 성장의 직접적인 원인이 아니라는 것이다. 오히려 지리적 조건은 과거에 더 잘살던 지역에서는 경제 성장에 불리한 방향으로, 더 못살던 지역에서는 유리한 방향으로 제도가 발달하게 된 ‘제도의 역전’이라는 역사적 과정에 영향을 끼쳤다는 것이다.</p>
+    <p class="p" data-scene="paths"><span class="no">4문단</span>(라) 이제 지리적 조건의 직접적인 영향을 강조하는 학자들도 <mark>간접적인 경로의 존재를 인정하게 되었다</mark>. 하지만 <mark>직접적인 경로가 경제 성장에서 더욱 중요하고 지속적인 영향을 끼친다는 입장에는 변함이 없다</mark>.</p>
+
+  </main>
+
+  <aside class="stageCol" aria-label="움직이는 그림">
+    <div class="stage" id="stage">
+      <button type="button" class="close" id="close" aria-label="그림 닫기">✕</button>
+      <div class="head"><span class="sn" id="sn"></span><span class="st" id="st"></span></div>
+      <div class="view">
+        <canvas id="cv" aria-label="움직이는 그림"></canvas>
+        <button class="orig" id="orig" hidden aria-label="시험지 그림 크게 보기"><img id="origImg" alt=""><span>시험지 그림</span></button>
+        <span class="drag">끌어서 돌리기 · 두 번 눌러 처음 자리로</span>
+      </div>
+      <div class="ctl" id="ctl"></div>
+      <div class="say" id="say" aria-live="polite"></div>
+    </div>
+  </aside>
+</div>
+
+<section class="sum" aria-labelledby="sumh">
+  <h2 id="sumh">정리</h2>
+  <dl>
+    <dt>(가) 제도</dt><dd>재산권 제도가 발달하면 투자·혁신에 보상이 잘 이루어져 성장에 도움. 그러나 제도와 소득은 서로 영향을 주고받을 수 있어 인과관계를 판단하기 어렵다.</dd>
+    <dt>(나) 지리적 조건</dt><dd>소득 수준이 위도·기후 등과 밀접한 상관관계. 지리적 조건은 소득의 영향을 받지 않으므로 건강·생산성 같은 직접적인 경로로 성장에 영향을 준다는 해석.</dd>
+    <dt>소득 수준의 역전</dt><dd>지리가 직접 원인이라면 유리한 나라가 예나 지금이나 더 잘살아야 하지만, 그렇지 않은 사례가 많다.</dd>
+    <dt>(다) 제도의 역전</dt><dd>제도가 직접 원인, 지리는 제도의 발달 방향에 영향을 주는 간접 경로. 과거에 잘살던 곳은 불리하게, 못살던 곳은 유리하게 제도가 발달했다.</dd>
+    <dt>(라) 지리를 강조하는 입장</dt><dd>간접 경로의 존재는 인정하지만, 직접 경로가 더 중요하고 지속적인 영향을 끼친다고 본다.</dd>
+  </dl>
+</section>
+<p class="foot">이 그림들은 지문 이해를 돕는 모형입니다. 산점도의 나라별 점, 지역 가·나의 소득 값, 선의 굵기는 지문에 없는 예시이며 관계의 방향만 지문을 따랐습니다. 지리적 조건 축은 ‘경제 성장에 유리한 정도’로 단순화했습니다. 시험지 그림 출처: 한국교육과정평가원 2010학년도 9월 대학수학능력시험 모의평가 언어 영역.</p>
+<script>window.REF_ITEMS=[["2010-09||독서||31", "2010-09||독서||32"]];</script>
+<script src="engine.js?v=d042145e"></script>
+<script>
+const IMG={"order": {"src": "img/2010-09-r31-order.png", "alt": "시험지 31번 <보기> 도식: (가) 제도 결정론 A, (나) 지리 결정론 B, (다) 수정된 제도 결정론 A′, (라) 수정된 지리 결정론 B′가 화살표로 이어지고, 아래에 A의 주장→A의 한계, ㄱ→ㄴ, ㄷ→ㄹ 상자"}};
+/* 2010학년도 9월 모평 독서 31~32 · 경제 성장의 원인: 제도와 지리적 조건 — 2D 장면 */
+const INK='#1D1D1F', SUB='#6E6E73', MUTE='#86868B', LINE='#C7C7CC', RULE='#E8E8ED', BLUE='#3D7CC9', ORG='#E8590C', GRAY='#A1A1A6';
+const ACC=()=>getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()||BLUE;
+const mob=()=>R.W()<440;
+const st={corr:'a', geo:'dir', rev:'geo', path:'ra'};
+const S={};
+/* 나라 점(모형): 고정 난수 */
+const PTS=(()=>{let s=7; const rnd=()=>(s=(s*16807)%2147483647)/2147483647; const a=[]; for(let i=0;i<26;i++){const x=.08+rnd()*.84; a.push([x,R.clamp(.12+.7*x+(rnd()-.5)*.32,.05,.95)]);} return a;})();
+
+function node(x,y,t,col,o){o=o||{}; R.ctx.save(); R.ctx.font=`700 ${o.size||14}px ${R.SANS}`; const w=Math.max(o.minW||0,R.ctx.measureText(t).width+(o.padX||26)); R.ctx.restore();
+  const h=o.h||34; R.rect(x-w/2,y-h/2,w,h,o.fill||'#FFFFFF',col||INK,h/2); R.text(x,y,t,{col:col||INK,size:o.size||14,wt:700}); return {x,y,w,h};}
+/* 상자 테두리에서 테두리로 화살표 */
+function edge(a,b,col,w,dash,off){const dx=b.x-a.x, dy=b.y-a.y, L=Math.hypot(dx,dy), ux=dx/L, uy=dy/L, nx=-uy*(off||0), ny=ux*(off||0);
+  const cut=(n,ux,uy)=>{const tx=Math.abs(ux)>1e-6?(n.w/2)/Math.abs(ux):1e9, ty=Math.abs(uy)>1e-6?(n.h/2)/Math.abs(uy):1e9; return Math.min(tx,ty)+4;};
+  const s0=cut(a,ux,uy), s1=cut(b,ux,uy)+2; const x0=a.x+ux*s0+nx, y0=a.y+uy*s0+ny, x1=b.x-ux*s1+nx, y1=b.y-uy*s1+ny;
+  if(dash){R.path([[x0,y0],[x1,y1]],col,w,dash); const h=8, an=Math.atan2(y1-y0,x1-x0); R.path([[x1-h*Math.cos(an-.45),y1-h*Math.sin(an-.45)],[x1,y1],[x1-h*Math.cos(an+.45),y1-h*Math.sin(an+.45)]],col,w);}
+  else R.arrow(x0,y0,x1,y1,col,w,8+w);
+  return [(x0+x1)/2,(y0+y1)/2];}
+function cross(x,y,col){const r=7; R.circle(x,y,11,'#F5F5F7',null); R.path([[x-r,y-r],[x+r,y+r]],col,2.2); R.path([[x-r,y+r],[x+r,y-r]],col,2.2);}
+/* 왼쪽: 산점도 */
+function scatter(box,xl,col){const m=mob(); const F=R.frame(0,1,0,1,{box,pad:[m?22:30,8,m?22:28,m?18:24],noAxis:true});
+  R.path([[F.L,F.T-4],[F.L,F.B],[F.R,F.B]],LINE,1); R.text(F.L+4,F.T-12,'소득 수준',{col:SUB,size:12,wt:400,align:'left'}); R.text(F.R,F.B+(m?12:16),xl,{col:SUB,size:12,wt:400,align:'right'});
+  PTS.forEach(([x,y])=>R.circle(F.X(x),F.Y(y),m?3.2:4,col)); return F;}
+
+/* ---------- (가) 제도와 소득: 상관관계 ≠ 인과관계 ---------- */
+S.corr={sn:'1문단 (가)',st:'상관관계만으로는 방향을 모른다',mode:'2d',
+  ctl(){return [R.seg('',[['a','제도 → 소득'],['b','소득 → 제도'],['ab','둘 다?']],st.corr,v=>st.corr=v)];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), k=st.corr, acc=ACC(); R.setAcc(k==='a'?0:k==='b'?1:.5);
+    const sw=W*(m?.52:.55); scatter([0,0,sw,H],'제도 발달 수준','#AEAEB2');
+    const cx=sw+(W-sw)/2, a=node(cx,H*.24,'제도',INK,{minW:m?72:96}), b=node(cx,H*.72,'소득 수준',INK,{minW:m?72:96});
+    const on1=k!=='b', on2=k!=='a';
+    if(on1) edge(a,b,acc,2.4,null,k==='ab'?-12:0); if(on2) edge(b,a,acc,2.4,null,k==='ab'?-12:0);
+    if(k==='a'&&!m){R.text(cx+10,H*.46,'투자·혁신에',{col:SUB,size:12,wt:400,align:'left'}); R.text(cx+10,H*.46+17,'보상',{col:SUB,size:12,wt:400,align:'left'});}
+    R.say(k==='a'?'재산권 제도가 발달하면 투자나 혁신에 대한 보상이 잘 이루어져 성장에 도움이 된다는 생각입니다. <span class="long">왼쪽 점들은 나라별 모형 값입니다.</span>'
+      :k==='b'?'거꾸로 <b>경제 성장이 제도에 영향</b>을 줄 수도 있습니다. 그래도 왼쪽 그래프는 <b>똑같이</b> 나옵니다.'
+      :'제도와 소득이 함께 높게 나타나도(상관관계), 어느 쪽이 원인인지(<b>인과관계</b>) 판단하기 어렵습니다.');}};
+
+/* ---------- (나) 지리적 조건: 직접 경로 ---------- */
+S.geo={sn:'2문단 (나)',st:'지리적 조건의 직접적인 경로',mode:'2d',
+  ctl(){return [R.seg('',[['dir','직접적인 경로'],['rev','반대 방향은?']],st.geo,v=>st.geo=v)];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), k=st.geo, acc=ACC(); R.setAcc(k==='dir'?0:1);
+    const sw=W*(m?.5:.52); scatter([0,0,sw,H],m?'지리적 조건':'지리적 조건(위도·기후 등)','#AEAEB2');
+    const cx=sw+(W-sw)/2, a=node(cx,H*.16,'지리적 조건',INK,{minW:m?84:110,size:m?13:14}), mid=node(cx,H*.46,'건강·생산성',SUB,{minW:m?84:110,size:m?12:13,h:m?28:32}), b=node(cx,H*.78,'소득 수준',INK,{minW:m?84:110,size:m?13:14});
+    if(k==='dir'){edge(a,mid,acc,2.4); edge(mid,b,acc,2.4);}
+    else{edge(a,mid,'#E0E0E5',1.4); edge(mid,b,'#E0E0E5',1.4);
+      const x=cx+(m?52:70); R.path([[x,b.y-b.h/2-2],[x,a.y+a.h/2+10]],ORG,1.8,[5,4]); R.path([[x-6,a.y+a.h/2+16],[x,a.y+a.h/2+8],[x+6,a.y+a.h/2+16]],ORG,1.8);
+      cross(x,(mid.y+b.y)/2,ORG);}
+    R.say(k==='dir'?'각국의 소득 수준이 위도나 기후 같은 <b>지리적 조건</b>과 밀접한 상관관계를 보였습니다. 지리적 조건이 건강·생산성 같은 <b>직접적인 경로</b>로 성장에 영향을 준다는 해석입니다. <span class="long">점들은 모형입니다.</span>'
+      :'제도와 달리 지리적 조건은 <b>소득 수준의 영향을 받지 않습니다</b>. 화살표가 거꾸로 갈 수 없으니 이 해석이 설득력을 얻었습니다.');}};
+
+/* ---------- (다) 소득 수준의 역전과 제도의 역전 ---------- */
+S.rev={sn:'3문단 (다)',st:'소득 수준의 역전',mode:'2d',
+  ctl(){return [R.seg('',[['geo','지리가 직접 원인이라면'],['real','실제 많은 사례']],st.rev,v=>st.rev=v)];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), real=st.rev==='real', acc=ACC(); R.setAcc(real?1:0);
+    const F=R.frame(-.15,1.15,0,10,{pad:[m?26:44,m?118:150,m?26:34,m?18:30],noAxis:true});
+    R.path([[F.L,F.T-6],[F.L,F.B],[F.R,F.B]],LINE,1); R.text(F.L+4,F.T-14,'소득 수준',{col:SUB,size:12,wt:400,align:'left'});
+    R.text(F.X(0),F.B+(m?13:17),'과거',{col:SUB,size:12,wt:500}); R.text(F.X(1),F.B+(m?13:17),'지금',{col:SUB,size:12,wt:500});
+    const A=[8,real?3:8.6], B=[3,real?7.6:3.4];
+    const ln=(v,col)=>{R.path([[F.X(0),F.Y(v[0])],[F.X(1),F.Y(v[1])]],col,2.6); R.circle(F.X(0),F.Y(v[0]),5,col); R.circle(F.X(1),F.Y(v[1]),5,col);};
+    ln(A,real?acc:INK); ln(B,real?BLUE:GRAY);
+    const tx=F.R+12;
+    R.text(tx,F.Y(A[1])-(m?0:8),m?'지역 가':'지역 가',{col:real?acc:INK,size:12,wt:700,align:'left'}); if(!m) R.text(tx,F.Y(A[1])+9,'과거에 더 잘살던 곳',{col:SUB,size:12,wt:400,align:'left'});
+    R.text(tx,F.Y(B[1])-(m?0:8),'지역 나',{col:real?BLUE:SUB,size:12,wt:700,align:'left'}); if(!m) R.text(tx,F.Y(B[1])+9,'과거에 더 못살던 곳',{col:SUB,size:12,wt:400,align:'left'});
+    if(real){const mx=F.X(.5); R.text(mx,F.T-(m?10:16),m?'제도의 역전':'그 사이: 제도의 역전',{col:INK,size:12,wt:700});
+      if(!m){R.text(F.X(.16)+12,F.Y(A[0]+(A[1]-A[0])*.16)-4,'불리한 제도',{col:acc,size:12,wt:600,align:'left'}); R.text(F.X(.16)+12,F.Y(B[0]+(B[1]-B[0])*.16)+6,'유리한 제도',{col:BLUE,size:12,wt:600,align:'left'});}}
+    R.say(real?'예와 지금의 순서가 뒤바뀐 사례가 많습니다(<b>소득 수준의 역전</b>). 제도를 중시하는 학자들은 그 사이에 과거에 잘살던 곳은 성장에 <b>불리한</b> 방향으로, 못살던 곳은 <b>유리한</b> 방향으로 제도가 발달했다고 봅니다(<b>제도의 역전</b>). <span class="long">소득 값은 모형입니다.</span>'
+      :'지리적 조건이 <b>직접적인</b> 원인이라면, 성장에 더 유리한 지리적 조건을 가진 곳이 <b>예나 지금이나</b> 더 잘살아야 합니다. <span class="long">지역 가가 그런 곳이라고 본 모형입니다.</span>');}};
+
+/* ---------- (가)~(라) 경로 비교 ---------- */
+S.paths={sn:'4문단 (라)',st:'직접 경로와 간접 경로',mode:'2d',img:'order',
+  ctl(){return [R.seg('',[['ga','(가)'],['na','(나)'],['da','(다)'],['ra','(라)']],st.path,v=>st.path=v)];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), k=st.path, acc=ACC(); R.setAcc({ga:0,na:.33,da:.66,ra:1}[k]);
+    const imgH=m?66:128, top=m?10:20, h=H-imgH-top;
+    const G={x:W*(m?.17:.17),y:top+h*.74}, I={x:W*.5,y:top+h*.2}, Y={x:W*(m?.8:.8),y:top+h*.74};
+    const o={minW:m?70:96,size:m?13:14};
+    const g=node(G.x,G.y,'지리적 조건',k==='ga'?'#C7C7CC':INK,{...o,minW:m?78:104}), ins=node(I.x,I.y,'제도',k==='na'?'#C7C7CC':INK,o), y=node(Y.x,Y.y,'소득 수준',INK,o);
+    const dim='#E0E0E5', lab=(x,yy,t,col)=>R.text(x,yy,t,{col,size:12,wt:600});
+    if(k==='ga'){edge(ins,y,acc,2.6,null,-7); edge(y,ins,acc,2.2,null,-7); lab((I.x+Y.x)/2+(m?30:44),(I.y+Y.y)/2-(m?6:10),'?',acc);}
+    if(k==='na'){const p=edge(g,y,acc,3.4); lab(p[0],p[1]+(m?14:18),'직접 경로',acc);}
+    if(k==='da'){const p=edge(g,y,dim,1.4,[5,5]); cross(p[0],p[1],ORG); edge(g,ins,BLUE,1.8,[6,4]); edge(ins,y,acc,3.4);
+      const q=[(G.x+I.x)/2,(G.y+I.y)/2]; if(!m) lab(q[0]-40,q[1]-6,'간접(발달 방향)',BLUE); if(!m) lab((I.x+Y.x)/2+44,(I.y+Y.y)/2-6,'직접 원인',acc);}
+    if(k==='ra'){const p=edge(g,y,acc,4.2); lab(p[0],p[1]+(m?14:18),m?'직접(더 중요)':'직접 경로: 더 중요·지속적',acc); edge(g,ins,BLUE,1.6,[6,4]); edge(ins,y,BLUE,1.6,[6,4]); if(!m) lab(W*.5,top+h*.5,'간접 경로도 인정',BLUE);}
+    const msg={ga:'(가) 제도가 성장의 원인이라는 생각. 하지만 제도와 소득이 <b>서로</b> 영향을 줄 수 있어 방향을 판단하기 어렵습니다.',
+      na:'(나) 지리적 조건이 <b>직접적인 경로</b>로 소득 수준에 영향을 준다는 해석입니다.',
+      da:'(다) 제도가 <b>직접적인 원인</b>. 지리적 조건은 지금의 성장의 직접 원인이 아니라, 제도의 발달 방향에 영향을 주는 <b>간접적인 경로</b>입니다.',
+      ra:'(라) 지리를 강조하는 학자들도 <b>간접 경로</b>를 인정하게 되었지만, <b>직접 경로</b>가 더 중요하고 지속적이라는 입장은 그대로입니다.'}[k];
+    R.say(msg+' <span class="long">선의 굵기는 어느 쪽을 강조하는지 보여 주는 모형입니다.</span>');}};
+
+R.start({scenes:S,img:IMG,c0:'#3D7CC9',c1:'#E8590C'});
+
+</script>
+</body>
+</html>

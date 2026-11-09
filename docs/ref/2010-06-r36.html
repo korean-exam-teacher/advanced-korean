@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>가위바위보 · 지문 그림 자료</title>
+<meta name="description" content="2010학년도 6월 모의평가 언어 독서 36~37번 「가위바위보」 지문을 시험지 그림과 움직이는 그림으로 이해하는 참고 자료">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ref.css?v=d042145e">
+<style>.read{padding-bottom:300px}@media (max-width:900px){.read{padding-bottom:180px}}</style>
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a href="../suneung.html" id="back">문제은행으로</a>
+  <div class="right"><span class="where">2010학년도 6월 모의평가 언어 독서 36~37번</span><button type="button" class="tog" id="tog" aria-pressed="false">그림 함께 보기</button></div>
+</div></header>
+
+<div class="wrap">
+  <main class="read">
+    <h1 class="title" id="title">가위바위보</h1>
+    <p class="intro">지문을 먼저 읽고, 이해가 막히는 문단에서 ‘그림으로 보기’를 누르세요. 그림은 문단을 따라 바뀝니다.</p>
+    <div class="gate" id="gate" role="status" hidden></div>
+    <p class="p"><span class="no">1문단</span>가위, 바위, 보! 무엇을 내느냐에 따라 서로의 승패는 확연히 갈리지만 이 게임의 묘미는 영원한 승자도, 영원한 패자도 없다는 데 있다. 이렇게 서로 끝없이 물고 물리는 가위바위보의 관계가 생물 다양성을 설명하기 위한 모델이 될 수 있다는 연구가 있어 눈길을 끈다.</p>
+    <p class="p" data-scene="pair"><span class="no">2문단</span>[A] 한 연구팀은 동물의 장내에 서식하는 대장균 중 서로 다른 세 집단 간의 증식 경쟁에서 가위바위보의 관계를 관찰했다. <mark>‘집단 C’는 콜리신이라는 독소를 생산하고</mark>, <mark>‘집단 S’는 다른 집단에 비해 빠른 속도로 증식하지만 콜리신에 의해 증식이 억제된다</mark>. <mark>‘집단 R’은 ‘집단 C’보다 빠르고 ‘집단 S’보다 느린 증식 속도를 가진 반면 콜리신에 저항성을 지닌다</mark>. 세 집단 중 두 집단씩을 각각 섞어 배양하면 증식 속도의 차이로 인해 집단 간 증식 경쟁에 따른 승패가 확실하다. 반면 세 집단을 서로 인접시켜 배양하면, 각 두 집단 간의 경계에서는 일방적으로 영역을 침범하는 현상이 나타나지만, 결과적으로 가위바위보의 관계처럼 <mark>서로 물고 물리는 삼자 간의 공존 관계가 관찰된다</mark>.</p>
+    <p class="p" data-scene="mice"><span class="no">3문단</span>다른 연구팀은 생쥐들의 장내에 세 대장균 집단을 투여한 후 각 집단 간의 증식 경쟁을 살폈다. 그 결과 한 시점에는 생쥐 개체별로 어느 한 집단이 우세했지만, <mark>시간이 지나면서 우세한 집단이 일정한 순서로 계속 바뀌는 것을 발견했다</mark>. 이는 <mark>서로 격리된 여러 공간에서 세 집단이 동시에 우세 집단으로 존재할 수 있음</mark>을 의미하기도 한다.</p>
+    <p class="p" data-scene="div"><span class="no">4문단</span>위 사례는 <mark>생태계에서 절대 강자가 없을 수도 있음</mark>을 보여 주는 좋은 본보기로 거론된다. 생물 간 경쟁을 설명하는 방식 중 승패가 명확한 양자 간의 관계에 비해, <mark>삼자의 병존 가능성을 보여 주는 가위바위보의 관계는 생물 다양성의 설명에 보다 적합한 모델</mark>이 될 수 있다.</p>
+
+  </main>
+
+  <aside class="stageCol" aria-label="움직이는 그림">
+    <div class="stage" id="stage">
+      <button type="button" class="close" id="close" aria-label="그림 닫기">✕</button>
+      <div class="head"><span class="sn" id="sn"></span><span class="st" id="st"></span></div>
+      <div class="view">
+        <canvas id="cv" aria-label="움직이는 그림"></canvas>
+        <button class="orig" id="orig" hidden aria-label="시험지 그림 크게 보기"><img id="origImg" alt=""><span>시험지 그림</span></button>
+        <span class="drag">끌어서 돌리기 · 두 번 눌러 처음 자리로</span>
+      </div>
+      <div class="ctl" id="ctl"></div>
+      <div class="say" id="say" aria-live="polite"></div>
+    </div>
+  </aside>
+</div>
+
+<section class="sum" aria-labelledby="sumh">
+  <h2 id="sumh">정리</h2>
+  <dl>
+    <dt>집단 C</dt><dd>콜리신이라는 독소를 생산한다. 세 집단 중 증식이 가장 느리다(R보다 느림).</dd>
+    <dt>집단 S</dt><dd>다른 집단보다 빠르게 증식하지만 콜리신에 의해 증식이 억제된다.</dd>
+    <dt>집단 R</dt><dd>C보다 빠르고 S보다 느리게 증식하며, 콜리신에 저항성을 지닌다.</dd>
+    <dt>두 집단씩 배양</dt><dd>승패가 확실하다(한 집단이 이긴다).</dd>
+    <dt>세 집단을 인접시켜 배양</dt><dd>경계에서는 한쪽이 일방적으로 침범하지만, 결과적으로 서로 물고 물리는 삼자 공존.</dd>
+    <dt>생쥐 장내 실험</dt><dd>개체마다 한 집단이 우세하지만 우세 집단이 일정한 순서로 바뀐다. 격리된 여러 공간에서 세 집단이 동시에 우세 집단으로 존재할 수 있다.</dd>
+  </dl>
+</section>
+<p class="foot">이 그림들은 지문 이해를 돕는 모형입니다. 배양 접시는 칸으로 나눈 격자로 단순화했고, 이웃 칸을 이기는 집단이 그 칸을 차지한다고 가정했습니다. 퍼지는 빠르기, 생쥐 수, 우세 집단이 바뀌는 시점과 순서(1문단의 관계에서 끌어낸 것)는 지문에 없는 가정입니다. 시험지 그림 출처: 한국교육과정평가원 2010학년도 6월 대학수학능력시험 모의평가 언어 영역.</p>
+<script>window.REF_ITEMS=[["2010-06||독서||36", "2010-06||독서||37"]];</script>
+<script src="engine.js?v=d042145e"></script>
+<script>
+const IMG={};
+/* 2010학년도 6월 모의평가 독서 36~37 · 대장균 세 집단의 가위바위보 관계 */
+const INK='#1D1D1F', SUB='#6E6E73', MUTE='#86868B', LINE='#C7C7CC', RULE='#E8E8ED';
+const mob=()=>R.W()<440;
+/* 0 = C, 1 = S, 2 = R.  a가 b를 이김 ⇔ b === (a+1)%3  (C→S, S→R, R→C) */
+const NAME=['C','S','R'], COL=['#3D7CC9','#E8590C','#2FA84F'], RGB=COL.map(c=>R.hex(c));
+const TRAIT=['콜리신 생산 · 가장 느림','가장 빠름 · 콜리신에 약함','중간 속도 · 콜리신 저항'];
+const beats=(a,b)=>b===(a+1)%3;
+const PAIRS={cs:[0,1],sr:[1,2],rc:[2,0]};
+const WHY={cs:'S가 더 빨리 증식하지만 <b>C의 콜리신</b>이 S의 증식을 억제합니다.',sr:'R은 콜리신에 저항성이 있지만 상대 S는 콜리신을 만들지 않습니다. <b>더 빠른 S</b>가 앞섭니다.',rc:'R은 C보다 <b>빠르고</b>, C의 콜리신에 <b>저항성</b>이 있습니다.'};
+const st={pr:'cs', t:0};
+const S={};
+
+/* ---------- 격자 배양 접시 (모형) ---------- */
+function Dish(N){this.N=N; this.a=new Int8Array(N*N).fill(-1); this.hist=[]; this.steps=0;
+  const c=(N-1)/2; this.in=new Uint8Array(N*N); for(let y=0;y<N;y++)for(let x=0;x<N;x++){ if(Math.hypot(x-c,y-c)<=N/2-.2) this.in[y*N+x]=1; }}
+Dish.prototype.seed=function(mode,types){const N=this.N, c=(N-1)/2; this.hist=[]; this.steps=0;
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++){const i=y*N+x; if(!this.in[i]){this.a[i]=-1; continue;}
+    if(mode==='mix') this.a[i]=types[Math.random()<.5?0:1];
+    else { const ang=(Math.atan2(y-c,x-c)+Math.PI*2.5)%(Math.PI*2); this.a[i]=Math.floor(ang/(Math.PI*2/3))%3; } }
+  this.rec();};
+Dish.prototype.count=function(){const n=[0,0,0]; for(let i=0;i<this.a.length;i++) if(this.a[i]>=0) n[this.a[i]]++; return n;};
+Dish.prototype.rec=function(){const n=this.count(), t=n[0]+n[1]+n[2]; this.hist.push(n.map(v=>v/t));};
+Dish.prototype.step=function(k){const N=this.N, a=this.a, D=[[1,0],[-1,0],[0,1],[0,-1]];
+  for(let s=0;s<k;s++){const x=(Math.random()*N)|0, y=(Math.random()*N)|0, i=y*N+x; if(a[i]<0) continue; const d=D[(Math.random()*4)|0], X=x+d[0], Y=y+d[1]; if(X<0||Y<0||X>=N||Y>=N) continue; const j=Y*N+X; if(a[j]<0) continue; if(beats(a[j],a[i])) a[i]=a[j];}
+  this.steps+=k; if(this.steps>=N*N*.6){this.steps=0; this.rec(); if(this.hist.length>400) this.hist.shift();}};
+Dish.prototype.draw=function(cx,cy,r){const N=this.N, s=2*r/N, x0=cx-r, y0=cy-r, ctx=R.ctx;
+  R.circle(cx,cy,r+3,'#FFFFFF',LINE,1.2);
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++){const v=this.a[y*N+x]; if(v<0) continue; ctx.fillStyle=COL[v]; ctx.fillRect(Math.floor(x0+x*s),Math.floor(y0+y*s),Math.ceil(s)+1,Math.ceil(s)+1);} };
+const alive=d=>d.count().filter(v=>v>0).length;
+
+/* 이름표 */
+function chip(x,y,k,o){o=o||{}; const t=o.t||('집단 '+NAME[k]); R.ctx.save(); R.ctx.font=`700 12px ${R.SANS}`; const w=R.ctx.measureText(t).width+20; R.ctx.restore();
+  const xx=o.align==='left'?x:x-w/2; R.rect(xx,y-11,w,22,'#FFFFFF',o.dim?LINE:COL[k],11); R.circle(xx+9,y,3.5,COL[k]); R.text(xx+15,y,t,{col:o.dim?MUTE:INK,size:12,wt:700,align:'left'}); return w;}
+
+/* ---------- 2문단: 두 집단씩 / 세 집단 인접 ---------- */
+const D1=new Dish(56); let d1run=false, d1key='';
+function d1reset(){const md=st.pr; if(md==='abc') D1.seed('sect'); else D1.seed('mix',PAIRS[md]); d1key=md; d1run=false;}
+let pairBtn=null;
+S.pair={sn:'2문단',st:'두 집단씩, 세 집단 함께',mode:'2d',
+  enter(){ if(d1key!==st.pr) d1reset(); },
+  tick(now,cur){ if(!cur||!d1run) return false; D1.step(R.RM?D1.N*D1.N*40:D1.N*D1.N*(st.pr==='abc'?.25:.06));
+    if(st.pr!=='abc'&&alive(D1)<2){d1run=false; if(pairBtn) pairBtn.textContent='다시 배양';} return true;},
+  ctl(){pairBtn=R.btn(d1run?'멈춤':'배양 시작','',b=>{ if(st.pr!=='abc'&&alive(D1)<2) d1reset(); d1run=!d1run; b.textContent=d1run?'멈춤':'배양 시작';});
+    return [R.seg('',[['cs','C와 S'],['sr','S와 R'],['rc','R과 C'],['abc','세 집단 인접']],st.pr,v=>{st.pr=v; d1reset(); pairBtn.textContent='배양 시작';}), pairBtn];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), md=st.pr, three=md==='abc'; R.setAcc(three?1:0);
+    const r=m?Math.min(H*.42,W*.26):Math.min(H*.3,W*.34), cx=m?W*.3:W/2, cy=m?H*.5:H*.42;
+    D1.draw(cx,cy,r);
+    const ks=three?[0,1,2]:PAIRS[md], n=D1.count(), tot=n[0]+n[1]+n[2];
+    /* 각 집단의 특징과 차지한 비율 */
+    const lx=m?W*.58:W*.5, ly0=m?H*.5-(ks.length-1)*24:cy+r+(m?0:40);
+    ks.forEach((k,i)=>{ if(m){const y=ly0+i*48; chip(lx,y-8,k,{align:'left',dim:!n[k]}); R.text(lx,y+14,TRAIT[k],{col:SUB,size:12,wt:500,align:'left'});}
+      else {const y=ly0+i*30; chip(W*.08,y,k,{align:'left',dim:!n[k]}); R.text(W*.08+78,y,TRAIT[k],{col:SUB,size:12,wt:500,align:'left'}); R.text(W*.92,y,Math.round(n[k]/tot*100)+'%',{col:n[k]?INK:MUTE,size:13,wt:700,align:'right'});} });
+    const left=ks.filter(k=>n[k]>0);
+    if(!three){ const done=left.length===1;
+      R.say(done?`<b>집단 ${NAME[left[0]]}</b>가 접시를 차지했습니다. 두 집단씩 섞어 배양하면 승패가 확실합니다. <span class="long">${WHY[md]}</span>`
+        :`두 집단을 섞어 배양합니다. ${WHY[md]} <span class="long">‘배양 시작’을 눌러 보세요. 격자 칸으로 단순화한 모형입니다.</span>`); }
+    else R.say(`세 집단을 서로 인접시켜 배양합니다. 경계마다 한쪽이 <b>일방적으로 침범</b>하지만, 침범당한 쪽도 다른 경계에서는 침범하므로 결국 <b>셋이 함께 남습니다</b>. <span class="long">격자 칸으로 단순화한 모형입니다. 빠르기 차이는 그리지 않았습니다.</span>`);}};
+
+/* ---------- 3문단: 생쥐 장내, 우세 집단이 순서대로 바뀜 ---------- */
+const ORDER=[0,2,1]; /* C → R → S → C (1문단의 관계에서 끌어낸 순서) */
+const MICE=5, PH=[0,1.3,2.2,.6,1.8];
+let miceRun=false, miceBtn=null, miceLast=null;
+S.mice={sn:'3문단',st:'생쥐마다 다른 우세 집단',mode:'2d',
+  enter(){miceLast=null;},
+  tick(now,cur){ if(!cur||!miceRun) return false; if(miceLast!=null) st.t+=(now-miceLast)/1000*(R.RM?0:.6); miceLast=now; return true;},
+  ctl(){miceBtn=R.btn(miceRun?'멈춤':'시간 흐르게','',b=>{miceRun=!miceRun; miceLast=null; b.textContent=miceRun?'멈춤':'시간 흐르게';});
+    return [miceBtn, R.btn('처음으로','ghost',()=>{st.t=0; miceRun=false; miceBtn.textContent='시간 흐르게';})];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), t=st.t; R.setAcc(0);
+    const gw=(W-(m?10:0))/MICE, mr=Math.min(gw*.32,m?26:40), my=m?H*.38:H*.36, cnt=[0,0,0];
+    for(let i=0;i<MICE;i++){const x=gw*(i+.5)-mr*.15, p=t+PH[i], k=ORDER[Math.floor(p)%3], f=p%1; cnt[k]++;
+      /* 생쥐: 몸통 + 귀 + 꼬리 */
+      R.path([[x+mr*.9,my+mr*.35],[x+mr*1.25,my+mr*.6],[x+mr*1.1,my+mr*.95]],LINE,1.6);
+      R.circle(x-mr*.55,my-mr*.62,mr*.3,'#FFFFFF',LINE,1.2); R.circle(x+mr*.15,my-mr*.7,mr*.3,'#FFFFFF',LINE,1.2);
+      R.circle(x,my,mr,'#FFFFFF',LINE,1.2);
+      R.circle(x,my,mr*.62,COL[k]);
+      if(f>.8){ const nk=ORDER[(Math.floor(p)+1)%3]; R.ctx.save(); R.ctx.globalAlpha=(f-.8)/.2; R.circle(x,my,mr*.62,COL[nk]); R.ctx.restore(); }
+      R.text(x,my,NAME[k],{col:'#FFFFFF',size:m?13:16,wt:700});
+      R.text(x,my+mr+(m?12:18),(i+1)+'번',{col:MUTE,size:12,wt:500}); }
+    /* 지금 우세 집단 수 */
+    const by=m?H-28:H*.62; let x=W/2-(m?150:180);
+    R.text(W/2,by-(m?20:30),'지금 우세한 집단',{col:SUB,size:12,wt:500});
+    [0,1,2].forEach((k,j)=>{const xx=W/2+(j-1)*(m?100:120); chip(xx,by,k,{t:`${NAME[k]} : ${cnt[k]}마리`,dim:!cnt[k]});});
+    if(!m){ const ay=H*.8; R.text(W/2,ay,'우세 집단이 바뀌는 순서 (모형)',{col:SUB,size:12,wt:500});
+      const xs=[W*.3,W*.5,W*.7]; ORDER.forEach((k,j)=>{chip(xs[j],ay+30,k); if(j<2) R.arrow(xs[j]+38,ay+30,xs[j+1]-38,ay+30,LINE,1.4,6);});
+      R.path([[xs[2]+38,ay+30],[xs[2]+56,ay+30],[xs[2]+56,ay+54],[xs[0]-56,ay+54],[xs[0]-56,ay+30]],LINE,1.4); R.arrow(xs[0]-56,ay+30,xs[0]-38,ay+30,LINE,1.4,6); }
+    R.say('한 시점에는 생쥐마다 <b>한 집단이 우세</b>하지만, 시간이 지나면 우세 집단이 <b>일정한 순서로</b> 바뀝니다. 서로 격리된 여러 생쥐 안에서 <b>세 집단이 동시에</b> 우세 집단으로 존재할 수 있습니다. <span class="long">생쥐 수, 바뀌는 시점, 순서(C → R → S, 1문단의 관계에서 끌어낸 것)는 모형입니다.</span>');}};
+
+/* ---------- 4문단: 생물 다양성 ---------- */
+const D2=new Dish(44); let d2run=false, d2md='', d2btn=null; st.dv='two';
+function d2reset(){ if(st.dv==='two') D2.seed('mix',[0,1]); else D2.seed('sect'); d2md=st.dv; d2run=false;}
+S.div={sn:'4문단',st:'절대 강자가 없으면',mode:'2d',
+  enter(){ if(d2md!==st.dv) d2reset(); },
+  tick(now,cur){ if(!cur||!d2run) return false; D2.step(R.RM?D2.N*D2.N*40:D2.N*D2.N*.3);
+    if(D2.hist.length>=160){d2run=false; if(d2btn) d2btn.textContent='다시 배양';} return true;},
+  ctl(){d2btn=R.btn('배양 시작','',b=>{ if(D2.hist.length>=160) d2reset(); d2run=!d2run; b.textContent=d2run?'멈춤':'배양 시작';});
+    return [R.seg('',[['two','승패가 명확한 두 집단'],['three','가위바위보 세 집단']],st.dv,v=>{st.dv=v; d2reset(); d2btn.textContent='배양 시작';}), d2btn];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), three=st.dv==='three'; R.setAcc(three?1:0);
+    const dr=m?Math.min(H*.3,48):Math.min(W*.2,H*.18), dcx=m?dr+14:W/2, dcy=m?H/2:dr+24;
+    D2.draw(dcx,dcy,dr);
+    const box=m?[dcx+dr+14,0,W-(dcx+dr+14),H]:[0,dcy+dr+16,W,H-(dcy+dr+16)];
+    const F=R.frame(0,160,0,1,{box,pad:[m?22:30,m?12:20,m?30:30,m?34:44],xt:[],yt:[[0,'0'],[1/3,'1/3'],[1,'1']],xl:'시간',yl:'차지한 비율'});
+    const ks=three?[0,1,2]:[0,1];
+    ks.forEach(k=>{const pts=D2.hist.map((h,i)=>[F.X(i),F.Y(h[k])]); if(pts.length>1) R.path(pts,COL[k],2.2); const h=D2.hist[D2.hist.length-1]; if(h) R.text(F.X(D2.hist.length-1)+6,F.Y(h[k]),NAME[k],{col:COL[k],size:12,wt:700,align:'left'});});
+    const n=alive(D2);
+    if(m) R.text(dcx,dcy+dr+18,`남은 집단 ${n}개`,{col:INK,size:12,wt:700}); else R.text(F.R,F.T-12,`남은 집단 ${n}개`,{col:INK,size:13,wt:700,align:'right'});
+    R.say(three?'가위바위보의 관계에서는 <b>절대 강자가 없어</b> 세 집단이 함께 남습니다(삼자의 병존). 생물 다양성을 설명하기에 더 적합한 모델이 될 수 있습니다. <span class="long">격자 모형의 결과로, 비율이 흔들리는 모양은 지문에 없습니다.</span>'
+      :'승패가 명확한 두 집단의 관계에서는 결국 <b>한 집단만</b> 남습니다. <span class="long">‘배양 시작’을 누르고 세 집단과 비교해 보세요. 격자 모형입니다.</span>');}};
+
+R.start({scenes:S,img:IMG,c0:'#3D7CC9',c1:'#2FA84F',onLoad(){d1reset(); d2reset();}});
+
+</script>
+</body>
+</html>

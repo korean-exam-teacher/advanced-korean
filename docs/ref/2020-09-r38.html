@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>위치 측정 · 지문 그림 자료</title>
+<meta name="description" content="2020학년도 9월 모의평가 국어 독서 38~41번 「위치 측정」 지문을 시험지 그림과 움직이는 그림으로 이해하는 참고 자료">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ref.css?v=d042145e">
+<style>.bogi img{display:block;max-width:100%;margin:14px auto 0}</style>
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a href="../suneung.html" id="back">문제은행으로</a>
+  <div class="right"><span class="where">2020학년도 9월 모의평가 국어 독서 38~41번</span><button type="button" class="tog" id="tog" aria-pressed="false">그림 함께 보기</button></div>
+</div></header>
+
+<div class="wrap">
+  <main class="read">
+    <h1 class="title" id="title">위치 측정</h1>
+    <p class="intro">지문을 먼저 읽고, 이해가 막히는 문단에서 ‘그림으로 보기’를 누르세요. 그림은 문단을 따라 바뀝니다.</p>
+    <div class="gate" id="gate" role="status" hidden></div>
+    <p class="p" data-scene="pos"><span class="no">1문단</span>스마트폰은 다양한 위치 측정 기술을 활용하여 여러 지형 환경에서 위치를 측정한다. 위치에는 절대 위치와 상대 위치가 있다. <mark>절대 위치는 위도, 경도 등으로 표시된 위치이고</mark>, <mark>상대 위치는 특정한 위치를 기준으로 한 상대적인 위치이다</mark>.</p>
+    <p class="p" data-scene="err"><span class="no">2문단</span>실외에서는 주로 스마트폰 단말기에 내장된 GPS(위성항법장치)나 IMU(관성측정장치)를 사용한다. GPS는 위성으로부터 오는 신호를 이용하여 절대 위치를 측정한다. <mark>GPS는 위치 오차가 시간에 따라 누적되지 않는다</mark>. 그러나 전파 지연 등으로 <mark>접속 초기에 짧은 시간 동안이지만 큰 오차가 발생하고</mark> 실내나 터널 등에서는 GPS 신호를 받기 어렵다. IMU는 내장된 센서로 가속도와 속도를 측정하여 위치 변화를 계산하고 초기 위치를 기준으로 하는 상대 위치를 구한다. 단기간 움직임에 대한 측정 성능이 뛰어나지만 센서가 측정한 값의 오차가 누적되기 때문에 <mark>시간이 지날수록 위치 오차가 커진다</mark>. 이 두 방식을 함께 사용하면 서로의 단점을 보완하여 <span class="bx">오차</span>를 줄일 수 있다.</p>
+    <p class="p" data-scene="beacon"><span class="no">3문단</span>한편 실내에서 위치 측정에 사용 가능한 방법으로는 블루투스 기반의 비콘을 활용하는 기술이 있다. 비콘은 실내에 고정 설치되어 비콘마다 정해진 식별 번호와 위치 정보가 포함된 신호를 주기적으로 보내는 기기이다. 비콘들은 동일한 세기의 신호를 사방으로 보내지만 <mark>비콘으로부터 거리가 멀어질수록, 벽과 같은 장애물이 많을수록 신호의 세기가 약해진다</mark>. <mark>단말기가 비콘 신호의 도달 거리 내로 진입하면</mark> 단말기 안의 수신기가 이 신호를 인식한다. 이 신호를 이용하여 2차원 평면에서의 위치를 측정하는 방법으로는 다음과 같은 것들이 있다.</p>
+    <p class="p" data-scene="prox"><span class="no">4문단</span>근접성 기법은 단말기가 비콘 신호를 수신하면 해당 비콘의 위치를 단말기의 위치로 정한다. 여러 비콘 신호를 수신했을 경우에는 <mark>신호가 가장 강한 비콘의 위치를 단말기의 위치로 정한다</mark>.</p>
+    <p class="p" data-scene="tri"><span class="no">5문단</span>삼변측량 기법은 3개 이상의 비콘으로부터 수신된 신호 세기를 측정하여 <mark>단말기와 비콘 사이의 거리로 환산한다</mark>. 각 비콘을 중심으로 이 거리를 반지름으로 하는 원을 그리고, <mark>그 교점을 단말기의 현재 위치로 정한다</mark>. 교점이 하나로 모이지 않는 경우에는 <mark>세 원에 공통으로 속한 영역의 중심점을 단말기의 위치로 측정한다</mark>.</p>
+    <p class="p" data-scene="fp"><span class="no">6문단</span>㉠<u>위치 </u><u>지도 </u><u>기법</u>은 측정 공간을 작은 구역들로 나누어 <mark>각 구역마다 기준점을 설정하고 그 주위에 비콘들을 설치한다</mark>. 그러고 나서 비콘들이 송신하여 각 기준점에 도달하는 신호의 세기를 측정한다. 이 신호 세기와 비콘의 식별 번호, 기준점의 위치 좌표를 <mark>서버에 있는 데이터베이스에 위치 지도로 기록해 놓는다</mark>. 이 작업을 모든 기준점에서 수행한다. 특정한 위치에 도달한 단말기가 비콘 신호를 수신하면 신호 세기를 측정한 뒤 비콘의 식별 번호와 함께 서버로 전송한다. 서버는 <mark>수신된 신호 세기와 가장 가까운 신호 세기를 갖는 기준점을 데이터베이스에서 찾아</mark> 이 기준점의 위치를 단말기에 알려 준다.</p>
+    <section class="bogi" data-scene="bogi"><span class="no">41번</span><span class="lg">&lt;보기&gt;</span>
+      <p class="ask"><보기>는 단말기가 3개의 비콘 신호를 받은 상태를 도식화한 것이다. 윗글을 바탕으로 <보기>를 이해한 내용으로 적절한 것은? [3점]</p><p><img src="img/2020-09-r38-bogi.png" alt="보기 그림: 비콘 1, 비콘 2, 비콘 3을 각각 중심으로 하는 세 원이 점 P에서 만난다. 비콘 1의 원이 가장 작고 비콘 3의 원이 가장 크다. 비콘 1과 비콘 3 사이에 Q가 있다. 각 원의 반지름은 신호 세기로 환산한 비콘과 단말기 사이의 거리이다. 신호 세기에 영향을 미치는 장애물이 Q의 위치에 있다. (단, 세 원에 공통으로 속한 영역이 항상 존재한다고 가정하며, 신호 세기에 영향을 미치는 다른 요소는 고려하지 않음.)"></p><div class="figslot" style="text-indent:0;margin-top:8px"></div></section>
+  </main>
+
+  <aside class="stageCol" aria-label="움직이는 그림">
+    <div class="stage" id="stage">
+      <button type="button" class="close" id="close" aria-label="그림 닫기">✕</button>
+      <div class="head"><span class="sn" id="sn"></span><span class="st" id="st"></span></div>
+      <div class="view">
+        <canvas id="cv" aria-label="움직이는 그림"></canvas>
+        <button class="orig" id="orig" hidden aria-label="시험지 그림 크게 보기"><img id="origImg" alt=""><span>시험지 그림</span></button>
+        <span class="drag">끌어서 돌리기 · 두 번 눌러 처음 자리로</span>
+      </div>
+      <div class="ctl" id="ctl"></div>
+      <div class="say" id="say" aria-live="polite"></div>
+    </div>
+  </aside>
+</div>
+
+<section class="sum" aria-labelledby="sumh">
+  <h2 id="sumh">정리</h2>
+  <dl>
+    <dt>절대 위치·상대 위치</dt><dd>절대 위치는 위도·경도 등으로 표시한 위치, 상대 위치는 특정한 위치를 기준으로 한 위치.</dd>
+    <dt>GPS</dt><dd>위성 신호로 절대 위치 측정. 오차가 누적되지 않지만 접속 초기에 짧게 큰 오차, 실내·터널에선 신호를 받기 어렵다.</dd>
+    <dt>IMU</dt><dd>가속도·속도로 위치 변화를 계산해 초기 위치 기준 상대 위치를 구한다. 단기간에 뛰어나지만 오차가 누적된다. GPS와 함께 쓰면 오차를 줄인다.</dd>
+    <dt>비콘</dt><dd>실내에 고정되어 식별 번호·위치 정보가 담긴 신호를 주기적으로 보낸다. 멀수록, 장애물이 많을수록 신호가 약해진다.</dd>
+    <dt>근접성·삼변측량</dt><dd>근접성: 가장 강한 신호의 비콘 위치. 삼변측량: 신호 세기를 거리로 환산한 세 원의 교점(안 모이면 공통 영역의 중심점).</dd>
+    <dt>위치 지도 기법</dt><dd>기준점마다 비콘 신호 세기를 측정해 서버에 위치 지도로 기록하고, 단말기의 측정값과 가장 가까운 신호 세기를 가진 기준점의 위치를 알려 준다.</dd>
+  </dl>
+</section>
+<p class="foot">이 그림들은 지문 이해를 돕는 모형입니다. 위도·경도 값, 오차 곡선의 모양, 방의 크기, 비콘과 벽의 배치, 신호 세기 숫자와 거리 환산식, 기준점 수는 지문에 없는 가정입니다. 41번 장면은 시험지 그림의 배치를 그대로 옮겼습니다. 시험지 그림 출처: 한국교육과정평가원 2020학년도 9월 대학수학능력시험 모의평가 국어 영역.</p>
+<script>window.REF_ITEMS=[["2020-09||독서||38", "2020-09||독서||39", "2020-09||독서||40", "2020-09||독서||41"]];</script>
+<script src="engine.js?v=d042145e"></script>
+<script>
+const IMG={"bogi": {"src": "img/2020-09-r38-bogi.png", "alt": "시험지 41번 <보기>: 비콘 1·2·3을 중심으로 한 세 원, 교점 P, 장애물 위치 Q"}};
+/* 2020학년도 9월 모의평가 독서 38~41 · 스마트폰의 위치 측정 기술 */
+const INK='#1D1D1F', SUB='#6E6E73', MUTE='#86868B', LINE='#C7C7CC', RULE='#E8E8ED', BLUE='#3D7CC9', ORG='#E8590C', GRN='#2FA84F', WALL='#5E6168';
+const ACC=()=>getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()||BLUE;
+const mob=()=>R.W()<440;
+const st={ps:'abs', er:'both', et:1, er_run:false, er_last:null, bw:'wall', tw:'wall', fp:'find', bg:'tri', ph:[.62,.58]};
+const S={};
+const RW=10, RH=6.5; /* 방 크기(모형, m) */
+let BOX=null; /* 마지막으로 그린 방의 화면 좌표 */
+function room(o){o=o||{}; const W=R.W(),H=R.H(),m=mob(), top=o.top!=null?o.top:(m?8:16), bot=o.bot!=null?o.bot:(m?8:16), left=o.left||12, right=o.right||12;
+  const aw=W-left-right, ah=H-top-bot, sc=Math.min(aw/RW,ah/RH), w=RW*sc, h=RH*sc, x0=left+(aw-w)/2, y0=top+(ah-h)/2;
+  BOX={x0,y0,w,h,sc}; R.rect(x0,y0,w,h,'#FFFFFF',LINE,6);
+  for(let i=1;i<RW;i++) R.path([[x0+i*sc,y0],[x0+i*sc,y0+h]],'#F0F0F3',1); for(let j=1;j<RH;j++) R.path([[x0,y0+j*sc],[x0+w,y0+j*sc]],'#F0F0F3',1);
+  return BOX;}
+const X=x=>BOX.x0+x*BOX.sc, Y=y=>BOX.y0+y*BOX.sc;
+const phonePos=()=>[st.ph[0]*RW,st.ph[1]*RH];
+function phone(x,y,col){const m=mob(), w=m?11:13, h=m?19:22; R.rect(X(x)-w/2,Y(y)-h/2,w,h,col||INK,null,3); R.rect(X(x)-w/2+2,Y(y)-h/2+3,w-4,h-7,'#FFFFFF',null,1.5);}
+function beacon(b,col,lab){R.circle(X(b[0]),Y(b[1]),mob()?6:7,col||BLUE,'#FFFFFF',2); if(lab) R.text(X(b[0]),Y(b[1])-(mob()?14:16),lab,{col:col||BLUE,size:12,wt:700});}
+/* 선분 교차: 벽 통과 여부 */
+function cross(a,b,c,d){const o=(p,q,r)=>(q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]); return o(a,b,c)*o(a,b,d)<0&&o(c,d,a)*o(c,d,b)<0;}
+function walls(a,b,WL){let n=0; (WL||[]).forEach(w=>{if(cross(a,b,w[0],w[1])) n++;}); return n;}
+const SIG=(b,p,WL,k)=>Math.max(0,100-(k||11)*Math.hypot(b[0]-p[0],b[1]-p[1])-28*walls(b,p,WL)); /* 신호 세기(모형) */
+const REACH=15;
+const D_OF=s=>(100-s)/11; /* 신호 세기 → 거리 환산(장애물 없다고 보고) */
+function drawWalls(WL){(WL||[]).forEach(w=>R.path([[X(w[0][0]),Y(w[0][1])],[X(w[1][0]),Y(w[1][1])]],WALL,mob()?4:5));}
+/* 끌어서 단말기 옮기기 */
+let drag=false; const cv=R.$('cv');
+const pt=e=>{const r=cv.getBoundingClientRect(); return [e.clientX-r.left,e.clientY-r.top];};
+const canDrag=()=>{const s=S[R.cur()]; return s&&s.drag&&BOX;};
+cv.addEventListener('pointerdown',e=>{ if(!canDrag()) return; const [x,y]=pt(e), p=phonePos(); if(Math.hypot(x-X(p[0]),y-Y(p[1]))<34){drag=true; cv.setPointerCapture(e.pointerId); e.preventDefault();}});
+cv.addEventListener('pointermove',e=>{ if(!canDrag()) return; const [x,y]=pt(e);
+  if(!drag){const p=phonePos(); cv.style.cursor=Math.hypot(x-X(p[0]),y-Y(p[1]))<34?'grab':'default'; return;}
+  st.ph=[R.clamp((x-BOX.x0)/BOX.w,.03,.97),R.clamp((y-BOX.y0)/BOX.h,.04,.96)]; R.dirty();});
+['pointerup','pointercancel'].forEach(t=>cv.addEventListener(t,()=>drag=false));
+cv.style.touchAction='none';
+
+/* ---------- 1문단: 절대 위치와 상대 위치 ---------- */
+S.pos={sn:'1문단',st:'절대 위치와 상대 위치',mode:'2d',drag:true,
+  ctl(){return [R.seg('',[['abs','절대 위치'],['rel','상대 위치']],st.ps,v=>st.ps=v)];},
+  render(){R.clear(); const m=mob(), abs=st.ps==='abs'; R.setAcc(abs?0:1); const acc=ACC(); room({left:m?14:44,bot:m?22:30,top:m?10:16}); const p=phonePos();
+    if(abs){for(let i=0;i<RW;i+=2.5) R.text(X(i),Y(RH)+12,'127.'+String(Math.round(i*4)).padStart(2,'0')+'°',{col:MUTE,size:12,wt:400}); if(!m) for(let j=0;j<=RH;j+=RH/2) R.text(X(0)-6,Y(j),'37.'+String(Math.round((RH-j)*4)).padStart(2,'0')+'°',{col:MUTE,size:12,wt:400,align:'right'});
+      R.path([[X(p[0]),Y(0)],[X(p[0]),Y(RH)]],acc,1.2,[4,4]); R.path([[X(0),Y(p[1])],[X(RW),Y(p[1])]],acc,1.2,[4,4]);
+      phone(p[0],p[1]); const lat=37+(RH-p[1])*.04, lon=127+p[0]*.04; R.text(X(p[0]),Y(p[1])-20,`위도 ${lat.toFixed(2)}°, 경도 ${lon.toFixed(2)}°`,{col:acc,size:12,wt:700});
+      R.say('<b>절대 위치</b>는 위도, 경도 등으로 표시된 위치입니다. 단말기를 끌어 옮겨 보세요. <span class="long">위도·경도 값은 모형입니다.</span>');}
+    else {const o=[2,RH-1.5]; R.circle(X(o[0]),Y(o[1]),6,'#FFFFFF',INK,2); R.text(X(o[0]),Y(o[1])+16,'기준 위치',{col:INK,size:12,wt:700});
+      R.arrow(X(o[0]),Y(o[1]),X(p[0]),Y(p[1])+12,acc,2); phone(p[0],p[1]); const dx=p[0]-o[0], dy=o[1]-p[1];
+      R.text(X(p[0]),Y(p[1])-20,`${dx>=0?'동':'서'}쪽 ${Math.abs(dx).toFixed(1)} m, ${dy>=0?'북':'남'}쪽 ${Math.abs(dy).toFixed(1)} m`,{col:acc,size:12,wt:700});
+      R.say('<b>상대 위치</b>는 특정한 위치를 기준으로 한 상대적인 위치입니다. <span class="long">거리 값은 모형입니다.</span>');}}};
+
+/* ---------- 2문단: GPS와 IMU의 오차 ---------- */
+const TMAX=60, EMAX=30;
+const eG=t=>3.2+22*Math.exp(-t/2.2)+.7*Math.sin(t*1.3)+.45*Math.sin(t*2.9+1);   /* GPS: 초기 큰 오차, 누적 없음 */
+const eI=t=>.35*t+.004*t*t+.3;                                                     /* IMU: 오차 누적 */
+const eB=t=>Math.min(eI(t)*.8,1.8)+.25+.15*Math.sin(t*1.1);                         /* 함께 사용(모형) */
+let erBtn=null;
+S.err={sn:'2문단',st:'GPS와 IMU의 위치 오차',mode:'2d',
+  enter(){st.er_last=null;},
+  tick(now,cur){if(!cur||!st.er_run) return false; if(st.er_last!=null) st.et+=(now-st.er_last)/1000*(R.RM?999:.22); st.er_last=now; if(st.et>=1){st.et=1; st.er_run=false; if(erBtn) erBtn.textContent='다시 보기';} return true;},
+  ctl(){erBtn=R.btn('시간 흐르기','',b=>{st.et=0; st.er_run=true; st.er_last=null; b.textContent='진행 중';});
+    return [R.seg('',[['gps','GPS'],['imu','IMU'],['both','함께 사용']],st.er,v=>st.er=v), erBtn];},
+  render(){R.clear(); const m=mob(), mode=st.er; R.setAcc(mode==='gps'?0:mode==='imu'?1:.5); const acc=ACC();
+    const F=R.frame(0,TMAX,0,EMAX,{pad:[m?22:30,m?14:20,m?28:40,m?30:42],xl:'시간',yl:'위치 오차',xt:[],yt:[]});
+    const t1=st.et*TMAX, draw=(f,col,w,dash)=>{const pts=[]; for(let i=0;i<=240;i++){const t=t1*i/240; pts.push([F.X(t),F.Y(Math.min(EMAX,f(t)))]);} R.path(pts,col,w,dash);};
+    const on={gps:mode==='gps',imu:mode==='imu',both:mode==='both'};
+    draw(eG,on.gps?BLUE:'#C7C7CC',on.gps?2.6:1.4); draw(eI,on.imu?ORG:'#C7C7CC',on.imu?2.6:1.4); if(on.both) draw(eB,GRN,2.8);
+    const lt=Math.min(t1,TMAX), lab=(f,t,c)=>R.text(F.X(lt)+(lt>TMAX*.85?-6:6),F.Y(Math.min(EMAX,f(lt)))-10,t,{col:c,size:12,wt:700,align:lt>TMAX*.85?'right':'left'});
+    if(t1>2){lab(eG,'GPS',on.gps?BLUE:MUTE); if(eI(lt)<EMAX) lab(eI,'IMU',on.imu?ORG:MUTE); else R.text(F.X(Math.min(t1,TMAX))-6,F.T+8,'IMU ↑',{col:on.imu?ORG:MUTE,size:12,wt:700,align:'right'}); if(on.both) R.text(F.X(lt)-6,F.Y(eB(lt))+14,'함께',{col:GRN,size:12,wt:700,align:'right'});}
+    if(mode==='gps') R.rect(F.X(0),F.T,F.X(6)-F.X(0),F.B-F.T,'rgba(61,124,201,.08)');
+    const say={gps:'GPS는 위성 신호로 <b>절대 위치</b>를 측정합니다. 접속 초기에 짧은 시간 동안 <b>큰 오차</b>가 생기지만, 오차가 시간에 따라 <b>누적되지 않습니다</b>. <span class="long">실내나 터널에서는 신호를 받기 어렵습니다.</span>',
+      imu:'IMU는 가속도와 속도로 위치 변화를 계산해 초기 위치 기준의 <b>상대 위치</b>를 구합니다. 단기간엔 뛰어나지만 오차가 <b>누적</b>되어 시간이 지날수록 커집니다.',
+      both:'두 방식을 <b>함께 사용</b>하면 서로의 단점을 보완하여 오차를 줄일 수 있습니다.'}[mode];
+    R.say(say+' <span class="long">곡선의 모양과 크기는 지문에 없는 모형입니다.</span>');}};
+
+/* ---------- 3문단: 비콘 신호 ---------- */
+const WALL1=[[[5.6,0],[5.6,4.2]]];
+S.beacon={sn:'3문단',st:'비콘 신호의 세기',mode:'2d',drag:true,
+  ctl(){return [R.seg('',[['no','장애물 없음'],['wall','벽 있음']],st.bw,v=>st.bw=v)];},
+  render(){R.clear(); const m=mob(), WL=st.bw==='wall'?WALL1:[]; room({bot:m?8:16}); const acc=ACC(), b=[2.6,2.8], p=phonePos();
+    const n=m?40:56, cw=BOX.w/n, rows=Math.round(BOX.h/cw); for(let i=0;i<n;i++) for(let j=0;j<rows;j++){const q=[(i+.5)*RW/n,(j+.5)*RH/rows], s=SIG(b,q,WL); if(s>=REACH){R.ctx.fillStyle=`rgba(61,124,201,${(.05+.32*s/100).toFixed(3)})`; R.ctx.fillRect(BOX.x0+i*cw,BOX.y0+j*BOX.h/rows,cw+.5,BOX.h/rows+.5);}}
+    drawWalls(WL); beacon(b,BLUE,'비콘'); const s=SIG(b,p,WL), ok=s>=REACH; R.setAcc(ok?1-s/100:1);
+    if(ok) R.path([[X(b[0]),Y(b[1])],[X(p[0]),Y(p[1])]],acc,1.4,[4,4]); phone(p[0],p[1]);
+    R.text(X(p[0]),Y(p[1])-20,ok?`신호 세기 ${Math.round(s)}`:'신호 인식 못 함',{col:ok?acc:SUB,size:12,wt:700});
+    R.say(`비콘은 같은 세기의 신호를 사방으로 보내지만 <b>멀어질수록</b>, <b>장애물이 많을수록</b> 약해집니다(색이 옅을수록 약함). ${ok?'':'단말기가 <b>도달 거리 밖</b>이라 신호를 인식하지 못합니다. '}<span class="long">단말기를 끌어 옮겨 보세요. 신호 세기 숫자와 줄어드는 정도는 모형입니다.</span>`);}};
+
+/* ---------- 4문단: 근접성 기법 ---------- */
+const B4=[[1.2,1.2],[8.8,1.2],[1.2,5.3],[8.8,5.3]];
+S.prox={sn:'4문단',st:'근접성 기법',mode:'2d',drag:true,
+  render(){R.clear(); const m=mob(); room(); const acc=ACC(), p=phonePos(), sg=B4.map(b=>SIG(b,p,[])); let best=-1; sg.forEach((s,i)=>{if(s>=REACH&&(best<0||s>sg[best])) best=i;});
+    B4.forEach((b,i)=>{const ok=sg[i]>=REACH; if(ok) R.path([[X(b[0]),Y(b[1])],[X(p[0]),Y(p[1])]],i===best?acc:'#C7C7CC',i===best?2:1.2,i===best?null:[4,4]); beacon(b,i===best?acc:'#A1A1A6','비콘'+(i+1)); if(ok&&!m) R.text(X(b[0]),Y(b[1])+18,'세기 '+Math.round(sg[i]),{col:i===best?acc:MUTE,size:12,wt:i===best?700:500});});
+    phone(p[0],p[1]); R.setAcc(best<0?0:1);
+    if(best>=0){const b=B4[best]; R.circle(X(b[0]),Y(b[1]),m?13:16,null,acc,2.4); const lf=b[0]>5; R.text(X(b[0])+(lf?-1:1)*(m?18:22),Y(b[1]),'측정된 위치',{col:acc,size:12,wt:700,align:lf?'right':'left'});}
+    const n=sg.filter(s=>s>=REACH).length;
+    R.say(best<0?'어떤 비콘의 신호도 받지 못했습니다.':`신호를 받은 비콘 ${n}개 중 <b>신호가 가장 강한 비콘${best+1}의 위치</b>를 단말기의 위치로 정합니다. <span class="long">단말기를 끌어 옮겨 보세요. 실제 위치와 측정된 위치가 얼마나 다른지도 보세요.</span>`);}};
+
+/* ---------- 5문단: 삼변측량 기법 ---------- */
+const B3=[[1.6,1.4],[8.4,1.6],[5,5.6]], OBS=[[[3.2,4.3],[6.6,4.3]]];
+function regionOf(C){const pts=[]; const st0=.08; for(let x=0;x<=RW;x+=st0) for(let y=0;y<=RH;y+=st0){ if(C.every(c=>Math.hypot(x-c[0],y-c[1])<=c[2])) pts.push([x,y]); } return pts;}
+S.tri={sn:'5문단',st:'삼변측량 기법',mode:'2d',drag:true,
+  ctl(){return [R.seg('',[['no','장애물 없음'],['wall','장애물 있음']],st.tw,v=>st.tw=v)];},
+  render(){R.clear(); const m=mob(), WL=st.tw==='wall'?OBS:[]; room(); const acc=ACC(), p=phonePos();
+    const C=B3.map(b=>[b[0],b[1],D_OF(SIG(b,p,WL))]); const reg=regionOf(C); let cx=0,cy=0; reg.forEach(q=>{cx+=q[0];cy+=q[1];}); const ok=reg.length>0; if(ok){cx/=reg.length; cy/=reg.length;}
+    R.ctx.save(); R.ctx.beginPath(); R.ctx.rect(BOX.x0,BOX.y0,BOX.w,BOX.h); R.ctx.clip();
+    C.forEach((c,i)=>R.circle(X(c[0]),Y(c[1]),c[2]*BOX.sc,'rgba(61,124,201,.035)','#7FA7D3',1.4));
+    const multi=reg.length>3; if(multi){ R.ctx.fillStyle='rgba(232,89,12,.28)'; reg.forEach(q=>R.ctx.fillRect(X(q[0])-BOX.sc*.04,Y(q[1])-BOX.sc*.04,BOX.sc*.09,BOX.sc*.09)); }
+    R.ctx.restore(); drawWalls(WL);
+    B3.forEach((b,i)=>beacon(b,BLUE,'비콘'+(i+1))); phone(p[0],p[1],'#8E8E93'); R.setAcc(multi?1:0);
+    if(ok){R.circle(X(cx),Y(cy),m?5:6,acc,'#FFFFFF',2); R.text(X(cx),Y(cy)+(m?16:18),'측정된 위치',{col:acc,size:12,wt:700});}
+    const err=ok?Math.hypot(cx-p[0],cy-p[1]):0;
+    R.say(multi?`장애물 때문에 신호가 약해져 거리가 <b>더 멀게 환산</b>되었습니다. 세 원이 한 점에서 만나지 않아 <b>세 원에 공통으로 속한 영역</b>(주황)의 중심점을 위치로 정합니다. <span class="long">실제 위치(회색 단말기)와 ${err.toFixed(1)} m 차이(모형).</span>`
+      :'신호 세기를 거리로 환산해 비콘마다 원을 그리면 세 원의 <b>교점</b>이 단말기의 위치가 됩니다. <span class="long">단말기를 끌어 옮기거나 장애물을 넣어 보세요. 신호 세기와 거리 환산식은 모형입니다.</span>');}};
+
+/* ---------- 6문단: ㉠ 위치 지도 기법 ---------- */
+const BF=[[.6,.6],[9.4,.6],[5,6.1]], WALLF=[[[5.6,0],[5.6,3.4]]];
+const REF=(()=>{const a=[]; for(let j=0;j<3;j++) for(let i=0;i<4;i++) a.push([(i+.5)*RW/4,(j+.5)*RH/3]); return a;})();
+const DB=REF.map(q=>BF.map(b=>Math.round(SIG(b,q,WALLF,6))));
+S.fp={sn:'6문단',st:'㉠ 위치 지도 기법',mode:'2d',drag:true,
+  ctl(){return [R.seg('',[['rec','① 위치 지도 기록'],['find','② 단말기 위치 찾기']],st.fp,v=>st.fp=v)];},
+  render(){R.clear(); const m=mob(), rec=st.fp==='rec'; R.setAcc(rec?0:1); const acc=ACC(); const tw=m?0:150; room({right:12+tw});
+    for(let i=1;i<4;i++) R.path([[X(i*RW/4),Y(0)],[X(i*RW/4),Y(RH)]],'#D1D1D6',1,[3,4]); for(let j=1;j<3;j++) R.path([[X(0),Y(j*RH/3)],[X(RW),Y(j*RH/3)]],'#D1D1D6',1,[3,4]);
+    drawWalls(WALLF); BF.forEach((b,i)=>beacon(b,'#A1A1A6','B'+(i+1)));
+    const p=phonePos(), mv=BF.map(b=>Math.round(SIG(b,p,WALLF,6))); let best=0,bd=1e9; DB.forEach((r,i)=>{const d=Math.hypot(...r.map((v,k)=>v-mv[k])); if(d<bd){bd=d;best=i;}});
+    REF.forEach((q,i)=>{const on=!rec&&i===best; R.circle(X(q[0]),Y(q[1]),on?7:4.5,on?acc:INK); if(rec&&!m) R.text(X(q[0]),Y(q[1])+14,DB[i].join(' · '),{col:SUB,size:12,wt:500});});
+    if(!rec){phone(p[0],p[1],'#8E8E93'); const q=REF[best]; R.circle(X(q[0]),Y(q[1]),m?13:16,null,acc,2.4);}
+    if(!m){const x0=R.W()-tw-4, y0=BOX.y0, rh=Math.min(20,(BOX.h-24)/12); R.text(x0+4,y0+8,'서버 데이터베이스',{col:INK,size:12,wt:700,align:'left'});
+      R.text(x0+4,y0+26,'기준점',{col:MUTE,size:12,wt:500,align:'left'}); R.text(x0+tw-6,y0+26,'B1 · B2 · B3',{col:MUTE,size:12,wt:500,align:'right'});
+      DB.forEach((r,i)=>{const y=y0+40+i*rh, on=!rec&&i===best; if(on) R.rect(x0,y-rh/2+1,tw,rh-2,'#FFFFFF',acc,6); R.text(x0+8,y,String(i+1),{col:on?acc:INK,size:12,wt:on?700:500,align:'left'}); R.text(x0+tw-6,y,r.join(' · '),{col:on?acc:SUB,size:12,wt:on?700:400,align:'right'});});
+      if(!rec) R.text(x0+4,y0+40+12*rh+8,'측정값 '+mv.join(' · '),{col:acc,size:12,wt:700,align:'left'});}
+    R.say(rec?'구역마다 <b>기준점</b>을 정하고, 비콘들이 보낸 신호가 각 기준점에 도달하는 세기를 측정해 비콘 식별 번호, 기준점 좌표와 함께 서버에 <b>위치 지도</b>로 기록해 둡니다. <span class="long">모든 기준점에서 이 작업을 합니다. 숫자는 비콘 B1·B2·B3의 신호 세기(모형).</span>'
+      :`단말기가 측정한 신호 세기(${mv.join(' · ')})를 서버로 보내면, 서버는 <b>가장 가까운 신호 세기</b>를 가진 기준점(${best+1}번)을 찾아 그 위치를 알려 줍니다. <span class="long">단말기를 끌어 옮겨 보세요. 신호 세기 값은 모형입니다.</span>`);}};
+
+/* ---------- 41번 <보기> ---------- */
+/* 시험지 그림의 배치(그림 좌표 그대로): 비콘1 (385,170) r=67, 비콘2 (513,170) r=97, 비콘3 (425,283) r=163, P (430,120), Q (418,250) */
+const GB=[[385,170,67],[513,170,97],[425,283,163]], GP=[430,120], GQ=[418,250];
+S.bogi={sn:'41번 <보기>',st:'세 원과 P, Q',mode:'2d',img:'bogi',
+  ctl(){return [R.seg('',[['circ','세 원'],['prox','근접성 기법'],['tri','삼변측량 기법']],st.bg,v=>st.bg=v)];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(); const acc=ACC(), md=st.bg; R.setAcc(md==='circ'?0:md==='prox'?.5:1);
+    const sc=Math.min((W-24)/360,(H-24)/384), ox=W/2-435*sc, oy=H/2-260*sc, x=v=>ox+v*sc, y=v=>oy+v*sc;
+    GB.forEach((b,i)=>{R.circle(x(b[0]),y(b[1]),b[2]*sc,null,'#6E6E73',1.4); R.circle(x(b[0]),y(b[1]),3.5,INK); R.text(x(b[0]),y(b[1])+(m?13:16),'비콘'+(i+1),{col:INK,size:12,wt:500});});
+    R.circle(x(GP[0]),y(GP[1]),3.5,'#FFFFFF',INK,1.4); R.text(x(GP[0])-2,y(GP[1])-12,'P',{col:INK,size:13,wt:700});
+    R.rect(x(GQ[0])-8,y(GQ[1])-9,16,18,'#FFFFFF',INK,2); R.text(x(GQ[0]),y(GQ[1]),'Q',{col:INK,size:12,wt:700});
+    if(md==='prox'){const b=GB[0]; R.circle(x(b[0]),y(b[1]),m?11:13,null,acc,2.4);}
+    if(md==='tri'){R.circle(x(GP[0]),y(GP[1]),m?10:12,null,acc,2.4);}
+    R.say(md==='circ'?'원의 반지름은 <b>신호 세기로 환산한</b> 비콘과 단말기 사이의 거리입니다. Q의 위치에는 신호 세기에 영향을 미치는 장애물이 있습니다.'
+      :md==='prox'?'근접성 기법은 <b>신호가 가장 강한 비콘의 위치</b>를 단말기의 위치로 정합니다(원으로 표시). <span class="long">신호가 강할수록 환산 거리, 곧 원의 반지름이 작습니다.</span>'
+      :'삼변측량 기법은 세 원의 <b>교점</b>을, 교점이 하나로 모이지 않으면 세 원에 공통으로 속한 영역의 중심점을 단말기의 위치로 정합니다(원으로 표시).');}};
+
+R.start({scenes:S,img:IMG,c0:'#3D7CC9',c1:'#E8590C'});
+
+</script>
+</body>
+</html>

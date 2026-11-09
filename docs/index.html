@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>국어의 모든 것 · 국어 시험 기출 자료실</title>
+<meta name="description" content="국어의 모든 것 — 국어와 관련된 시험을 대비하는 기출 자료실. 불휘 기픈 남ᄀᆞᆫ(수능), ᄉᆡ미 기픈 므른(대학 논술), 곶 됴코 여름 하ᄂᆞ니(PSAT·LEET·중등임용).">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500&display=swap">
+<style>
+@font-face{font-family:"OldHangulSans";font-weight:400;font-display:swap;src:url(fonts/oh-sans.woff) format("woff");unicode-range:U+1100-11FF,U+A960-A97F,U+D7B0-D7FF,U+302E-302F,U+3165-318E}
+@font-face{font-family:"YongbiTitle";font-weight:400 800;font-display:swap;src:url(fonts/oh-nanum.woff) format("woff")}
+:root{--ink:#0E1116;--paper:#FFFFFF;--sub:#4A5160;--faint:#8A919E;--line:#E5E7EB;--brand:#1D3A6B;--soft:#F4F5F7;
+  --sans:"OldHangulSans","Pretendard Variable","Pretendard","Noto Sans KR","Noto Sans CJK KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --title:"YongbiTitle","Noto Serif KR","Noto Serif CJK KR","Batang",serif}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+a{color:inherit}
+:focus-visible{outline:2px solid #9DB9EA;outline-offset:3px}
+.old{font-family:var(--title);font-weight:400;letter-spacing:.01em}
+</style>
+<style>
+body{background:#07090D;color:#fff}
+.top{position:fixed;inset:0 0 auto 0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px clamp(18px,3vw,40px);background:linear-gradient(180deg,rgba(5,7,10,.65),rgba(5,7,10,0))}
+.brand{display:flex;align-items:baseline;gap:12px;text-decoration:none;color:#fff}
+.brand .old{font-size:24px}
+.brand small{font-size:12.5px;color:rgba(255,255,255,.7);letter-spacing:.06em}
+.top-nav{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.top-nav a{text-decoration:none;font-size:14px;font-weight:600;color:rgba(255,255,255,.88);padding:6px 10px;border-radius:999px}
+.top-nav a:hover{background:rgba(255,255,255,.12);color:#fff}
+.top-nav a.dim{font-weight:500;color:rgba(255,255,255,.62)}
+.gates{display:flex;height:100vh;height:100svh;min-height:600px}
+.gate{position:relative;flex:1 1 0;overflow:hidden;isolation:isolate;text-decoration:none;color:#fff;display:flex;transition:flex-grow .6s cubic-bezier(.2,.7,.2,1)}
+.gate + .gate{border-left:1px solid rgba(255,255,255,.14)}
+.gv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.03);transition:transform 1.2s ease,filter .6s}
+.shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,9,14,.55) 0%,rgba(6,9,14,.45) 40%,rgba(6,9,14,.82) 100%);transition:background .6s}
+.gate[data-k="saemi"] .gv,.gate[data-k="kkot"] .gv{filter:saturate(.85)}
+.g-in{display:flex;flex-direction:column;justify-content:flex-end;gap:10px;padding:0 clamp(22px,3vw,48px) clamp(40px,8vh,90px);width:100%}
+.g-top{display:flex;align-items:center;gap:12px;margin-bottom:auto;padding-top:clamp(110px,18vh,170px)}
+.g-num{font-size:13px;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,.75)}
+.badge{font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.85)}
+.badge.on{background:#fff;color:#0E1116;border-color:#fff}
+.g-old{font-size:clamp(30px,3.4vw,52px);line-height:1.15;word-break:keep-all}
+.g-gloss{font-size:15px;color:rgba(255,255,255,.78);letter-spacing:.04em}
+.g-rule{width:36px;height:2px;background:rgba(255,255,255,.7);margin:10px 0 6px}
+.g-exam{font-size:clamp(17px,1.5vw,21px);font-weight:700;letter-spacing:-.02em}
+.g-desc{font-size:14.5px;line-height:1.65;color:rgba(255,255,255,.8);max-width:34em;word-break:keep-all}
+.g-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.g-tags span{font-size:12.5px;padding:4px 11px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.g-btn{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;margin-top:14px;padding:11px 20px;border-radius:999px;border:1px solid rgba(255,255,255,.6);font-size:14.5px;font-weight:600;transition:background .25s,color .25s}
+.gate:hover .g-btn,.gate:focus-visible .g-btn{background:#fff;color:#0E1116}
+@media (hover:hover) and (min-width:901px){
+  .gates:hover .gate{flex-grow:.85}
+  .gates .gate:hover,.gates .gate:focus-visible{flex-grow:1.5}
+  .gate:hover .gv{transform:scale(1)}
+  .gate:hover .shade{background:linear-gradient(180deg,rgba(6,9,14,.42) 0%,rgba(6,9,14,.3) 40%,rgba(6,9,14,.78) 100%)}
+  .g-desc,.g-tags{transition:opacity .4s}
+}
+.verse{position:fixed;left:0;right:0;bottom:16px;z-index:5;text-align:center;font-size:12px;color:rgba(255,255,255,.55);pointer-events:none;letter-spacing:.04em}
+.verse .old{font-weight:400;font-size:13px;color:rgba(255,255,255,.72);margin-right:8px}
+@media (max-width:900px){
+  .top{position:absolute;flex-direction:column;align-items:flex-start;gap:8px}
+  .top-nav{justify-content:flex-start;margin-left:-10px}
+  .gates{flex-direction:column;height:auto}
+  .gate{min-height:74svh}
+  .gate + .gate{border-left:0;border-top:1px solid rgba(255,255,255,.14)}
+  .gate:first-child .g-top{padding-top:150px}
+  .g-top{padding-top:40px}
+  .verse{position:static;padding:22px 16px 30px;background:#07090D}
+}
+@media (prefers-reduced-motion: reduce){.gv{transition:filter .6s}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="./" aria-label="국어의 모든 것 첫 화면"><span class="old">국어의 모든 것</span><small>국어 시험 기출 자료실</small></a>
+  <nav class="top-nav" aria-label="바로 가기">
+    <a href="suneung.html">수능</a><a href="saemi.html">대학 논술</a><a href="kkot.html">PSAT · LEET · 임용</a>
+    <a class="dim" href="https://docs.google.com/forms/d/e/1FAIpQLSdCkEn1SwTAvnc03M6mEtuhApm3kOqn1BMdI0A_H7iGOQREGg/viewform" target="_blank" rel="noopener">의견 보내기</a>
+  </nav>
+</header>
+<main class="gates">
+  <a class="gate" href="suneung.html" data-k="suneung">
+    <video class="gv" muted playsinline loop preload="none" poster="media/hero1.jpg" data-src="media/hero1.mp4" aria-hidden="true"></video>
+    <span class="shade" aria-hidden="true"></span>
+    <span class="g-in">
+      <span class="g-top"><span class="g-num">01</span><span class="badge on">바로 이용</span></span>
+      <span class="g-old old" lang="okm">불휘 기픈 남ᄀᆞᆫ</span>
+      <span class="g-gloss">뿌리 깊은 나무는</span>
+      <span class="g-rule" aria-hidden="true"></span>
+      <span class="g-exam">대학수학능력시험 국어</span>
+      <span class="g-desc">2009~2027학년도 평가원 모의평가·수능 국어 68개 회차 3,258문항. 소재·유형으로 찾아 풀고, 모의평가 양식으로 시험지를 만듭니다.</span>
+      <span class="g-tags"><span>수능</span><span>모의평가</span><span>2028 개편 예시문항</span></span>
+      <span class="g-btn">바로 가기<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </span>
+  </a>
+  <a class="gate" href="saemi.html" data-k="saemi">
+    <video class="gv" muted playsinline loop preload="none" poster="media/hero2.jpg" data-src="media/hero2.mp4" aria-hidden="true"></video>
+    <span class="shade" aria-hidden="true"></span>
+    <span class="g-in">
+      <span class="g-top"><span class="g-num">02</span><span class="badge on">바로 이용</span></span>
+      <span class="g-old old" lang="okm">ᄉᆡ미 기픈 므른</span>
+      <span class="g-gloss">샘이 깊은 물은</span>
+      <span class="g-rule" aria-hidden="true"></span>
+      <span class="g-exam">대학 논술</span>
+      <span class="g-desc">대학별 인문·사회 논술과 약술형 국어 471문항. 원본 문항과 함께 출제 의도·채점 기준·예시 답안을 봅니다.</span>
+      <span class="g-tags"><span>인문·사회 논술</span><span>약술형 국어</span><span>출제 의도·예시 답안</span></span>
+      <span class="g-btn">바로 가기<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </span>
+  </a>
+  <a class="gate" href="kkot.html" data-k="kkot">
+    <video class="gv" muted playsinline loop preload="none" poster="media/hero4.jpg" data-src="media/hero4.mp4" aria-hidden="true"></video>
+    <span class="shade" aria-hidden="true"></span>
+    <span class="g-in">
+      <span class="g-top"><span class="g-num">03</span><span class="badge on">바로 이용</span></span>
+      <span class="g-old old" lang="okm">곶 됴코 여름 하ᄂᆞ니</span>
+      <span class="g-gloss">꽃 좋고 열매 많으니</span>
+      <span class="g-rule" aria-hidden="true"></span>
+      <span class="g-exam">PSAT · 법학전문대학원 · 중등임용</span>
+      <span class="g-desc">공직적격성평가(PSAT) 언어논리, 법학적성시험(LEET) 언어이해·추리논증, 중등교사 임용시험 국어를 대비하는 곳입니다.</span>
+      <span class="g-tags"><span>PSAT 언어논리</span><span>LEET 언어이해·추리논증</span><span>중등임용 국어</span></span>
+      <span class="g-btn">바로 가기<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </span>
+  </a>
+</main>
+<p class="verse"><span class="old" lang="okm">불휘 기픈 남ᄀᆞᆫ ᄇᆞᄅᆞ매 아니 뮐ᄊᆡ</span>「용비어천가」 제2장에서 이름을 따왔습니다</p>
+<script>
+if(location.hash) location.replace('suneung.html' + location.hash);   /* 예전 주소(#…)는 수능 화면으로 */
+(function(){
+  /* 마우스를 올리는 건 직접 한 동작이라 '움직임 줄이기' 설정과 상관없이 재생. 데이터 절약·터치 화면만 사진 */
+  const still = (navigator.connection && navigator.connection.saveData) || !matchMedia('(hover:hover) and (min-width:901px)').matches;
+  if(still) return;
+  document.querySelectorAll('.gate').forEach(g=>{
+    const v = g.querySelector('.gv');
+    const on = ()=>{ if(!v.src) v.src = v.dataset.src; const p = v.play(); if(p && p.catch) p.catch(()=>{}); };
+    const off = ()=>{ try{ v.pause(); }catch(e){} };
+    g.addEventListener('mouseenter', on); g.addEventListener('focus', on);
+    g.addEventListener('mouseleave', off); g.addEventListener('blur', off);
+  });
+  /* 처음 화면이 다 뜨면 영상을 미리 받아 두어, 마우스를 올리자마자 재생 */
+  addEventListener('load', ()=>setTimeout(()=>document.querySelectorAll('.gv').forEach(v=>{ v.preload = 'auto'; if(!v.src) v.src = v.dataset.src; }), 600));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>음성 인식 · 지문 그림 자료</title>
+<meta name="description" content="2013학년도 수능 언어 영역 43~45번 「음성 인식」 지문을 시험지 그림과 움직이는 그림으로 이해하는 참고 자료">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ref.css?v=d042145e">
+
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a href="../suneung.html" id="back">문제은행으로</a>
+  <div class="right"><span class="where">2013학년도 수능 언어 영역 43~45번</span><button type="button" class="tog" id="tog" aria-pressed="false">그림 함께 보기</button></div>
+</div></header>
+
+<div class="wrap">
+  <main class="read">
+    <h1 class="title" id="title">음성 인식</h1>
+    <p class="intro">지문을 먼저 읽고, 이해가 막히는 문단에서 ‘그림으로 보기’를 누르세요. 그림은 문단을 따라 바뀝니다.</p>
+    <div class="gate" id="gate" role="status" hidden></div>
+    <p class="p" data-scene="flow"><span class="no">1문단</span>음성 인식 기술은 컴퓨터가 사람이 말하는 소리를 인식하여 해당 문자열로 바꾸는 기술이다. 사람의 말은 음소들의 시간적 배열로 볼 수 있다. 컴퓨터는 <mark>각 단어의 음소들의 배열을 ‘기준 패턴’으로 미리 저장해 두고</mark>, 이를 입력된 음성에서 추출한 <mark>‘입력 패턴’과 비교하여 단어를 인식한다</mark>.</p>
+    <p class="p" data-scene="segment"><span class="no">2문단</span>음성을 인식하기 위해서 먼저 입력된 신호에서 잡음을 제거한 후 음성 신호만 추출한다. 그런 다음 음성 신호를 하나의 음소로 판단되는 구간인 ‘음소 추정 구간’들의 배열로 바꾸어 준다. 그런데 음성 신호를 음소 단위로 정확히 나누는 것은 쉽지 않다. 이를 해결하기 위해 먼저 <mark>음성 신호를 일정한 시간 간격의 ‘단위 구간’으로 나누고</mark>, 이 단위 구간 하나만으로 또는 <mark>연속된 단위 구간을 이어 붙여 음소 추정 구간들을 만든다</mark>.</p>
+    <p class="p" data-scene="feature"><span class="no">3문단</span>음성의 비교는 음소 단위로 이루어지는데 음소 추정 구간에 해당하는 음소를 알아내기 위해서 각 구간에서 ‘특징 벡터’를 추출한다. 각 음소 추정 구간에서 추출하는 특징 벡터는 1개이다. 특징 벡터는 음소를 구별하는 데 필요한 정보를 수치로 나타낸 것으로, <mark>음소 추정 구간의 길이에 상관없이 1개로만 추출된다</mark>. 특징 벡터는 음소의 특성을 잘 나타내는 정보들을 이용하지만 <mark>사람마다 다른 특성을 보이는 정보는 사용하지 않는다</mark>. <mark>사용하는 정보의 가짓수가 많을수록</mark> 음소를 더 정확하게 인식할 수 있지만 그만큼 필요한 연산량이 많아져 처리 시간은 길어진다.</p>
+    <p class="p" data-scene="combo"><span class="no">4문단</span>음성을 인식하려면 ㉠<u>입력 </u><u>패턴의 </u><u>특징 </u><u>벡터와 </u><u>기준 </u><u>패턴의 </u><u>특징 </u><u>벡터를 </u><u>비교</u>해야 한다. 이를 위해서 음소 추정 구간이 비교하려는 <mark>기준 패턴의 음소 개수와 동일한 개수가 되도록 단위 구간을 조합한다</mark>. 그리고 각 음소 추정 구간에서 추출된 특징 벡터를 <mark>구간 순서대로 배열하여 입력 패턴을 생성한다</mark>.</p>
+    <p class="p" data-scene="combo"><span class="no">5문단</span>예를 들어 ㉡<u>입력된 </u><u>음성 </u><u>신호를 </u><u>S₁, </u><u>S₂, </u><u>S₃ </u><u>3개의 </u><u>단위 </u><u>구간으로 </u><u>나눈 </u><u>경우</u>를 생각해 보자. 만일 비교하려는 기준 패턴의 음소가 3개라면 3개의 음소 추정 구간으로부터 입력 패턴이 구성되어야 하므로 [S₁, S₂, S₃]의 음소 추정 구간 배열을 설정하고, 이로부터 입력 패턴을 생성한다. 그런 다음 이것을 순서대로 기준 패턴의 음소와 일대일 대응시키고 <mark>각각의 특징 벡터의 차이를 구한 뒤 이것들을 모두 합하여 ‘패턴 거리’를 구한다</mark>. 만일 기준 패턴의 음소가 2개라면 3개의 단위 구간을 조합하여 [S₁, S₂~S₃], [S₁~S₂, S₃]로 2개의 음소 추정 구간 배열을 설정하고, 이로부터 입력 패턴을 생성한다. 이와 같이 1개의 기준 패턴에 대해 여러 개의 입력 패턴이 만들어질 수 있는 경우에는 ⓐ<u>생성 </u><u>가능한 </u><u>입력 </u><u>패턴과 </u><u>기준 </u><u>패턴 </u><u>사이의 </u><u>패턴 </u><u>거리를 </u><u>모두 </u><u>구하고</u>, <mark>그중의 최솟값을 그 기준 패턴에 대한 패턴 거리로 정한다</mark>. 만일 기준 패턴의 음소가 3개보다 크면 두 패턴을 일대일로 대응시킬 수 없으므로 <mark>비교가 불가능하다</mark>.</p>
+    <p class="p" data-scene="unit"><span class="no">6문단</span>단위 구간의 시간 간격을 짧게 하여 그 개수를 늘리면 <mark>음소 추정 구간을 잘못 설정하여 발생하는 오류를 줄일 수 있다</mark>. 하지만 <mark>연산량이 많아져 처리 시간은 길어진다</mark>.</p>
+    <p class="p" data-scene="select"><span class="no">7문단</span>이와 같은 방법으로 컴퓨터에 저장된 모든 기준 패턴에 대해 패턴 거리를 구하고 <mark>그중 최솟값이 되는 기준 패턴을 선정한다</mark>. 최종적으로, 이 기준 패턴에 해당하는 문자열을 입력된 음성 신호에 대해 인식된 단어로 출력한다.</p>
+
+  </main>
+
+  <aside class="stageCol" aria-label="움직이는 그림">
+    <div class="stage" id="stage">
+      <button type="button" class="close" id="close" aria-label="그림 닫기">✕</button>
+      <div class="head"><span class="sn" id="sn"></span><span class="st" id="st"></span></div>
+      <div class="view">
+        <canvas id="cv" aria-label="움직이는 그림"></canvas>
+        <button class="orig" id="orig" hidden aria-label="시험지 그림 크게 보기"><img id="origImg" alt=""><span>시험지 그림</span></button>
+        <span class="drag">끌어서 돌리기 · 두 번 눌러 처음 자리로</span>
+      </div>
+      <div class="ctl" id="ctl"></div>
+      <div class="say" id="say" aria-live="polite"></div>
+    </div>
+  </aside>
+</div>
+
+<section class="sum" aria-labelledby="sumh">
+  <h2 id="sumh">정리</h2>
+  <dl>
+    <dt>기준 패턴·입력 패턴</dt><dd>단어마다 음소 배열을 기준 패턴으로 저장하고, 입력된 음성에서 만든 입력 패턴과 비교한다.</dd>
+    <dt>단위 구간 → 음소 추정 구간</dt><dd>잡음을 없앤 음성 신호를 일정한 시간 간격으로 나누고, 하나 또는 이어 붙인 단위 구간으로 음소 추정 구간을 만든다.</dd>
+    <dt>특징 벡터</dt><dd>음소 추정 구간마다 길이에 상관없이 1개. 사람마다 다른 정보는 쓰지 않는다. 정보 가짓수가 많으면 더 정확하지만 처리 시간이 길다.</dd>
+    <dt>입력 패턴 만들기</dt><dd>음소 추정 구간 수를 기준 패턴의 음소 수와 같게 조합하고, 특징 벡터를 구간 순서대로 배열한다.</dd>
+    <dt>패턴 거리</dt><dd>일대일로 대응시킨 특징 벡터 차이의 합. 입력 패턴이 여럿이면 그중 최솟값. 기준 패턴의 음소가 단위 구간보다 많으면 비교 불가.</dd>
+    <dt>최종 인식</dt><dd>모든 기준 패턴의 패턴 거리 중 최솟값인 기준 패턴의 문자열을 출력한다.</dd>
+  </dl>
+</section>
+<p class="foot">이 그림들은 지문 이해를 돕는 모형입니다. 음성 파형, 음소의 경계, 특징 벡터의 값, 패턴 거리의 값, 기준 패턴의 종류는 지문에 없는 예시이며, 실제 음성 인식의 특징 벡터는 이보다 훨씬 많은 수치로 이루어집니다. 시험지 그림 출처: 한국교육과정평가원 2013학년도 대학수학능력시험 언어 영역.</p>
+<script>window.REF_ITEMS=[["2013-11||독서||43", "2013-11||독서||44", "2013-11||독서||45"]];</script>
+<script src="engine.js?v=d042145e"></script>
+<script>
+const IMG={};
+/* 2013학년도 수능 언어 43~45 · 음성 인식 기술의 패턴 비교 */
+const INK='#1D1D1F', SUB='#6E6E73', MUTE='#86868B', LINE='#C7C7CC', RULE='#E8E8ED', BLUE='#3D7CC9', ORG='#E8590C', WHITE='#FFFFFF';
+const mob=()=>R.W()<440;
+const ACC=()=>getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()||BLUE;
+const st={flow:'ref', seg:'2', k:4, n:'3', u:6, sel:{t:0,run:false,last:null}};
+const S={};
+const VW=340, VH=240;
+function virt(fn){R.clear(); const k=Math.min(R.W()/VW,R.H()/VH); R.ctx.save(); R.ctx.translate((R.W()-VW*k)/2,(R.H()-VH*k)/2); R.ctx.scale(k,k); fn(); R.ctx.restore();}
+const sub=i=>'S'+String(i).split('').map(d=>'₀₁₂₃₄₅₆₇₈₉'[d]).join('');
+
+/* 공용: 모형 파형 (음소 3개: 경계 .31, .58) */
+const BND=[.31,.58];
+const NZ=[]; for(let i=0;i<400;i++) NZ.push(Math.random()*2-1);
+function wv(t){const seg=t<BND[0]?0:t<BND[1]?1:2, a=[0,BND[0],BND[1],1][seg], b=[BND[0],BND[1],1,1][seg], f=[46,90,26][seg], amp=[.62,.95,.5][seg];
+  const u=(t-a)/(b-a), env=Math.sin(Math.PI*R.clamp(u,0,1))**.6; return amp*env*Math.sin(t*f*Math.PI*2);}
+function wave(x0,x1,yc,A,noise,col){const ps=[], n=Math.max(120,Math.round(x1-x0)); for(let i=0;i<=n;i++){const t=i/n; ps.push([x0+(x1-x0)*t, yc-A*(wv(t)+(noise?.35*NZ[i%400]:0))]);} R.path(ps,col||'#8E8E93',1.2);}
+function box(x,y,w,h,t,o){o=o||{}; R.rect(x,y,w,h,o.fill||WHITE,o.stroke===undefined?LINE:o.stroke,o.r||8); if(t!=null) R.text(x+w/2,y+h/2,t,{col:o.col||INK,size:o.size||13,wt:o.wt||500});}
+
+/* ---------- 1문단: 전체 흐름 ---------- */
+const REFS=[{w:'소',p:['ㅅ','ㅗ']},{w:'눈',p:['ㄴ','ㅜ','ㄴ']},{w:'말',p:['ㅁ','ㅏ','ㄹ']}];
+S.flow={sn:'1문단',st:'기준 패턴과 입력 패턴',mode:'2d',
+  ctl(){return [R.seg('',[['ref','기준 패턴'],['in','입력 패턴'],['cmp','비교']],st.flow,v=>st.flow=v)];},
+  render(){const f=st.flow; R.setAcc(f==='ref'?0:f==='in'?.5:1); virt(()=>this.draw(f)); this.say(f);},
+  draw(f){const W=VW,H=VH,m=false, acc=ACC();
+    const lx=10, colW=(W-lx*2), half=colW*.47, rx=W-lx-half, bh=28, gap=8;
+    /* 왼쪽: 입력된 음성 → 입력 패턴 */
+    const on=f!=='ref', ton=f==='ref';
+    R.text(lx,22,'입력된 음성',{col:on?INK:MUTE,size:12,wt:700,align:'left'});
+    wave(lx,lx+half,62,22,false,on?'#6E6E73':'#D1D1D6');
+    const iy=110; R.text(lx,iy,'입력 패턴',{col:on?acc:MUTE,size:12,wt:700,align:'left'});
+    const cw=(half-2*gap)/3; for(let i=0;i<3;i++) box(lx+i*(cw+gap),iy+12,cw,bh,'▤',{fill:on?WHITE:'#F5F5F7',col:on?acc:'#C7C7CC',stroke:on?acc:RULE});
+    /* 오른쪽: 저장된 기준 패턴 */
+    R.text(rx,22,'저장된 기준 패턴',{col:ton||f==='cmp'?INK:MUTE,size:12,wt:700,align:'left'});
+    REFS.forEach((r,j)=>{const y=40+j*(bh+gap+14); const pw=(half-26-gap*2)/3;
+      R.text(rx,y+bh/2,r.w,{col:ton||f==='cmp'?INK:MUTE,size:13,wt:700,align:'left'});
+      r.p.forEach((p,i)=>box(rx+26+i*(pw+gap),y,pw,bh,p,{col:ton||f==='cmp'?INK:'#C7C7CC',stroke:ton?acc:RULE}));});
+    if(f==='cmp'){const y0=iy+12+bh/2; REFS.forEach((r,j)=>{const y=40+j*(bh+gap+14)+bh/2; R.path([[lx+half+4,y0],[rx-6,y]],acc,1.4,[4,4]);});
+      R.text(W/2,H-24,'가장 가까운 기준 패턴의 단어를 출력',{col:INK,size:13,wt:700});}
+  },
+  say(f){
+    R.say(f==='ref'?'컴퓨터는 단어마다 <b>음소들의 배열</b>을 기준 패턴으로 미리 저장해 둡니다. <span class="long">단어와 음소는 예시입니다.</span>'
+      :f==='in'?'사람의 말은 음소들의 시간적 배열입니다. 입력된 음성에서 <b>입력 패턴</b>을 뽑아냅니다(2~4문단에서 자세히).'
+      :'입력 패턴을 기준 패턴과 <b>비교</b>하여 단어를 인식합니다.');}};
+
+/* ---------- 2문단: 잡음 제거 → 단위 구간 → 음소 추정 구간 ---------- */
+const GROUP=[[1,2],[3,3],[4,6]];
+S.segment={sn:'2문단',st:'단위 구간으로 나누고 이어 붙이기',mode:'2d',
+  ctl(){return [R.seg('',[['1','잡음 제거'],['2','단위 구간'],['3','음소 추정 구간']],st.seg,v=>st.seg=v)];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), s=+st.seg; R.setAcc((s-1)/2); const acc=ACC();
+    const x0=m?14:24, x1=W-(m?14:24), yc=H*(m?.42:.4), A=Math.min(H*.2,70), N=6, uw=(x1-x0)/N;
+    wave(x0,x1,yc,A,s===1&&false,'#6E6E73');
+    if(s===1){R.ctx.save(); R.ctx.globalAlpha=.35; wave(x0,x1,yc,A,true,'#AEAEB2'); R.ctx.restore();
+      R.text(W/2,yc+A+(m?22:34),'회색: 잡음이 섞인 신호  ·  진한 선: 음성 신호만 추출',{col:SUB,size:12,wt:400});}
+    if(s>=2){for(let i=0;i<=N;i++) R.path([[x0+i*uw,yc-A-8],[x0+i*uw,yc+A+8]],s===2?acc:'#D1D1D6',1.2,s===2?null:[3,3]);
+      for(let i=0;i<N;i++) R.text(x0+(i+.5)*uw,yc-A-(m?16:20),sub(i+1),{col:s===2?acc:MUTE,size:12,wt:500});
+      if(s===2) R.text(W/2,yc+A+(m?24:34),'일정한 시간 간격의 단위 구간 6개',{col:SUB,size:12,wt:400});}
+    if(s===3){const y=yc+A+(m?14:20), h=m?22:28; GROUP.forEach(([a,b],i)=>{const xa=x0+(a-1)*uw+3, xb=x0+b*uw-3; R.rect(xa,y,xb-xa,h,i===1?'#FDE9DC':'#E3ECF7',null,8);
+        R.text((xa+xb)/2,y+h/2,a===b?sub(a):sub(a)+'~'+sub(b),{col:i===1?ORG:BLUE,size:12,wt:700});});
+      R.text(W/2,y+h+(m?14:18),'음소 추정 구간 3개',{col:SUB,size:12,wt:400});}
+    R.say(s===1?'먼저 입력된 신호에서 <b>잡음을 제거</b>하고 음성 신호만 뽑습니다.'
+      :s===2?'음성 신호를 음소 단위로 정확히 나누기는 어렵기 때문에, 먼저 <b>일정한 시간 간격</b>의 단위 구간으로 나눕니다.'
+      :'단위 구간 <b>하나만으로</b>, 또는 <b>연속된 단위 구간을 이어 붙여</b> 음소 추정 구간을 만듭니다. <span class="long">어떻게 묶을지는 4·5문단에서 정합니다. 파형과 묶음은 예시입니다.</span>');}};
+
+/* ---------- 3문단: 특징 벡터 ---------- */
+const FV=[[.7,.3,.9,.2,.6,.4,.8,.5],[.2,.9,.4,.7,.3,.8,.1,.6],[.5,.6,.2,.9,.7,.1,.4,.3]];
+S.feature={sn:'3문단',st:'구간마다 특징 벡터 1개',mode:'2d',
+  ctl(){return [R.rng('정보의 가짓수',2,8,st.k,v=>v+'가지',v=>st.k=v)];},
+  render(){const k=st.k; R.setAcc((k-2)/6); virt(()=>{const acc=ACC(), W=VW, x0=12, x1=W-12, N=6, uw=(x1-x0)/N, top=6, wh=40;
+    wave(x0,x1,top+wh/2,wh*.45,false,'#AEAEB2');
+    const cell=10, vy=top+wh+40;
+    GROUP.forEach(([a,b],i)=>{const xa=x0+(a-1)*uw+3, xb=x0+b*uw-3, cx=(xa+xb)/2; R.rect(xa,top+wh+4,xb-xa,18,i===1?'#FDE9DC':'#E3ECF7',null,6);
+      R.text(cx,top+wh+13,a===b?sub(a):sub(a)+'~'+sub(b),{col:i===1?ORG:BLUE,size:12,wt:700});
+      R.path([[cx,top+wh+24],[cx,vy-4]],'#C7C7CC',1);
+      const vw=30; R.rect(cx-vw/2-3,vy-3,vw+6,cell*k+6,WHITE,acc,6);
+      for(let j=0;j<k;j++) R.rect(cx-vw/2,vy+j*cell+1,vw*FV[i][j],cell-2,acc,null,2);});
+    R.text(x0,vy+cell*8+16,'특징 벡터: 구간의 길이와 상관없이 1개씩',{col:SUB,size:12,wt:400,align:'left'});
+    const my=vy+cell*8+40; [['음소 구별의 정확성',k/8,BLUE],['연산량(처리 시간)',(k/8)**1.4,ORG]].forEach(([t,f,c],i)=>{const y=my+i*22; R.text(x0,y,t,{col:INK,size:12,wt:500,align:'left'}); const bx=x0+122; R.rect(bx,y-4,x1-bx,8,RULE,null,4); R.rect(bx,y-4,(x1-bx)*f,8,c,null,4);});});
+    R.say(`각 음소 추정 구간에서 <b>특징 벡터 1개</b>를 뽑습니다. 정보 ${k}가지를 쓰면 벡터마다 수치가 ${k}개. 많을수록 더 정확하지만 <b>연산량이 많아져 처리 시간이 길어집니다</b>. <span class="long">사람마다 다른 특성을 보이는 정보는 쓰지 않습니다. 수치와 막대 길이는 예시입니다.</span>`);}};
+
+/* ---------- 4·5문단: ㉠을 ㉡에 적용 ---------- */
+const CASES={
+  '3':{ref:REFS[2], rows:[{g:[[1,1],[2,2],[3,3]], d:[2,1,3]}]},
+  '2':{ref:REFS[0], rows:[{g:[[1,1],[2,3]], d:[3,4]},{g:[[1,2],[3,3]], d:[3,1]}]},
+  '4':{ref:{w:'나무',p:['ㄴ','ㅏ','ㅁ','ㅜ']}, rows:[]}};
+S.combo={sn:'4·5문단',st:'㉡ 단위 구간 S₁, S₂, S₃의 조합',mode:'2d',
+  ctl(){return [R.seg('기준 패턴의 음소',[['2','2개'],['3','3개'],['4','4개']],st.n,v=>st.n=v)];},
+  render(){const c=CASES[st.n]; R.setAcc(st.n==='4'?1:st.n==='2'?.5:0); const sums=c.rows.map(r=>r.d.reduce((a,b)=>a+b,0)), mn=Math.min(...sums);
+    virt(()=>{const acc=ACC(), W=VW, x0=8, x1=W-8, lw=70, ux0=x0+lw, uw=(x1-ux0)/3, bh=26; let y=6;
+      R.text(x0,y+bh/2,'단위 구간',{col:SUB,size:12,wt:400,align:'left'});
+      for(let i=0;i<3;i++) box(ux0+i*uw+2,y,uw-4,bh,sub(i+1),{col:INK});
+      y+=bh+10;
+      R.text(x0,y+bh/2-7,'기준 패턴',{col:SUB,size:12,wt:400,align:'left'}); R.text(x0,y+bh/2+9,'“'+c.ref.w+'”',{col:INK,size:12,wt:700,align:'left'});
+      const pw=(x1-ux0)/c.ref.p.length; c.ref.p.forEach((p,i)=>box(ux0+i*pw+2,y,pw-4,bh,p,{fill:'#E8E8ED',stroke:null,col:INK,wt:700}));
+      const refB=y+bh; y+=bh+16;
+      if(!c.rows.length){R.text(W/2,y+30,'음소 4개 > 단위 구간 3개',{col:ORG,size:15,wt:700}); R.text(W/2,y+56,'일대일로 대응시킬 수 없어 비교 불가능',{col:INK,size:13,wt:500}); return;}
+      c.rows.forEach((r,ri)=>{const best=c.rows.length>1&&sums[ri]===mn;
+        R.text(x0,y+bh/2,c.rows.length>1?`입력 패턴 ${ri+1}`:'입력 패턴',{col:best?acc:INK,size:12,wt:700,align:'left'});
+        r.g.forEach(([a,b],i)=>{const xa=ux0+(a-1)*uw+2, xb=ux0+b*uw-2; box(xa,y,xb-xa,bh,a===b?sub(a):sub(a)+'~'+sub(b),{stroke:best?acc:LINE,col:best?acc:INK,wt:700});
+          if(ri===0) R.path([[(xa+xb)/2,y],[ux0+(i+.5)*pw,refB]],'#C7C7CC',1,[3,3]);
+          R.text((xa+xb)/2,y+bh+10,'차이 '+r.d[i],{col:SUB,size:12,wt:400});});
+        R.text(x1,y+bh+27,`패턴 거리 ${r.d.join(' + ')} = ${sums[ri]}`,{col:best?acc:INK,size:12,wt:700,align:'right'});
+        y+=bh+44;});});
+    if(!c.rows.length){R.say('기준 패턴의 음소가 3개보다 많으면 단위 구간 3개로는 <b>일대일로 대응시킬 수 없으므로 비교가 불가능</b>합니다.'); return;}
+    R.say(c.rows.length===1?'음소 추정 구간 수를 기준 패턴의 음소 수(3개)에 맞춰 [S₁, S₂, S₃] 하나를 만들고, 순서대로 <b>일대일 대응</b>시켜 특징 벡터의 차이를 모두 더하면 <b>패턴 거리</b>입니다. <span class="long">차이 값은 예시입니다.</span>'
+      :`음소가 2개면 [S₁, S₂~S₃]와 [S₁~S₂, S₃] <b>두 가지</b> 입력 패턴이 만들어집니다. 패턴 거리를 모두 구하고 <b>그중 최솟값(${mn})</b>을 이 기준 패턴의 패턴 거리로 정합니다. <span class="long">차이 값은 예시입니다.</span>`);}};
+
+/* ---------- 6문단: 단위 구간의 시간 간격 ---------- */
+const comb=(n,k)=>{let r=1; for(let i=0;i<k;i++) r=r*(n-i)/(i+1); return Math.round(r);};
+S.unit={sn:'6문단',st:'단위 구간을 짧게 하면',mode:'2d',
+  ctl(){return [R.rng('단위 구간',3,15,st.u,v=>v+'개',v=>st.u=v)];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), n=st.u; R.setAcc((n-3)/12); const acc=ACC();
+    const x0=m?14:24, x1=W-(m?14:24), top=m?18:30, wh=Math.min(H*.32,120), yc=top+wh/2, uw=(x1-x0)/n;
+    wave(x0,x1,yc,wh*.42,false,'#AEAEB2');
+    let err=0;
+    BND.forEach(b=>{const xb=x0+(x1-x0)*b, gi=Math.round(b*n), xg=x0+gi*uw; err+=Math.abs(b-gi/n);
+      R.ctx.save(); R.ctx.globalAlpha=.22; R.rect(Math.min(xb,xg),top-6,Math.abs(xg-xb),wh+12,ORG); R.ctx.restore();
+      R.path([[xb,top-10],[xb,top+wh+10]],INK,1.6,[4,3]);});
+    for(let i=0;i<=n;i++) R.path([[x0+i*uw,top+wh+12],[x0+i*uw,top+wh+22]],acc,1.4);
+    R.path([[x0,top+wh+17],[x1,top+wh+17]],acc,1);
+    if(!m) R.text(x0,top-12,'점선: 실제 음소의 경계(예시)  ·  주황: 어긋난 부분',{col:SUB,size:12,wt:400,align:'left'});
+    const ny=top+wh+(m?40:52), cnt=comb(n-1,2);
+    [['음소 추정 구간 오류',Math.min(1,err*n/1.2*.6+err*2), ORG],['연산량(처리 시간)',Math.min(1,cnt/91),INK]].forEach(([t,f,c],i)=>{const y=ny+i*(m?22:30); R.text(x0,y,t,{col:INK,size:12,wt:500,align:'left'}); const bx=x0+(m?120:140); R.rect(bx,y-4,x1-bx,8,RULE,null,4); R.rect(bx,y-4,Math.max(2,(x1-bx)*f),8,c,null,4);});
+    if(!m||H>250) R.text(x0,ny+(m?44:62),`음소 3개인 기준 패턴 하나에 만들 수 있는 입력 패턴: ${cnt}가지`,{col:SUB,size:12,wt:400,align:'left'});
+    R.say(`단위 구간을 ${n}개로 나누었습니다. 시간 간격을 짧게 해 개수를 늘리면 <b>음소 추정 구간을 잘못 설정하는 오류</b>는 줄지만, 조합할 경우가 많아져 <b>처리 시간은 길어집니다</b>. <span class="long">점선은 실제 음소의 경계(예시), 주황은 단위 구간 경계와 어긋난 부분입니다. 막대의 길이는 모형입니다.</span>`);}};
+
+/* ---------- 7문단: 최종 선택 ---------- */
+const FIN=[{w:'소',n:2,d:4},{w:'눈',n:3,d:2},{w:'말',n:3,d:6},{w:'나무',n:4,d:null}];
+let selBtn=null;
+S.select={sn:'7문단',st:'패턴 거리가 가장 작은 기준 패턴',mode:'2d',
+  tick(now,cur){const s=st.sel; if(!cur||!s.run){s.last=null; return false;} if(s.last!=null) s.t+=(now-s.last)/1000*(R.RM?9:1); s.last=now; if(s.t>=FIN.length+.6){s.t=FIN.length+.6; s.run=false; if(selBtn) selBtn.textContent='다시 비교';} return true;},
+  ctl(){const s=st.sel; selBtn=R.btn(s.run?'비교 중':s.t>0?'다시 비교':'모든 기준 패턴과 비교','',b=>{s.t=0; s.run=true; s.last=null; b.textContent='비교 중';}); return [selBtn];},
+  render(){const s=st.sel, done=s.t>=FIN.length+.5; R.setAcc(done?1:s.t/(FIN.length+.5));
+    virt(()=>{const acc=ACC(), W=VW, H=VH, x0=10, x1=W-10, rh=40, bx=x0+98, bw=x1-bx-26, dmax=7;
+      R.text(x0,12,'기준 패턴',{col:SUB,size:12,wt:400,align:'left'}); R.text(bx,12,'패턴 거리',{col:SUB,size:12,wt:400,align:'left'});
+      FIN.forEach((f,i)=>{const y=30+i*rh+rh*.4, shown=s.t>i, p=R.clamp(s.t-i,0,1), win=done&&f.d===2;
+        R.text(x0,y,f.w,{col:win?acc:INK,size:14,wt:700,align:'left'}); R.text(x0+40,y,`음소 ${f.n}개`,{col:MUTE,size:12,wt:400,align:'left'});
+        if(shown&&f.d==null){R.text(bx,y,'비교 불가(음소 > 단위 구간)',{col:MUTE,size:12,wt:400,align:'left'}); return;}
+        R.rect(bx,y-5,bw,10,RULE,null,5);
+        if(shown){R.rect(bx,y-5,bw*f.d/dmax*R.ease(p),10,win?acc:'#AEAEB2',null,5); R.text(x1,y,String(f.d),{col:win?acc:INK,size:13,wt:700,align:'right'});}});
+      if(done) R.text(W/2,H-20,'출력: “눈”',{col:acc,size:16,wt:700});});
+    R.say(done?'저장된 모든 기준 패턴의 패턴 거리 중 <b>최솟값</b>인 기준 패턴을 고르고, 그 문자열을 <b>인식된 단어로 출력</b>합니다. <span class="long">입력된 음성은 단위 구간 3개로 나뉜 경우입니다. 값은 예시입니다.</span>'
+      :'단추를 눌러 저장된 기준 패턴 각각과의 패턴 거리를 구해 보세요.');}};
+
+R.start({scenes:S,img:IMG,c0:'#3D7CC9',c1:'#E8590C'});
+
+</script>
+</body>
+</html>

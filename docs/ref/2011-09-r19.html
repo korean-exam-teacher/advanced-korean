@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>시간 팽창 · 지문 그림 자료</title>
+<meta name="description" content="2011학년도 9월 모의평가 언어 독서 19~20번 「시간 팽창」 지문을 시험지 그림과 움직이는 그림으로 이해하는 참고 자료">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ref.css?v=d042145e">
+
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a href="../suneung.html" id="back">문제은행으로</a>
+  <div class="right"><span class="where">2011학년도 9월 모의평가 언어 독서 19~20번</span><button type="button" class="tog" id="tog" aria-pressed="false">그림 함께 보기</button></div>
+</div></header>
+
+<div class="wrap">
+  <main class="read">
+    <h1 class="title" id="title">시간 팽창</h1>
+    <p class="intro">지문을 먼저 읽고, 이해가 막히는 문단에서 ‘그림으로 보기’를 누르세요. 그림은 문단을 따라 바뀝니다.</p>
+    <div class="gate" id="gate" role="status" hidden></div>
+    <p class="p" data-scene="abs"><span class="no">1문단</span>17세기에 수립된 ㉠<u>뉴턴</u>의 역학 체계는 3차원 공간에서 일어나는 물체의 운동을 취급하였는데 공간 좌표인 x, y, z는 모두 시간에 따라 변하는 것으로 간주하였다. <mark>뉴턴에게 시간은 공간과 무관한 독립적이고 절대적인 것이었다</mark>. 즉, 시간은 시작도 끝도 없는 영원한 것으로, 우주가 생겨나고 사라지는 것과 아무 관계없이 항상 같은 방향으로 흘러간다. 시간은 빨라지지도 느려지지도 않는 물리량이며 <mark>모든 우주에서 동일한 빠르기로 흐르는 실체</mark>인 것이다. 이러한 뉴턴의 절대 시간 개념은 19세기 말까지 물리학자들에게 당연한 것으로 받아들여졌다.</p>
+    <p class="p" data-scene="gamma"><span class="no">2문단</span>하지만 20세기에 들어 시간의 절대성 개념은 ㉡<u>아인슈타인</u>에 의해 근본적으로 거부되었다. 그는 <mark>빛의 속도가 진공에서 항상 일정하다는 사실을 기초로 하여</mark> 상대성 이론을 수립하였다. 이 이론에 의하면 시간은 상대적인 개념이 되어, <mark>빠르게 움직이는 물체에서는 시간이 느리게 간다</mark>. 광속을 c라 하고 물체의 속도를 v라고 할 때 시간은 1/√(1−(v/c)²) 배 팽창한다. 즉, 광속의 50%의 속도로 달리는 물체에서는 시간이 약 1.15배 팽창하고, 광속의 99%로 달리는 물체에서는 7.09배 정도 팽창한다. v가 c에 비하여 아주 작을 경우에는 시간 팽창 현상이 거의 감지되지 않지만 <mark>v가 c에 접근하면 팽창률은 급격하게 커진다</mark>.</p>
+    <p class="p" data-scene="delay"><span class="no">3문단</span>아인슈타인에게 시간과 공간은 더 이상 별개의 물리량이 아니라 <mark>서로 긴밀하게 연관되어 함께 변하는 상대적인 양</mark>이다. 따라서 운동장을 질주하는 사람과 교실에서 가만히 바깥 풍경을 보고 있는 사람에게 시간의 흐름은 다르다. 속도가 빨라지면 시간 팽창이 일어나 <mark>시간이 그만큼 천천히 흐르는 시간 지연이 생긴다</mark>.</p>
+
+  </main>
+
+  <aside class="stageCol" aria-label="움직이는 그림">
+    <div class="stage" id="stage">
+      <button type="button" class="close" id="close" aria-label="그림 닫기">✕</button>
+      <div class="head"><span class="sn" id="sn"></span><span class="st" id="st"></span></div>
+      <div class="view">
+        <canvas id="cv" aria-label="움직이는 그림"></canvas>
+        <button class="orig" id="orig" hidden aria-label="시험지 그림 크게 보기"><img id="origImg" alt=""><span>시험지 그림</span></button>
+        <span class="drag">끌어서 돌리기 · 두 번 눌러 처음 자리로</span>
+      </div>
+      <div class="ctl" id="ctl"></div>
+      <div class="say" id="say" aria-live="polite"></div>
+    </div>
+  </aside>
+</div>
+
+<section class="sum" aria-labelledby="sumh">
+  <h2 id="sumh">정리</h2>
+  <dl>
+    <dt>뉴턴의 시간</dt><dd>공간과 무관한 독립적·절대적인 것. 시작도 끝도 없이 항상 같은 방향으로, 모든 우주에서 같은 빠르기로 흐른다.</dd>
+    <dt>뉴턴의 공간 좌표</dt><dd>x, y, z는 모두 시간에 따라 변하는 것으로 본다.</dd>
+    <dt>상대성 이론의 기초</dt><dd>빛의 속도가 진공에서 항상 일정하다는 사실.</dd>
+    <dt>시간 팽창</dt><dd>속도 v로 움직이는 물체에서 시간은 1/√(1−(v/c)²) 배 팽창한다. 광속의 50%에서 약 1.15배, 99%에서 7.09배 정도.</dd>
+    <dt>팽창률의 변화</dt><dd>v가 c보다 아주 작으면 거의 감지되지 않고, v가 c에 접근하면 급격하게 커진다.</dd>
+    <dt>시간 지연</dt><dd>아인슈타인에게 시간과 공간은 함께 변하는 상대적인 양. 속도가 빨라지면 시간이 그만큼 천천히 흐른다.</dd>
+  </dl>
+</section>
+<p class="foot">이 그림들은 지문 이해를 돕는 모형입니다. 시간 팽창 배수는 지문의 식으로 계산했습니다. 사람이 광속에 가깝게 달리는 장면과 시계 모양은 차이를 보이기 위한 가정이며, 실제 달리기 속도에서는 차이가 감지되지 않을 만큼 작습니다. 시험지 그림 출처: 한국교육과정평가원 2011학년도 9월 대학수학능력시험 모의평가 언어 영역.</p>
+<script>window.REF_ITEMS=[["2011-09||독서||19", "2011-09||독서||20"]];</script>
+<script src="engine.js?v=d042145e"></script>
+<script>
+const IMG={};
+/* 2011학년도 9월 모의평가 독서 19~20 · 뉴턴의 절대 시간과 아인슈타인의 시간 팽창 — 2D 장면 */
+const INK='#1D1D1F', SUB='#6E6E73', MUTE='#86868B', LINE='#C7C7CC', RULE='#E8E8ED', BLUE='#3D7CC9', ORG='#E8590C';
+const ACC=()=>getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()||BLUE;
+const mob=()=>R.W()<440;
+const gam=p=>1/Math.sqrt(1-(p/100)**2);
+const st={a:{run:false,t:0,sp:2,ph:0,last:null}, g:50, d:{run:false,tc:0,tr:0,v:90,ph:0,last:null}};
+const S={};
+
+/* 시계: 바늘 한 바퀴 = 12초 (모형) */
+function clock(x,y,r,t,col,label,sub){
+  R.circle(x,y,r,'#FFFFFF',LINE,1.4);
+  for(let i=0;i<12;i++){const a=i/12*Math.PI*2, r0=r*(i%3?.86:.78); R.path([[x+Math.sin(a)*r0,y-Math.cos(a)*r0],[x+Math.sin(a)*r*.94,y-Math.cos(a)*r*.94]],i%3?LINE:'#AEAEB2',i%3?1:1.6);}
+  const a=t/12*Math.PI*2; R.path([[x,y],[x+Math.sin(a)*r*.8,y-Math.cos(a)*r*.8]],col,2.4); R.circle(x,y,3,col);
+  if(label) R.text(x,y+r+14,label,{col:INK,size:12,wt:600});
+  if(sub!=null) R.text(x,y+r+(label?30:14),sub,{col:col,size:12,wt:700});}
+function tickTime(now,o,cb){ if(!o.run){o.last=null; return false;} if(o.last!=null){const dt=Math.min(.1,(now-o.last)/1000); cb(dt);} o.last=now; return true;}
+
+/* ---------- 1문단: 뉴턴의 절대 시간 ---------- */
+let aBtn=null;
+S.abs={sn:'1문단',st:'뉴턴의 절대 시간',mode:'2d',
+  enter(){st.a.last=null;},
+  tick(now,cur){ if(!cur) {st.a.last=null; return false;} return tickTime(now,st.a,dt=>{st.a.t+=dt; st.a.ph=(st.a.ph+dt*st.a.sp*.12)%1;});},
+  ctl(){aBtn=R.btn(st.a.run?'멈춤':'시간 흐르게','',b=>{st.a.run=!st.a.run; st.a.last=null; b.textContent=st.a.run?'멈춤':'시간 흐르게';});
+    return [R.seg('물체의 속도',[[1,'느리게'],[2,'보통'],[5,'빠르게']],st.a.sp,v=>st.a.sp=+v), aBtn];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(),a=st.a; R.setAcc((a.sp-1)/4); const acc=ACC();
+    /* 위: 3차원 공간(비스듬히 그린 상자)과 움직이는 물체 */
+    const top=m?10:30, bh=m?78:Math.min(230,H*.46), bx0=m?W*.1:W*.12, bw=m?W*.62:W*.6, dz=m?18:40;
+    const Q=(x,y,z)=>[bx0+x*bw+z*dz, top+bh-y*(bh-dz-6)-z*dz];
+    const box=[[0,0,0],[1,0,0],[1,1,0],[0,1,0]];
+    R.path([...box.map(([x,y])=>Q(x,y,1)),Q(0,0,1)],RULE,1);
+    box.forEach(([x,y])=>R.path([Q(x,y,0),Q(x,y,1)],RULE,1));
+    R.path([...box.map(([x,y])=>Q(x,y,0)),Q(0,0,0)],LINE,1);
+    R.arrow(...Q(0,0,0),...Q(1.08,0,0),SUB,1.2,6); R.text(Q(1.12,0,0)[0]+4,Q(1.12,0,0)[1],'x',{col:SUB,size:12,wt:500,align:'left'});
+    R.arrow(...Q(0,0,0),...Q(0,1.1,0),SUB,1.2,6); R.text(Q(0,1.14,0)[0],Q(0,1.14,0)[1]-8,'y',{col:SUB,size:12,wt:500});
+    R.arrow(...Q(0,0,0),...Q(0,0,1.25),SUB,1.2,6); R.text(Q(0,0,1.3)[0]+6,Q(0,0,1.3)[1]-4,'z',{col:SUB,size:12,wt:500,align:'left'});
+    const f=a.ph, pos=s=>[.08+.84*s, .5+.38*Math.sin(s*Math.PI*2), .5+.4*Math.cos(s*Math.PI*2.4)];
+    const trail=[]; for(let i=0;i<=40;i++){const s=Math.max(0,f-.25+.25*i/40); trail.push(Q(...pos(s)));} R.path(trail,'#D1D1D6',1.6,[3,4]);
+    const [px,py,pz]=pos(f), pp=Q(px,py,pz); R.circle(pp[0],pp[1],m?6:8,acc);
+    const rx=m?W*.8:W*.82;
+    if(m){ R.text(rx,top+14,'좌표',{col:MUTE,size:12,wt:400});
+      [['x',px],['y',py],['z',pz]].forEach(([k,v],i)=>R.text(rx,top+32+i*16,`${k} ${R.fx(v*10,1)}`,{col:INK,size:12,wt:600}));}
+    else { R.text(rx,top+20,'물체의 위치',{col:MUTE,size:12,wt:400});
+      [['x',px],['y',py],['z',pz]].forEach(([k,v],i)=>R.text(rx,top+46+i*22,`${k} = ${R.fx(v*10,1)}`,{col:INK,size:13,wt:600}));
+      R.text(rx,top+46+3*22+6,'시간에 따라 바뀜',{col:MUTE,size:12,wt:400}); }
+    /* 아래: 세 곳의 시계 */
+    const cy0=top+bh+(m?14:50), cr=Math.min(m?24:58,(H-cy0-(m?26:56))/2), cy=cy0+cr;
+    const names=m?['여기','물체','먼 우주']:['여기','움직이는 물체','먼 우주'];
+    names.forEach((n,i)=>clock(W*(.2+.3*i),cy,cr,a.t,INK,n,m?null:R.fx(a.t,1)+'초'));
+    R.say(`물체가 ${a.sp===5?'빠르게':a.sp===1?'느리게':''} 움직여 x, y, z는 시간에 따라 바뀌지만, 세 시계는 <b>모두 같은 빠르기</b>로 갑니다. 뉴턴에게 시간은 공간과 무관한 <b>절대적인 것</b>이었습니다. <span class="long">물체의 속도를 바꿔도 시계는 달라지지 않습니다. 이것이 19세기 말까지 당연하게 받아들여진 생각입니다.</span>`);}};
+
+/* ---------- 2문단: 시간 팽창 배수 ---------- */
+S.gamma={sn:'2문단',st:'1/√(1−(v/c)²) 배 팽창',mode:'2d',
+  ctl(){return [R.rng('물체의 속도 v',0,99,st.g,v=>'광속의 '+v+'%',v=>st.g=v)];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(),p=st.g,g=gam(p); R.setAcc(p/99); const acc=ACC();
+    const F=R.frame(0,100,1,8,{pad:[m?30:58,m?18:28,m?30:44,m?36:48],xt:[],yt:[[1,'1배'],[2,'2'],[4,'4'],[6,'6'],[8,'8']],yl:m?'':'시간 팽창(배)'});
+    [[0,'0'],[50,'50%'],[100,'광속 c']].forEach(([v,t])=>R.text(F.X(v)+(v===100?6:0),F.B+(m?13:16),t,{col:MUTE,size:12,wt:400,align:v===100?'right':'center'}));
+    if(!m) R.text(F.R,F.B+34,'물체의 속도 v',{col:SUB,size:12,wt:400,align:'right'});
+    R.path([[F.X(100),F.T],[F.X(100),F.B]],LINE,1,[3,4]);
+    const pts=[]; for(let i=0;i<=400;i++){const v=i/400*99.6, y=gam(v); if(y>8) break; pts.push([F.X(v),F.Y(y)]);} R.path(pts,'#AEAEB2',2);
+    const seg=[]; for(let i=0;i<=200;i++){const v=i/200*p; seg.push([F.X(v),F.Y(gam(v))]);} R.path(seg,acc,3);
+    for(const [v,lab] of [[50,'약 1.15배'],[99,'7.09배 정도']]){const x=F.X(v),y=F.Y(gam(v)); R.circle(x,y,3.5,'#FFFFFF',SUB,1.4); if(Math.abs(v-p)>6) R.text(x+(v===99?-8:6),y-(v===99?0:12),lab,{col:MUTE,size:12,wt:400,align:v===99?'right':'left'});}
+    const x=F.X(p), y=F.Y(Math.min(g,8));
+    R.path([[x,F.B],[x,y]],acc,1,[3,3]); R.path([[F.L,y],[x,y]],acc,1,[3,3]); R.circle(x,y,m?6:7,acc);
+    R.text(m?F.L+8:F.L+12,m?14:22,`광속의 ${p}% → 시간 ${R.fx(g,2)}배 팽창`,{col:INK,size:m?14:17,wt:700,align:'left'});
+    R.say(p<20?`v가 c보다 아주 작으면 팽창 배수는 거의 1(지금 ${R.fx(g,3)}배) → 시간 팽창이 <b>거의 감지되지 않습니다</b>. 속도를 올려 보세요.`
+      :p<90?`광속의 ${p}%로 달리는 물체에서는 시간이 <b>${R.fx(g,2)}배</b> 팽창합니다. <span class="long">지문의 예: 50%이면 약 1.15배.</span>`
+      :`v가 c에 접근하자 팽창 배수가 <b>급격하게</b> 커집니다(${R.fx(g,2)}배). <span class="long">지문의 예: 99%이면 7.09배 정도.</span>`);}};
+
+/* ---------- 3문단: 시간 지연 ---------- */
+let dBtn=null;
+S.delay={sn:'3문단',st:'질주하는 사람과 교실의 사람',mode:'2d',
+  enter(){st.d.last=null;},
+  tick(now,cur){ if(!cur){st.d.last=null; return false;} return tickTime(now,st.d,dt=>{const d=st.d; d.tc+=dt; d.tr+=dt/gam(d.v); d.ph=(d.ph+dt*(.08+.5*d.v/99))%1;});},
+  ctl(){dBtn=R.btn(st.d.run?'멈춤':'시간 흐르게','',b=>{st.d.run=!st.d.run; st.d.last=null; b.textContent=st.d.run?'멈춤':'시간 흐르게';});
+    return [R.rng('달리는 속도',0,99,st.d.v,v=>'광속의 '+v+'%',v=>st.d.v=v), dBtn, R.btn('처음으로','ghost',()=>{Object.assign(st.d,{tc:0,tr:0,run:false}); if(dBtn) dBtn.textContent='시간 흐르게';})];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(),d=st.d,g=gam(d.v); R.setAcc(d.v/99); const acc=ACC();
+    /* 위: 교실 창문과 운동장 트랙 */
+    const top=m?8:26, th=m?40:Math.min(140,H*.28), lx=W*.06, lw=W*.34, rx=W*.48, rw=W*.46;
+    R.rect(lx,top,lw,th,'#FFFFFF',LINE,10);
+    const wx=lx+lw*.62, ww=lw*.28; R.rect(wx,top+th*.18,ww,th*.5,'#EEF3FA',LINE,4); R.path([[wx+ww/2,top+th*.18],[wx+ww/2,top+th*.68]],LINE,1);
+    const sx=lx+lw*.32, sy=top+th*.62; R.circle(sx,sy-th*.14-(m?5:10),m?4:7,INK); R.rect(sx-(m?4:7),sy-th*.14,m?8:14,th*.3,INK,null,4);
+    R.text(lx+lw/2,top+th+(m?12:16),m?'교실':'교실(가만히 있음)',{col:SUB,size:12,wt:500});
+    const cxT=rx+rw/2, cyT=top+th/2, ax=rw/2-4, ay=th/2-2;
+    R.ctx.save(); R.ctx.beginPath(); R.ctx.ellipse(cxT,cyT,ax,ay,0,0,Math.PI*2); R.ctx.strokeStyle=LINE; R.ctx.lineWidth=m?6:10; R.ctx.stroke(); R.ctx.restore();
+    const an=d.ph*Math.PI*2; R.circle(cxT+Math.cos(an)*ax,cyT+Math.sin(an)*ay,m?5:7,acc);
+    R.text(cxT,top+th+(m?12:16),m?'운동장':'운동장(질주함)',{col:SUB,size:12,wt:500});
+    /* 아래: 두 시계 */
+    const cy0=top+th+(m?24:50), cr=Math.min(m?26:72,(H-cy0-(m?32:60))/2), cy=cy0+cr;
+    clock(lx+lw/2,cy,cr,d.tc,INK,m?null:'교실의 시계',R.fx(d.tc,1)+'초');
+    clock(cxT,cy,cr,d.tr,acc,m?null:'달리는 사람의 시계',R.fx(d.tr,1)+'초');
+    R.say((d.tc>0?`교실 시계로 <b>${R.fx(d.tc,1)}초</b>가 지날 때 달리는 사람의 시계는 <b>${R.fx(d.tr,1)}초</b>. `:'<b>시간 흐르게</b>를 눌러 보세요. ')
+      +(d.v<20?'속도가 광속보다 아주 작으면 두 시계의 차이는 거의 보이지 않습니다.':`속도가 빨라 시간 팽창(${R.fx(g,2)}배)이 일어나, 달리는 사람의 시간이 그만큼 <b>천천히</b> 흐릅니다.`)
+      +' <span class="long">교실에 있는 사람이 보는 모습입니다. 사람이 광속에 가깝게 달린다는 것은 차이를 보이기 위한 가정입니다.</span>');}};
+
+R.start({scenes:S,img:IMG,c0:'#3D7CC9',c1:'#E8590C'});
+
+</script>
+</body>
+</html>

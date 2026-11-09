@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>부호화 · 지문 그림 자료</title>
+<meta name="description" content="2018학년도 수능 국어 독서 38~42번 「부호화」 지문을 시험지 그림과 움직이는 그림으로 이해하는 참고 자료">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ref.css?v=d042145e">
+
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a href="../suneung.html" id="back">문제은행으로</a>
+  <div class="right"><span class="where">2018학년도 수능 국어 독서 38~42번</span><button type="button" class="tog" id="tog" aria-pressed="false">그림 함께 보기</button></div>
+</div></header>
+
+<div class="wrap">
+  <main class="read">
+    <h1 class="title" id="title">부호화</h1>
+    <p class="intro">지문을 먼저 읽고, 이해가 막히는 문단에서 ‘그림으로 보기’를 누르세요. 그림은 문단을 따라 바뀝니다.</p>
+    <div class="gate" id="gate" role="status" hidden></div>
+    <p class="p" data-scene="ent"><span class="no">1문단</span>디지털 통신 시스템은 송신기, 채널, 수신기로 구성되며, ⓐ<u>전송</u>할 데이터를 빠르고 정확하게 전달하기 위해 부호화 과정을 거쳐 전송한다. 영상, 문자 등인 데이터는 ⓑ<u>기호</u> 집합에 있는 기호들의 조합이다. 예를 들어 기호 집합 {a, b, c, d, e, f}에서 기호들을 조합한 add, cab, beef 등이 데이터이다. 정보량은 어떤 기호가 발생했다는 것을 알았을 때 얻는 정보의 크기이다. 어떤 기호 집합에서 <mark>특정 기호의 발생 확률이 높으면 그 기호의 정보량은 적고, 발생 확률이 낮으면 그 기호의 정보량은 많다</mark>. 기호 집합의 평균 정보량*을 기호 집합의 엔트로피라고 하는데 <mark>모든 기호들이 동일한 발생 확률을 가질 때 그 기호 집합의 엔트로피는 최댓값을 갖는다</mark>.</p>
+    <p class="p" data-scene="huff"><span class="no">2문단</span>송신기에서는 소스 부호화, 채널 부호화, 선 부호화를 거쳐 기호를 ⓒ<u>부호</u>로 변환한다. 소스 부호화는 데이터를 압축하기 위해 기호를 0과 1로 이루어진 부호로 변환하는 과정이다. 어떤 기호가 110과 같은 부호로 변환되었을 때 0 또는 1을 비트라고 하며 이 부호의 비트 수는 3이다. 이때 기호 집합의 엔트로피는 기호 집합에 있는 기호를 부호로 표현하는 데 필요한 평균 비트 수의 최솟값이다. 전송된 부호를 수신기에서 원래의 기호로 ⓓ<u>복원</u>하려면 <mark>부호들의 평균 비트 수가 기호 집합의 엔트로피보다 크거나 같아야 한다</mark>. 기호 집합을 엔트로피에 최대한 가까운 평균 비트 수를 갖는 부호들로 변환하는 것을 엔트로피 부호화라 한다. 그중 하나인 ‘허프만 부호화’에서는 <mark>발생 확률이 높은 기호에는 비트 수가 적은 부호를, 발생 확률이 낮은 기호에는 비트 수가 많은 부호를 할당한다</mark>.</p>
+    <p class="p" data-scene="rep"><span class="no">3문단</span>채널 부호화는 오류를 검출하고 정정하기 위하여 부호에 잉여 정보를 추가하는 과정이다. 송신기에서 부호를 전송하면 채널의 잡음으로 인해 오류가 발생하는데 이 문제를 해결하기 위해 잉여 정보를 덧붙여 전송한다. 채널 부호화 중 하나인 ‘삼중 반복 부호화’는 0과 1을 각각 000과 111로 부호화한다. 이때 수신기에서는 수신한 부호에 <mark>0이 과반수인 경우에는 0으로 판단하고, 1이 과반수인 경우에는 1로 판단한다</mark>. 즉 수신기에서 수신된 부호가 000, 001, 010, 100 중 하나라면 0으로 판단하고, 그 이외에는 1로 판단한다. 이렇게 하면 000을 전송했을 때 하나의 비트에서 오류가 생겨 001을 수신해도 0으로 판단하므로 오류는 정정된다. 채널 부호화를 하기 전 부호의 비트 수를, 채널 부호화를 한 후 부호의 비트 수로 나눈 것을 부호율이라 한다. <mark>삼중 반복 부호화의 부호율은 약 0.33이다</mark>.</p>
+    <p class="p" data-scene="diff"><span class="no">4문단</span>채널 부호화를 거친 부호들을 채널을 통해 전송하려면 부호들을 전기 신호로 변환해야 한다. 0 또는 1에 해당하는 전기 신호의 전압을 결정하는 과정이 선 부호화이다. 전압의 ⓔ<u>결정</u> 방법은 선 부호화 방식에 따라 다르다. 선 부호화 중 하나인 ‘차동 부호화’는 <mark>부호의 비트가 0이면 전압을 유지하고 1이면 전압을 변화시킨다</mark>. 차동 부호화를 시작할 때는 기준 신호가 필요하다. 예를 들어 차동 부호화 직전의 기준 신호가 양(+)의 전압이라면 부호 0110은 ‘양, 음, 양, 양’의 전압을 갖는 전기 신호로 변환된다. 수신기에서는 송신기와 동일한 기준 신호를 사용하여, <mark>전압의 변화가 있으면 1로 판단하고 변화가 없으면 0으로 판단한다</mark>. *평균 정보량: 각 기호의 발생 확률과 정보량을 서로 곱하여 모두 더한 것.</p>
+
+  </main>
+
+  <aside class="stageCol" aria-label="움직이는 그림">
+    <div class="stage" id="stage">
+      <button type="button" class="close" id="close" aria-label="그림 닫기">✕</button>
+      <div class="head"><span class="sn" id="sn"></span><span class="st" id="st"></span></div>
+      <div class="view">
+        <canvas id="cv" aria-label="움직이는 그림"></canvas>
+        <button class="orig" id="orig" hidden aria-label="시험지 그림 크게 보기"><img id="origImg" alt=""><span>시험지 그림</span></button>
+        <span class="drag">끌어서 돌리기 · 두 번 눌러 처음 자리로</span>
+      </div>
+      <div class="ctl" id="ctl"></div>
+      <div class="say" id="say" aria-live="polite"></div>
+    </div>
+  </aside>
+</div>
+
+<section class="sum" aria-labelledby="sumh">
+  <h2 id="sumh">정리</h2>
+  <dl>
+    <dt>정보량</dt><dd>기호가 발생했음을 알 때 얻는 정보의 크기. 발생 확률이 높으면 적고, 낮으면 많다.</dd>
+    <dt>엔트로피</dt><dd>기호 집합의 평균 정보량. 모든 기호의 발생 확률이 같을 때 최댓값. 기호를 부호로 표현하는 데 필요한 평균 비트 수의 최솟값.</dd>
+    <dt>소스 부호화</dt><dd>데이터 압축을 위해 기호를 0과 1의 부호로 변환. 복원하려면 평균 비트 수 ≥ 엔트로피. 허프만 부호화: 확률이 높은 기호에 짧은 부호.</dd>
+    <dt>채널 부호화</dt><dd>오류 검출·정정을 위해 잉여 정보를 추가. 삼중 반복 부호화: 0→000, 1→111, 과반수로 판단. 부호율 = 부호화 전 비트 수 ÷ 후 비트 수(약 0.33).</dd>
+    <dt>선 부호화</dt><dd>0 또는 1에 해당하는 전기 신호의 전압을 결정. 차동 부호화: 0이면 유지, 1이면 변화. 기준 신호가 필요하고, 수신기는 변화가 있으면 1, 없으면 0.</dd>
+  </dl>
+</section>
+<p class="foot">이 그림들은 지문 이해를 돕는 모형입니다. 기호 a~d의 발생 확률, 예시 데이터, 부호표는 설명을 위해 정한 것입니다. 정보량을 log₂(1/확률)로 계산한 값은 지문에 없는 식이며, 지문은 정보량과 확률의 대소 관계와 평균 정보량의 정의(각주)만 말합니다. 허프만 부호를 만드는 구체적인 절차도 지문에 없습니다. 시험지 그림 출처: 한국교육과정평가원 2018학년도 대학수학능력시험 국어 영역.</p>
+<script>window.REF_ITEMS=[["2018-11||독서||38", "2018-11||독서||39", "2018-11||독서||40", "2018-11||독서||41", "2018-11||독서||42"]];</script>
+<script src="engine.js?v=d042145e"></script>
+<script>
+const IMG={};
+/* 2018학년도 수능 독서 38~42 · 디지털 통신 시스템의 부호화 */
+const INK='#1D1D1F', SUB='#6E6E73', MUTE='#86868B', LINE='#C7C7CC', RULE='#E8E8ED', BLUE='#3D7CC9', ORG='#E8590C', GRAY='#A1A1A6';
+const ACC=()=>getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()||BLUE;
+const mob=()=>R.W()<440;
+const cv=R.$('cv');
+const S={};
+const SYM=['a','b','c','d'];
+const PRE={same:[.25,.25,.25,.25],skew:[.5,.25,.125,.125],more:[.7,.1,.1,.1]};
+const info=p=>Math.log2(1/p), ent=ps=>ps.reduce((s,p)=>s+p*info(p),0);
+const nf=(v,d)=>{const s=R.fx(v,d===undefined?2:d); return s.replace(/\.?0+$/,'')||'0';};
+const frac={.5:'1/2',.25:'1/4',.125:'1/8',.7:'0.7',.1:'0.1'};
+/* 캔버스 누르기: 장면마다 칸 목록 */
+let hits=[];
+cv.addEventListener('click',e=>{const c=R.cur(); if(c!=='rep'&&c!=='diff') return; const r=cv.getBoundingClientRect(), x=e.clientX-r.left, y=e.clientY-r.top; const h=hits.find(h=>x>=h[0]&&x<=h[0]+h[2]&&y>=h[1]&&y<=h[1]+h[3]); if(h){h[4](); R.dirty();}});
+cv.addEventListener('pointermove',e=>{const c=R.cur(); if(c!=='rep'&&c!=='diff') return; const r=cv.getBoundingClientRect(), x=e.clientX-r.left, y=e.clientY-r.top; cv.style.cursor=hits.some(h=>x>=h[0]&&x<=h[0]+h[2]&&y>=h[1]&&y<=h[1]+h[3])?'pointer':'default';});
+
+/* ---------- 1문단: 정보량과 엔트로피 ---------- */
+const en={k:'skew'};
+S.ent={sn:'1문단',st:'정보량과 엔트로피',mode:'2d',
+  ctl(){return [R.seg('발생 확률',[['same','모두 같게'],['skew','치우치게'],['more','더 치우치게']],en.k,v=>en.k=v)];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), ps=PRE[en.k], E=ent(ps); R.setAcc(1-E/2); const acc=ACC();
+    const lx=m?58:84, rx=W-(m?12:28), cw=(rx-lx)/4, top=m?8:28, bh=m?(H-top-58)/2:Math.min(130,(H-top-110)/2);
+    const y1=top+bh, y2=y1+(m?22:40)+bh;
+    R.text(m?6:16,top+bh/2,'발생 확률',{col:SUB,size:12,wt:500,align:'left'}); R.text(m?6:16,y1+(m?22:40)+bh/2,'정보량',{col:SUB,size:12,wt:500,align:'left'});
+    R.path([[lx,y1],[rx,y1]],LINE,1); R.path([[lx,y2],[rx,y2]],LINE,1);
+    ps.forEach((p,i)=>{const x=lx+cw*i, bw=Math.min(cw*.5,m?30:44), cx=x+cw/2;
+      const h1=bh*p/.7*.92; R.rect(cx-bw/2,y1-h1,bw,h1,'#B9C9DD',null,4); R.text(cx,y1-h1-(m?8:10),frac[p]||nf(p),{col:INK,size:12,wt:600});
+      const I=info(p), h2=bh*I/3.6*.92; R.rect(cx-bw/2,y2-h2,bw,h2,acc,null,4); R.text(cx,y2-h2-(m?8:10),nf(I),{col:INK,size:12,wt:600});
+      R.text(cx,y2+(m?12:16),SYM[i],{col:INK,size:14,wt:700,serif:true});});
+    const ey=y2-bh*E/3.6*.92; R.path([[lx,ey],[rx,ey]],INK,1.4,[5,4]); {const t='평균 = 엔트로피 '+nf(E), w=R.ctx.measureText?0:0; R.ctx.save(); R.ctx.font=`700 12px ${R.SANS}`; const tw=R.ctx.measureText(t).width+10; R.ctx.restore(); R.rect(lx,ey-(m?20:24),tw,18,'#F5F5F7',null,6); R.text(lx+5,ey-(m?11:15),t,{col:INK,size:12,wt:700,align:'left'});}
+    if(!m) R.text(W/2,H-14,'정보량 = log₂(1 ÷ 확률) · 평균 = 각 기호의 (확률 × 정보량)을 모두 더한 것',{col:MUTE,size:12,wt:400});
+    R.say(`확률이 <b>낮은</b> 기호일수록 정보량이 <b>많습니다</b>. 엔트로피(평균 정보량)는 <b>${nf(E)}</b>(모형 계산)${en.k==='same'?' — 모든 기호의 확률이 같아 <b>최댓값</b>입니다.':'. 확률을 모두 같게 해 보세요.'} <span class="long">정보량 계산식 log₂(1 ÷ 확률)은 지문에 없는 식입니다. 지문의 각주처럼 평균은 확률과 정보량을 곱해 모두 더한 것입니다.</span>`);}};
+
+/* ---------- 2문단: 소스 부호화, 허프만 부호화 ---------- */
+const PS=PRE.skew, H_E=ent(PS);
+const CODES={fix:['00','01','10','11'],huf:['0','10','110','111'],short:['0','1','00','01']};
+const MSG='abacabad';
+const hf={k:'huf'};
+S.huff={sn:'2문단',st:'평균 비트 수와 엔트로피',mode:'2d',
+  ctl(){return [R.seg('부호',[['fix','모두 2비트'],['huf','허프만'],['short','엔트로피보다 짧게']],hf.k,v=>hf.k=v)];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), cd=CODES[hf.k], avg=PS.reduce((s,p,i)=>s+p*cd[i].length,0), bad=avg<H_E-1e-9; R.setAcc(bad?1:hf.k==='huf'?0:.35); const acc=ACC();
+    /* 부호표 */
+    const tx=m?10:24, tw=m?150:200, rh=m?(H-24)/5.2:Math.min(40,(H-150)/5), ty=m?6:24;
+    [['기호',0],['확률',m?44:62],['부호',m?94:128]].forEach(([t,dx])=>R.text(tx+dx,ty+rh/2,t,{col:MUTE,size:12,wt:500,align:'left'}));
+    SYM.forEach((s,i)=>{const y=ty+(i+1)*rh; R.path([[tx,y],[tx+tw,y]],RULE,1);
+      R.text(tx+4,y+rh/2,s,{col:INK,size:14,wt:700,align:'left',serif:true}); R.text(tx+(m?44:62),y+rh/2,frac[PS[i]],{col:SUB,size:12,wt:500,align:'left'});
+      R.text(tx+(m?94:128),y+rh/2,cd[i],{col:acc,size:14,wt:700,align:'left'});});
+    /* 평균 비트 수 vs 엔트로피 */
+    const gx=tx+tw+(m?18:40), gw=W-gx-(m?10:24), gy=ty+rh*.8, gh=m?(H-gy-30):Math.min(5*rh-10,(H-gy-120));
+    const sc=v=>gw*v/2.2;
+    const row=(y,label,v,col)=>{R.text(gx,y,label,{col:SUB,size:12,wt:500,align:'left'}); R.rect(gx,y+10,gw,12,'#E8E8ED',null,6); R.rect(gx,y+10,Math.max(6,sc(v)),12,col,null,6); R.text(gx+gw,y,nf(v,3),{col:INK,size:12,wt:700,align:'right'});};
+    row(gy,'평균 비트 수',avg,acc); row(gy+(m?40:56),'엔트로피',H_E,'#8E8E93');
+    const ex=gx+sc(H_E); R.path([[ex,gy+6],[ex,gy+(m?40:56)+26]],INK,1,[3,3]);
+    /* 예시 데이터 부호화 */
+    const dy=m?H-12:ty+6*rh+30, bits=[...MSG].map(c=>cd[SYM.indexOf(c)]);
+    if(!m){R.text(tx,dy,'데이터 '+MSG+' →',{col:SUB,size:12,wt:500,align:'left'}); R.text(tx,dy+24,bits.join(' '),{col:INK,size:14,wt:700,align:'left'}); R.text(tx,dy+48,`실제로는 이어서 전송: ${bits.join('')} (${bits.join('').length}비트)`,{col:MUTE,size:12,wt:500,align:'left'});
+      if(bad) R.text(tx,dy+72,'수신기가 받은 ‘01’은 a·b인가, d인가?',{col:ORG,size:12,wt:700,align:'left'});}
+    else R.text(gx,dy,`${MSG} → ${bits.join('').length}비트`,{col:SUB,size:12,wt:500,align:'left'});
+    R.say(hf.k==='fix'?'모든 기호를 2비트로 바꾸면 평균 2비트. 엔트로피보다 큽니다(복원은 가능).'
+      :hf.k==='huf'?'확률이 <b>높은</b> a에는 <b>짧은</b> 부호, 낮은 c·d에는 긴 부호. 평균 비트 수가 엔트로피에 <b>가까워져</b> 데이터가 압축됩니다. <span class="long">이 확률에서는 평균 비트 수와 엔트로피가 같습니다.</span>'
+      :'평균 비트 수가 엔트로피보다 <b>작으면</b> 수신기에서 원래 기호로 <b>복원할 수 없습니다</b>. <span class="long">예: ‘01’이 a 다음 b인지, d인지 구별할 수 없습니다.</span>');}};
+
+/* ---------- 3문단: 삼중 반복 부호화 ---------- */
+const rp={b:0,flip:[0,0,0]};
+S.rep={sn:'3문단',st:'삼중 반복 부호화',mode:'2d',
+  ctl(){return [R.seg('보낼 비트',[[0,'0'],[1,'1']],rp.b,v=>{rp.b=+v; rp.flip=[0,0,0];}), R.btn('잡음 없애기','ghost',()=>{rp.flip=[0,0,0];})];},
+  render(){R.clear(); hits=[]; const W=R.W(),H=R.H(),m=mob(); const sent=[rp.b,rp.b,rp.b], got=sent.map((v,i)=>v^rp.flip[i]), ones=got.reduce((a,b)=>a+b,0), dec=ones>=2?1:0, nf_=rp.flip.reduce((a,b)=>a+b,0);
+    R.setAcc(nf_/3); const acc=ACC();
+    const lx=m?10:28, cs=m?30:44, g=m?8:12, gx=m?112:150, rows=4, rh=m?(H-10)/rows:Math.min(90,(H-60)/rows), y0=m?4:(H-rows*rh)/2;
+    const lab=['원래 부호','채널 부호화','수신(눌러서 잡음)','판단(과반수)'];
+    const cell=(x,y,v,o)=>{o=o||{}; R.rect(x,y,cs,cs,o.fill||'#FFFFFF',o.stroke||LINE,8); R.text(x+cs/2,y+cs/2,String(v),{col:o.col||INK,size:m?16:20,wt:700});};
+    lab.forEach((t,i)=>{const y=y0+i*rh+rh/2; R.text(lx,y,m&&i===2?'수신(누르기)':t,{col:SUB,size:12,wt:500,align:'left'});});
+    const cy=i=>y0+i*rh+(rh-cs)/2;
+    cell(gx,cy(0),rp.b);
+    sent.forEach((v,i)=>cell(gx+i*(cs+g),cy(1),v));
+    /* 채널 */
+    const chy=y0+2*rh-2; if(!m) R.text(gx+3*(cs+g)+12,chy,'채널의 잡음',{col:MUTE,size:12,wt:400,align:'left'});
+    got.forEach((v,i)=>{const x=gx+i*(cs+g), f=rp.flip[i]; cell(x,cy(2),v,{fill:f?'#FFF4EC':'#FFFFFF',stroke:f?acc:LINE,col:f?acc:INK}); hits.push([x,cy(2),cs,cs,()=>{rp.flip[i]^=1;}]);});
+    cell(gx,cy(3),dec,{stroke:INK});
+    R.text(gx+cs+12,cy(3)+cs/2,`0이 ${3-ones}개, 1이 ${ones}개`,{col:SUB,size:12,wt:500,align:'left'});
+    if(!m) R.text(gx+3*(cs+g)+12,cy(1)+cs/2,'부호율 1 ÷ 3 ≈ 0.33',{col:MUTE,size:12,wt:500,align:'left'});
+    R.say(`${rp.b}을 <b>${sent.join('')}</b>으로 세 번 반복해 보냅니다. 수신한 부호에서 <b>과반수</b>인 쪽으로 판단합니다. 받은 칸을 눌러 잡음(오류)을 넣어 보세요. <span class="long">비트 1개를 3비트로 늘렸으므로 부호율은 1 ÷ 3 ≈ 0.33입니다.</span>`);}};
+
+/* ---------- 4문단: 차동 부호화 ---------- */
+const df={ref:1,bits:[0,1,1,0]};
+S.diff={sn:'4문단',st:'차동 부호화',mode:'2d',
+  ctl(){return [R.seg('기준 신호',[[1,'양(+)'],[-1,'음(−)']],df.ref,v=>df.ref=+v), R.btn('처음으로(0110)','ghost',()=>{df.bits=[0,1,1,0]; df.ref=1;})];},
+  render(){R.clear(); hits=[]; const W=R.W(),H=R.H(),m=mob(); const lv=[df.ref]; df.bits.forEach(b=>lv.push(b?-lv[lv.length-1]:lv[lv.length-1]));
+    R.setAcc(df.bits.reduce((a,b)=>a+b,0)/4); const acc=ACC();
+    const lx=m?10:24, x0=m?62:96, x1=W-(m?10:24), sw=(x1-x0)/5, cs=Math.min(m?28:40,sw-10);
+    const yb=m?6:H*.1, wy=yb+cs+(m?34:60), amp=m?(H-wy-60)/2:Math.min(70,(H-wy-120)/2), mid=wy+amp, yd=mid+amp+(m?18:40);
+    R.text(lx,yb+cs/2,m?'부호':'부호(누르기)',{col:SUB,size:12,wt:500,align:'left'});
+    df.bits.forEach((b,i)=>{const x=x0+sw*(i+1)+(sw-cs)/2; R.rect(x,yb,cs,cs,'#FFFFFF',b?acc:LINE,8); R.text(x+cs/2,yb+cs/2,String(b),{col:b?acc:INK,size:m?16:20,wt:700}); hits.push([x,yb,cs,cs,()=>{df.bits[i]^=1;}]);});
+    R.text(x0+sw/2,yb+cs/2,'기준',{col:MUTE,size:12,wt:500});
+    /* 전압 파형 */
+    R.text(lx,mid-amp,'양(+)',{col:SUB,size:12,wt:500,align:'left'}); R.text(lx,mid+amp,'음(−)',{col:SUB,size:12,wt:500,align:'left'});
+    R.path([[x0,mid],[x1,mid]],RULE,1,[3,4]);
+    const Y=v=>mid-v*amp*.8, pts=[];
+    lv.forEach((v,i)=>{const xa=x0+sw*i, xb=xa+sw; if(i) pts.push([xa,Y(v)]); else pts.push([xa,Y(v)]); pts.push([xb,Y(v)]);});
+    R.path(pts.slice(0,2),'#8E8E93',2.4,[5,4]); R.path(pts.slice(1),INK,2.4);
+    lv.forEach((v,i)=>{ if(!i) return; const ch=v!==lv[i-1]; if(ch) R.circle(x0+sw*i,mid,5,acc); R.text(x0+sw*(i+.5),Y(v)+(v>0?-12:14),v>0?'양':'음',{col:INK,size:12,wt:600});});
+    /* 수신기 판단 */
+    R.text(lx,yd,m?'판단':'수신기 판단',{col:SUB,size:12,wt:500,align:'left'});
+    lv.forEach((v,i)=>{ if(!i) return; const ch=v!==lv[i-1]; R.text(x0+sw*(i+.5),yd,m?(ch?'1':'0'):(ch?'변화 → 1':'유지 → 0'),{col:ch?acc:MUTE,size:12,wt:700});});
+    const seq=lv.slice(1).map(v=>v>0?'양':'음').join(', ');
+    R.say(`기준 신호 ${df.ref>0?'양(+)':'음(−)'}, 부호 <b>${df.bits.join('')}</b> → <b>${seq}</b>. 비트가 <b>1이면 전압을 바꾸고</b>, 0이면 유지합니다. <span class="long">위의 칸을 눌러 비트를 바꿔 보세요. 수신기는 같은 기준 신호를 쓰며 변화가 있으면 1, 없으면 0으로 판단합니다.</span>`);}};
+
+R.start({scenes:S,img:IMG,c0:'#3D7CC9',c1:'#E8590C'});
+
+</script>
+</body>
+</html>

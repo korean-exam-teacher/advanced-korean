@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>신뢰도 구조 · 지문 그림 자료</title>
+<meta name="description" content="2010학년도 수능 언어 독서 46~50번 「신뢰도 구조」 지문을 시험지 그림과 움직이는 그림으로 이해하는 참고 자료">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ref.css?v=d042145e">
+
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a href="../suneung.html" id="back">문제은행으로</a>
+  <div class="right"><span class="where">2010학년도 수능 언어 독서 46~50번</span><button type="button" class="tog" id="tog" aria-pressed="false">그림 함께 보기</button></div>
+</div></header>
+
+<div class="wrap">
+  <main class="read">
+    <h1 class="title" id="title">신뢰도 구조</h1>
+    <p class="intro">지문을 먼저 읽고, 이해가 막히는 문단에서 ‘그림으로 보기’를 누르세요. 그림은 문단을 따라 바뀝니다.</p>
+    <div class="gate" id="gate" role="status" hidden></div>
+    <p class="p"><span class="no">1문단</span>어떤 장비의 ‘신뢰도’란 ㉠<u>주어진 </u><u>운용 </u><u>조건하에서 </u><u>의도하는 </u><u>사용 </u><u>기간 </u><u>중에 </u><u>의도한 </u><u>목적에 </u><u>맞게 </u><u>작동할 </u><u>확률</u>을 말한다. 복잡한 장비의 신뢰도는 한 번에 분석하기가 힘든 경우가 많으므로, <mark>장비를 분해하여 몇 개의 하부 시스템으로 나누어서 생각하는 것이 합리적인 접근 방법이다</mark>. 직렬과 병렬 구조는 하부 시스템에 자주 나타나는 구조로서, 그 결과를 통합한다면 복잡한 장비의 신뢰도를 구할 수 있다.</p>
+    <p class="p" data-scene="series"><span class="no">2문단</span>A와 같은 직렬 구조는 원인에서 결과에 이르는 경로가 하나인 가장 간단한 신뢰도 구조이다. <mark>직렬 구조에서 시스템이 정상 가동하기 위해서는 모든 부품이 다 정상 작동해야 한다</mark>. 어떤 하나의 부품이 고장 나면 형성된 경로가 차단되므로 시스템이 고장 나게 된다. 만약 어떤 부품의 고장이 다른 부품의 수명에 영향을 주지 않는다면 A의 신뢰도는 부품1의 신뢰도(r=0.9)와 부품2의 신뢰도(r=0.8)를 곱한 0.72로 계산되며, 이것은 100번 ⓐ<u>가운데</u> 72번은 고장 없이 작동한다는 것을 의미한다. 고장 없이 영원히 작동하는 부품은 없기 때문에 <mark>직렬 구조의 신뢰도는 항상 가장 약한 부품의 신뢰도보다도 낮을 수밖에 없다</mark>.</p>
+    <p class="p" data-scene="parallel"><span class="no">3문단</span>한편, B와 같은 병렬 구조는 원인에서 결과에 이르는 여러 개의 경로가 있고, <mark>그중에 몇 개가 차단되어도 나머지 경로를 통해 결과에 이를 수 있는 구조</mark>이다. 병렬 구조에서는 <mark>부품이 모두 고장이어야 시스템이 고장</mark>이므로 시스템이 작동한다는 의미의 값인 1에서 두 개의 부품이 모두 고장 날 확률(0.1<sup>*</sup>×0.2=0.02)을 빼서 얻은 0.98이 B의 신뢰도가 된다. 한 부품의 고장이 다른 부품의 신뢰도에 영향을 준다면 이 값 역시 달라진다.</p>
+    <p class="p" data-scene="car"><span class="no">4문단</span><mark>이러한 신뢰도 구조는 물리적 구조와 구분된다</mark>. 자동차의 네 바퀴는 물리적 구조상 병렬로 설치되어 있지만, 그중 하나라도 고장 나면 자동차가 정상적으로 운행될 수 없으므로 <mark>신뢰도 구조상으로 직렬 구조인 것이다</mark>.</p>
+    <p class="p" data-scene="breaker"><span class="no">5문단</span>[가] 종종 장비의 신뢰도를 높이기 위해 중복 설계(重複設計)를 활용하기도 한다. 가령, 순간적인 과전류로부터 섬세한 전자 기구를 보호하는 회로 차단기를 설치할 때에 그 안전도를 높이기 위해 2개를 물리적 구조상 직렬로 연결해야 하는데, 이때 차단기 2개 중 1개라도 정상 작동하면 전자 기구를 보호할 수 있다. <mark>이것은 물리적으로 직렬 구조이지만 신뢰도 구조상으로 병렬 구조인 것이다</mark>.</p>
+    <p class="p" data-scene="nk"><span class="no">6문단</span>신뢰도 문제에서 직렬이나 병렬의 구조로 분석할 수 없는 ‘n 중 k’ 구조도 나타난다. 이 구조에서는 <mark>모두 n개의 부품 중에 k개만 작동하면 시스템이 정상 가동된다</mark>. n겹의 쇠줄로 움직이는 승강기에서 최대 하중을 견디는 데 k겹이 필요한 경우가 그 예이다. 이 구조에서도 부품 간의 상호 작용에 따라 신뢰도가 달라진다.</p>
+    <p class="p"><span class="no">7문단</span>실제로 대규모 장비에 대한 신뢰도 분석은 대단히 힘들기 때문에 많은 경우 적절한 판단과 근삿값 계산을 필요로 한다. 따라서 주어진 장비의 구조 및 운용 조건을 충분히 이해하는 것이 필수적이다.<span style="display:block;text-indent:0;margin-top:.6em;font-size:.85em;color:#6E6E73">*어떤 부품이 고장 날 확률=1－(그 부품의 신뢰도)</span></p>
+
+  </main>
+
+  <aside class="stageCol" aria-label="움직이는 그림">
+    <div class="stage" id="stage">
+      <button type="button" class="close" id="close" aria-label="그림 닫기">✕</button>
+      <div class="head"><span class="sn" id="sn"></span><span class="st" id="st"></span></div>
+      <div class="view">
+        <canvas id="cv" aria-label="움직이는 그림"></canvas>
+        <button class="orig" id="orig" hidden aria-label="시험지 그림 크게 보기"><img id="origImg" alt=""><span>시험지 그림</span></button>
+        <span class="drag">끌어서 돌리기 · 두 번 눌러 처음 자리로</span>
+      </div>
+      <div class="ctl" id="ctl"></div>
+      <div class="say" id="say" aria-live="polite"></div>
+    </div>
+  </aside>
+</div>
+
+<section class="sum" aria-labelledby="sumh">
+  <h2 id="sumh">정리</h2>
+  <dl>
+    <dt>신뢰도</dt><dd>주어진 운용 조건에서 의도한 기간 동안 목적에 맞게 작동할 확률. 0.72는 100번 가운데 72번 고장 없이 작동한다는 뜻.</dd>
+    <dt>직렬 구조</dt><dd>경로가 하나. 모든 부품이 작동해야 함. 신뢰도 = 곱(0.9 × 0.8 = 0.72), 가장 약한 부품보다 낮음.</dd>
+    <dt>병렬 구조</dt><dd>경로가 여럿. 모두 고장이어야 고장. 신뢰도 = 1 − 모두 고장 날 확률(1 − 0.1 × 0.2 = 0.98).</dd>
+    <dt>물리적 구조와 구분</dt><dd>자동차 네 바퀴: 물리적으로 병렬, 신뢰도로 직렬. 회로 차단기 2개: 물리적으로 직렬, 신뢰도로 병렬(중복 설계).</dd>
+    <dt>n 중 k 구조</dt><dd>n개 중 k개만 작동하면 정상 가동. 예: n겹 쇠줄 중 k겹이 필요한 승강기.</dd>
+    <dt>상호 작용</dt><dd>한 부품의 고장이 다른 부품에 영향을 주면 신뢰도 값이 달라진다.</dd>
+  </dl>
+</section>
+<p class="foot">이 그림들은 지문 이해를 돕는 모형입니다. ‘100번 써 보기’는 컴퓨터로 무작위 시행을 흉내 낸 것이라 누를 때마다 결과가 조금씩 달라집니다. 부품끼리 서로 영향을 주지 않는다고 가정했고, n 중 k 장면의 쇠줄 한 겹의 신뢰도 0.9는 지문에 없는 값입니다. 5문단의 [가] 표시는 시험지에서 이 문단 전체에 걸린 묶음 표시를 옮긴 것입니다. 시험지 그림 출처: 한국교육과정평가원 2010학년도 대학수학능력시험 언어 영역.</p>
+<script>window.REF_ITEMS=[["2010-11||독서||46", "2010-11||독서||47", "2010-11||독서||48", "2010-11||독서||49", "2010-11||독서||50"]];</script>
+<script src="engine.js?v=d042145e"></script>
+<script>
+const IMG={"ab": {"src": "img/2010-11-r46-ab.png", "alt": "시험지 그림: A는 원인→부품 1(r=0.9)→부품 2(r=0.8)→결과로 이어진 직렬 구조, B는 부품 1과 부품 2가 두 갈래로 나뉘어 있는 병렬 구조"}};
+/* 2010학년도 수능 언어 46~50 · 신뢰도 구조 — 2D 도식 */
+const INK='#1D1D1F', SUB='#6E6E73', MUTE='#86868B', LINE='#C7C7CC', RULE='#E8E8ED', BLUE='#3D7CC9', ORG='#E8590C', GRAY='#A1A1A6', OFF='#E5E5EA';
+const ACC=()=>getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()||BLUE;
+const mob=()=>R.W()<440;
+const st={r:{series:[.9,.8],parallel:[.9,.8]}, sim:{series:null,parallel:null}, car:'ok', br:{a:'ok',b:'ok',run:false,t:0,last:null}, nk:{n:4,k:2,cut:[]}};
+const S={};
+const f2=v=>(Math.round(v*100)/100).toFixed(2);
+
+/* ---------- 공용 부품 ---------- */
+/* state: 'ok'(작동) 'bad'(고장) null(보통) */
+function part(x,y,w,h,t1,t2,state){const acc=ACC(), bad=state==='bad';
+  R.rect(x-w/2,y-h/2,w,h,bad?'#F2F2F4':'#FFFFFF',state==='ok'?acc:bad?GRAY:'#8E8E93',8);
+  if(state==='ok') R.rect(x-w/2+1,y-h/2+1,w-2,h-2,null,acc,7);
+  R.text(x,y-(t2?8:0),t1,{col:bad?MUTE:INK,size:13,wt:600});
+  if(t2) R.text(x,y+9,t2,{col:bad?ORG:SUB,size:12,wt:bad?700:400});}
+function wire(pts,on){R.path(pts,on?ACC():LINE,on?2.2:1.6);}
+function head(x,y,on){R.path([[x-7,y-4.5],[x,y],[x-7,y+4.5]],on?ACC():LINE,on?2.2:1.6);}
+
+/* ---------- 2·3문단: 직렬 A, 병렬 B ---------- */
+function diagram(kind,top,h,trial){const W=R.W(), m=mob(), bw=m?74:92, bh=m?(kind==='series'?32:28):42, cy=top+h/2, r=st.r[kind];
+  const xc=m?20:30, xe=W-(m?20:30), s1=trial?trial[0]:null, s2=trial?trial[1]:null, okAll=trial?(kind==='series'?s1&&s2:s1||s2):false;
+  R.text(xc,cy,'원인',{col:INK,size:13,wt:600}); R.text(xe,cy,'결과',{col:okAll?ACC():INK,size:13,wt:700});
+  const st1=trial?(s1?'ok':'bad'):null, st2=trial?(s2?'ok':'bad'):null;
+  if(kind==='series'){const x1=W*.37, x2=W*.63;
+    wire([[xc+16,cy],[x1-bw/2,cy]],trial&&true); head(x1-bw/2-1,cy,!!trial);
+    wire([[x1+bw/2,cy],[x2-bw/2,cy]],trial&&s1); head(x2-bw/2-1,cy,trial&&s1);
+    wire([[x2+bw/2,cy],[xe-18,cy]],okAll); head(xe-19,cy,okAll);
+    part(x1,cy,bw,bh,'부품 1',st1==='bad'?'고장':'r = '+r[0].toFixed(2),st1);
+    part(x2,cy,bw,bh,'부품 2',st2==='bad'?'고장':'r = '+r[1].toFixed(2),st2);}
+  else {const xs=W*.3, xm=W*.7, xb=W*.5, dy=m?Math.min(18,h*.27):Math.min(40,h*.3), ya=cy-dy, yb=cy+dy;
+    wire([[xc+16,cy],[xs,cy]],!!trial);
+    wire([[xs,cy],[xs,ya],[xb-bw/2,ya]],!!trial); head(xb-bw/2-1,ya,!!trial);
+    wire([[xs,cy],[xs,yb],[xb-bw/2,yb]],!!trial); head(xb-bw/2-1,yb,!!trial);
+    wire([[xb+bw/2,ya],[xm,ya],[xm,cy]],trial&&s1); wire([[xb+bw/2,yb],[xm,yb],[xm,cy]],trial&&s2);
+    wire([[xm,cy],[xe-18,cy]],okAll); head(xe-19,cy,okAll);
+    part(xb,ya,bw,bh,'부품 1',st1==='bad'?'고장':'r = '+r[0].toFixed(2),st1);
+    part(xb,yb,bw,bh,'부품 2',st2==='bad'?'고장':'r = '+r[1].toFixed(2),st2);}
+  return okAll;}
+function relOf(kind){const r=st.r[kind]; return kind==='series'?r[0]*r[1]:1-(1-r[0])*(1-r[1]);}
+function simCtl(kind){const r=st.r[kind], reset=()=>{st.sim[kind]=null;};
+  return [R.rng('부품 1',50,100,Math.round(r[0]*100),v=>(v/100).toFixed(2),v=>{r[0]=v/100;reset();}),
+    R.rng('부품 2',50,100,Math.round(r[1]*100),v=>(v/100).toFixed(2),v=>{r[1]=v/100;reset();}),
+    R.btn('100번 써 보기','',()=>{const res=[]; for(let i=0;i<100;i++) res.push([Math.random()<r[0],Math.random()<r[1]]); st.sim[kind]={res,t0:performance.now(),n:0};})];}
+function simTick(kind){return (now,cur)=>{const s=st.sim[kind]; if(!s||s.n>=100) return false; s.n=R.RM?100:Math.min(100,Math.floor((now-s.t0)/22)); return cur;};}
+function simRender(kind){R.clear(); const W=R.W(),H=R.H(),m=mob(), s=st.sim[kind], rel=relOf(kind), acc=ACC();
+  const n=s?s.n:0, res=s?s.res:[], last=n?res[n-1]:null;
+  const dh=m?70:Math.min(190,H*.4);
+  diagram(kind,m?2:14,dh,last);
+  /* 아래: 100번의 결과 (오른쪽 아래는 시험지 그림 자리라 비워 둠) */
+  const gy=(m?2:14)+dh+(m?4:16), gh=H-gy-(m?6:24), gx=m?12:24, cs=Math.max(7,Math.min(m?12:21,gh/10)), gw=cs*10;
+  let cnt=0;
+  for(let i=0;i<100;i++){const x=gx+(i%10)*cs, y=gy+Math.floor(i/10)*cs; let fill='#FFFFFF', str=RULE;
+    if(i<n){const t=res[i], w=kind==='series'?t[0]&&t[1]:t[0]||t[1]; if(w){cnt++; fill=acc; str=null;} else {fill=OFF; str=null;}}
+    R.rect(x+1,y+1,cs-2,cs-2,fill,str,Math.min(4,cs/4));}
+  const tx=gx+gw+(m?12:28), ty=gy+(m?9:14);
+  R.text(tx,ty,n?String(cnt):'–',{col:n?acc:MUTE,size:m?20:34,wt:700,align:'left'});
+  R.text(tx+(m?(n?(String(cnt).length*12+4):16):0),m?ty+1:ty+30,n?`번 작동 (${n}번 중)`:'아직 안 써 봄',{col:SUB,size:12,wt:400,align:'left'});
+  R.text(tx,ty+(m?22:54),(m?'신뢰도 ':'계산한 신뢰도 ')+f2(rel),{col:INK,size:12,wt:600,align:'left'});
+  R.setAcc(0);
+  return {n,cnt,rel};}
+S.series={sn:'2문단',st:'직렬 구조 A',mode:'2d',img:'ab',tick:simTick('series'),
+  ctl(){return simCtl('series')},
+  render(){const o=simRender('series'), r=st.r.series, lo=Math.min(r[0],r[1]);
+    R.say(`${r[0].toFixed(2)} × ${r[1].toFixed(2)} = <b>${f2(o.rel)}</b>. 경로가 하나라서 <b>두 부품이 모두</b> 작동해야 결과에 이릅니다. <span class="long">가장 약한 부품(${lo.toFixed(2)})보다 낮습니다. ${o.n===100?`이번에는 100번 중 ${o.cnt}번 작동했습니다.`:'‘100번 써 보기’를 눌러 보세요.'}</span>`);}};
+S.parallel={sn:'3문단',st:'병렬 구조 B',mode:'2d',img:'ab',tick:simTick('parallel'),
+  ctl(){return simCtl('parallel')},
+  render(){const o=simRender('parallel'), r=st.r.parallel, q1=1-r[0], q2=1-r[1];
+    R.say(`1 − ${f2(q1)} × ${f2(q2)} = <b>${f2(o.rel)}</b>. 두 경로 중 <b>하나만 살아 있어도</b> 결과에 이르고, 둘 다 고장 나야 시스템이 고장입니다. <span class="long">${f2(q1)}, ${f2(q2)}는 각 부품이 고장 날 확률(1 − 신뢰도)입니다. ${o.n===100?`이번에는 100번 중 ${o.cnt}번 작동했습니다.`:''}</span>`);}};
+
+/* ---------- 4문단: 자동차 네 바퀴 ---------- */
+S.car={sn:'4문단',st:'물리적 구조 ≠ 신뢰도 구조',mode:'2d',
+  ctl(){return [R.seg('',[['ok','네 바퀴 정상'],['bad','한 바퀴 고장']],st.car,v=>st.car=v)]},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), bad=st.car==='bad', acc=ACC(); R.setAcc(bad?1:0);
+    const h1=H*.5, lx=m?12:20;
+    R.text(lx,m?12:20,'물리적 구조',{col:SUB,size:12,wt:500,align:'left'});
+    R.text(lx,h1+(m?10:18),'신뢰도 구조',{col:SUB,size:12,wt:500,align:'left'});
+    R.path([[lx,h1],[W-lx,h1]],RULE,1);
+    /* 위에서 본 자동차: 바퀴 네 개가 나란히 */
+    const cx=W*.5, cy=h1*.55, bw=Math.min(m?150:200,W*.42), bh=Math.min(m?h1*.5:h1*.48,bw*.55);
+    R.rect(cx-bw/2,cy-bh/2,bw,bh,'#FFFFFF','#8E8E93',bh*.3);
+    R.text(cx,cy,'자동차',{col:INK,size:13,wt:600});
+    const ww=Math.max(16,bw*.16), wh=Math.max(7,bh*.18);
+    [[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([sx,sy],i)=>{const x=cx+sx*bw*.3-ww/2, y=cy+sy*(bh/2)-(sy<0?wh:0)-(sy<0?2:-2), b=bad&&i===0;
+      R.rect(x,y,ww,wh,b?ORG:'#48484A',null,3); R.text(x+ww/2+sx*(ww/2+9),y+wh/2,String(i+1),{col:b?ORG:SUB,size:12,wt:600});});
+    R.arrow(cx+bw/2+10,cy,cx+bw/2+(m?28:40),cy,GRAY,1.4,6);
+    if(bad) R.text(cx-bw*.3,cy-bh/2-wh-(m?9:12),'고장',{col:ORG,size:12,wt:700});
+    /* 아래: 신뢰도 구조는 직렬 */
+    const y2=h1+(H-h1)*.58, xc=lx+12, xe=W-lx-14, n=4, span=xe-xc-(m?48:70), bw2=Math.min(m?50:66,span/n-10), gap=(span-n*bw2)/(n+1), x0=xc+(m?22:34);
+    R.text(xc,y2,'원인',{col:INK,size:12,wt:600});
+    let alive=true, prevX=xc+16;
+    for(let i=0;i<n;i++){const x=x0+gap+i*(bw2+gap)+bw2/2, b=bad&&i===0;
+      wire([[prevX,y2],[x-bw2/2,y2]],alive); head(x-bw2/2-1,y2,alive);
+      part(x,y2,bw2,m?30:38,'바퀴 '+(i+1),b?'고장':null,b?'bad':(alive?'ok':null)); if(b) alive=false; prevX=x+bw2/2;}
+    wire([[prevX,y2],[xe-18,y2]],alive); head(xe-19,y2,alive);
+    R.text(xe,y2,'운행',{col:alive?acc:MUTE,size:12,wt:700});
+    R.say(bad?'바퀴 하나만 고장 나도 자동차는 정상적으로 운행될 수 없습니다. 그래서 신뢰도 구조로는 <b>직렬</b>입니다.'
+      :'네 바퀴는 물리적으로 <b>나란히(병렬로)</b> 설치되어 있습니다. <span class="long">‘한 바퀴 고장’을 눌러 아래 신뢰도 구조를 보세요.</span>');}};
+
+/* ---------- 5문단 [가]: 회로 차단기 2개 ---------- */
+const BR=st.br;
+S.breaker={sn:'5문단 [가]',st:'중복 설계: 회로 차단기 2개',mode:'2d',
+  enter(){BR.last=null;},
+  tick(now,cur){if(!BR.run) return false; if(BR.last!=null) BR.t+=(now-BR.last)/1000*(R.RM?99:.9); BR.last=now; if(BR.t>=1){BR.t=1; BR.run=false;} return cur;},
+  ctl(){const rs=()=>{BR.t=0;BR.run=false;};
+    return [R.seg('차단기 1',[['ok','정상'],['bad','고장']],BR.a,v=>{BR.a=v;rs();}), R.seg('차단기 2',[['ok','정상'],['bad','고장']],BR.b,v=>{BR.b=v;rs();}),
+      R.btn('과전류 흘리기','',()=>{BR.t=0;BR.run=true;BR.last=null;})];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), acc=ACC(), t=BR.t, A=BR.a==='ok', B=BR.b==='ok';
+    const h1=H*.46, lx=m?12:20; R.text(lx,m?12:20,'물리적 구조: 직렬로 연결',{col:SUB,size:12,wt:500,align:'left'});
+    R.text(lx,h1+(m?10:18),'신뢰도 구조: 병렬',{col:SUB,size:12,wt:500,align:'left'}); R.path([[lx,h1],[W-lx,h1]],RULE,1);
+    /* 위: 전원 - 차단기1 - 차단기2 - 전자 기구 */
+    const y=h1*.58, xs=[W*.1,W*.36,W*.62,W*.88], bw=m?62:84, bh=m?30:38;
+    const stopAt=A?1:B?2:3, stopX=stopAt===3?xs[3]-bw/2:xs[stopAt]-bw/2, done=t>=1, reach=xs[0]+bw/2*0+(stopX-xs[0])*Math.min(1,t/1);
+    for(let i=0;i<3;i++){const a=xs[i]+(i?bw/2:22), b=xs[i+1]-bw/2; R.path([[a,y],[b,y]],LINE,2);}
+    if(t>0){R.path([[xs[0]+22,y],[Math.max(xs[0]+22,reach),y]],ORG,2.6); if(!done) R.circle(reach,y,5,ORG);}
+    R.text(xs[0],y,'과전류',{col:t>0?ORG:INK,size:12,wt:600});
+    const brk=(i,ok)=>{const opened=done&&stopAt===i; part(xs[i],y,bw,bh,'차단기 '+i,ok?(opened?'끊음':'정상'):'고장',ok?(opened?'ok':null):'bad');};
+    brk(1,A); brk(2,B);
+    const hurt=done&&stopAt===3, safe=done&&stopAt<3;
+    R.rect(xs[3]-bw/2,y-bh/2,bw,bh,hurt?'#FCE9DF':'#FFFFFF',hurt?ORG:safe?acc:'#8E8E93',8);
+    R.text(xs[3],y-(m?7:8),m?'기구':'전자 기구',{col:INK,size:13,wt:600}); R.text(xs[3],y+9,hurt?'손상':safe?'보호됨':'',{col:hurt?ORG:acc,size:12,wt:700});
+    /* 아래: 병렬 */
+    const cy=h1+(H-h1)*.56, dy=m?Math.min(26,(H-h1)*.24):Math.min(40,(H-h1)*.24), xa=W*.26, xb=W*.5, xm=W*.74, xc=m?24:34, xe=W-(m?30:44);
+    R.text(xc,cy,'과전류',{col:INK,size:12,wt:600});
+    const onA=done&&A, onB=done&&B&&true, prot=done&&(A||B);
+    wire([[xc+22,cy],[xa,cy]],done); wire([[xa,cy],[xa,cy-dy],[xb-bw/2,cy-dy]],done); head(xb-bw/2-1,cy-dy,done); wire([[xa,cy],[xa,cy+dy],[xb-bw/2,cy+dy]],done); head(xb-bw/2-1,cy+dy,done);
+    wire([[xb+bw/2,cy-dy],[xm,cy-dy],[xm,cy]],onA); wire([[xb+bw/2,cy+dy],[xm,cy+dy],[xm,cy]],onB); wire([[xm,cy],[xe-24,cy]],prot); head(xe-25,cy,prot);
+    part(xb,cy-dy,bw,m?28:34,'차단기 1',A?null:'고장',A?(done?'ok':null):'bad'); part(xb,cy+dy,bw,m?28:34,'차단기 2',B?null:'고장',B?(done?'ok':null):'bad');
+    R.text(xe,cy,'보호',{col:prot?acc:MUTE,size:12,wt:700});
+    R.setAcc(A&&B?0:(A||B)?.5:1);
+    R.say(!done?'차단기 두 개를 <b>한 줄로</b> 이어 놓았습니다. 고장 낼 차단기를 고르고 <b>과전류 흘리기</b>를 눌러 보세요.'
+      :safe?`차단기 ${stopAt}이 전류를 끊어 기구가 보호되었습니다. <b>둘 중 하나만</b> 작동해도 보호되니, 신뢰도 구조로는 <b>병렬</b>입니다.`
+      :'두 차단기가 <b>모두</b> 고장 나야 기구가 손상됩니다.');}};
+
+/* ---------- 6문단: n 중 k ---------- */
+const NK=st.nk;
+function binom(n,k){let c=1; for(let i=0;i<k;i++) c=c*(n-i)/(i+1); return c;}
+function nkRel(n,k,r){let s=0; for(let i=k;i<=n;i++) s+=binom(n,i)*Math.pow(r,i)*Math.pow(1-r,n-i); return s;}
+function nkCtl(){NK.k=Math.min(NK.k,NK.n); return [R.rng('쇠줄 n',2,8,NK.n,v=>v+'겹',v=>{NK.n=v; NK.cut=[]; nkRebuild();}), R.rng('필요한 k',1,NK.n,NK.k,v=>v+'겹',v=>{NK.k=v;}),
+  R.btn('쇠줄 하나 끊기','',()=>{const left=[...Array(NK.n).keys()].filter(i=>!NK.cut.includes(i)); if(left.length) NK.cut.push(left[Math.floor(Math.random()*left.length)]);}),
+  R.btn('처음으로','ghost',()=>{NK.cut=[];})];}
+function nkRebuild(){const c=R.$('ctl'); c.innerHTML=''; nkCtl().forEach(e=>c.appendChild(e)); R.dirty();}
+S.nk={sn:'6문단',st:'n 중 k 구조: 승강기 쇠줄',mode:'2d',
+  ctl(){return nkCtl()},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), acc=ACC(), n=NK.n, k=NK.k, alive=n-NK.cut.length, ok=alive>=k;
+    const cx=m?W*.32:W*.36, top=m?14:28, bw=Math.min(m?120:170,W*.4), ch=Math.min(m?H*.32:H*.3,bw*.75), drop=ok?0:(m?14:22), carY=H-ch-(m?14:30)+drop-(ok?0:0);
+    R.rect(cx-bw/2-14,top-6,bw+28,10,'#8E8E93',null,3);
+    for(let i=0;i<n;i++){const x=cx-bw/2+bw*(i+.5)/n, c=NK.cut.includes(i);
+      if(c){R.path([[x,top+4],[x,top+4+(carY-top)*.35]],LINE,2,[3,3]); R.path([[x,carY-(carY-top)*.25],[x,carY]],LINE,2,[3,3]);}
+      else R.path([[x,top+4],[x,carY]],ok?acc:ORG,2.2);}
+    R.rect(cx-bw/2,carY,bw,ch-4,'#FFFFFF',ok?'#8E8E93':ORG,8);
+    R.text(cx,carY+(ch-4)/2,'승강기',{col:INK,size:13,wt:600});
+    const tx=cx+bw/2+(m?18:34), ty=H*(m?.3:.32);
+    R.text(tx,ty,`${alive} / ${n}겹`,{col:ok?acc:ORG,size:m?20:28,wt:700,align:'left'});
+    R.text(tx,ty+(m?20:28),`필요한 쇠줄 ${k}겹`,{col:SUB,size:12,wt:400,align:'left'});
+    R.text(tx,ty+(m?38:50),ok?'정상 가동':'하중을 못 견딤',{col:ok?acc:ORG,size:12,wt:700,align:'left'});
+    R.text(tx,ty+(m?62:84),'신뢰도(모형) '+nkRel(n,k,.9).toFixed(3),{col:INK,size:12,wt:600,align:'left'});
+    R.setAcc(ok?0:1);
+    R.say(`쇠줄 ${n}겹 중 <b>${k}겹만</b> 남아 있으면 최대 하중을 견딥니다. 지금 ${alive}겹${ok?'이 남아 정상 가동됩니다.':'뿐이라 정상 가동되지 않습니다.'} <span class="long">신뢰도(모형)는 쇠줄 한 겹의 신뢰도를 0.9로 두고, 쇠줄끼리 영향을 주지 않는다고 가정해 계산했습니다.</span>`);}};
+
+R.start({scenes:S,img:IMG,c0:'#3D7CC9',c1:'#E8590C'});
+
+</script>
+</body>
+</html>

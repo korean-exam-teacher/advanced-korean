@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>공공요금 · 지문 그림 자료</title>
+<meta name="description" content="2012학년도 9월 모의평가 언어 독서 35~37번 「공공요금」 지문을 시험지 그림과 움직이는 그림으로 이해하는 참고 자료">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ref.css?v=d042145e">
+
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a href="../suneung.html" id="back">문제은행으로</a>
+  <div class="right"><span class="where">2012학년도 9월 모의평가 언어 독서 35~37번</span><button type="button" class="tog" id="tog" aria-pressed="false">그림 함께 보기</button></div>
+</div></header>
+
+<div class="wrap">
+  <main class="read">
+    <h1 class="title" id="title">공공요금</h1>
+    <p class="intro">지문을 먼저 읽고, 이해가 막히는 문단에서 ‘그림으로 보기’를 누르세요. 그림은 문단을 따라 바뀝니다.</p>
+    <div class="gate" id="gate" role="status" hidden></div>
+    <p class="p" data-scene="mc"><span class="no">1문단</span>경제학에서는 가격이 한계 비용과 일치할 때를 가장 이상적인 상태라고 본다. ‘한계 비용’이란 <mark>재화의 생산량을 한 단위 증가시킬 때 추가되는 비용</mark>을 말한다. <mark>한계 비용 곡선과 수요 곡선이 만나는 점에서 가격이 정해지면</mark> 재화의 생산 과정에 ㉠<u>들어가는</u> 자원이 낭비 없이 효율적으로 배분되며, 이때 사회 전체의 만족도가 가장 커진다. <mark>가격이 한계 비용보다 높아지면 상대적으로 높은 가격으로 인해 수요량이 줄면서 거래량이 따라 줄고, 결과적으로 생산량도 감소한다</mark>. 이는 사회 전체의 관점에서 볼 때 자원이 효율적으로 배분되지 못하는 상황이므로 사회 전체의 만족도가 떨어지는 결과를 ㉡<u>낳는다</u>.</p>
+    <p class="p"><span class="no">2문단</span>위에서 설명한 일반 재화와 마찬가지로 수도, 전기, 철도와 같은 공익 서비스도 자원 배분의 효율성을 ㉢<u>생각하면</u> 한계 비용 수준으로 가격(=공공요금)을 결정하는 것이 바람직하다. 대부분의 공익 서비스는 <mark>초기 시설 투자 비용은 막대한 반면 한계 비용은 매우 적다</mark>. 이러한 경우, 한계 비용으로 공공요금을 결정하면 공익 서비스를 제공하는 기업은 손실을 볼 수 있다.</p>
+    <p class="p" data-scene="avg"><span class="no">3문단</span>[A] 예컨대 초기 시설 투자 비용이 6억 달러이고, 톤당 1달러의 한계 비용으로 수돗물을 생산하는 상수도 서비스를 가정해 보자. 이때 수돗물 생산량을 ‘1톤, 2톤, 3톤, ···’으로 늘리면 총비용은 ‘6억 1달러, 6억 2달러, 6억 3달러, ···’로 늘어나고, 톤당 평균 비용은 ‘6억 1달러, 3억 1달러, 2억 1달러, ···’로 지속적으로 줄어든다. 그렇지만 <mark>평균 비용이 계속 줄어들더라도 한계 비용 아래로는 결코 내려가지 않는다</mark>. 따라서 한계 비용으로 수도 요금을 결정하면 <mark>총비용보다 총수입이 적으므로</mark> 수도 사업자는 손실을 보게 된다.</p>
+    <p class="p" data-scene="fix"><span class="no">4문단</span>이를 해결하는 방법에는 크게 두 가지가 있다. 하나는 정부가 공익 서비스 제공 기업에 손실분만큼 보조금을 ㉣<u>주는</u> 것이고, 다른 하나는 공공요금을 평균 비용 수준으로 정하는 것이다. 전자의 경우 보조금을 세금으로 충당한다면 <mark>다른 부문에 들어갈 재원이</mark> ㉤<u>줄어드는</u> 문제가 있다. 평균 비용 곡선과 수요 곡선이 교차하는 점에서 요금을 정하는 후자의 경우에는 <mark>총수입과 총비용이 같아져 기업이 손실을 보지는 않는다</mark>. 그러나 <mark>요금이 한계 비용보다 높기 때문에</mark> 사회 전체의 관점에서 자원의 효율적 배분에 문제가 생긴다.</p>
+
+  </main>
+
+  <aside class="stageCol" aria-label="움직이는 그림">
+    <div class="stage" id="stage">
+      <button type="button" class="close" id="close" aria-label="그림 닫기">✕</button>
+      <div class="head"><span class="sn" id="sn"></span><span class="st" id="st"></span></div>
+      <div class="view">
+        <canvas id="cv" aria-label="움직이는 그림"></canvas>
+        <button class="orig" id="orig" hidden aria-label="시험지 그림 크게 보기"><img id="origImg" alt=""><span>시험지 그림</span></button>
+        <span class="drag">끌어서 돌리기 · 두 번 눌러 처음 자리로</span>
+      </div>
+      <div class="ctl" id="ctl"></div>
+      <div class="say" id="say" aria-live="polite"></div>
+    </div>
+  </aside>
+</div>
+
+<section class="sum" aria-labelledby="sumh">
+  <h2 id="sumh">정리</h2>
+  <dl>
+    <dt>한계 비용</dt><dd>생산량을 한 단위 늘릴 때 추가되는 비용.</dd>
+    <dt>이상적인 가격</dt><dd>한계 비용 곡선과 수요 곡선이 만나는 점의 가격. 자원이 효율적으로 배분되고 사회 전체의 만족도가 가장 크다.</dd>
+    <dt>가격 &gt; 한계 비용</dt><dd>수요량·거래량·생산량이 줄어 자원이 효율적으로 배분되지 못한다.</dd>
+    <dt>공익 서비스</dt><dd>초기 시설 투자 비용은 막대하고 한계 비용은 매우 적다. 평균 비용은 계속 줄지만 한계 비용 아래로는 내려가지 않는다.</dd>
+    <dt>한계 비용 요금</dt><dd>총수입 &lt; 총비용 → 기업 손실. 보조금으로 메우면 세금이 들어 다른 부문 재원이 줄어든다.</dd>
+    <dt>평균 비용 요금</dt><dd>총수입 = 총비용이라 손실은 없지만 요금이 한계 비용보다 높아 자원 배분의 효율성에 문제가 생긴다.</dd>
+  </dl>
+</section>
+<p class="foot">이 그림들은 지문 이해를 돕는 모형입니다. 3문단 장면의 6억 달러·톤당 1달러는 지문의 예이고, 1문단과 4문단 그래프의 곡선 모양과 값은 설명을 위한 모형입니다. 색칠한 넓이를 ‘사회 전체의 만족도’로 나타낸 것도 지문에는 없는 경제학의 일반적인 표현 방법입니다. 시험지 그림 출처: 한국교육과정평가원 2012학년도 9월 대학수학능력시험 모의평가 언어 영역.</p>
+<script>window.REF_ITEMS=[["2012-09||독서||35", "2012-09||독서||36", "2012-09||독서||37"]];</script>
+<script src="engine.js?v=d042145e"></script>
+<script>
+const IMG={"graph": {"src": "img/2012-09-r35-graph.png", "alt": "시험지 36번 <보기> 그래프: 수요, 평균 비용, 한계 비용 곡선과 점 ⓐ, ⓑ"}};
+/* 2012학년도 9월 모평 언어 독서 35~37 · 한계 비용과 공공요금 — 2D 장면 */
+const INK='#1D1D1F', SUB='#6E6E73', MUTE='#86868B', LINE='#C7C7CC', BLUE='#3D7CC9', ORG='#E8590C', GRAY='#AEAEB2';
+const BLUEF='rgba(61,124,201,.16)', ORGF='rgba(232,89,12,.18)';
+const mob=()=>R.W()<440;
+const st={p:6, qi:2, fx:'mc'};
+const S={};
+
+/* 사선 무늬로 채우기(잃어버린 부분) */
+function hatch(pts,col){const c=R.ctx; c.save(); c.beginPath(); pts.forEach((p,i)=>i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1])); c.closePath(); c.fillStyle=ORGF; c.fill(); c.clip();
+  const xs=pts.map(p=>p[0]), ys=pts.map(p=>p[1]), x0=Math.min(...xs), x1=Math.max(...xs), y0=Math.min(...ys), y1=Math.max(...ys);
+  c.strokeStyle=col; c.lineWidth=1; for(let x=x0-(y1-y0);x<x1;x+=6){c.beginPath(); c.moveTo(x,y1); c.lineTo(x+(y1-y0),y0); c.stroke();} c.restore();}
+function curve(F,f,a,b,col,w,dash,ymax){const pts=[]; for(let i=0;i<=120;i++){const x=a+(b-a)*i/120, y=f(x); if(ymax!=null&&y>ymax) continue; pts.push([F.X(x),F.Y(y)]);} R.path(pts,col,w,dash);}
+
+/* ---------- 1문단: 가격 = 한계 비용일 때 ---------- */
+const D1=q=>10-q, MC1=q=>1+.5*q;   /* 모형: 수요 곡선, 한계 비용 곡선 */
+S.mc={sn:'1문단',st:'가격이 한계 비용보다 높아지면',mode:'2d',
+  ctl(){return [R.rng('가격',4,8.5,st.p,v=>v===4?'= 한계 비용':'한계 비용보다 높음',v=>st.p=v,.5)]},
+  render(){R.clear(); const m=mob(), p=st.p, q=10-p, qs=6; R.setAcc((p-4)/4.5);
+    const F=R.frame(0,10.4,0,10.4,{pad:[m?26:40,m?84:104,m?28:40,m?30:40],xt:[],yt:[],xl:'',yl:'가격'});
+    R.text(F.R,F.B+(m?14:20),'거래량(=생산량)',{col:SUB,size:12,wt:400,align:'right'});
+    /* 만족도 넓이 */
+    const top=[],bot=[]; for(let i=0;i<=40;i++){const x=q*i/40; top.push([F.X(x),F.Y(D1(x))]); bot.unshift([F.X(x),F.Y(MC1(x))]);}
+    R.path(top.concat(bot),null,0,null,BLUEF);
+    if(p>4) hatch([[F.X(q),F.Y(D1(q))],[F.X(qs),F.Y(4)],[F.X(q),F.Y(MC1(q))]],'rgba(232,89,12,.55)');
+    curve(F,D1,0,10,INK,2); curve(F,MC1,0,10,BLUE,2);
+    R.text(F.X(10)+6,F.Y(D1(10))-12,'수요',{col:INK,size:12,wt:600,align:'left'});
+    R.text(F.X(10)+6,F.Y(MC1(10)),'한계 비용',{col:BLUE,size:12,wt:600,align:'left'});
+    /* 이상적인 점 */
+    R.circle(F.X(qs),F.Y(4),4.5,p>4?'#F5F5F7':INK,INK,1.6);
+    /* 현재 가격 */
+    const acc=getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()||ORG;
+    R.path([[F.L,F.Y(p)],[F.X(q),F.Y(p)],[F.X(q),F.B]],acc,1.6,[5,4]); R.circle(F.X(q),F.Y(p),5.5,acc);
+    R.text(F.L-6,F.Y(p),'가격',{col:acc,size:12,wt:700,align:'right'});
+    if(p>4){ R.path([[F.X(qs),F.Y(4)],[F.X(qs),F.B]],GRAY,1,[2,3]); R.arrow(F.X(qs)-2,F.B-10,F.X(q)+6,F.B-10,acc,1.6,6); }
+    R.text(F.X(q*.42),F.Y((D1(q*.42)+MC1(q*.42))/2)+2,m?'만족도':'사회 전체의 만족도',{col:BLUE,size:12,wt:600});
+    if(p>4&&!m) R.text(F.X(qs)+8,F.Y(4)-28,'줄어든 만족도',{col:ORG,size:12,wt:600,align:'left'});
+    R.say(p===4?'가격이 <b>한계 비용 곡선과 수요 곡선이 만나는 점</b>에서 정해졌습니다. 파란 넓이(사회 전체의 만족도)가 가장 큽니다. <span class="long">가격을 올려 보세요.</span>'
+      :'가격이 한계 비용보다 높으면 <b>수요량 → 거래량 → 생산량</b>이 줄어듭니다. 빗금 친 만큼 사회 전체의 만족도가 떨어집니다. <span class="long">곡선 모양과 넓이 표현은 모형입니다.</span>');}};
+
+/* ---------- 3문단: [A] 6억 달러 + 톤당 1달러 ---------- */
+const QS=[[1,'1톤'],[2,'2톤'],[3,'3톤'],[10,'10톤'],[100,'100톤'],[1e4,'1만 톤'],[1e6,'100만 톤'],[1e8,'1억 톤'],[6e8,'6억 톤'],[3e9,'30억 톤'],[6e9,'60억 톤']];
+function won(n){ if(n<10&&Math.abs(n-Math.round(n))>1e-9) return (Math.round(n*10)/10).toString();
+  n=Math.round(n); const e=Math.floor(n/1e8), r=n%1e8, man=Math.floor(r/1e4), one=r%1e4, out=[];
+  if(e) out.push(e.toLocaleString('ko-KR')+'억'); if(man) out.push(man+'만'); if(one||!out.length) out.push(String(one)); return out.join(' ');}
+S.avg={sn:'3문단',st:'평균 비용은 줄어도 손실은 그대로',mode:'2d',img:'graph',
+  ctl(){return [R.rng('생산량',0,QS.length-1,st.qi,v=>QS[v][1],v=>st.qi=v)]},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), q=QS[st.qi][0], FC=6e8, tc=FC+q, ac=tc/q, rev=q; R.setAcc(st.qi/(QS.length-1));
+    const acc=getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()||ORG;
+    /* 숫자 */
+    const x0=m?14:28, y0=m?16:40, lh=m?Math.min(26,(H-90)/5):32, vx=m?W-112:W-28, fs=m?13:16;
+    const rows=[['톤당 평균 비용',won(ac)+' 달러',acc],['한계 비용','1 달러',BLUE],['총비용',won(tc)+' 달러',INK],['총수입 (요금 1달러)',won(rev)+' 달러',INK],['손실','6억 달러',ORG]];
+    rows.forEach(([a,b,c],i)=>{const y=y0+i*lh; R.text(x0,y,a,{col:SUB,size:12,wt:500,align:'left'}); R.text(vx,y,b,{col:c,size:fs,wt:700,align:'right'});
+      if(i<4) R.path([[x0,y+lh/2],[vx,y+lh/2]],i===1?LINE:'#E8E8ED',i===1?1.2:1);});
+    if(m) {R.say(`평균 비용은 <b>${won(ac)}달러</b>까지 줄지만 한계 비용(1달러) <b>아래로는 내려가지 않습니다</b>. 요금이 1달러면 손실은 언제나 6억 달러.`); return;}
+    /* 막대: 총비용 vs 총수입(요금 = 한계 비용 1달러) */
+    const bw=vx-x0, bh=26, sc=bw/tc, l1=y0+lh*5+18, b1=l1+12, l2=b1+bh+26, b2=l2+12;
+    R.text(x0,l1,'총비용',{col:SUB,size:12,wt:500,align:'left'}); R.text(x0,l2,'총수입 (요금 = 한계 비용 1달러)',{col:SUB,size:12,wt:500,align:'left'});
+    R.rect(x0,b1,Math.max(1,FC*sc),bh,'#D1D1D6',null,4); if(q*sc>=1) R.rect(x0+FC*sc,b1,q*sc,bh,BLUE,null,4);
+    if(FC*sc>90) R.text(x0+FC*sc/2,b1+bh/2,'시설 투자 6억',{col:INK,size:12,wt:500});
+    if(q*sc>=60) R.text(x0+FC*sc+q*sc/2,b1+bh/2,'생산량 × 1달러',{col:'#fff',size:12,wt:500});
+    R.rect(x0,b2,Math.max(1.5,rev*sc),bh,BLUE,null,4);
+    const lx=x0+rev*sc; R.path([[lx,b2],[x0+bw,b2],[x0+bw,b2+bh],[lx,b2+bh]],null,0,null,ORGF); R.path([[lx,b2],[x0+bw,b2],[x0+bw,b2+bh],[lx,b2+bh],[lx,b2]],ORG,1.2,[4,3]);
+    R.text(Math.max(x0+60,(lx+x0+bw)/2),b2+bh/2,'손실 6억',{col:ORG,size:12,wt:700});
+    R.say(`생산량을 늘리면 평균 비용은 <b>${won(ac)}달러</b>까지 줄지만 한계 비용(1달러) <b>아래로는 내려가지 않습니다</b>. 요금을 1달러로 하면 손실은 언제나 <b>6억 달러</b>. <span class="long">막대 길이는 그때그때 총비용에 맞춰 줄였습니다.</span>`);}};
+
+/* ---------- 4문단: 두 가지 해결 방법 (36번 <보기> 그래프 모형) ---------- */
+const FC4=27, D4=q=>13-q, AC4=q=>FC4/q+1, YM=8;   /* 모형 값 */
+S.fix={sn:'4문단',st:'손실을 해결하는 두 방법',mode:'2d',img:'graph',
+  ctl(){return [R.seg('',[['mc','한계 비용 요금'],['sub','+ 보조금'],['ac','평균 비용 요금']],st.fx,v=>st.fx=v)]},
+  render(){R.clear(); const m=mob(), k=st.fx; R.setAcc(k==='ac'?1:0);
+    const F=R.frame(0,13.6,0,YM,{pad:[m?24:40,m?70:96,m?84:136,m?30:40],xt:[],yt:[],yl:'수도 요금'});
+    R.text(F.L,F.B+(m?13:18),'수돗물 생산량 →',{col:SUB,size:12,wt:400,align:'left'});
+    const qa=12, qb=9, pa=1, pb=4;
+    if(k==='ac'){ R.rect(F.X(0),F.Y(pb),F.X(qb)-F.X(0),F.Y(0)-F.Y(pb),BLUEF);
+      R.text(F.X(qb/2),F.Y(pb/2),'총수입 = 총비용',{col:BLUE,size:12,wt:700});
+      hatch([[F.X(qb),F.Y(pb)],[F.X(qa),F.Y(pa)],[F.X(qb),F.Y(pa)]],'rgba(232,89,12,.55)');
+    } else { const sub=k==='sub';
+      R.rect(F.X(0),F.Y(pa),F.X(qa)-F.X(0),F.Y(0)-F.Y(pa),BLUEF);
+      R.rect(F.X(0),F.Y(AC4(qa)),F.X(qa)-F.X(0),F.Y(pa)-F.Y(AC4(qa)),sub?'rgba(61,124,201,.34)':ORGF,sub?BLUE:ORG,0);
+      R.text(F.X(qa*.42),(F.Y(pa)+F.Y(AC4(qa)))/2,sub?'보조금(세금)':'손실',{col:sub?BLUE:ORG,size:12,wt:700});
+      R.text(F.X(qa*.42),(F.Y(0)+F.Y(pa))/2,m?'총수입':'총수입',{col:BLUE,size:12,wt:600}); }
+    curve(F,D4,0,13,INK,1.8,[7,3,2,3],YM); curve(F,AC4,2.6,13.4,INK,2,null,YM); R.path([[F.X(0),F.Y(1)],[F.X(13.4),F.Y(1)]],INK,1.6);
+    R.text(F.X(13.4)+6,F.Y(AC4(13.4))-7,'평균 비용',{col:INK,size:12,wt:600,align:'left'});
+    R.text(F.X(13.4)+6,F.Y(1)+8,'한계 비용',{col:INK,size:12,wt:600,align:'left'});
+    R.text(F.X(5.6)+6,F.Y(D4(5.6)),'수요',{col:INK,size:12,wt:600,align:'left'});
+    const P=k==='ac'?[qb,pb]:[qa,pa];
+    const acc=getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()||ORG; R.circle(F.X(P[0]),F.Y(P[1]),6,acc);
+    R.path([[F.L,F.Y(P[1])],[F.X(P[0]),F.Y(P[1])]],acc,1.4,[4,4]); R.text(F.L-6,F.Y(P[1]),'요금',{col:acc,size:12,wt:700,align:'right'});
+    R.say(k==='mc'?'요금을 <b>한계 비용</b>으로 정하면 총수입(파랑)이 총비용보다 적어 주황만큼 <b>손실</b>을 봅니다.'
+      :k==='sub'?'정부가 손실분만큼 <b>보조금</b>을 줍니다. 세금으로 충당하면 <b>다른 부문에 들어갈 재원이 줄어듭니다</b>.'
+      :'평균 비용 곡선과 수요 곡선이 만나는 점에서 요금을 정하면 <b>총수입 = 총비용</b>. 하지만 요금이 한계 비용보다 높아 빗금만큼 <b>자원 배분의 효율성</b>에 문제가 생깁니다. <span class="long">곡선 값은 모형입니다.</span>');}};
+
+R.start({scenes:S,img:IMG,c0:'#3D7CC9',c1:'#E8590C'});
+
+</script>
+</body>
+</html>

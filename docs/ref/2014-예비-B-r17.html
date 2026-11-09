@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>석가탑 · 지문 그림 자료</title>
+<meta name="description" content="2014학년도 수준별 예비 시행(B형) 국어 독서 17~18번 「석가탑」 지문을 시험지 그림과 움직이는 그림으로 이해하는 참고 자료">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ref.css?v=d042145e">
+
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a href="../suneung.html" id="back">문제은행으로</a>
+  <div class="right"><span class="where">2014학년도 수준별 예비 시행(B형) 국어 독서 17~18번</span><button type="button" class="tog" id="tog" aria-pressed="false">그림 함께 보기</button></div>
+</div></header>
+
+<div class="wrap">
+  <main class="read">
+    <h1 class="title" id="title">석가탑</h1>
+    <p class="intro">지문을 먼저 읽고, 이해가 막히는 문단에서 ‘그림으로 보기’를 누르세요. 그림은 문단을 따라 바뀝니다.</p>
+    <div class="gate" id="gate" role="status" hidden></div>
+    <p class="p" data-scene="wood"><span class="no">1문단</span>석가탑은 석조 예술품이면서도 <mark>기둥과 지붕 모양을 갖추어 목탑의 외관을 보여 준다</mark>. 또한 <mark>수십 개의 석재들이 정교하게 하나의 구조물로 짜 맞추어져 있어</mark> 정치한 아름다움을 보인다. 그리하여 석가탑은 구조적인 면에서 우리나라 석탑 양식의 정형으로 인정받고 있으며, 그 완성도가 높아 이후 세워진 석탑들의 모범이 되고 있다.</p>
+    <p class="p" data-scene="base"><span class="no">2문단</span>석가탑은 기단부, 탑신부, 상륜부의 세 부분으로 구성되어 있다. <mark>기단부의 하층은 낮지만 넓게, 상층은 다소 좁지만 높게 구성되어 있어 안정감을 준다</mark>. 한편 상층기단 괴임의 <mark>하단 모서리는 둥글게, 상단 모서리는 각지게</mark> 변화를 주어 율동감을 느끼게 한다.</p>
+    <p class="p" data-scene="body"><span class="no">3문단</span>탑신부는 3층으로, 각 층은 탑신과 옥개로 구성되어 있다. 탑신과 옥개는 <mark>상층으로 올라가면서 폭과 높이가 줄어들도록</mark> 만들어져 있어 전체적으로 균제미가 드러난다. 특히 <mark>1층과 2층 탑신 높이의 비례가 3:1</mark>로 되어 있어 시각적으로 안정된 느낌을 준다. 또 <mark>살며시 추켜올려진 옥개의 전각</mark>은 직선 중심의 강한 외관을 반전시키고, 전체 이미지에 유려함과 경쾌함을 더하고 있다.</p>
+    <p class="p" data-scene="top"><span class="no">4문단</span>상륜부는 원래의 것이 남아 있지 않다. 현재의 상륜부는 <mark>동시대에 제작된 다른 석탑의 것을 본떠 새롭게 만든 것</mark>인데, 연꽃이 장식된 석재들이 쌓아 올려진 형태는 <mark>상승감을 자아낸다</mark>.</p>
+    <p class="p"><span class="no">5문단</span>석가탑은 화려함을 절제시켜 전체적인 조형미가 더 잘 드러나도록 만들어진 걸작이다. 석가탑이 가지는 이러한 아름다움을 통해 옛사람들의 뛰어난 안목과 미감, 그리고 세련된 기교와 견실한 힘을 느낄 수 있다.</p>
+
+  </main>
+
+  <aside class="stageCol" aria-label="움직이는 그림">
+    <div class="stage" id="stage">
+      <button type="button" class="close" id="close" aria-label="그림 닫기">✕</button>
+      <div class="head"><span class="sn" id="sn"></span><span class="st" id="st"></span></div>
+      <div class="view">
+        <canvas id="cv" aria-label="움직이는 그림"></canvas>
+        <button class="orig" id="orig" hidden aria-label="시험지 그림 크게 보기"><img id="origImg" alt=""><span>시험지 그림</span></button>
+        <span class="drag">끌어서 돌리기 · 두 번 눌러 처음 자리로</span>
+      </div>
+      <div class="ctl" id="ctl"></div>
+      <div class="say" id="say" aria-live="polite"></div>
+    </div>
+  </aside>
+</div>
+
+<section class="sum" aria-labelledby="sumh">
+  <h2 id="sumh">정리</h2>
+  <dl>
+    <dt>목탑의 외관</dt><dd>돌로 만들었지만 기둥과 지붕 모양을 갖춤. 수십 개의 석재를 정교하게 짜 맞춤.</dd>
+    <dt>기단부</dt><dd>하층은 낮지만 넓게, 상층은 다소 좁지만 높게 → 안정감. 상층기단 괴임은 하단 모서리 둥글게, 상단 모서리 각지게 → 율동감.</dd>
+    <dt>탑신부</dt><dd>3층, 각 층은 탑신+옥개. 위로 갈수록 폭과 높이가 줄어듦 → 균제미.</dd>
+    <dt>3:1</dt><dd>1층과 2층 탑신 높이의 비례 → 시각적 안정감.</dd>
+    <dt>전각</dt><dd>살며시 추켜올린 옥개의 끝 → 직선 중심의 강한 외관을 반전, 유려함과 경쾌함.</dd>
+    <dt>상륜부</dt><dd>원래 것은 남아 있지 않음. 동시대 다른 석탑의 것을 본떠 새로 만듦. 연꽃 장식 석재를 쌓은 형태 → 상승감.</dd>
+  </dl>
+</section>
+<p class="foot">이 그림들은 지문 이해를 돕는 단순한 정면 모형입니다. 1층과 2층 탑신 높이의 비례 3:1만 지문의 값이고, 나머지 치수·석재 수·상륜부의 모양은 설명을 위해 정한 것입니다. ‘위아래 바꿔 보기’, ‘평평하게’는 비교를 위한 가정입니다. 시험지 그림 출처: 한국교육과정평가원 2014학년도 대학수학능력시험 수준별 국어 예비 시행(B형).</p>
+<script>window.REF_ITEMS=[["2014-예비-B||독서||17", "2014-예비-B||독서||18"]];</script>
+<script src="engine.js?v=d042145e"></script>
+<script>
+const IMG={"tower": {"src": "img/2014-예비-B-r17-tower.png", "alt": "시험지 그림 ‘석가탑의 구조’: 아래부터 기단부·탑신부·상륜부로 나누고 상층기단 괴임, 탑신, 옥개, 전각을 표시한 선 그림"}};
+/* 2014학년도 예비 시행(B형) 독서 17~18 석가탑 — 2D 정면 모형 */
+const INK='#1D1D1F', SUB='#6E6E73', LINE='#C7C7CC', BLUE='#3D7CC9', ORG='#E8590C', GRAY='#8E8E93';
+const FILL='#E9E9ED', EDGE='#8E8E93';
+const mob=()=>R.W()<440;
+const ctx=R.ctx;
+const st={wood:'look', swap:'text', k:3, eave:'up', top:'on', ex:0};
+const S={};
+
+/* ---------- 탑 모형(단위 임의, 1층:2층 탑신 높이 = k:1만 지문 값) ---------- */
+function tower(o){o=o||{}; const k=o.k==null?3:o.k, sw=o.swap, parts=[]; let y=0;
+  const add=(type,w,h,extra)=>{parts.push(Object.assign({type,w,y0:y,h},extra||{})); y+=h;};
+  if(!sw){ add('base1',10,1.0,{name:'하층기단'}); add('goim',8.6,.26,{name:'괴임'}); add('base2',8,2.0,{name:'상층기단'}); add('cap',8.6,.3); }
+  else { add('base1',7.2,2.0,{name:'하층기단'}); add('goim',10.4,.26,{name:'괴임'}); add('base2',10,1.0,{name:'상층기단'}); add('cap',10.6,.3); }
+  const B=[[4.4,k*1.0,8.2,1.0],[3.9,1.0,7.4,.92],[3.5,.9,6.6,.86]];
+  B.forEach(([bw,bh,rw,rh],i)=>{ add('body',bw,bh,{fl:i}); add('roof',rw,rh,{fl:i,bw,nb:i<2?B[i+1][0]:1.6}); });
+  if(o.top){ add('nob',1.6,.5); add('bok',1.4,.45); add('lotus',1.7,.5); for(let i=0;i<5;i++) add('ring',1.25-.08*i,.26); add('spire',.5,1.2); }
+  return {parts,H:y};}
+let G={cx:0,cy:0,s:1};
+const X=x=>G.cx+x*G.s, Y=y=>G.cy-y*G.s;
+function fit(y0,y1,xw,o){o=o||{}; const W=R.W(),H=R.H(),m=mob(), top=o.top!=null?o.top:(m?18:40), bot=o.bot!=null?o.bot:(m?12:30);
+  const s=Math.min((W*(o.wf||.9))/(2*xw),(H-top-bot)/(y1-y0)); const sp=Math.max(0,(H-top-bot-(y1-y0)*s)/2);
+  G={cx:(o.cxf||.5)*W, cy:top+sp+y1*s, s}; return G;}
+const rect=(x0,y0,x1,y1,fill,stroke,w)=>R.path([[X(x0),Y(y0)],[X(x1),Y(y0)],[X(x1),Y(y1)],[X(x0),Y(y1)]],stroke||EDGE,w||1.1,null,fill||FILL);
+/* 옥개: 아래 층급받침 + 지붕돌. up=전각 추켜올림 */
+function roofPts(p,y0,up){ const w=p.w/2, t=.26, u=up?.32:0, c=1.3, top=p.nb/2+.25, pts=[];
+  const q=(a,b,cc,tt)=>[(1-tt)*(1-tt)*a[0]+2*(1-tt)*tt*cc[0]+tt*tt*b[0],(1-tt)*(1-tt)*a[1]+2*(1-tt)*tt*cc[1]+tt*tt*b[1]];
+  // 아랫선: 왼쪽 끝 → 오른쪽 끝
+  for(let i=0;i<=8;i++) pts.push(q([-w,y0+u],[-w+c,y0],[-w+c*.45,y0],i/8));
+  for(let i=0;i<=8;i++) pts.push(q([w-c,y0],[w,y0+u],[w-c*.45,y0],i/8));
+  // 윗선: 오른쪽 처마 → 꼭대기 → 왼쪽 처마
+  for(let i=0;i<=8;i++) pts.push(q([w,y0+u+t],[w-c,y0+t+.12],[w-c*.45,y0+t+.06],i/8));
+  pts.push([top,y0+p.h],[-top,y0+p.h]);
+  for(let i=0;i<=8;i++) pts.push(q([-w+c,y0+t+.12],[-w,y0+u+t],[-w+c*.45,y0+t+.06],i/8));
+  return pts.map(([x,y])=>[X(x),Y(y)]);}
+/* 그리기. hi: {pillar,roof,base1,base2,body,goim,top}에 색 */
+function drawTower(T,o){o=o||{}; const hi=o.hi||{}, ex=o.ex||0, up=o.eave!=='flat'; const at=[];
+  T.parts.forEach((p,i)=>{ const y0=p.y0+ex*i*.35, y1=y0+p.h, w=p.w/2; at.push({p,y0,y1});
+    const col=hi[p.type]||(p.type==='body'&&hi.bodies)||null;
+    if(p.type==='roof'){ // 층급받침 3단
+      R.path(roofPts(p,y0,up),hi.roof||EDGE,hi.roof?1.8:1.1,null,hi.roof?'#FFF4EC':FILL); return; }
+    if(p.type==='bok'){ ctx.save(); ctx.beginPath(); ctx.ellipse(X(0),Y(y0+p.h*.45),w*G.s,p.h*.55*G.s,0,0,Math.PI*2); ctx.fillStyle=hi.top?'#FFF4EC':FILL; ctx.fill(); ctx.strokeStyle=hi.top||EDGE; ctx.lineWidth=1.1; ctx.stroke(); ctx.restore(); return; }
+    if(p.type==='lotus'){ const pts=[[X(-w*.55),Y(y0)],[X(w*.55),Y(y0)]]; const n=6; const P=[[X(-w*.55),Y(y0)]];
+      for(let j=0;j<=n;j++){const x=-w+2*w*j/n; P.push([X(x),Y(y1)]); if(j<n) P.push([X(x+w/n),Y(y1-.18)]);} P.push([X(w*.55),Y(y0)]);
+      R.path(P,hi.top||EDGE,1.1,null,hi.top?'#FFF4EC':FILL); return; }
+    if(p.type==='spire'){ R.path([[X(0),Y(y0)],[X(0),Y(y1)]],hi.top||EDGE,2); R.circle(X(0),Y(y0+p.h*.45),.22*G.s,hi.top?'#FFF4EC':FILL,hi.top||EDGE,1.1); R.circle(X(0),Y(y1),.18*G.s,hi.top?'#FFF4EC':FILL,hi.top||EDGE,1.1); return; }
+    if(p.type==='ring'||p.type==='nob'){ rect(-w,y0,w,y1,hi.top?'#FFF4EC':FILL,hi.top||EDGE); return; }
+    if(p.type==='goim'){ // 하단 둥글게, 상단 각지게(단순화)
+      const r=Math.min(p.h*.5,.12); rect(-w,y0,w,y1,col?'#FFF4EC':FILL,col||EDGE,col?1.6:1.1); return; }
+    rect(-w,y0,w,y1,col?(col===BLUE?'#EEF3FA':'#FFF4EC'):FILL,col||EDGE,col?1.6:1.1);
+    // 기둥(우주·탱주)
+    if(p.type==='body'||p.type==='base1'||p.type==='base2'){ const pc=hi.pillar||'#B5B5BB', pw=hi.pillar?1.8:1, ins=Math.min(.32,w*.12);
+      R.path([[X(-w+ins),Y(y0)],[X(-w+ins),Y(y1)]],pc,pw); R.path([[X(w-ins),Y(y0)],[X(w-ins),Y(y1)]],pc,pw);
+      if(p.type!=='body'){ R.path([[X(-w/3),Y(y0)],[X(-w/3),Y(y1)]],pc,pw); R.path([[X(w/3),Y(y0)],[X(w/3),Y(y1)]],pc,pw);} }
+  });
+  return at;}
+function bracketV(x,y0,y1,col,label,side){ const X0=X(x), a=Y(y0), b=Y(y1), d=side<0?-5:5; R.path([[X0+d,a],[X0,a],[X0,b],[X0+d,b]],col,1.5); if(label) R.text(X0-d*1.6,(a+b)/2,label,{col,size:12,wt:700,align:side<0?'left':'right'}); }
+function bracketH(x0,x1,y,col,label){ const a=X(x0), b=X(x1), Y0=Y(y); R.path([[a,Y0-4],[a,Y0],[b,Y0],[b,Y0-4]],col,1.5); if(label) R.text((a+b)/2,Y0+13,label,{col,size:12,wt:700}); }
+function ground(){ R.path([[X(-7),Y(0)],[X(7),Y(0)]],'#AEAEB2',1.4); }
+
+/* ---------- 1문단: 목탑의 외관 ---------- */
+let exT=0;
+S.wood={sn:'1문단',st:'돌로 만든 목탑의 모습',mode:'2d',img:'tower',
+  ctl(){return [R.seg('',[['look','겉모습'],['wood','기둥과 지붕'],['ex','석재 나누기']],st.wood,v=>{st.wood=v; if(R.RM) exT=v==='ex'?1:0;})]},
+  tick(now,cur){ if(!cur) return false; const tgt=st.wood==='ex'?1:0; if(Math.abs(exT-tgt)<.005){exT=tgt; return false;} exT+=(tgt-exT)*.12; return true; },
+  render(){R.clear(); const m=mob(), w=st.wood; R.setAcc(w==='look'?0:w==='wood'?.5:1);
+    const T=tower({k:3,top:true}); fit(-.3,T.H+exT*T.parts.length*.35+.3,6.2,{cxf:m?.4:.42}); ground();
+    const at=drawTower(T,{hi:w==='wood'?{pillar:BLUE,roof:ORG}:{},ex:exT});
+    if(w==='wood'){ const b=at.find(a=>a.p.type==='body'), r=at.find(a=>a.p.type==='roof');
+      R.text(X(5.4),Y((b.y0+b.y1)/2),'기둥 모양',{col:BLUE,size:12,wt:700,align:'left'}); R.path([[X(5.3),Y((b.y0+b.y1)/2)],[X(2.0),Y((b.y0+b.y1)/2)]],BLUE,1,[3,3]);
+      R.text(X(5.4),Y(r.y1)-4,'지붕 모양',{col:ORG,size:12,wt:700,align:'left'}); }
+    if(w==='ex') R.text(X(5.4),Y(T.H*.6),m?'석재를':'석재들을',{col:INK,size:12,wt:700,align:'left'}), R.text(X(5.4),Y(T.H*.6)+16,'짜 맞춤',{col:INK,size:12,wt:700,align:'left'});
+    R.say(w==='look'?'석가탑은 돌로 만든 <b>석조 예술품</b>입니다. <span class="long">비율과 모양은 단순하게 그린 모형입니다.</span>'
+      :w==='wood'?'돌로 만들었지만 <b>기둥</b>과 <b>지붕</b> 모양을 갖추어 <b>목탑의 외관</b>을 보여 줍니다.'
+      :'여러 석재가 정교하게 <b>하나의 구조물로 짜 맞추어져</b> 있습니다. <span class="long">실제로는 수십 개의 석재입니다. 그림은 층마다 나누어 보인 모형입니다.</span>');}};
+
+/* ---------- 2문단: 기단부 ---------- */
+function goimInset(x,y,w,h){ // 괴임 확대: 아래 모서리 둥글게, 위 모서리 각지게
+  R.rect(x,y,w,h,'#fff',null,14); R.text(x+w/2,y+16,'상층기단 괴임의 단면(모형)',{col:SUB,size:12,wt:500}); R.text(x+w-18,y+h-26,'하층기단 윗면',{col:SUB,size:12,wt:400,align:'right'});
+  const L=x+20, Rr=x+w-20, B=y+h-40, mid=B-(h-80)*.5, T=y+40, r=(B-mid)*.8;
+  // 상층기단 면(오른쪽 위), 괴임(가운데 계단), 하층기단 윗면(아래)
+  R.path([[L,B],[Rr,B]],'#AEAEB2',1.4);
+  const sx=L+(Rr-L)*.42, sx2=L+(Rr-L)*.66;
+  // 하단 괴임: 둥근 모서리
+  ctx.save(); ctx.beginPath(); ctx.moveTo(sx-r,B); ctx.arc(sx-r,B-r,r,Math.PI/2,0,true); ctx.lineTo(sx,mid); ctx.lineTo(Rr,mid); ctx.lineTo(Rr,B); ctx.closePath(); ctx.fillStyle='#FFF4EC'; ctx.fill(); ctx.restore();
+  ctx.save(); ctx.beginPath(); ctx.moveTo(sx-r,B); ctx.arc(sx-r,B-r,r,Math.PI/2,0,true); ctx.lineTo(sx,mid); ctx.strokeStyle=ORG; ctx.lineWidth=2; ctx.stroke(); ctx.restore();
+  // 상단 괴임: 각진 모서리
+  R.path([[sx,mid],[sx2,mid],[sx2,T],[Rr,T]],ORG,2,null); R.path([[sx,mid],[sx2,mid],[sx2,T],[Rr,T],[Rr,mid]],null,0,null,'#FFF4EC'); R.path([[sx,mid],[sx2,mid],[sx2,T],[Rr,T]],ORG,2);
+  R.text(sx-r-4,B-r-10,'둥글게',{col:ORG,size:12,wt:700,align:'right'}); R.text(sx2-6,T+8,'각지게',{col:ORG,size:12,wt:700,align:'right'});}
+function lab2(x,y,l1,l2,col){ R.text(x,y-8,l1,{col,size:12,wt:700,align:'left'}); R.text(x,y+8,l2,{col,size:12,wt:500,align:'left'}); }
+S.base={sn:'2문단',st:'기단부의 안정감',mode:'2d',
+  ctl(){return [R.seg('',[['text','지문의 기단'],['swap','위아래 바꿔 보기'],['goim','괴임 확대']],st.swap,v=>st.swap=v)]},
+  render(){R.clear(); const m=mob(), W=R.W(), H=R.H();
+    if(st.swap==='goim'){ R.setAcc(.5); const w=Math.min(W*.8,340), h=Math.min(H*.8,240); goimInset((W-w)/2,(H-h)/2,w,h);
+      R.say('상층기단 괴임의 <b>하단 모서리는 둥글게</b>, <b>상단 모서리는 각지게</b> 변화를 주어 <b>율동감</b>을 느끼게 합니다. <span class="long">단면 모양은 단순화한 모형입니다.</span>'); return; }
+    const sw=st.swap==='swap'; R.setAcc(sw?1:0);
+    const T=tower({k:3,swap:sw});
+    fit(-.5,9.0,9,{cxf:m?.4:.4,wf:m?.94:.96,bot:m?44:60}); ground();
+    const at=drawTower(T,{hi:{base1:sw?ORG:BLUE,base2:sw?ORG:BLUE}});
+    const b1=at.find(a=>a.p.type==='base1'), b2=at.find(a=>a.p.type==='base2');
+    const c=sw?ORG:BLUE;
+    bracketV(b1.p.w/2+.3,b1.y0,b1.y1,c,'',-1); bracketV(b2.p.w/2+.3,b2.y0,b2.y1,c,'',-1);
+    lab2(X(b1.p.w/2+.3)+10,Y(0)+22,'하층',sw?'좁고 높게':'낮지만 넓게',c);
+    lab2(X(b2.p.w/2+.3)+10,Y((b2.y0+b2.y1)/2)-(m?6:0),'상층',sw?'넓고 낮게':'다소 좁지만 높게',c);
+    R.path([[X(b1.p.w/2+.3)+6,Y((b1.y0+b1.y1)/2)],[X(b1.p.w/2+.3)+6,Y(0)+8]],c,1,[2,3]);
+    if(sw){ R.text(14,Y(0)+14,'(가정)',{col:ORG,size:12,wt:700,align:'left'}); R.text(14,Y(0)+30,'위가 무거워 보임',{col:ORG,size:12,wt:700,align:'left'}); }
+    R.say(sw?'<b>가정</b>: 하층을 좁고 높게, 상층을 넓고 낮게 바꾸면 위가 무거워 보입니다. 지문의 구성과 비교해 보세요.'
+      :'기단부의 <b>하층은 낮지만 넓게</b>, <b>상층은 다소 좁지만 높게</b> 구성되어 <b>안정감</b>을 줍니다. <span class="long">‘괴임 확대’에서 상층기단 괴임의 모서리를 보세요.</span>');}};
+
+/* ---------- 3문단: 탑신부 ---------- */
+S.body={sn:'3문단',st:'탑신부의 비례와 전각',mode:'2d',img:'tower',
+  ctl(){return [R.rng('1층:2층 탑신 높이',1,5,st.k,v=>R.fx(v,v%1?1:0)+' : 1'+(v===3?' (지문)':''),v=>st.k=v,.5), R.seg('전각',[['up','추켜올림'],['flat','평평하게(가정)']],st.eave,v=>st.eave=v)]},
+  render(){R.clear(); const m=mob(), k=st.k; R.setAcc(Math.abs(k-3)/2);
+    const T=tower({k,top:false}); fit(3.2,T.H+.4,6.2,{cxf:m?.4:.42});
+    const at=drawTower(T,{hi:{bodies:ORG},eave:st.eave});
+    const bs=at.filter(a=>a.p.type==='body'), rs=at.filter(a=>a.p.type==='roof');
+    bracketV(-bs[0].p.w/2-.35,bs[0].y0,bs[0].y1,k===3?ORG:INK,R.fx(k,k%1?1:0),1);
+    bracketV(-bs[1].p.w/2-.35,bs[1].y0,bs[1].y1,k===3?ORG:INK,'1',1);
+    // 옥개 끝을 잇는 선: 위로 갈수록 줄어듦
+    R.path(rs.map(a=>[X(a.p.w/2+.05),Y(a.y0+(st.eave==='up'?.32:0))]),'#AEAEB2',1,[4,4]);
+    R.path(rs.map(a=>[X(-a.p.w/2-.05),Y(a.y0+(st.eave==='up'?.32:0))]),'#AEAEB2',1,[4,4]);
+    if(st.eave==='up') R.text(X(rs[0].p.w/2+.3),Y(rs[0].y0+.32)-12,'전각',{col:INK,size:12,wt:700,align:'left'});
+    R.say((k===3?'1층과 2층 탑신 높이의 비례 <b>3:1</b>(지문) → 시각적으로 안정된 느낌. ':'비례를 바꿔 지문의 <b>3:1</b>과 비교해 보세요. ')
+      +(st.eave==='up'?'<span class="long">위로 갈수록 폭과 높이가 줄어 균제미가 드러나고, 살며시 추켜올린 <b>전각</b>이 직선 중심의 외관에 유려함과 경쾌함을 더합니다.</span>'
+        :'<span class="long"><b>가정</b>: 전각을 평평하게 하면 직선만 남아 강한 외관이 됩니다.</span>'));}};
+
+/* ---------- 4문단: 상륜부 ---------- */
+S.top={sn:'4문단',st:'상륜부의 상승감',mode:'2d',img:'tower',
+  ctl(){return [R.seg('',[['off','상륜부 없이'],['on','상륜부 얹기']],st.top,v=>st.top=v)]},
+  render(){R.clear(); const m=mob(), on=st.top==='on'; R.setAcc(on?1:0);
+    const T=tower({k:3,top:true}); fit(-.3,T.H+.4,6.2,{cxf:m?.4:.42}); ground();
+    const T2=on?T:tower({k:3,top:false}); drawTower(T2,{hi:on?{top:ORG}:{}});
+    const t0=tower({k:3}).H;
+    if(on){ bracketV(1.4,t0,T.H,ORG,'상륜부',-1); R.arrow(X(-1.9),Y(t0+.3),X(-1.9),Y(T.H+.2),ORG,2,8); R.text(X(-2.2),Y((t0+T.H)/2),'상승감',{col:ORG,size:12,wt:700,align:'right'}); }
+    R.say(on?'연꽃이 장식된 석재들을 쌓아 올린 상륜부가 <b>상승감</b>을 자아냅니다. <span class="long">현재의 상륜부는 원래 것이 아니라 <b>동시대 다른 석탑의 것을 본떠 새로 만든 것</b>입니다. 모양은 단순화했습니다.</span>'
+      :'<b>상륜부 얹기</b>를 눌러 탑 꼭대기 부분이 주는 느낌을 비교해 보세요.');}};
+
+R.start({scenes:S, img:IMG, c0:'#3D7CC9', c1:'#E8590C'});
+
+</script>
+</body>
+</html>

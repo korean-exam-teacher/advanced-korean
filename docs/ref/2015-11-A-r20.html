@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>영상 확대·축소 · 지문 그림 자료</title>
+<meta name="description" content="2015학년도 수능(A형) 국어 독서 20~22번 「영상 확대·축소」 지문을 시험지 그림과 움직이는 그림으로 이해하는 참고 자료">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ref.css?v=d042145e">
+
+</head>
+<body>
+<header class="bar"><div class="in">
+  <a href="../suneung.html" id="back">문제은행으로</a>
+  <div class="right"><span class="where">2015학년도 수능(A형) 국어 독서 20~22번</span><button type="button" class="tog" id="tog" aria-pressed="false">그림 함께 보기</button></div>
+</div></header>
+
+<div class="wrap">
+  <main class="read">
+    <h1 class="title" id="title">영상 확대·축소</h1>
+    <p class="intro">지문을 먼저 읽고, 이해가 막히는 문단에서 ‘그림으로 보기’를 누르세요. 그림은 문단을 따라 바뀝니다.</p>
+    <div class="gate" id="gate" role="status" hidden></div>
+    <p class="p" data-scene="pixel"><span class="no">1문단</span>디지털 영상은 2차원 평면에 격자 모양으로 화소를 배열하고 <mark>각 화소의 밝기인 화솟값을 데이터로 저장한 것이다</mark>. 화솟값은 0에서 255 사이의 값으로 나타내는데 0일 때 검은색으로 가장 어둡고 255일 때 흰색으로 가장 밝다. 화소들 사이의 밝기 차이를 명암 대비라 하며 <mark>명암 대비가 강할수록 영상은 선명하게 보인다</mark>. 해상도란 <mark>디지털 영상을 구성하는 화소수</mark>를 말하며 ‘가로×세로’의 화소수로 나타낸다.</p>
+    <p class="p" data-scene="virtual"><span class="no">2문단</span>n×n개의 화소를 가진 입력 영상을 모니터에 나타내면, 모니터에 있는 n×n개의 화소에 입력 영상의 화소들이 일대일로 대응된다. 하지만 모니터에 입력 영상을 확대하거나 축소하여 나타낼 때는 일대일 대응이 되지 않는다. 이를 해결하기 위해 <mark>모니터에서 영상이 표시될 영역의 화소와 일대일 대응하는 ‘가상 영상’을 만들고</mark> 입력 영상의 화솟값을 이용하여 가상 영상의 화솟값을 모두 채운 다음 가상 영상을 모니터에 표시한다.</p>
+    <p class="p" data-scene="copy"><span class="no">3문단</span>예를 들어 n×n의 영상을 가로세로 방향으로 각각 두 배씩 확대해서 모니터에 표시하려면 2n×2n의 가상 영상을 만들어 다음과 같이 화솟값을 채운다. &lt;그림&gt;처럼 입력 영상의 화소 A의 값을 가상 영상의 A₀～A₃의 4개 화소에 그대로 복사한다. 나머지 화소도 이와 같이 처리하면 입력 영상을 확대한 가상 영상을 얻을 수 있다. 이러한 ㉠‘<u>확대 </u><u>복사 </u><u>방법</u>’은 간단하지만 A₀～A₃ 모두가 같은 밝기로 표시되므로 <mark>윤곽선 부분의 격자 모양이 두드러져 보이는 ‘모자이크 효과’가 발생한다</mark>. <mark>확대율이 높아질수록 이러한 현상은 더욱 심해진다</mark>.</p>
+    <p class="p" data-scene="lerp"><span class="no">4문단</span>이러한 현상을 개선한 방법이 ㉡‘<u>선형 </u><u>보간법</u>’이다. 이는 입력 영상의 화소 가운데 A～D는 각각 A₀, B₀, C₀, D₀ 위치에만 복사하고 나머지 화소들은 인접한 화소들을 이용하여 화솟값을 채우는 방법이다. &lt;그림&gt;에서 A₃의 화솟값을 A₃과 인접한 A₀, B₀, C₀, D₀의 평균값으로 채우고, A₁은 A₀과 B₀의 평균값으로, A₂는 A₀과 C₀의 평균값으로 채우는 것이다. 이렇게 하면 빈 화소의 값이 인접 화소의 평균값으로 채워지기 때문에 <mark>인접 화소들 사이의 명암 대비가 약해져서 모자이크 효과가 감소한다</mark>. 하지만 이 방법은 화솟값을 구하기 위해 평균값을 계산해야 하므로 <mark>처리 시간이 늘어나는 단점이 있다</mark>.</p>
+    <p class="p" data-scene="shrink"><span class="no">5문단</span>반면, n×n의 영상을 가로세로 방향으로 각각 절반으로 축소해서 모니터에 표시하려면 n/2×n/2의 가상 영상을 만들고 화솟값을 채운다. 이때 입력 영상의 화소들 중에서 가로세로 방향으로 한 칸씩 건너뛰면서 화소를 선택해 가상 영상의 화소에 복사한다. 이러한 ‘선택 복사 방법’을 쓰면 <mark>입력 영상의 화소 중 표시되지 않는 부분이 생기기 때문에 영상이 왜곡되어 보인다</mark>. 특히 글자와 같이 가로세로 방향으로 흑백의 영역이 뚜렷이 구별되는 영상의 경우에는 글자 모양이 변한다. 따라서 <mark>입력 영상의 인접한 4개의 화솟값의 평균값으로 가상 영상의 하나의 화솟값을 채우는 ‘영역 축소 방법’</mark>을 주로 사용한다. 그러나 이 방법은 연산량이 많아져 처리 시간이 늘어나고, 화솟값을 평균값으로 채우기 때문에 <mark>명암 대비가 강한 영상의 경우 명암 대비가 약해지는 단점이 있다</mark>.</p>
+
+  </main>
+
+  <aside class="stageCol" aria-label="움직이는 그림">
+    <div class="stage" id="stage">
+      <button type="button" class="close" id="close" aria-label="그림 닫기">✕</button>
+      <div class="head"><span class="sn" id="sn"></span><span class="st" id="st"></span></div>
+      <div class="view">
+        <canvas id="cv" aria-label="움직이는 그림"></canvas>
+        <button class="orig" id="orig" hidden aria-label="시험지 그림 크게 보기"><img id="origImg" alt=""><span>시험지 그림</span></button>
+        <span class="drag">끌어서 돌리기 · 두 번 눌러 처음 자리로</span>
+      </div>
+      <div class="ctl" id="ctl"></div>
+      <div class="say" id="say" aria-live="polite"></div>
+    </div>
+  </aside>
+</div>
+
+<section class="sum" aria-labelledby="sumh">
+  <h2 id="sumh">정리</h2>
+  <dl>
+    <dt>화솟값</dt><dd>각 화소의 밝기. 0(검은색, 가장 어두움)~255(흰색, 가장 밝음).</dd>
+    <dt>명암 대비·해상도</dt><dd>명암 대비는 화소들 사이의 밝기 차이, 강할수록 선명하다. 해상도는 화소수(가로×세로).</dd>
+    <dt>가상 영상</dt><dd>확대·축소할 때 모니터의 표시 영역 화소와 일대일 대응하도록 만들어, 입력 영상의 화솟값으로 채운 뒤 표시한다.</dd>
+    <dt>㉠ 확대 복사 방법</dt><dd>A의 값을 A₀~A₃에 그대로 복사. 간단하지만 모자이크 효과, 확대율이 높을수록 심해진다.</dd>
+    <dt>㉡ 선형 보간법</dt><dd>A~D는 A₀, B₀, C₀, D₀에만 복사, 나머지는 인접 화소의 평균값. 모자이크 효과는 줄지만 처리 시간이 늘어난다.</dd>
+    <dt>축소</dt><dd>선택 복사 방법(한 칸씩 건너뛰며 선택)은 표시되지 않는 화소가 생겨 왜곡된다. 영역 축소 방법(인접 4개 평균)은 처리 시간이 늘고 명암 대비가 약해진다.</dd>
+  </dl>
+</section>
+<p class="foot">이 그림들은 지문 이해를 돕는 모형입니다. 화소 수와 영상의 무늬(원, 글자 모양), 화솟값은 지문에 없는 예시입니다. 선형 보간법에서 B₂, C₁처럼 지문이 직접 말하지 않은 칸은 A₁, A₂와 같은 방식(인접한 두 화소의 평균)으로 채웠습니다. 시험지 그림 출처: 한국교육과정평가원 2015학년도 대학수학능력시험 국어 영역(A형).</p>
+<script>window.REF_ITEMS=[["2015-11-A||독서||20", "2015-11-A||독서||21", "2015-11-A||독서||22"]];</script>
+<script src="engine.js?v=d042145e"></script>
+<script>
+const IMG={"fig": {"src": "img/2015-11-A-r20-fig.png", "alt": "시험지 <그림>: 입력 영상의 화소 A, B, C, D를 2배 확대한 가상 영상의 A0, A1, B0, A2, A3, C0, D0 위치에 대응시킨 그림"}};
+/* 2015학년도 수능(A형) 독서 20~22 · 디지털 영상의 확대와 축소 — 2D 장면 */
+const INK='#1D1D1F', SUB='#6E6E73', MUTE='#86868B', LINE='#C7C7CC', RULE='#E8E8ED', BLUE='#3D7CC9', ORG='#E8590C';
+const ACC=()=>getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()||BLUE;
+const mob=()=>R.W()<440;
+const cv=R.$('cv');
+const st={ct:70, res:8, vm:'up', k:2, cp:{t:1,run:false,last:null}, in:{A:0,B:240,C:160,D:80}, lm:'lin', sm:'sel'};
+const S={};
+const gray=v=>{v=Math.round(R.clamp(v,0,255)); return `rgb(${v},${v},${v})`;};
+const tcol=v=>v>140?INK:'#FFFFFF';
+function grid(x,y,n,cs,val,o){o=o||{}; for(let r=0;r<n;r++) for(let c=0;c<n;c++){const v=val(r,c); R.rect(x+c*cs,y+r*cs,cs,cs,v==null?'#FFFFFF':gray(v),null,0);
+    if(o.txt&&v!=null&&cs>=(mob()?24:28)) R.text(x+c*cs+cs/2,y+r*cs+cs/2,''+Math.round(v),{col:tcol(v),size:12,wt:500});}
+  const c=R.ctx; c.save(); c.strokeStyle=o.line||'rgba(110,110,115,.35)'; c.lineWidth=1; c.beginPath(); for(let i=0;i<=n;i++){c.moveTo(x+i*cs,y); c.lineTo(x+i*cs,y+n*cs); c.moveTo(x,y+i*cs); c.lineTo(x+n*cs,y+i*cs);} c.stroke(); c.restore();}
+
+/* ---------- 1문단: 화소, 화솟값, 명암 대비, 해상도 ---------- */
+const disk=(u,v)=>{const d=Math.hypot(u-.5,v-.5)/.5; return R.clamp((d-.45)/.4,0,1);};   /* 0: 가운데(어두움) ~ 1: 바깥(밝음) */
+S.pixel={sn:'1문단',st:'화소와 화솟값',mode:'2d',
+  ctl(){return [R.rng('명암 대비',0,100,st.ct,v=>v+'%',v=>st.ct=v), R.seg('해상도',[[8,'8×8'],[16,'16×16']],st.res,v=>st.res=+v)]},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), n=st.res, c=st.ct/100; R.setAcc(c);
+    const val=(r,k)=>128+(disk((k+.5)/n,(r+.5)/n)-.5)*255*c;
+    const side=Math.min(H-(m?62:90),W*(m?.58:.62)), cs=side/n, x=m?12:(W-side)/2-50, y=(H-side)/2-(m?10:16);
+    grid(x,y,n,cs,val,{txt:true});
+    let lo=255,hi=0; for(let r=0;r<n;r++) for(let k=0;k<n;k++){const v=Math.round(val(r,k)); lo=Math.min(lo,v); hi=Math.max(hi,v);}
+    const tx=x+side+(m?12:24);
+    R.text(tx,y+8,`해상도 ${n}×${n}`,{col:INK,size:m?13:14,wt:700,align:'left'}); R.text(tx,y+(m?26:30),`화소 ${n*n}개`,{col:SUB,size:12,wt:500,align:'left'});
+    R.text(tx,y+(m?54:70),'가장 어두운 값',{col:SUB,size:12,wt:500,align:'left'}); R.text(tx,y+(m?70:88),''+lo,{col:INK,size:13,wt:700,align:'left'});
+    R.text(tx,y+(m?92:116),'가장 밝은 값',{col:SUB,size:12,wt:500,align:'left'}); R.text(tx,y+(m?108:134),''+hi,{col:INK,size:13,wt:700,align:'left'});
+    /* 0~255 띠 */
+    const by=y+side+(m?12:20), bw=side, g=R.ctx.createLinearGradient(x,0,x+bw,0); g.addColorStop(0,'#000'); g.addColorStop(1,'#fff'); R.ctx.save(); R.ctx.fillStyle=g; R.ctx.fillRect(x,by,bw,m?8:10); R.ctx.restore(); R.rect(x,by,bw,m?8:10,null,LINE,0);
+    R.text(x,by+(m?20:24),'0 검은색',{col:SUB,size:12,wt:400,align:'left'}); R.text(x+bw,by+(m?20:24),'255 흰색',{col:SUB,size:12,wt:400,align:'right'});
+    R.say(`각 칸이 화소, 칸 안의 수가 밝기인 <b>화솟값</b>(0~255)입니다. 화소들 사이 밝기 차이(<b>명암 대비</b>)가 ${hi-lo}${c>.6?'로 커서 <b>선명</b>하게':c<.25?'로 작아 흐릿하게':''} 보입니다. <span class="long">해상도는 ‘가로×세로’의 화소수. 16×16에서는 수를 생략했습니다.</span>`);}};
+
+/* ---------- 2문단: 가상 영상 ---------- */
+const IN4=[[240,240,240,240],[240,40,40,240],[240,40,120,240],[240,240,240,240]];
+S.virtual={sn:'2문단',st:'가상 영상',mode:'2d',
+  ctl(){return [R.seg('',[['same','그대로'],['up','2배 확대'],['down','절반 축소']],st.vm,v=>st.vm=v)]},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), vm=st.vm, n=vm==='same'?4:vm==='up'?8:2; R.setAcc(vm==='same'?0:vm==='up'?1:.5);
+    const top=m?44:60, sideIn=Math.min(m?92:150,(H-top)*.55), csIn=sideIn/4, xi=m?14:30, yi=top+(H-top-sideIn)/2-(m?6:10);
+    grid(xi,yi,4,csIn,(r,c)=>IN4[r][c],{txt:true}); R.text(xi+sideIn/2,yi-(m?10:14),'입력 영상 4×4',{col:INK,size:12,wt:700});
+    const mw=W-(xi+sideIn)-(m?40:80), sideV=Math.min(H-top-(m?12:50),mw)*(vm==='same'?.6:vm==='up'?1:.6), xv=W-(m?14:30)-mw/2-sideV/2, yv=top+(H-top-sideV)/2-(m?4:10);
+    R.rect(xv-8,yv-8,sideV+16,sideV+16,'#FFFFFF',LINE,8);
+    const csV=sideV/n; grid(xv,yv,n,csV,(r,c)=>vm==='same'?IN4[r][c]:null,{txt:vm==='same'});
+    if(vm!=='same') for(let r=0;r<n;r++) for(let c=0;c<n;c++) if(csV>=18) R.text(xv+c*csV+csV/2,yv+r*csV+csV/2,'?',{col:'#C7C7CC',size:12,wt:500});
+    R.text(xv+sideV/2,yv-(m?16:22),`가상 영상 ${n}×${n}`,{col:INK,size:12,wt:700});
+    R.arrow(xi+sideIn+(m?8:14),yi+sideIn/2,xv-(m?14:20),yi+sideIn/2,MUTE,1.6);
+    R.text(W/2,m?10:24,'모니터 표시 영역의 화소와 일대일 대응',{col:SUB,size:12,wt:500});
+    R.say(vm==='same'?'n×n 영상을 그대로 나타내면 모니터의 n×n개 화소에 입력 영상의 화소가 <b>일대일</b>로 대응합니다.'
+      :`${vm==='up'?'확대':'축소'}하면 일대일 대응이 되지 않으므로, 표시 영역과 일대일 대응하는 <b>가상 영상</b>(${n}×${n})을 만들어 화솟값을 <b>모두 채운 다음</b> 모니터에 표시합니다.`);}};
+
+/* ---------- 3문단: ㉠ 확대 복사 방법 ---------- */
+const N6=6, EDGE=(r,c)=>(c+.5)>(r+.5)*1.0+.3?235:25;   /* 대각선 윤곽선이 있는 입력 영상 */
+let cpBtn=null;
+S.copy={sn:'3문단',st:'㉠ 확대 복사 방법',mode:'2d',img:'fig',
+  enter(){st.cp.last=null;},
+  tick(now,cur){const a=st.cp; if(!cur||!a.run) return false; if(a.last!=null) a.t+=(now-a.last)/1000*(R.RM?99:.32); a.last=now; if(a.t>=1){a.t=1; a.run=false; if(cpBtn) cpBtn.textContent='다시 채우기';} return true;},
+  ctl(){cpBtn=R.btn('채우기','',b=>{st.cp.t=0; st.cp.run=true; st.cp.last=null; b.textContent='채우는 중';}); return [R.seg('확대율',[[2,'2배'],[4,'4배']],st.k,v=>{st.k=+v; st.cp.t=1;}), cpBtn];},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), k=st.k, a=st.cp, done=Math.floor(a.t*N6*N6+1e-6); R.setAcc(k===2?0:1);
+    const sideIn=m?66:110, csIn=sideIn/N6, xi=m?12:30, yi=m?30:70;
+    grid(xi,yi,N6,csIn,(r,c)=>EDGE(r,c)); R.text(xi+sideIn/2,yi-(m?10:14),'입력 영상',{col:INK,size:12,wt:700});
+    const nv=N6*k, x0v=xi+sideIn+(m?14:30), sideV=Math.min(H-(m?40:90),W-x0v-(m?108:130)), cs=sideV/nv, xv=x0v, yv=m?14:40;
+    grid(xv,yv,nv,cs,(r,c)=>{const ir=Math.floor(r/k), ic=Math.floor(c/k); return ir*N6+ic<done?EDGE(ir,ic):null;},{line:'rgba(110,110,115,.18)'});
+    for(let i=0;i<=N6;i++){R.path([[xv+i*k*cs,yv],[xv+i*k*cs,yv+sideV]],'rgba(110,110,115,.45)',1); R.path([[xv,yv+i*k*cs],[xv+sideV,yv+i*k*cs]],'rgba(110,110,115,.45)',1);}
+    R.text(xv+sideV/2,yv+sideV+(m?12:18),`가상 영상 ${nv}×${nv}`,{col:INK,size:12,wt:700});
+    if(a.run&&done<N6*N6){const ir=Math.floor(done/N6), ic=done%N6; R.rect(xi+ic*csIn,yi+ir*csIn,csIn,csIn,null,ORG,0); R.rect(xv+ic*k*cs,yv+ir*k*cs,k*cs,k*cs,null,ORG,0);
+      R.arrow(xi+ic*csIn+csIn,yi+ir*csIn+csIn/2,xv+ic*k*cs-2,yv+ir*k*cs+k*cs/2,ORG,1.2,5);}
+    R.say(a.t<1?`입력 영상의 화소 하나의 값을 가상 영상의 <b>${k}×${k}=${k*k}개</b> 화소에 그대로 복사합니다.`:`${k*k}개 화소가 모두 같은 밝기라 대각선 윤곽선이 <b>계단 모양(모자이크 효과)</b>으로 보입니다. <span class="long">확대율이 높을수록 같은 값의 덩어리가 커져 더 심해집니다. 무늬는 예시입니다.</span>`);}};
+
+/* ---------- 4문단: ㉡ 선형 보간법 ---------- */
+const LV=[0,80,160,240];
+let lerpHit=[];
+cv.addEventListener('pointerdown',e=>{ if(R.cur()!=='lerp') return; const r=cv.getBoundingClientRect(), x=e.clientX-r.left, y=e.clientY-r.top; const h=lerpHit.find(h=>x>=h.x&&x<=h.x+h.w&&y>=h.y&&y<=h.y+h.w); if(!h) return; const i=LV.indexOf(st.in[h.k]); st.in[h.k]=LV[(i+1)%LV.length]; R.dirty();});
+cv.addEventListener('pointermove',e=>{ if(R.cur()!=='lerp') return; const r=cv.getBoundingClientRect(), x=e.clientX-r.left, y=e.clientY-r.top; cv.style.cursor=lerpHit.some(h=>x>=h.x&&x<=h.x+h.w&&y>=h.y&&y<=h.y+h.w)?'pointer':'default';});
+function lerpVals(){const {A,B,C,D}=st.in, lin=st.lm==='lin';
+  if(!lin) return [[['A₀',A],['A₁',A],['B₀',B]],[['A₂',A],['A₃',A],['B₂',B]],[['C₀',C],['C₁',C],['D₀',D]]];
+  return [[['A₀',A],['A₁',(A+B)/2],['B₀',B]],[['A₂',(A+C)/2],['A₃',(A+B+C+D)/4],['B₂',(B+D)/2]],[['C₀',C],['C₁',(C+D)/2],['D₀',D]]];}
+S.lerp={sn:'4문단',st:'㉡ 선형 보간법',mode:'2d',img:'fig',
+  ctl(){return [R.seg('',[['copy','㉠ 확대 복사'],['lin','㉡ 선형 보간']],st.lm,v=>st.lm=v)]},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), lin=st.lm==='lin'; R.setAcc(lin?1:0);
+    const top=m?44:64, cin=Math.min(m?40:62,(H-top)/3.2), xi=m?10:30, yi=top+(H-top-2*cin)/2-(m?14:20);
+    R.text(xi+cin,yi-(m?12:16),'입력 영상',{col:INK,size:12,wt:700}); lerpHit=[];
+    [['A',0,0],['B',0,1],['C',1,0],['D',1,1]].forEach(([k,r,c])=>{const v=st.in[k], x=xi+c*cin, y=yi+r*cin; R.rect(x,y,cin,cin,gray(v),'#AEAEB2',0); R.text(x+cin/2,y+cin/2-7,k,{col:tcol(v),size:13,wt:700}); R.text(x+cin/2,y+cin/2+9,''+v,{col:tcol(v),size:12,wt:500}); lerpHit.push({k,x,y,w:cin});});
+    R.text(xi,yi+2*cin+(m?14:18),'눌러서 밝기 바꾸기',{col:ORG,size:12,wt:500,align:'left'});
+    const x0v=xi+2*cin+(m?16:40), V=lerpVals(), cs=Math.min(m?62:90,(H-top-(m?6:20))/3, (W-x0v-(m?106:130))/3), xv=x0v, yv=top+(H-top-3*cs)/2-(m?2:6);
+    R.text(xv+1.5*cs,yv-(m?12:16),'가상 영상 (일부)',{col:INK,size:12,wt:700});
+    V.forEach((row,r)=>row.forEach(([lab,v],c)=>{const x=xv+c*cs, y=yv+r*cs, cp=['A₀','B₀','C₀','D₀'].includes(lab); R.rect(x,y,cs,cs,gray(v),'#AEAEB2',0);
+      R.text(x+cs/2,y+cs/2-8,lab,{col:tcol(v),size:12,wt:700}); R.text(x+cs/2,y+cs/2+9,R.fx(v,v%1?1:0),{col:tcol(v),size:12,wt:500});
+      if(lin&&!cp) R.rect(x+3,y+3,cs-6,cs-6,null,ORG,3);}));
+    R.text(W/2,m?10:26,lin?'주황 테두리: 평균값으로 채운 칸':'모든 칸을 그대로 복사',{col:lin?ORG:SUB,size:12,wt:500});
+    R.say(lin?'A~D는 A₀, B₀, C₀, D₀에만 복사하고, A₁은 A₀과 B₀의, A₂는 A₀과 C₀의, A₃은 A₀·B₀·C₀·D₀의 <b>평균값</b>으로 채웁니다. 이웃한 칸끼리 명암 대비가 <b>약해져</b> 모자이크 효과가 줄지만, 평균을 계산하느라 처리 시간이 늘어납니다. <span class="long">이 3×3 칸에서만 평균 계산 5번.</span>'
+      :'확대 복사 방법은 A의 값을 A₀~A₃ 네 칸에 그대로 복사합니다. <span class="long">입력 영상의 칸을 눌러 값을 바꿔 보세요.</span>');}};
+
+/* ---------- 5문단: 선택 복사 vs 영역 축소 ---------- */
+const E8=['........','..#####.','..#.....','..####..','..#.....','..#####.','........','........'].map(r=>[...r].map(ch=>ch==='#'?0:255));
+S.shrink={sn:'5문단',st:'절반으로 축소하기',mode:'2d',
+  ctl(){return [R.seg('',[['sel','선택 복사 방법'],['avg','영역 축소 방법']],st.sm,v=>st.sm=v)]},
+  render(){R.clear(); const W=R.W(),H=R.H(),m=mob(), sel=st.sm==='sel'; R.setAcc(sel?0:1);
+    const top=m?28:60, side=Math.min(H-top-(m?26:50),W*.42), cs=side/8, xi=m?12:30, yi=top+(m?2:6);
+    grid(xi,yi,8,cs,(r,c)=>E8[r][c],{});
+    if(sel){ for(let r=0;r<8;r++) for(let c=0;c<8;c++){ if(r%2||c%2){R.ctx.save(); R.ctx.globalAlpha=.55; R.rect(xi+c*cs,yi+r*cs,cs,cs,'#F5F5F7'); R.ctx.restore();} else R.rect(xi+c*cs+1.5,yi+r*cs+1.5,cs-3,cs-3,null,ORG,2);} }
+    else for(let r=0;r<8;r+=2) for(let c=0;c<8;c+=2) R.rect(xi+c*cs+1,yi+r*cs+1,2*cs-2,2*cs-2,null,BLUE,3);
+    R.text(xi+side/2,yi+side+(m?13:18),'입력 영상 8×8',{col:INK,size:12,wt:700});
+    const out=(r,c)=>sel?E8[2*r][2*c]:(E8[2*r][2*c]+E8[2*r][2*c+1]+E8[2*r+1][2*c]+E8[2*r+1][2*c+1])/4;
+    const so=Math.min(side,W-xi-side-(m?40:90)), co=so/4, xo=W-(m?12:30)-so, yo=yi+(side-so)/2;
+    grid(xo,yo,4,co,out,{txt:true}); R.text(xo+so/2,yo+so+(m?13:18),'가상 영상 4×4',{col:INK,size:12,wt:700});
+    R.arrow(xi+side+(m?6:14),yi+side/2,xo-(m?6:14),yi+side/2,MUTE,1.6);
+    R.text(W/2,m?10:26,sel?'주황 테두리 화소만 골라 복사 (한 칸씩 건너뜀)':'파랑 테두리 4개 화소의 평균값으로 채움',{col:sel?ORG:BLUE,size:12,wt:500});
+    R.say(sel?'한 칸씩 건너뛰며 고르면 <b>표시되지 않는 화소</b>가 생겨, 가는 획으로 된 글자 모양이 <b>변해 버립니다</b>.':'인접한 4개 화솟값의 <b>평균</b>으로 채우면 획이 남지만 회색이 되어 <b>명암 대비가 약해집니다</b>. 평균 계산이 많아 처리 시간도 늘어납니다. <span class="long">글자 모양은 예시입니다.</span>');}};
+
+for(const k of Object.keys(S)) if(k!=='lerp'){const e=S[k].enter; S[k].enter=function(){cv.style.cursor=''; if(e) e.call(this);};}
+R.start({scenes:S,img:IMG,c0:'#3D7CC9',c1:'#E8590C'});
+
+</script>
+</body>
+</html>
