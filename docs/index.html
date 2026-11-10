@@ -500,12 +500,13 @@ function pkClick(t){
   if(t.dataset.grade){ const k=t.dataset.grade; if(PK[k]) PK[k].done=1; return true; }
   if(t.dataset.reveal){ const k=t.dataset.reveal; PK[k]={...(PK[k]||{}),done:1}; return true; }
   return false; }
-$('setv').addEventListener('click',e=>{ const t=e.target.closest('button'); if(!t) return; if(t.id==='svX'){ closeSet(); return; } if(pkClick(t)&&SV){ const y=$('setv').scrollTop; setHTML(SV); $('setv').scrollTop=y; } });
+$('setv').addEventListener('click',e=>{ const t=e.target.closest('button'); if(!t) return; if(t.id==='svX'){ closeSet(); return; } if(t.dataset.grade) kmaRec(t.dataset.grade); if(pkClick(t)&&SV){ const y=$('setv').scrollTop; setHTML(SV); $('setv').scrollTop=y; } });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!$('setv').hidden) closeSet(); });
 $('list').addEventListener('click',e=>{
   const S=st[tab];
   const bt=e.target.closest('button');
   if(bt&&bt.dataset.set){ openSet(bt.dataset.set); return; }
+  if(bt&&bt.dataset.grade) kmaRec(bt.dataset.grade);
   if(bt&&pkClick(bt)){ render(); return; }
   const tg=e.target.closest('.tag');
   if(tg){ if(tg.dataset.q){ S.q=tg.dataset.q; $('q').value=S.q; } else { S.sel={}; S.sel[tg.dataset.ft]=new Set([tg.dataset.v]); buildSide(); } S.page=1; S.open=null; render(); $('ixView').scrollIntoView({behavior:'smooth'}); return; }
@@ -519,6 +520,14 @@ $('sform').onsubmit=e=>{ e.preventDefault(); st[tab].q=$('q').value.trim(); st[t
 $('suggest').onclick=e=>{ const b=e.target.closest('button[data-q]'); if(!b) return; $('q').value=b.dataset.q; $('sform').requestSubmit(); };
 document.querySelectorAll('[data-tab]').forEach(x=>x.addEventListener('click',e=>{ e.preventDefault(); setTab(x.dataset.tab); if(x.classList.contains('bn')||document.body.classList.contains('past-hero')) $('main').scrollIntoView({behavior:'smooth'}); }));
 $('sideTog').onclick=()=>{ const o=$('side').classList.toggle('open'); $('sideTog').setAttribute('aria-expanded',o); $('sideTog').lastChild.textContent=o?'검색 조건 닫기':'검색 조건 열기'; };
+window.KMA_ITEMS=function(ids){ const abs=s=>'/advanced-korean/'+s; return ids.map(function(id){
+  let t=null,i=null; for(const tt of ['psat','leet','imyong']){ i=TABS[tt].items.find(x=>x.id===id); if(i){t=tt;break;} } if(!i) return null;
+  const b=window.BKAPI.get(id); if(!b) return null; const pre={psat:'psat',leet:'leet',imyong:'im'}[t];
+  return {k:'adv:'+pre+':'+id, a:t==='psat'?'PSAT':t==='leet'?'LEET '+i._ex.subject:'임용 '+String(i.area||'').split('·')[0], title:b.title, topic:b.topic, src:b.src, nc:(t==='imyong'&&i.sec!=='객관식')?0:5,
+    q:(b.q||[]).map(x=>({s:abs(x.s),w:x.w,h:x.h})), p:b.p?{lab:b.p.lab, imgs:(b.p.imgs||[]).map(x=>({s:abs(x.s),w:x.w,h:x.h}))}:null, txt:null, ans:i._a||0};
+}).filter(Boolean); };
+function kmaRec(k){ if(!window.KMA||!PK[k]||!PK[k].v) return; const id=k.slice(1); let t=null,i=null; for(const tt of ['psat','leet','imyong']){ i=TABS[tt].items.find(x=>x.id===id); if(i){t=tt;break;} } if(!i||!i._a) return;
+  KMA.record('adv:'+({psat:'psat',leet:'leet',imyong:'im'}[t])+':'+id, PK[k].v===i._a, t==='psat'?'PSAT':t==='leet'?'LEET '+i._ex.subject:'임용 '+String(i.area||'').split('·')[0]); }
 window.BKAPI={page:'kkot',get:function(id){ var i=null; for(const t of ['leet','imyong','psat']){ i=TABS[t].items.find(x=>x.id===id); if(i) break; } if(!i) return null;
   const e=i._ex, q=picQ(i), p=picP(i);
   const title=isP(i)?`${e.year}년 ${e.kind} PSAT 언어논리 ${i.no}번`:isM(i)?`${e.year}학년도 중등임용 국어 ${e.kind.replace('1차 ','')} ${noLab(i)}`:`${e.year}학년도 LEET ${e.subject} ${i.no}번`;
@@ -640,7 +649,7 @@ const h=(location.hash||'').slice(1); setTab(TABS[h]?h:'leet',false);
           '<button type="button" data-mv="-1" data-i="'+n+'" aria-label="위로"'+(n===0?' disabled':'')+'>↑</button>'+
           '<button type="button" data-mv="1" data-i="'+n+'" aria-label="아래로"'+(n===B.length-1?' disabled':'')+'>↓</button>'+
           '<button type="button" data-rm="'+n+'" aria-label="빼기">✕</button></li>'; }).join('')+'</ol>'+
-      '<div class="bk-foot"><button type="button" class="bk-btn" id="bkClr">모두 비우기</button><span class="r"><button type="button" class="bk-btn" id="bkX">닫기</button><button type="button" class="bk-btn pri" id="bkGo"'+(B.length?'':' disabled')+'>인쇄하기</button></span></div>'+
+      '<div class="bk-foot"><button type="button" class="bk-btn" id="bkClr">모두 비우기</button><span class="r"><button type="button" class="bk-btn" id="bkX">닫기</button>'+(window.KMA&&KMA.on?'<button type="button" class="bk-btn" id="bkAsg"'+(B.length?'':' disabled')+'>과제로 내기</button>':'')+'<button type="button" class="bk-btn pri" id="bkGo"'+(B.length?'':' disabled')+'>인쇄하기</button></span></div>'+
       '<p class="bk-note">같은 지문의 문항은 지문 바로 뒤에 모아 싣고, 지문은 한 번만 싣습니다. 문항 번호는 원래 시험의 번호를 그대로 씁니다. 인쇄 창에서 대상을 \'PDF로 저장\'으로 고르면 파일로도 받을 수 있습니다.</p>';
   }
   function openP(){ panel(); sh.hidden=false; document.documentElement.classList.add('soft-lock'); setTimeout(function(){ var t=$('bkT'); t&&t.focus(); },50); }
@@ -652,6 +661,7 @@ const h=(location.hash||'').slice(1); setTab(TABS[h]?h:'leet',false);
     if(t.id==='bkX'){ closeP(); return; }
     if(t.id==='bkClr'){ if(confirmClear()){ B=[]; save(); refresh(); closeP(); } return; }
     if(t.id==='bkGo'){ doPrint(); return; }
+    if(t.id==='bkAsg'){ closeP(); KMA.assign(window.KMA_ITEMS(B)); return; }
     if(t.dataset.rm){ B.splice(+t.dataset.rm,1); save(); refresh(); if(!B.length) closeP(); return; }
     if(t.dataset.mv){ var i=+t.dataset.i, j=i+(+t.dataset.mv); var x=B[i]; B[i]=B[j]; B[j]=x; save(); panel(); return; }
   });
@@ -1046,5 +1056,6 @@ footer .guide details{border-color:var(--line)!important;background:none!importa
 <script src="/middle-korean/js/config.js?v=93"></script>
 <script src="/middle-korean/js/ink.js?v=93"></script>
 <script src="/middle-korean/js/live.js?v=93"></script>
+<script src="/suneung-korean/js/account.js?v=100"></script>
 </body>
 </html>
