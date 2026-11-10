@@ -347,7 +347,8 @@ footer .guide details{border-color:var(--line)!important;background:none!importa
 .gm-filters input{min-width:220px;flex:1}
 ul.gm-list{list-style:none;margin:6px 0;padding:0;border-top:1px solid var(--line)}
 ul.gm-list>li{border-bottom:1px solid var(--line)}
-.gm-row{display:grid;grid-template-columns:150px 50px 92px 1fr 64px;gap:10px;align-items:center;padding:13px 6px;cursor:pointer}
+.gm-row{display:grid;grid-template-columns:150px 58px 92px 1fr 64px;gap:10px;align-items:center;padding:13px 6px;cursor:pointer}
+.gm-row.t{grid-template-columns:150px 58px 92px 1fr 64px 56px}
 .gm-row:hover{background:var(--soft)}
 .gm-row .ex b{display:block;font-size:14px}.gm-row .ex small{color:var(--faint);font-size:12px}
 .gm-row .badge{font-size:12px;border-radius:999px;padding:3px 9px;background:var(--soft);color:var(--sub);text-align:center;white-space:nowrap}
@@ -361,7 +362,19 @@ ul.gm-list>li{border-bottom:1px solid var(--line)}
 table.gm-t{border-collapse:collapse;width:100%;font-size:14px}table.gm-t th,table.gm-t td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left}table.gm-t th{color:var(--sub);font-weight:600;font-size:13px}
 .gm-empty{color:var(--sub);padding:30px 4px;text-align:center}
 .gm-note{color:var(--faint);font-size:12.5px;line-height:1.7;margin-top:28px}
-@media (max-width:760px){.gnb .inner{min-width:0}.gnb-nav{max-width:100%;min-width:0}.gm-row{grid-template-columns:minmax(0,1fr) 56px;row-gap:4px}.gm-row .ex{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;min-width:0}.gm-row .tx{min-width:0}.gm-row .tx small{max-width:100%}.gm-row .no,.gm-row .badge{display:none}.gm-stat{grid-template-columns:repeat(2,1fr)}.gm-bars div{grid-template-columns:84px 1fr 70px}.gm-bar{top:56px}}
+.gm-find{display:flex;gap:8px;margin:0 0 12px}
+.gm-find input{flex:1;min-width:0;font:inherit;font-size:17px;border:1.5px solid var(--ink);border-radius:999px;padding:13px 20px;background:var(--paper);color:inherit}
+.gm-find button{flex:none}
+.gm-eg{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;color:var(--faint);margin:0 0 14px}
+.gm-eg button{border:0;background:var(--soft);border-radius:999px;padding:4px 11px;font:inherit;font-size:13px;color:var(--sub);cursor:pointer}
+details.gm-more{margin:0 0 12px}details.gm-more summary{cursor:pointer;font-size:14px;color:var(--sub);padding:4px 0}details.gm-more[open] summary{margin-bottom:8px}
+mark{background:rgba(242,214,92,.55);color:inherit;padding:0 1px;border-radius:2px}
+.gm-row .wh{display:inline-block;font-size:11.5px;color:var(--faint);border:1px solid var(--line);border-radius:999px;padding:0 7px;margin-right:6px;vertical-align:1px}
+.gm-pick{display:inline-flex;align-items:center;gap:4px;font-size:12.5px;color:var(--brand);white-space:nowrap}
+.gm-bk{position:sticky;top:64px;z-index:6;display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--paper);border:1px solid var(--brand);border-radius:14px;padding:10px 14px;margin:0 0 12px;font-size:14px}
+.gm-bk b{color:var(--brand)}
+@media (max-width:760px){.gm-bk{top:56px}.gm-find input{font-size:16px;padding:12px 16px}}
+@media (max-width:760px){.gnb .inner{min-width:0}.gnb-nav{max-width:100%;min-width:0}.gm-row{grid-template-columns:minmax(0,1fr) 56px;row-gap:4px}.gm-row .ex{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;min-width:0}.gm-row .tx{min-width:0}.gm-row .tx small{max-width:100%}.gm-row .no,.gm-row .badge{display:none}.gm-row.t{grid-template-columns:minmax(0,1fr) 56px 56px}.gm-stat{grid-template-columns:repeat(2,1fr)}.gm-bars div{grid-template-columns:84px 1fr 70px}.gm-bar{top:56px}}
 </style>
 <header class="gnb"><div class="inner"><a class="logo" href="/suneung-korean/" aria-label="국어의 모든 것 첫 화면으로"><span class="old" lang="okm">바ᄅᆞ래 가ᄂᆞ니</span><span class="logo-sub">공무원 국어</span><small>바다에 가느니</small></a>
   <nav class="gnb-nav" aria-label="시험 고르기">
@@ -372,17 +385,18 @@ table.gm-t{border-collapse:collapse;width:100%;font-size:14px}table.gm-t th,tabl
     <a class="gnb-link sub" href="/suneung-korean/">처음 화면</a>
   </nav></div></header>
 <main class="inner" id="gm" style="padding-top:34px;padding-bottom:60px">
-  <div class="gm-h" style="margin-bottom:6px"><div><h2 style="font-size:30px">공무원 국어</h2><p>국가직·지방직·서울시·지역인재·국회직·군무원·법원직 9급(군무원 7급 포함) 2015~2026 기출 · 원본 문항 그대로</p></div></div>
+  <div class="gm-h" style="margin-bottom:6px"><div><h2 style="font-size:30px">공무원 국어</h2><p>9급 국어 기출 87회 · 1,840문항 (2015~2026)</p></div></div>
   <nav class="gm-tabs" id="gmTabs" aria-label="공부 방법">
-    <a href="#exams" data-v="exams">회차별 풀기 <small>시간 재며 한 회</small></a>
-    <a href="#area" data-v="area">영역별 풀기 <small>골라서 한 문제씩</small></a>
+    <a href="#exams" data-v="exams">회차별 풀기</a>
+    <a href="#find" data-v="find">찾아 풀기</a>
     <a href="#wrong" data-v="wrong">오답 노트</a>
     <a href="#me" data-v="me">내 기록</a>
   </nav>
   <div id="gmView"><p class="gm-empty">불러오는 중…</p></div>
   <p class="gm-note">※ 출처: 인사혁신처 국가공무원 채용시스템, 각 지방자치단체(서울특별시 등), 국회사무처, 국방부, 법원행정처가 공개한 9급(군무원 7급 포함) 공개경쟁채용·지역인재 선발 필기시험 국어 문제. 문제의 저작권은 출제 기관에 있으며, 문항 그림은 원본 문제지를 그대로 잘라 실은 것으로 비영리 교육 목적으로만 제공합니다. 영역은 선생님 분류와 자동 분류(흐린 표시)를 함께 썼습니다. 지역인재 9급은 해설을 함께 실었습니다. 잘못된 곳은 ‘의견 보내기’로 알려 주세요.</p>
 </main>
-<script src="gm/index.js?v=101"></script>
+<script src="gm/index.js?v=102"></script>
+<script src="gm/gmfind.js?v=102"></script>
 <script>
 (function(){
 const D=window.GM_DATA, EX=Object.fromEntries(D.exams.map(e=>[e.id,e])), IT=D.items, IDS=Object.keys(IT);
@@ -405,20 +419,22 @@ function chHTML(id,nc,pick,done,ans){ let h='<div class="gm-ch" role="group">'; 
 let TIMER=null;
 function route(){ clearInterval(TIMER); const h=(location.hash||'#exams').slice(1), [v,arg]=h.split('/');
   document.querySelectorAll('#gmTabs a').forEach(a=>a.classList.toggle('on',a.dataset.v===(v==='exam'?'exams':v)));
-  if(v==='exam'&&EX[arg]) return examView(arg); if(v==='area') return listView('area'); if(v==='wrong') return listView('wrong'); if(v==='me') return meView(); examsView(); }
+  document.querySelectorAll('#gmTabs a').forEach(a=>a.classList.toggle('on',a.dataset.v===(v==='exam'?'exams':v==='area'?'find':v)));
+  if(v==='exam'&&EX[arg]) return examView(arg); if(v==='find'||v==='area') return listView('find'); if(v==='wrong') return listView('wrong'); if(v==='me') return meView(); examsView(); }
+/* 선생님으로 들어오거나 나가면 단추(과제로 내기·담기)를 다시 그린다 */
+document.addEventListener('kma:role',()=>{ const v=(location.hash||'#exams').slice(1).split('/')[0]; if(v!=='exam') route(); });
 window.addEventListener('hashchange',()=>{ route(); window.scrollTo(0,0); });
 /* ---------------- 회차별 ---------------- */
-function teacher(){ return window.KMA&&KMA.on&&(sessionStorage.getItem('kma.tpw')||''); }
+function teacher(){ return !!(window.KMA&&KMA.on&&((KMA.role&&KMA.role())||sessionStorage.getItem('kma.tpw'))); }
 function examsView(){
-  let h='<div class="gm-h"><div><h2>회차별 풀기</h2><p>한 회를 실제 시험처럼 시간을 재며 풉니다. 다 풀고 \'제출\'하면 채점되고 틀린 문항을 바로 볼 수 있어요.</p></div></div>';
+  let h='<div class="gm-h"><div><p>한 회를 시험처럼 시간을 재며 풀고, 제출하면 바로 채점됩니다.</p></div></div>';
   GRPS.forEach(g=>{ const es=D.exams.filter(e=>e.grp===g).sort((a,b)=>b.year-a.year||a.id.localeCompare(b.id)); if(!es.length) return;
     h+=`<section class="gm-grp"><h3>${esc(g)} <small style="color:var(--faint);font-weight:500">${es.length}회</small></h3><div class="gm-cards">`+es.map(e=>{ const a=(ATT[e.id]||[]).slice(-1)[0];
       return `<a class="gm-card" href="#exam/${e.id}"><b>${esc(short(e))}</b><small>${e.n}문항 · ${e.min}분${e.mode==='pg'?' · 시험지 쪽 그림':''}</small>${a?`<span class="sc">${a.sc}/${a.n}</span>`:''}${teacher()?`<button type="button" class="asg" data-asg="${e.id}">이 회차를 과제로 내기</button>`:''}</a>`; }).join('')+'</div></section>'; });
   V.innerHTML=h;
   V.querySelectorAll('[data-asg]').forEach(b=>b.onclick=ev=>{ ev.preventDefault(); ev.stopPropagation(); KMA.assign(assignItems(b.dataset.asg)); });
 }
-function assignItems(eid){ const e=EX[eid]; return Array.from({length:e.n},(_,i)=>{ const id=eid+'-'+String(i+1).padStart(2,'0'), it=IT[id];
-  return {k:'adv:gm:'+id, a:'공무원·'+(it.a||'영역 미정'), title:short(e)+' '+(i+1)+'번', topic:it.q||'', src:'출처: '+e.title+' '+(i+1)+'번', nc:e.nc, q:[], p:null, txt:null, gm:{e:eid,n:i+1}, ans:it.ans||0}; }); }
+function assignItems(eid){ const e=EX[eid]; return Array.from({length:e.n},(_,i)=>GMFind.asgItem(eid+'-'+String(i+1).padStart(2,'0'))); }
 function examView(eid){
   const e=EX[eid], key='gm-run-'+eid; let R=ls(key)||{ans:{},start:Date.now(),done:false};
   if(!R.start) R.start=Date.now();
@@ -456,44 +472,67 @@ function examView(eid){
   }).catch(()=>{ V.innerHTML='<p class="gm-empty">시험지를 불러오지 못했어요. 인터넷 연결을 확인해 주세요.</p>'; });
 }
 function fmt(ms){ const s=Math.max(0,Math.round(ms/1000)); return Math.floor(s/60)+'분 '+String(s%60).padStart(2,'0')+'초'; }
-/* ---------------- 영역별 · 오답 노트 ---------------- */
+/* ---------------- 찾아 풀기 · 오답 노트 ---------------- */
 const F={g:new Set(),a:new Set(),y:'',q:'',page:1,open:null};
+let BK=JSON.parse(sessionStorage.getItem('gm-bk')||'[]');   /* 선생님: 과제에 담은 문항 */
+function bkSave(){ sessionStorage.setItem('gm-bk',JSON.stringify(BK)); }
+const EGS=['훈민정음','높임 표현','사자성어','외래어 표기','고전 소설','현대시','맞춤법','논증','한자어'];
 function listView(mode){
-  const wrong=mode==='wrong';
-  let ids=IDS.filter(id=>{ const it=IT[id], e=EX[it.e];
-    if(wrong) return REC[id]&&!REC[id].ok;
-    if(F.g.size&&!F.g.has(e.grp)) return false; if(F.a.size&&!F.a.has(it.a||'영역 미정')) return false; if(F.y&&String(e.year)!==F.y) return false;
-    if(F.q){ const t=((it.q||'')+' '+(it.s||'')+' '+(it.a||'')+' '+e.title).toLowerCase(); if(!F.q.toLowerCase().split(/\s+/).every(w=>t.includes(w))) return false; }
-    return true; });
-  ids.sort((a,b)=>{ const x=IT[a],y=IT[b]; return wrong?(REC[b].t-REC[a].t):(EX[y.e].year-EX[x.e].year)||(GRPS.indexOf(EX[x.e].grp)-GRPS.indexOf(EX[y.e].grp))||x.e.localeCompare(y.e)||x.n-y.n; });
-  const PER=20, pages=Math.max(1,Math.ceil(ids.length/PER)); if(F.page>pages) F.page=pages;
-  let h=wrong?`<div class="gm-h"><div><h2>오답 노트</h2><p>가장 최근에 틀린 문항이 모입니다. 다시 풀어 맞히면 빠져요. 기록은 이 컴퓨터${window.KMA&&KMA.user&&KMA.user()?'와 내 아이디':''}에 남습니다.</p></div></div>`
-    :`<div class="gm-h"><div><h2>영역별 풀기</h2><p>시험·영역·연도로 골라 한 문제씩 풉니다. 문항 줄을 누르면 펼쳐져요.</p></div></div>`+
-     `<div class="gm-filters">${GRPS.map(g=>`<button type="button" class="gm-chip${F.g.has(g)?' on':''}" data-g="${g}">${g}</button>`).join('')}</div>`+
-     `<div class="gm-filters">${AREAS.concat(['영역 미정']).map(a=>`<button type="button" class="gm-chip${F.a.has(a)?' on':''}" data-a="${a}">${a}</button>`).join('')}</div>`+
-     `<div class="gm-filters"><select id="gmY" aria-label="연도"><option value="">모든 연도</option>${[...new Set(D.exams.map(e=>e.year))].sort((a,b)=>b-a).map(y=>`<option${String(y)===F.y?' selected':''}>${y}</option>`).join('')}</select><input type="search" id="gmQ" placeholder="발문·소재로 찾기 — 예: 맞춤법, 사자성어, 고전 소설, 강화" value="${esc(F.q)}"></div>`;
-  h+=`<p style="color:var(--sub);font-size:14px;margin:8px 0">${ids.length.toLocaleString()}문항${pages>1?` · ${F.page}/${pages}쪽`:''}</p>`;
-  h+= ids.length? '<ul class="gm-list">'+ids.slice((F.page-1)*PER,F.page*PER).map(id=>{ const it=IT[id], e=EX[it.e], r=REC[id];
-    return `<li><div class="gm-row" data-id="${id}" role="button" tabindex="0"><span class="ex"><b>${e.year} ${esc(e.grp==='예시문제'?'예시':e.grp.split('·')[0])}</b><small>${esc(short(e).replace(/^\d{4}\s*/,''))}</small></span><span class="no">${it.n}번</span><span class="badge${it.au?' au':''}" title="${it.au?'자동 분류':''}">${esc(it.a||'영역 미정')}</span><span class="tx">${it.q?esc(it.q):'<span style="color:var(--faint)">(문항 그림으로 보기)</span>'}${it.s?`<small>${esc(it.s)}</small>`:''}</span><span class="st ${r?(r.ok?'ok':'no'):''}">${r?(r.ok?'맞힘':'틀림'):''}</span></div>${F.open===id?'<div class="gm-det" id="gmDet"></div>':''}</li>`; }).join('')+'</ul>' : `<p class="gm-empty">${wrong?'틀린 문항이 없어요. 회차별·영역별로 풀면 여기에 모입니다.':'조건에 맞는 문항이 없어요.'}</p>`;
+  const wrong=mode==='wrong', T=teacher();
+  if(!wrong&&F.q&&!GMFind.ready()){ V.innerHTML='<p class="gm-empty">찾는 중…</p>'; GMFind.load().then(()=>listView(mode)); return; }
+  let G;
+  if(wrong) G=IDS.filter(id=>REC[id]&&!REC[id].ok).sort((a,b)=>REC[b].t-REC[a].t).map(id=>({ids:[id],pk:'',snip:'',where:''}));
+  else G=GMFind.search(F);
+  const PER=20, pages=Math.max(1,Math.ceil(G.length/PER)); if(F.page>pages) F.page=pages;
+  const nQ=G.reduce((x,g)=>x+g.ids.length,0), nP=G.filter(g=>g.pk).length;
+  let h='';
+  if(wrong) h+=`<div class="gm-h"><div><p>틀린 문항이 모입니다. 다시 풀어 맞히면 빠져요.</p></div></div>`;
+  else {
+    h+=`<form class="gm-find" id="gmFF" role="search"><input type="search" id="gmQ" placeholder="지문 속 낱말이나 제재 — 예: 훈민정음" value="${esc(F.q)}" aria-label="낱말·제재로 찾기" enterkeyhint="search"><button class="gm-btn pri" type="submit">찾기</button></form>`;
+    h+=`<div class="gm-eg">예:${EGS.map(w=>`<button type="button" data-eg="${w}">${w}</button>`).join('')}</div>`;
+    const nf=F.g.size+F.a.size+(F.y?1:0);
+    h+=`<details class="gm-more"${nf?' open':''}><summary>영역·시험·연도로 좁히기${nf?` (${nf})`:''}</summary>`+
+      `<div class="gm-filters">${AREAS.concat(['영역 미정']).map(a=>`<button type="button" class="gm-chip${F.a.has(a)?' on':''}" data-a="${a}">${a}</button>`).join('')}</div>`+
+      `<div class="gm-filters">${GRPS.map(g=>`<button type="button" class="gm-chip${F.g.has(g)?' on':''}" data-g="${g}">${g}</button>`).join('')}<select id="gmY" aria-label="연도"><option value="">모든 연도</option>${[...new Set(D.exams.map(e=>e.year))].sort((a,b)=>b-a).map(y=>`<option${String(y)===F.y?' selected':''}>${y}</option>`).join('')}</select></div></details>`;
+  }
+  if(T&&!wrong) h+=`<div class="gm-bk" id="gmBk"><span>선생님 · 과제에 담은 문항 <b>${BK.length}</b>개</span>${BK.length?'<button class="gm-btn pri" type="button" id="gmBkGo" style="padding:7px 16px">과제로 내기</button><button class="gm-btn" type="button" id="gmBkX" style="padding:7px 14px">비우기</button>':'<span style="color:var(--sub);font-size:13px">문항 줄 오른쪽 \'담기\'를 누르세요.</span>'}</div>`;
+  h+=`<p style="color:var(--sub);font-size:14px;margin:8px 0">${F.q&&!wrong?`‘${esc(F.q)}’ — `:''}${nQ.toLocaleString()}문항${nP?` (지문 ${nP}개)`:''}${pages>1?` · ${F.page}/${pages}쪽`:''}</p>`;
+  const key=g=>g.pk||g.ids[0];
+  h+= G.length? '<ul class="gm-list">'+G.slice((F.page-1)*PER,F.page*PER).map(g=>{ const id=g.ids[0], it=IT[id], e=EX[it.e], r=g.ids.length===1?REC[id]:null, k=key(g);
+    const nos=g.ids.length>1?`${IT[g.ids[0]].n}~${IT[g.ids[g.ids.length-1]].n}번`:`${it.n}번`;
+    const tx=g.snip?`<span class="wh">${g.where}</span>${g.snip}`:(it.q?esc(it.q)+(it.s?`<small>${esc(it.s)}</small>`:''):'<span style="color:var(--faint)">(문항 그림으로 보기)</span>');
+    const inBk=g.ids.every(x=>BK.includes(x));
+    return `<li><div class="gm-row${T&&!wrong?' t':''}" data-k="${esc(k)}" role="button" tabindex="0" aria-expanded="${F.open===k}"><span class="ex"><b>${e.year} ${esc(e.grp==='예시문제'?'예시':e.grp.split('·')[0])}</b><small>${esc(short(e).replace(/^\d{4}\s*/,''))}</small></span><span class="no">${nos}</span><span class="badge${it.au?' au':''}" title="${it.au?'자동 분류':''}">${esc(it.a||'영역 미정')}</span><span class="tx">${tx}</span><span class="st ${r?(r.ok?'ok':'no'):''}">${r?(r.ok?'맞힘':'틀림'):''}</span>${T&&!wrong?`<label class="gm-pick" onclick="event.stopPropagation()"><input type="checkbox" data-bk="${g.ids.join(',')}"${inBk?' checked':''}>담기</label>`:''}</div>${F.open===k?'<div class="gm-det" id="gmDet"></div>':''}</li>`; }).join('')+'</ul>'
+    : `<p class="gm-empty">${wrong?'틀린 문항이 없어요. 회차별·찾아 풀기로 풀면 여기에 모입니다.':(F.q?'찾는 낱말이 들어간 지문·문항이 없어요. 낱말을 짧게 바꿔 보세요.':'조건에 맞는 문항이 없어요.')}</p>`;
   if(pages>1){ h+='<div class="gm-pager">'; const s=Math.max(1,F.page-4), e2=Math.min(pages,s+9); for(let n=s;n<=e2;n++) h+=`<button type="button" data-p="${n}" class="${n===F.page?'on':''}">${n}</button>`; h+='</div>'; }
+  if(!wrong&&F.q) h+='<p class="gm-note" style="margin-top:12px">그림으로만 된 시험지는 글자를 기계로 읽어 찾기 때문에 몇 군데 빠질 수 있어요.</p>';
   V.innerHTML=h;
-  V.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{ const v=b.dataset.g; F.g.has(v)?F.g.delete(v):F.g.add(v); F.page=1; F.open=null; listView(mode); });
-  V.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{ const v=b.dataset.a; F.a.has(v)?F.a.delete(v):F.a.add(v); F.page=1; F.open=null; listView(mode); });
-  const y=$('gmY'); if(y) y.onchange=()=>{ F.y=y.value; F.page=1; listView(mode); };
-  const q=$('gmQ'); if(q) q.onkeydown=ev=>{ if(ev.key==='Enter'){ F.q=q.value.trim(); F.page=1; F.open=null; listView(mode); } };
+  const again=()=>{ const y=window.scrollY; listView(mode); window.scrollTo(0,y); };
+  V.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{ const v=b.dataset.g; F.g.has(v)?F.g.delete(v):F.g.add(v); F.page=1; F.open=null; again(); });
+  V.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{ const v=b.dataset.a; F.a.has(v)?F.a.delete(v):F.a.add(v); F.page=1; F.open=null; again(); });
+  V.querySelectorAll('[data-eg]').forEach(b=>b.onclick=()=>{ F.q=b.dataset.eg; F.page=1; F.open=null; listView(mode); });
+  const y=$('gmY'); if(y) y.onchange=()=>{ F.y=y.value; F.page=1; again(); };
+  const ff=$('gmFF'); if(ff) ff.onsubmit=ev=>{ ev.preventDefault(); F.q=$('gmQ').value.trim(); F.page=1; F.open=null; listView(mode); };
   V.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{ F.page=+b.dataset.p; F.open=null; listView(mode); window.scrollTo(0,0); });
-  V.querySelectorAll('.gm-row').forEach(r=>{ r.onclick=()=>{ F.open=F.open===r.dataset.id?null:r.dataset.id; const y=window.scrollY; listView(mode); window.scrollTo(0,y); }; r.onkeydown=ev=>{ if(ev.key==='Enter') r.click(); }; });
-  if(F.open) detail(F.open, mode);
+  V.querySelectorAll('.gm-row').forEach(r=>{ r.onclick=()=>{ F.open=F.open===r.dataset.k?null:r.dataset.k; again(); }; r.onkeydown=ev=>{ if(ev.key==='Enter') r.click(); }; });
+  V.querySelectorAll('[data-bk]').forEach(c=>c.onchange=()=>{ const ids=c.dataset.bk.split(','); ids.forEach(x=>{ const i=BK.indexOf(x); if(c.checked&&i<0) BK.push(x); if(!c.checked&&i>=0) BK.splice(i,1); }); bkSave(); again(); });
+  const go=$('gmBkGo'); if(go) go.onclick=()=>KMA.assign(BK.map(GMFind.asgItem));
+  const bx=$('gmBkX'); if(bx) bx.onclick=()=>{ BK=[]; bkSave(); again(); };
+  if(F.open){ const g=G.find(x=>key(x)===F.open); if(g) detail(g.ids); }
 }
-function detail(id, mode){
-  const it=IT[id], e=EX[it.e], el=$('gmDet'); if(!el) return;
-  Promise.all([loadQ(it.e), loadExpl()]).then(([Q])=>{
-    let pick=null, done=false;
+/* 펼친 문항(같은 지문 문항은 지문 한 번 + 문항 여럿) */
+function detail(ids){
+  const it0=IT[ids[0]], e=EX[it0.e], el=$('gmDet'); if(!el) return;
+  Promise.all([loadQ(it0.e), loadExpl()]).then(([Q])=>{
+    const S={};
     function paint(){
-      let ph=''; Q.p.forEach(p=>{ if(p.rng[0]<=it.n&&it.n<=p.rng[1]) ph+=`<div class="gm-pas"><div class="no">[${p.rng[0]}~${p.rng[1]}] 지문</div><img src="${p.img}" alt="지문"></div>`; });
-      let qh=Q.q[it.n]?`<img src="${Q.q[it.n]}" alt="${it.n}번 문항">`:(e.mode==='pg'?`<p style="color:var(--sub);font-size:14px">이 회차는 시험지 쪽 그림으로만 있어요. <a href="#exam/${e.id}">시험지로 보기 →</a></p>`:'');
-      el.innerHTML=`<div class="no" style="color:var(--faint);font-size:13px">${esc(e.title)} ${it.n}번${it.a?' · '+esc(it.a)+(it.au?'(자동 분류)':''):''}</div>${ph}${qh}${it.ans?chHTML(id,e.nc,pick,done,it.ans):''}${done?`<div class="gm-res ${pick===it.ans?'ok':'no'}">${pick===it.ans?'맞았어요':'아쉬워요 · 정답 '+CIR[it.ans-1]}</div>${exItem(id)}`:''}`;
-      el.querySelectorAll('.gm-ch button[data-id]').forEach(b=>b.onclick=()=>{ if(done) return; pick=+b.dataset.c; done=true; rec(id,pick); paint(); const st=el.parentElement.querySelector('.st'); if(st){ st.className='st '+(pick===it.ans?'ok':'no'); st.textContent=pick===it.ans?'맞힘':'틀림'; } });
+      let ph='', seen=new Set(); ids.forEach(id=>Q.p.forEach((p,pi)=>{ if(p.rng[0]<=IT[id].n&&IT[id].n<=p.rng[1]&&!seen.has(pi)){ seen.add(pi); ph+=`<div class="gm-pas"><div class="no">[${p.rng[0]}~${p.rng[1]}] 지문</div><img src="${p.img}" alt="지문"></div>`; } }));
+      let qh=ids.map(id=>{ const it=IT[id], st=S[id]||{};
+        const img=Q.q[it.n]?`<img src="${Q.q[it.n]}" alt="${it.n}번 문항">`:(e.mode==='pg'?`<p style="color:var(--sub);font-size:14px">이 회차는 시험지 쪽 그림으로만 있어요. <a href="#exam/${e.id}">시험지에서 ${it.n}번 보기 →</a></p>`:'');
+        return `<div style="margin:6px 0 16px"><div class="no" style="color:var(--faint);font-size:13px">${esc(e.title)} ${it.n}번${it.a?' · '+esc(it.a)+(it.au?'(자동 분류)':''):''}</div>${img}${it.ans?chHTML(id,e.nc,st.pick,st.done,it.ans):''}${st.done?`<div class="gm-res ${st.pick===it.ans?'ok':'no'}">${st.pick===it.ans?'맞았어요':'아쉬워요 · 정답 '+CIR[it.ans-1]}</div>${exItem(id)}`:''}</div>`; }).join('');
+      el.innerHTML=ph+qh;
+      el.querySelectorAll('.gm-ch button[data-id]').forEach(b=>b.onclick=()=>{ const id=b.dataset.id; if(S[id]&&S[id].done) return; const pick=+b.dataset.c; S[id]={pick,done:true}; rec(id,pick); paint();
+        if(ids.length===1){ const st=el.parentElement.querySelector('.st'); if(st){ st.className='st '+(pick===IT[id].ans?'ok':'no'); st.textContent=pick===IT[id].ans?'맞힘':'틀림'; } } });
     }
     paint();
   });
@@ -503,7 +542,7 @@ function meView(){
   const ids=Object.keys(REC).filter(id=>IT[id]), n=ids.length, f=ids.filter(id=>REC[id].f).length, w=ids.filter(id=>!REC[id].ok).length;
   const by={}; ids.forEach(id=>{ const a=IT[id].a||'영역 미정'; const b=by[a]||(by[a]={t:0,c:0}); b.t++; if(REC[id].f) b.c++; });
   const atts=[]; Object.keys(ATT).forEach(eid=>(ATT[eid]||[]).forEach(a=>atts.push(Object.assign({eid},a)))); atts.sort((a,b)=>b.at-a.at);
-  let h=`<div class="gm-h"><div><h2>내 기록</h2><p>이 컴퓨터에 남은 기록입니다.${window.KMA&&KMA.on?' 오른쪽 아래 \'로그인\'으로 들어오면 선생님 화면에도 모입니다.':''}</p></div></div>`+
+  let h=`<div class="gm-h"><div><h2>내 기록</h2><p>이 기기에 남은 기록입니다.${window.KMA&&KMA.on?' 오른쪽 아래 \'로그인\'으로 들어오면 선생님 화면에도 모입니다.':''}</p></div></div>`+
     `<div class="gm-stat"><div><b>${n}</b><small>푼 문항</small></div><div><b>${n?Math.round(f/n*100)+'%':'–'}</b><small>첫 시도 정답률</small></div><div><b>${w}</b><small>남은 오답</small></div><div><b>${atts.length}</b><small>회차 응시</small></div></div>`;
   h+='<h3 style="font-size:16px;margin:0 0 6px">영역별 첫 시도 정답률</h3><div class="gm-bars">'+AREAS.concat(['영역 미정']).filter(a=>by[a]).map(a=>`<div><span>${a}</span><em><i style="width:${Math.round(by[a].c/by[a].t*100)}%"></i></em><small>${Math.round(by[a].c/by[a].t*100)}% · ${by[a].t}</small></div>`).join('')+'</div>';
   if(!n) h+='<p class="gm-empty">아직 푼 문항이 없어요.</p>';
@@ -515,7 +554,12 @@ function meView(){
 route();
 })();
 </script>
-<script src="/suneung-korean/js/account.js?v=101"></script>
+<link rel="stylesheet" href="/middle-korean/css/kme-tools.css?v=93">
+<script>window.KME_TOOLS={root:"body",keyPath:true,classBtn:true};</script>
+<script src="/middle-korean/js/config.js?v=93"></script>
+<script src="/middle-korean/js/ink.js?v=102"></script>
+<script src="/middle-korean/js/live.js?v=93"></script>
+<script src="/suneung-korean/js/account.js?v=102"></script>
 
 </body>
 </html>
