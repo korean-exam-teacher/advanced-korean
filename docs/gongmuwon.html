@@ -330,7 +330,7 @@ footer .guide details{border-color:var(--line)!important;background:none!importa
 .gm-ch button.ok{border-color:#1f7a4d;background:rgba(31,122,77,.1);color:#1f7a4d}
 .gm-ch button.no{border-color:#b33a2b;background:rgba(179,58,43,.08);color:#b33a2b}
 .gm-ch button:disabled{cursor:default}
-.gm-res{font-size:14px;margin-top:8px}.gm-res.ok{color:#1f7a4d}.gm-res.no{color:#b33a2b}
+.gm-act{margin-top:10px}.gm-act .gm-btn{padding:7px 18px}.gm-res{font-size:14px;margin-top:8px}.gm-res.ok{color:#1f7a4d}.gm-res.no{color:#b33a2b}
 .gm-ex{margin-top:10px;padding:12px 14px;border-radius:12px;background:var(--soft);font-size:14.5px;line-height:1.75}.gm-ex p{margin:0 0 4px}.gm-ex b{margin-right:6px}
 .gm-omr{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px 18px;margin:16px 0}
 .gm-omr .r{display:flex;align-items:center;gap:6px}.gm-omr .r span{width:30px;font-size:13px;color:var(--sub);text-align:right}
@@ -420,10 +420,10 @@ function chHTML(id,nc,pick,done,ans){ let h='<div class="gm-ch" role="group">'; 
 let TIMER=null;
 function route(){ clearInterval(TIMER); const h=(location.hash||'#exams').slice(1), [v,arg]=h.split('/');
   document.querySelectorAll('#gmTabs a').forEach(a=>a.classList.toggle('on',a.dataset.v===(v==='exam'?'exams':v)));
-  document.querySelectorAll('#gmTabs a').forEach(a=>a.classList.toggle('on',a.dataset.v===(v==='exam'?'exams':v==='area'?'find':v)));
-  if(v==='exam'&&EX[arg]) return examView(arg); if(v==='find'||v==='area') return listView('find'); if(v==='wrong') return listView('wrong'); if(v==='me') return meView(); examsView(); }
+  document.querySelectorAll('#gmTabs a').forEach(a=>a.classList.toggle('on',a.dataset.v===(v==='exam'?'exams':(v==='area'||v==='set')?'find':v)));
+  if(v==='exam'&&EX[arg]) return examView(arg); if(v==='find'||v==='area') return listView('find'); if(v==='wrong') return listView('wrong'); if(v==='me') return meView(); if(v==='set') return setView(); examsView(); }
 /* 선생님으로 들어오거나 나가면 단추(과제로 내기·담기)를 다시 그린다 */
-document.addEventListener('kma:role',()=>{ const v=(location.hash||'#exams').slice(1).split('/')[0]; if(v!=='exam') route(); });
+document.addEventListener('kma:role',()=>{ const v=(location.hash||'#exams').slice(1).split('/')[0]; if(v!=='exam'&&v!=='set') route(); });
 window.addEventListener('hashchange',()=>{ route(); window.scrollTo(0,0); });
 /* ---------------- 회차별 ---------------- */
 function teacher(){ return !!(window.KMA&&KMA.on&&((KMA.role&&KMA.role())||sessionStorage.getItem('kma.tpw'))); }
@@ -475,7 +475,7 @@ function examView(eid){
 function fmt(ms){ const s=Math.max(0,Math.round(ms/1000)); return Math.floor(s/60)+'분 '+String(s%60).padStart(2,'0')+'초'; }
 /* ---------------- 찾아 풀기 · 오답 노트 ---------------- */
 const F={g:new Set(),a:new Set(),y:'',q:'',page:1,open:null};
-let BK=JSON.parse(sessionStorage.getItem('gm-bk')||'[]');   /* 선생님: 과제에 담은 문항 */
+let BK=JSON.parse(sessionStorage.getItem('gm-bk')||'[]');   /* 담은 문항 — 학생: 모아 풀기, 선생님: 과제로도 내기 */
 function bkSave(){ sessionStorage.setItem('gm-bk',JSON.stringify(BK)); }
 const EGS=['훈민정음','높임 표현','사자성어','외래어 표기','고전 소설','현대시','맞춤법','논증','한자어'];
 function listView(mode){
@@ -496,14 +496,14 @@ function listView(mode){
       `<div class="gm-filters">${AREAS.concat(['영역 미정']).map(a=>`<button type="button" class="gm-chip${F.a.has(a)?' on':''}" data-a="${a}">${a}</button>`).join('')}</div>`+
       `<div class="gm-filters">${GRPS.map(g=>`<button type="button" class="gm-chip${F.g.has(g)?' on':''}" data-g="${g}">${g}</button>`).join('')}<select id="gmY" aria-label="연도"><option value="">모든 연도</option>${[...new Set(D.exams.map(e=>e.year))].sort((a,b)=>b-a).map(y=>`<option${String(y)===F.y?' selected':''}>${y}</option>`).join('')}</select></div></details>`;
   }
-  if(T&&!wrong) h+=`<div class="gm-bk" id="gmBk"><span>선생님 · 과제에 담은 문항 <b>${BK.length}</b>개</span>${BK.length?'<button class="gm-btn pri" type="button" id="gmBkGo" style="padding:7px 16px">과제로 내기</button><button class="gm-btn" type="button" id="gmBkX" style="padding:7px 14px">비우기</button>':'<span style="color:var(--sub);font-size:13px">문항 줄 오른쪽 \'담기\'를 누르세요.</span>'}</div>`;
+  if(!wrong) h+=`<div class="gm-bk" id="gmBk"><span>담은 문항 <b>${BK.length}</b>개</span>${BK.length?'<a class="gm-btn pri" href="#set" style="padding:7px 16px">모아 풀기</a>'+(T?'<button class="gm-btn" type="button" id="gmBkGo" style="padding:7px 16px">과제로 내기</button>':'')+'<button class="gm-btn" type="button" id="gmBkX" style="padding:7px 14px">비우기</button>':'<span style="color:var(--sub);font-size:13px">문항 줄 오른쪽 \'담기\'로 골라 모으면 한꺼번에 풀 수 있어요.</span>'}</div>`;
   h+=`<p style="color:var(--sub);font-size:14px;margin:8px 0">${F.q&&!wrong?`‘${esc(F.q)}’ — `:''}${nQ.toLocaleString()}문항${nP?` (지문 ${nP}개)`:''}${pages>1?` · ${F.page}/${pages}쪽`:''}</p>`;
   const key=g=>g.pk||g.ids[0];
   h+= G.length? '<ul class="gm-list">'+G.slice((F.page-1)*PER,F.page*PER).map(g=>{ const id=g.ids[0], it=IT[id], e=EX[it.e], r=g.ids.length===1?REC[id]:null, k=key(g);
     const nos=g.ids.length>1?`${IT[g.ids[0]].n}~${IT[g.ids[g.ids.length-1]].n}번`:`${it.n}번`;
     const tx=g.snip?`<span class="wh">${g.where}</span>${g.snip}`:(it.q?esc(it.q)+(it.s?`<small>${esc(it.s)}</small>`:''):'<span style="color:var(--faint)">(문항 그림으로 보기)</span>');
     const inBk=g.ids.every(x=>BK.includes(x));
-    return `<li><div class="gm-row${T&&!wrong?' t':''}" data-k="${esc(k)}" role="button" tabindex="0" aria-expanded="${F.open===k}"><span class="ex"><b>${e.year} ${esc(e.grp==='예시문제'?'예시':e.grp.split('·')[0])}</b><small>${esc(short(e).replace(/^\d{4}\s*/,''))}</small></span><span class="no">${nos}</span><span class="badge${it.au?' au':''}" title="${it.au?'자동 분류':''}">${esc(it.a||'영역 미정')}</span><span class="tx">${tx}</span><span class="st ${r?(r.ok?'ok':'no'):''}">${r?(r.ok?'맞힘':'틀림'):''}</span>${T&&!wrong?`<label class="gm-pick" onclick="event.stopPropagation()"><input type="checkbox" data-bk="${g.ids.join(',')}"${inBk?' checked':''}>담기</label>`:''}</div>${F.open===k?'<div class="gm-det" id="gmDet"></div>':''}</li>`; }).join('')+'</ul>'
+    return `<li><div class="gm-row${!wrong?' t':''}" data-k="${esc(k)}" role="button" tabindex="0" aria-expanded="${F.open===k}"><span class="ex"><b>${e.year} ${esc(e.grp==='예시문제'?'예시':e.grp.split('·')[0])}</b><small>${esc(short(e).replace(/^\d{4}\s*/,''))}</small></span><span class="no">${nos}</span><span class="badge${it.au?' au':''}" title="${it.au?'자동 분류':''}">${esc(it.a||'영역 미정')}</span><span class="tx">${tx}</span><span class="st ${r?(r.ok?'ok':'no'):''}">${r?(r.ok?'맞힘':'틀림'):''}</span>${!wrong?`<label class="gm-pick" onclick="event.stopPropagation()"><input type="checkbox" data-bk="${g.ids.join(',')}"${inBk?' checked':''}>담기</label>`:''}</div>${F.open===k?'<div class="gm-det" id="gmDet"></div>':''}</li>`; }).join('')+'</ul>'
     : `<p class="gm-empty">${wrong?'틀린 문항이 없어요. 회차별·찾아 풀기로 풀면 여기에 모입니다.':(F.q?'찾는 낱말이 들어간 지문·문항이 없어요. 낱말을 짧게 바꿔 보세요.':'조건에 맞는 문항이 없어요.')}</p>`;
   if(pages>1){ h+='<div class="gm-pager">'; const s=Math.max(1,F.page-4), e2=Math.min(pages,s+9); for(let n=s;n<=e2;n++) h+=`<button type="button" data-p="${n}" class="${n===F.page?'on':''}">${n}</button>`; h+='</div>'; }
   if(!wrong&&F.q) h+='<p class="gm-note" style="margin-top:12px">그림으로만 된 시험지는 글자를 기계로 읽어 찾기 때문에 몇 군데 빠질 수 있어요.</p>';
@@ -530,13 +530,43 @@ function detail(ids){
       let ph='', seen=new Set(); ids.forEach(id=>Q.p.forEach((p,pi)=>{ if(p.rng[0]<=IT[id].n&&IT[id].n<=p.rng[1]&&!seen.has(pi)){ seen.add(pi); ph+=`<div class="gm-pas"><div class="no">[${p.rng[0]}~${p.rng[1]}] 지문</div><img src="${p.img}" alt="지문"></div>`; } }));
       let qh=ids.map(id=>{ const it=IT[id], st=S[id]||{};
         const img=Q.q[it.n]?`<img src="${Q.q[it.n]}" alt="${it.n}번 문항">`:(e.mode==='pg'?`<p style="color:var(--sub);font-size:14px">이 회차는 시험지 쪽 그림으로만 있어요. <a href="#exam/${e.id}">시험지에서 ${it.n}번 보기 →</a></p>`:'');
-        return `<div style="margin:6px 0 16px"><div class="no" style="color:var(--faint);font-size:13px">${esc(e.title)} ${it.n}번${it.a?' · '+esc(it.a)+(it.au?'(자동 분류)':''):''}</div>${img}${it.ans?chHTML(id,e.nc,st.pick,st.done,it.ans):''}${st.done?`<div class="gm-res ${st.pick===it.ans?'ok':'no'}">${st.pick===it.ans?'맞았어요':'아쉬워요 · 정답 '+CIR[it.ans-1]}</div>${exItem(id)}`:''}</div>`; }).join('');
+        return `<div style="margin:6px 0 16px"><div class="no" style="color:var(--faint);font-size:13px">${esc(e.title)} ${it.n}번${it.a?' · '+esc(it.a)+(it.au?'(자동 분류)':''):''}</div>${img}${it.ans?chHTML(id,e.nc,st.pick,st.done,it.ans):''}${it.ans&&!st.done?`<div class="gm-act"><button type="button" class="gm-btn pri" data-gr="${id}"${st.pick?'':' disabled'}>채점하기</button></div>`:''}${st.done?`<div class="gm-res ${st.pick===it.ans?'ok':'no'}">${st.pick===it.ans?'맞았어요':'아쉬워요 · 정답 '+CIR[it.ans-1]}</div>${exItem(id)}`:''}</div>`; }).join('');
       el.innerHTML=ph+qh;
-      el.querySelectorAll('.gm-ch button[data-id]').forEach(b=>b.onclick=()=>{ const id=b.dataset.id; if(S[id]&&S[id].done) return; const pick=+b.dataset.c; S[id]={pick,done:true}; rec(id,pick); paint();
+      /* v111: 번호를 누르면 고르기만, '채점하기'를 눌러야 채점 */
+      el.querySelectorAll('.gm-ch button[data-id]').forEach(b=>b.onclick=()=>{ const id=b.dataset.id; if(S[id]&&S[id].done) return; S[id]={pick:+b.dataset.c}; paint(); });
+      el.querySelectorAll('[data-gr]').forEach(b=>b.onclick=()=>{ const id=b.dataset.gr; if(!S[id]||!S[id].pick||S[id].done) return; const pick=S[id].pick; S[id]={pick,done:true}; rec(id,pick); paint();
         if(ids.length===1){ const st=el.parentElement.querySelector('.st'); if(st){ st.className='st '+(pick===IT[id].ans?'ok':'no'); st.textContent=pick===IT[id].ans?'맞힘':'틀림'; } } });
     }
     paint();
   });
+}
+/* ---------------- 모아 풀기 (v111): 담은 문항을 한 화면에서 풀고, 답을 모두 골라야 채점된다 ---------------- */
+function setView(){
+  const ids=BK.filter(id=>IT[id]); if(!ids.length){ location.hash='#find'; return; }
+  V.innerHTML='<p class="gm-empty">문항을 불러오는 중…</p>';
+  const eids=[...new Set(ids.map(id=>IT[id].e))];
+  Promise.all([loadExpl()].concat(eids.map(loadQ))).then(r=>{
+    const QQ={}; eids.forEach((e,i)=>QQ[e]=r[i+1]);
+    const S={}; let done=false, sc=0, note='';
+    const need=ids.filter(id=>IT[id].ans);
+    function paint(){
+      const picked=need.filter(id=>S[id]).length, seen=new Set();
+      let h=`<div class="gm-run"><div class="gm-bar"><div><b>모아 풀기 · ${ids.length}문항</b><div class="meta">${done?`맞힌 문항 ${sc} / ${need.length}`:'답을 모두 고른 뒤 맨 아래 ‘채점하기’를 누르세요. 다 풀어야 채점됩니다.'}</div></div><div style="display:flex;gap:8px;align-items:center"><a class="gm-btn" href="#find">담은 목록으로</a></div></div>`;
+      ids.forEach((id,i)=>{ const it=IT[id], e=EX[it.e], Q=QQ[it.e]; let ph='';
+        Q.p.forEach((p,pi)=>{ const k=it.e+'|'+pi; if(p.rng[0]<=it.n&&it.n<=p.rng[1]&&!seen.has(k)){ seen.add(k); ph+=`<div class="gm-pas"><div class="no">[${p.rng[0]}~${p.rng[1]}] 지문</div><img src="${p.img}" alt="지문" loading="lazy"></div>`; } });
+        const img=Q.q[it.n]?`<img src="${Q.q[it.n]}" alt="${it.n}번 문항" loading="lazy">`:(e.mode==='pg'?`<p style="color:var(--sub);font-size:14px">이 회차는 시험지 쪽 그림으로만 있어요. <a href="#exam/${e.id}">시험지에서 ${it.n}번 보기 →</a></p>`:'');
+        const ok=done&&it.ans?S[id]===it.ans:null;
+        h+=`<div class="gm-q" id="sq-${id}">${ph}<div class="no">${i+1}. ${esc(short(e))} ${it.n}번${it.a?' · '+esc(it.a):''}</div>${img}${it.ans?chHTML(id,e.nc,S[id],done,it.ans):'<p style="color:var(--sub);font-size:14px">정답이 실려 있지 않아 채점에서 빠져요.</p>'}${done&&it.ans?`<div class="gm-res ${ok?'ok':'no'}">${ok?'맞았어요':'아쉬워요 · 정답 '+CIR[it.ans-1]}</div>${exItem(id)}`:''}</div>`; });
+      h+=`<div class="gm-foot">${done?`<button class="gm-btn" type="button" id="gmSetAgain">다시 풀기</button><a class="gm-btn pri" href="#find">담은 목록으로</a>`:`<span class="meta" style="font-size:14px;color:var(--sub)">${note||`${picked}/${need.length} 골랐어요`}</span><button class="gm-btn pri" type="button" id="gmSetSub">채점하기</button>`}</div></div>`;
+      V.innerHTML=h;
+      V.querySelectorAll('.gm-ch button[data-id]').forEach(b=>b.onclick=()=>{ if(done) return; const id=b.dataset.id, c=+b.dataset.c; S[id]=S[id]===c?undefined:c; note=''; const y=window.scrollY; paint(); window.scrollTo(0,y); });
+      const sb=$('gmSetSub'); if(sb) sb.onclick=()=>{ const miss=need.filter(id=>!S[id]);
+        if(miss.length){ note=`아직 안 고른 문항 ${miss.length}개 — 모두 골라야 채점돼요`; const y=window.scrollY; paint(); window.scrollTo(0,y); const el=document.getElementById('sq-'+miss[0]); if(el) el.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+        sc=0; need.forEach(id=>{ if(S[id]===IT[id].ans) sc++; rec(id,S[id]); }); done=true; paint(); window.scrollTo(0,0); };
+      const ag=$('gmSetAgain'); if(ag) ag.onclick=()=>{ Object.keys(S).forEach(k=>delete S[k]); done=false; note=''; paint(); window.scrollTo(0,0); };
+    }
+    paint();
+  }).catch(()=>{ V.innerHTML='<p class="gm-empty">문항을 불러오지 못했어요. 인터넷 연결을 확인해 주세요.</p>'; });
 }
 /* ---------------- 내 기록 ---------------- */
 function meView(){
@@ -557,9 +587,20 @@ route();
 <link rel="stylesheet" href="/middle-korean/css/kme-tools.css?v=93">
 <script>window.KME_TOOLS={root:"body",keyPath:true,classBtn:true};</script>
 <script src="/middle-korean/js/config.js?v=93"></script>
-<script src="/middle-korean/js/ink.js?v=102"></script>
+<script src="/middle-korean/js/ink.js?v=111"></script>
 <script src="/middle-korean/js/live.js?v=93"></script>
-<script src="/suneung-korean/js/account.js?v=110"></script>
+<script src="/suneung-korean/js/account.js?v=111"></script>
 
+<style id="v111-full">
+/* v111: 화면 가득 — 100%에서 상하좌우 여백을 거의 남기지 않는다 */
+.inner{padding-inline:12px!important}
+.hero-inner,.hero-in{padding:12px 0 8px!important}
+.jar91{width:76px!important;height:72px!important;margin:0 auto 8px!important}
+.jar91::before{width:30px!important;height:6px!important;top:-3px!important}
+.g91,.hero .h-gloss{margin:2px 0 8px!important}
+.hero .sub,.hero .h-lead{margin-bottom:8px!important}
+.gm-run{max-width:none!important}
+.gm-q img,.gm-pas img,.gm-det img{max-width:min(100%,1000px)!important}
+</style>
 </body>
 </html>
