@@ -412,7 +412,7 @@ function short(e){ return e.title.replace(/\s*국어\s*/,' ').replace(/\s+/g,' '
 function loadExpl(){ if(EXPL) return Promise.resolve(EXPL); return new Promise(r=>{ const s=document.createElement('script'); s.src='gm/explain.js?v=101'; s.onload=()=>{ EXPL=window.GM_EXPLAIN||{}; r(EXPL); }; s.onerror=()=>{ EXPL={}; r(EXPL); }; document.body.appendChild(s); }); }
 const QC={};
 function loadQ(eid){ if(QC[eid]) return QC[eid]; const e=EX[eid];
-  QC[eid]=fetch('gm/'+(e.mode==='q'?'q':'pg')+'/'+eid+'.json?v=101').then(r=>r.json()).then(d=>{ const q={}; (d.q||[]).forEach(x=>q[x.n]=x.img); return {q, p:d.p||[], pages:d.pages||[]}; });
+  QC[eid]=fetch('gm/'+(e.mode==='q'?'q':'pg')+'/'+eid+'.json?v=106').then(r=>r.json()).then(d=>{ const q={}; (d.q||[]).forEach(x=>q[x.n]=x.img); return {q, p:d.p||[], pages:d.pages||[]}; });
   return QC[eid]; }
 function exItem(it){ const x=EXPL&&EXPL[it]; return x?`<div class="gm-ex"><p><b>해설</b>${esc(x.r)}</p><p><b>오답 살피기</b>${esc(x.t)}</p><p><b>기억할 점</b>${esc(x.k)}</p></div>`:''; }
 function chHTML(id,nc,pick,done,ans){ let h='<div class="gm-ch" role="group">'; for(let c=1;c<=nc;c++){ const cls=done&&ans?(c===ans?'ok':c===pick?'no':''):(c===pick?'sel':''); h+=`<button type="button" class="${cls}" data-id="${id}" data-c="${c}"${done?' disabled':''} aria-label="${c}번">${CIR[c-1]}</button>`; } return h+'</div>'; }
