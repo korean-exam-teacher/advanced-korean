@@ -548,9 +548,8 @@ function meView(){
   h+='<h3 style="font-size:16px;margin:0 0 6px">영역별 첫 시도 정답률</h3><div class="gm-bars">'+AREAS.concat(['영역 미정']).filter(a=>by[a]).map(a=>`<div><span>${a}</span><em><i style="width:${Math.round(by[a].c/by[a].t*100)}%"></i></em><small>${Math.round(by[a].c/by[a].t*100)}% · ${by[a].t}</small></div>`).join('')+'</div>';
   if(!n) h+='<p class="gm-empty">아직 푼 문항이 없어요.</p>';
   if(atts.length) h+='<h3 style="font-size:16px;margin:24px 0 6px">회차 점수</h3><table class="gm-t"><thead><tr><th>회차</th><th>점수</th><th>걸린 시간</th><th>날짜</th></tr></thead><tbody>'+atts.slice(0,30).map(a=>`<tr><td><a href="#exam/${a.eid}">${esc(EX[a.eid].title)}</a></td><td>${a.sc}/${a.n}</td><td>${Math.floor(a.sec/60)}분</td><td>${new Date(a.at).toLocaleDateString('ko-KR')}</td></tr>`).join('')+'</tbody></table>';
-  h+='<p style="margin-top:22px"><button class="gm-btn" type="button" id="gmReset">이 컴퓨터의 기록 지우기</button></p>';
+  /* v105: '이 컴퓨터의 기록 지우기' 단추를 없앰(잘못 눌러 기록이 모두 지워지는 일을 막음) */
   V.innerHTML=h;
-  $('gmReset').onclick=function(){ if(!this.dataset.sure){ this.dataset.sure=1; this.textContent='정말 지우기(되돌릴 수 없음)'; return; } REC={}; ATT={}; ls('gm-rec2',null); ls('gm-att',null); Object.keys(localStorage).filter(k=>k.startsWith('gm-run-')).forEach(k=>localStorage.removeItem(k)); meView(); };
 }
 route();
 })();
