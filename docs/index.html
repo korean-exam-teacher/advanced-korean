@@ -651,7 +651,7 @@ const h=(location.hash||'').slice(1); setTab(TABS[h]?h:'leet',false);
           '<button type="button" data-mv="-1" data-i="'+n+'" aria-label="위로"'+(n===0?' disabled':'')+'>↑</button>'+
           '<button type="button" data-mv="1" data-i="'+n+'" aria-label="아래로"'+(n===B.length-1?' disabled':'')+'>↓</button>'+
           '<button type="button" data-rm="'+n+'" aria-label="빼기">✕</button></li>'; }).join('')+'</ol>'+
-      '<div class="bk-foot"><button type="button" class="bk-btn" id="bkClr">모두 비우기</button><span class="r"><button type="button" class="bk-btn" id="bkX">닫기</button>'+(window.KMA&&KMA.on?'<button type="button" class="bk-btn" id="bkAsg"'+(B.length?'':' disabled')+'>과제로 내기</button>':'')+'<button type="button" class="bk-btn pri" id="bkGo"'+(B.length?'':' disabled')+'>인쇄하기</button></span></div>'+
+      '<div class="bk-foot"><button type="button" class="bk-btn" id="bkClr">모두 비우기</button><span class="r"><button type="button" class="bk-btn" id="bkX">닫기</button>'+(window.KMA&&KMA.on&&KMA.teacher&&KMA.teacher()?'<button type="button" class="bk-btn" id="bkAsg"'+(B.length?'':' disabled')+'>과제로 내기</button>':'')+'<button type="button" class="bk-btn pri" id="bkGo"'+(B.length?'':' disabled')+'>인쇄하기</button></span></div>'+
       '<p class="bk-note">같은 지문의 문항은 지문 바로 뒤에 모아 싣고, 지문은 한 번만 싣습니다. 문항 번호는 원래 시험의 번호를 그대로 씁니다. 인쇄 창에서 대상을 \'PDF로 저장\'으로 고르면 파일로도 받을 수 있습니다.</p>';
   }
   function openP(){ panel(); sh.hidden=false; document.documentElement.classList.add('soft-lock'); setTimeout(function(){ var t=$('bkT'); t&&t.focus(); },50); }
