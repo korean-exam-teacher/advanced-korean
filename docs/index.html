@@ -530,7 +530,7 @@ window.KMA_ITEMS=function(ids){ const abs=s=>'/advanced-korean/'+s; return ids.m
     q:(b.q||[]).map(x=>({s:abs(x.s),w:x.w,h:x.h})), p:b.p?{lab:b.p.lab, imgs:(b.p.imgs||[]).map(x=>({s:abs(x.s),w:x.w,h:x.h}))}:null, txt:null, ans:i._a||0};
 }).filter(Boolean); };
 function kmaRec(k){ if(!window.KMA||!PK[k]||!PK[k].v) return; const id=k.slice(1); let t=null,i=null; for(const tt of ['psat','leet','imyong']){ i=TABS[tt].items.find(x=>x.id===id); if(i){t=tt;break;} } if(!i||!i._a) return;
-  KMA.record('adv:'+({psat:'psat',leet:'leet',imyong:'im'}[t])+':'+id, PK[k].v===i._a, t==='psat'?'PSAT':t==='leet'?'LEET '+i._ex.subject:'임용 '+String(i.area||'').split('·')[0]); }
+  KMA.record('adv:'+({psat:'psat',leet:'leet',imyong:'im'}[t])+':'+id, PK[k].v===i._a, t==='psat'?'PSAT':t==='leet'?'LEET '+i._ex.subject:'임용 '+String(i.area||'').split('·')[0], PK[k].v); }
 window.BKAPI={page:'kkot',get:function(id){ var i=null; for(const t of ['leet','imyong','psat']){ i=TABS[t].items.find(x=>x.id===id); if(i) break; } if(!i) return null;
   const e=i._ex, q=picQ(i), p=picP(i);
   const title=isP(i)?`${e.year}년 ${e.kind} PSAT 언어논리 ${i.no}번`:isM(i)?`${e.year}학년도 중등임용 국어 ${e.kind.replace('1차 ','')} ${noLab(i)}`:`${e.year}학년도 LEET ${e.subject} ${i.no}번`;
@@ -1059,6 +1059,6 @@ footer .guide details{border-color:var(--line)!important;background:none!importa
 <script src="/middle-korean/js/config.js?v=93"></script>
 <script src="/middle-korean/js/ink.js?v=102"></script>
 <script src="/middle-korean/js/live.js?v=93"></script>
-<script src="/suneung-korean/js/account.js?v=104"></script>
+<script src="/suneung-korean/js/account.js?v=110"></script>
 </body>
 </html>

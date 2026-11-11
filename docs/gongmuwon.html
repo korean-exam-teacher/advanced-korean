@@ -407,7 +407,7 @@ const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 function ls(k,v){ try{ if(v===undefined) return JSON.parse(localStorage.getItem(k)||'null'); if(v===null) localStorage.removeItem(k); else localStorage.setItem(k,JSON.stringify(v)); }catch(e){ return null; } }
 let REC=ls('gm-rec2')||{}, ATT=ls('gm-att')||{}, EXPL=null;
 function rec(id,pick){ const it=IT[id]; if(!it||!it.ans) return; const ok=pick===it.ans; const r=REC[id]||{}; REC[id]={p:pick,ok:ok?1:0,f:r.f===undefined?(ok?1:0):r.f,c:(r.c||0)+1,t:Date.now()}; ls('gm-rec2',REC);
-  if(window.KMA) KMA.record('adv:gm:'+id, ok, '공무원·'+(it.a||'영역 미정')); }
+  if(window.KMA) KMA.record('adv:gm:'+id, ok, '공무원·'+(it.a||'영역 미정'), pick); }
 function short(e){ return e.title.replace(/\s*국어\s*/,' ').replace(/\s+/g,' ').trim(); }
 function loadExpl(){ if(EXPL) return Promise.resolve(EXPL); return new Promise(r=>{ const s=document.createElement('script'); s.src='gm/explain.js?v=101'; s.onload=()=>{ EXPL=window.GM_EXPLAIN||{}; r(EXPL); }; s.onerror=()=>{ EXPL={}; r(EXPL); }; document.body.appendChild(s); }); }
 const QC={};
@@ -559,7 +559,7 @@ route();
 <script src="/middle-korean/js/config.js?v=93"></script>
 <script src="/middle-korean/js/ink.js?v=102"></script>
 <script src="/middle-korean/js/live.js?v=93"></script>
-<script src="/suneung-korean/js/account.js?v=104"></script>
+<script src="/suneung-korean/js/account.js?v=110"></script>
 
 </body>
 </html>
