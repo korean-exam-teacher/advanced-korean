@@ -301,9 +301,18 @@ footer .guide details{border-color:var(--line)!important;background:none!importa
 .foot-line,.foot-top{border-color:var(--line)!important}
 .logo-sub{display:inline-flex;align-items:center;margin-left:10px;padding:2px 9px;border-radius:999px;border:1px solid var(--line-strong);font-size:12px;font-weight:600;letter-spacing:0;line-height:1.5;vertical-align:middle;white-space:nowrap}
 </style>
+<style id="crumb-v120">
+/* v120: 지금 있는 곳 — 국어의 모든 것 › 갈래 › (하위 화면). 앞쪽은 작고 흐리게, 지금 화면만 또렷하게 */
+.crumb{display:inline-flex;align-items:baseline;gap:8px;white-space:nowrap}
+.logo .crumb a{font-size:15px;color:inherit;text-decoration:none;opacity:.58;transition:opacity .15s}
+.logo .crumb a:hover{opacity:1}
+.logo .crumb i{font-style:normal;font-size:13px;opacity:.34}
+.logo .crumb a.here{font-size:21px;opacity:1}
+@media (max-width:480px){.crumb{gap:6px}.logo .crumb a{font-size:13.5px}.logo .crumb a.here{font-size:18px}}
+</style>
 </head>
 <body>
-<header class="gnb"><div class="inner"><a class="logo" href="/suneung-korean/" aria-label="국어의 모든 것 첫 화면으로"><span class="old" lang="okm">바ᄅᆞ래 가ᄂᆞ니</span><span class="logo-sub">공무원 · PSAT · LEET · 임용</span><small>바다에 가느니</small></a>
+<header class="gnb"><div class="inner"><div class="logo"><span class="crumb"><a class="old" href="/suneung-korean/">국어의 모든 것</a><i aria-hidden="true">›</i><a class="old here" lang="okm" href="/advanced-korean/" aria-current="page" title="공무원 · PSAT · LEET · 임용 · 바다에 가느니">바ᄅᆞ래 가ᄂᆞ니</a></span></div>
   <nav class="gnb-nav" aria-label="시험 고르기">
     <a class="gnb-link" href="gongmuwon.html">공무원 국어<span class="cnt">1,840</span></a>
     <a class="gnb-link" href="#psat" data-tab="psat">PSAT 언어논리<span class="cnt">1,280</span></a>
