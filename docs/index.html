@@ -367,7 +367,7 @@ footer .guide details{border-color:var(--line)!important;background:none!importa
 // 움직이는 배경: 데이터 절약만 사진, 그 밖에는 바로 재생(멈춤 단추)
 const v=document.querySelector('.hero .hv'), b=document.getElementById('vctl');
 const still=!!(navigator.connection&&navigator.connection.saveData);
-if(v){ if(still){ b.hidden=true; } else { v.src=v.dataset.src; v.play().catch(()=>{}); }
+if(v){ if(still){ b.hidden=true; } else if(v.dataset.src){ v.src=v.dataset.src; v.play().catch(()=>{}); }   /* v121: 영상 주소가 없으면 받으려 하지 않는다(전에는 'undefined'를 받으려 했다) */
   b.onclick=()=>{ if(v.paused){v.play();b.classList.remove('p');b.setAttribute('aria-label','움직이는 배경 멈춤');} else {v.pause();b.classList.add('p');b.setAttribute('aria-label','움직이는 배경 다시 재생');} }; }
 const hero=document.getElementById('top');
 new IntersectionObserver(([e])=>document.body.classList.toggle('past-hero',!e.isIntersecting),{rootMargin:'-72px 0px 0px 0px'}).observe(hero);
@@ -1104,9 +1104,9 @@ footer .guide details{border-color:var(--line)!important;background:none!importa
 <link rel="stylesheet" href="/middle-korean/css/kme-tools.css?v=93">
 <script>window.KME_TOOLS={root:"body",keyPath:true,classBtn:true};</script>
 <script src="/middle-korean/js/config.js?v=93"></script>
-<script src="/middle-korean/js/ink.js?v=111"></script>
+<script src="/middle-korean/js/ink.js?v=121"></script>
 <script src="/middle-korean/js/live.js?v=93"></script>
-<script src="/suneung-korean/js/account.js?v=112"></script>
+<script src="/suneung-korean/js/account.js?v=121"></script>
 <style id="v111-full">
 /* v111: 화면 가득 — 100%에서 상하좌우 여백을 거의 남기지 않는다 */
 .inner{padding-inline:12px!important}
