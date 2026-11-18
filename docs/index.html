@@ -842,7 +842,19 @@ if(h==='fav') openFav(); else if(h==='wrong') openFav('wrong');
   /* 문항: 통째로 싣기(한 단보다 길 때만 자름) */
   function flowWhole(P,I,gapAfter,lead){
     var s=P.colW/I.w, y=firstInk(I,0,I.h), end=lastInk(I,0,I.h), hh=(end-y)*s, lh=lead?lead.h:0;
-    if(hh+lh>P.colH-P.cur.top-2){ flowSplit(P,I,gapAfter,lead); return; }
+    if(hh+lh>P.colH-P.cur.top-2){
+      /* v133(선생님 지시): 한 단보다 긴 문항은 쪼개지 않고, 그 단에 꽉 차도록 가장 조금만 줄인다.
+         다만 60%보다 더 줄여야 하는 아주 긴 그림(임용 논술형 등)과 논술 문항카드(제시문이 함께 든 긴 문서)는 전처럼 줄 사이 흰 곳에서 나눠 싣는다 */
+      var top2=P.fresh()?P.used:(P.col<P.cur.cols.length-1?P.cur.top:0), av=P.colH-top2-lh-1, z=av/hh;
+      if(API.page==='kkot'&&z>=0.6){
+        if(z>=1){ if(!P.fresh()) P.next(); if(lh) P.put(lead.html,lh); P.put(pieceHtml(I,y,end,s),hh); gapPut(P,gapAfter); return; }
+        if(!P.fresh()) P.next();
+        if(lh) P.put(lead.html,lh);
+        P.put('<div class="pc" style="height:'+(hh*z).toFixed(2)+'px;width:'+(z*100).toFixed(2)+'%;margin:0 auto"><img src="'+I.src+'" alt="" style="width:100%;margin-top:'+(-y*s*z).toFixed(2)+'px"></div>',hh*z);
+        gapPut(P,gapAfter); return;
+      }
+      flowSplit(P,I,gapAfter,lead); return;
+    }
     if(hh+lh>P.left()) P.next();
     if(lh) P.put(lead.html,lh);
     P.put(pieceHtml(I,y,end,s),hh); gapPut(P,gapAfter);
@@ -866,7 +878,15 @@ if(h==='fav') openFav(); else if(h==='wrong') openFav('wrong');
     var order=[]; groups.forEach(function(g){ g.items.forEach(function(x){ order.push(x); }); });
     var P=Pager(ncol,headPx), srcs=[];
     for(var gI=0;gI<groups.length;gI++){ var g=groups[gI], x0=g.x, lead={html:labelHtml(groupLabel(x0)),h:LB};
-      if(x0.p){ for(var a=0;a<x0.p.imgs.length;a++){ var I=await prep(x0.p.imgs[a].s); if(I){ flowSplit(P,I,a===x0.p.imgs.length-1?GP:1.5*MM,lead); lead=null; } } }
+      if(x0.p){
+        /* v133 인쇄 배치 원칙(선생님 지시): 지문은 새 쪽 왼쪽 단 맨 위에서 시작. 다만 오른쪽 단이 절반 이상 남았으면 거기에서
+           (앞 문항이 왼쪽 단에서 끝났으면 오른쪽 단 맨 위, 오른쪽 단 위쪽 절반 안에서 끝났으면 그 아래). 가운데를 넘었으면 새 쪽.
+           1단으로 찍을 때는 그 쪽이 절반 이상 남았으면 그 아래, 아니면 새 쪽 */
+        var half=P.cur.top+(P.colH-P.cur.top)*0.5;
+        if(P.col===0&&P.fresh()){ }
+        else if(ncol===2){ if(P.col===0) P.next(); else if(P.used>half) P.newPage(); }
+        else if(P.used>half) P.newPage();
+        for(var a=0;a<x0.p.imgs.length;a++){ var I=await prep(x0.p.imgs[a].s); if(I){ flowSplit(P,I,a===x0.p.imgs.length-1?GP:1.5*MM,lead); lead=null; } } }
       for(var j=0;j<g.items.length;j++){ var x=g.items[j];
         for(var a2=0;a2<x.q.length;a2++){ var Q=await prep(x.q[a2].s); if(Q){ flowWhole(P,Q,a2===x.q.length-1?GQ:1.5*MM,lead); lead=null; } }
         if(srcs.indexOf(x.src)<0) srcs.push(x.src);
