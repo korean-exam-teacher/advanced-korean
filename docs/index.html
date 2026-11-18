@@ -315,6 +315,7 @@ footer .guide details{border-color:var(--line)!important;background:none!importa
 .row.fv .tx>b::before{content:"★ ";color:var(--brand)}
 .acts .kfav{font-size:13.5px;padding:8px 14px}
 #svF{display:inline-flex;margin-right:8px}
+#wrongN:empty{display:none}
 body.fav-on #side,body.fav-on #sideTog,body.fav-on .headrow,body.fav-on #srcA{display:none!important}
 body.fav-on main.layout{display:block}
 </style>
@@ -327,6 +328,7 @@ body.fav-on main.layout{display:block}
     <a class="gnb-link" href="#leet" data-tab="leet">법학적성시험<span class="cnt">1,340</span></a>
     <a class="gnb-link" href="#imyong" data-tab="imyong">중등교사 임용시험<span class="cnt">494</span></a>
     <a class="gnb-link" href="#fav" id="favLink" title="별(☆)을 누른 지문·문항만 모아 봅니다">즐겨찾기<span class="cnt kfav-n" data-ns="adv"></span></a>
+    <a class="gnb-link" href="#wrong" id="wrongLink" title="채점해서 틀린 문항만 모아 봅니다">오답 노트<span class="cnt" id="wrongN"></span></a>
     <a class="gnb-link sub" href="/suneung-korean/">처음 화면</a>
     <a class="gnb-link sub" href="https://docs.google.com/forms/d/e/1FAIpQLSdCkEn1SwTAvnc03M6mEtuhApm3kOqn1BMdI0A_H7iGOQREGg/viewform" target="_blank" rel="noopener">의견 보내기</a>
   </nav></div></header>
@@ -473,6 +475,11 @@ const isFavI=i=>!!(KF&&KF.has('adv',fkOf(i)));
 const favB=i=>KF?KF.btn('adv',fkOf(i),picP(i)?'지문 즐겨찾기':'즐겨찾기'):'';
 function findI(id){ for(const t of ['psat','leet','imyong']){ const i=TABS[t].items.find(x=>x.id===id); if(i) return i; } return null; }
 if(KF){ KF.use('adv'); KF.valid('adv',k=>fkItems(k).length>0); }
+/* v131: 오답 노트 — 채점한 결과를 이 기기에 적어 둔다(아이디마다 따로). { 문항 id: {ok, t} } */
+const RKEY='adv-rec:'+((KF&&KF.user())||'_'); let REC={}; try{ REC=JSON.parse(localStorage.getItem(RKEY)||'{}')||{}; }catch(e){ REC={}; }
+function wrongIds(){ return Object.keys(REC).filter(id=>REC[id]&&!REC[id].ok&&findI(id)).sort((a,b)=>REC[b].t-REC[a].t); }
+function wrongPaint(){ const n=wrongIds().length, el=document.getElementById('wrongN'); if(el) el.textContent=n?String(n):''; }
+function locRec(k){ if(!PK[k]||!PK[k].v) return; const i=findI(k.slice(1)); if(!i||!i._a) return; REC[i.id]={ok:PK[k].v===i._a?1:0,t:Date.now()}; try{ localStorage.setItem(RKEY,JSON.stringify(REC)); }catch(e){} wrongPaint(); }
 const PK={};
 function pkCls(k,n,a){ const s=PK[k]||{}; if(s.done){ if(n===a) return ' ok'; if(n===s.v) return ' no'; return ''; } return s.v===n?' sel':''; }
 function pickHTML(i,k){ const s=PK[k]||{}, A=i._a;
@@ -504,17 +511,18 @@ function detail(i){
 }
 function srcLineM(i){ const e=i._ex; return `<p class="srcl">출처: ${e.year}학년도 중등학교 교사 임용후보자 선정경쟁시험 제1차 국어 ${esc(e.kind.replace('1차 ',''))} ${noLab(i)} · 한국교육과정평가원</p>`; }
 function renderFav(){
+  const W=FV.src==='wrong';
   const keys=KF?KF.keys('adv').sort((a,b)=>KF.at('adv',b)-KF.at('adv',a)):[];   /* 넣은 순 */
-  const hit=keys.map(k=>fkItems(k)[0]).filter(Boolean);
+  const hit=W?wrongIds().map(findI):keys.map(k=>fkItems(k)[0]).filter(Boolean);
   if(FV.open&&!hit.some(i=>i.id===FV.open)){ const o=findI(FV.open); if(o) hit.push(o); }   /* 펼친 채 별을 뺀 문항은 닫을 때까지 남긴다 */
   const pages=Math.max(1,Math.ceil(hit.length/PER)); if(FV.page>pages) FV.page=pages;
-  $('cnt').innerHTML=`즐겨찾기 <em>${hit.length.toLocaleString()}</em>건`;
-  $('cntSub').textContent='별(★)을 누른 지문·문항만 보입니다. 지문 묶음은 줄을 누르면 지문과 문항이 함께 열립니다.';
-  $('ttl').textContent='즐겨찾기';
-  $('ttlSub').textContent='PSAT · 법학적성시험 · 임용'+(KF?' — '+KF.note('adv'):'');
+  $('cnt').innerHTML=`${W?'오답 노트':'즐겨찾기'} <em>${hit.length.toLocaleString()}</em>건`;
+  $('cntSub').textContent=W?'채점해서 틀린 문항이 모입니다. 다시 풀어 맞히면 빠집니다. 지문이 있는 문항은 줄을 누르면 지문과 함께 열립니다.':'별(★)을 누른 지문·문항만 보입니다. 지문 묶음은 줄을 누르면 지문과 문항이 함께 열립니다.';
+  $('ttl').textContent=W?'오답 노트':'즐겨찾기';
+  $('ttlSub').textContent='PSAT · 법학적성시험 · 임용'+(W?' — 이 기기에 저장됩니다.':(KF?' — '+KF.note('adv'):''));
   $('show').checked=FV.show;
-  document.querySelectorAll('.gnb-link[data-tab]').forEach(x=>x.classList.remove('active')); $('favLink').classList.add('active');
-  $('list').innerHTML=hit.slice((FV.page-1)*PER,FV.page*PER).map(i=>{ const t=tabOf(i); return `<li>${t==='psat'?rowPsat(i,FV):t==='leet'?rowLeet(i,FV):rowIm(i,FV)}${FV.open===i.id?detail(i):''}</li>`; }).join('')||'<li class="empty">아직 즐겨찾기한 지문·문항이 없습니다. 문항을 펼쳐 ‘☆ 즐겨찾기’를 누르면 여기에 모입니다.</li>';
+  document.querySelectorAll('.gnb-link[data-tab]').forEach(x=>x.classList.remove('active')); $('favLink').classList.toggle('active',!W); $('wrongLink').classList.toggle('active',W);
+  $('list').innerHTML=hit.slice((FV.page-1)*PER,FV.page*PER).map(i=>{ const t=tabOf(i); return `<li>${t==='psat'?rowPsat(i,FV):t==='leet'?rowLeet(i,FV):rowIm(i,FV)}${FV.open===i.id?detail(i):''}</li>`; }).join('')||(W?'<li class="empty">틀린 문항이 없습니다. 문항을 풀어 채점하면 틀린 것이 여기에 모입니다.</li>':'<li class="empty">아직 즐겨찾기한 지문·문항이 없습니다. 문항을 펼쳐 ‘☆ 즐겨찾기’를 누르면 여기에 모입니다.</li>');
   let p=''; if(pages>1){ const s=Math.max(1,FV.page-4), e2=Math.min(pages,s+9);
     p+=`<button type="button" data-p="${FV.page-1}"${FV.page===1?' disabled':''} aria-label="이전 페이지">‹</button>`;
     for(let n=s;n<=e2;n++) p+=`<button type="button" data-p="${n}"${n===FV.page?' class="on" aria-current="page"':''}>${n}</button>`;
@@ -522,10 +530,10 @@ function renderFav(){
   $('pager').innerHTML=p;
   for(const id of ['oldx','noteL','noteM','litL','litM','noteP','litP']) $(id).hidden=true;
 }
-function openFav(){ FV.on=true; FV.page=1; FV.open=null; document.body.classList.add('fav-on'); render(); }
+function openFav(src){ FV.on=true; FV.src=src==='wrong'?'wrong':'fav'; FV.page=1; FV.open=null; document.body.classList.add('fav-on'); render(); }
 function render(){
   if(FV.on) return renderFav();
-  $('favLink').classList.remove('active');
+  $('favLink').classList.remove('active'); $('wrongLink').classList.remove('active');
   const T=TABS[tab], S=st[tab]; const hit=T.items.filter(match);
   const pages=Math.max(1,Math.ceil(hit.length/PER)); if(S.page>pages) S.page=pages;
   $('cnt').innerHTML=`검색결과 <em>${hit.length.toLocaleString()}</em>건`;
@@ -548,9 +556,9 @@ function setHTML(i0){ const e=i0._ex, m=isM(i0), ps=isP(i0), T=ps?TABS.psat:m?TA
   const its=T.items.filter(x=>x.exam===i0.exam&&setOf(x)===s0).sort((a,b)=>(m?MPICS[a.exam].n[a.id]-MPICS[b.exam].n[b.id]:a.no-b.no)); const p=picP(i0);
   $('svT').textContent=ps?`${e.year}년 ${e.kind} PSAT 언어논리 [${i0.set}]`:m?`${e.year}학년도 중등임용 국어 ${e.kind} [${setLab(i0)}]`:`${e.year}학년도 법학적성시험 ${e.subject} [${i0.set}]`; $('svS').textContent=i0.topic; $('svF').innerHTML=favB(i0);
   $('svL').innerHTML=p?img(psrc(i0),p,`[${setLab(i0)}] 지문 원본`):'';
-  $('svR').innerHTML=its.map(i=>{ const q=picQ(i); return `<div class="qb">${q?img(qsrc(i),q,`${noLab(i)} 문항 원본`)+pickHTML(i,'s'+i.id):''}</div>`; }).join('')+(ps?`<p class="srcl">출처: ${e.year}년 ${esc(e.kind)} 공직적격성평가(PSAT) 언어논리영역 ${esc(e.bk)}책형 · 인사혁신처 국가공무원 채용시스템</p>`:m?`<p class="srcl">출처: ${e.year}학년도 중등학교 교사 임용후보자 선정경쟁시험 제1차 국어 · 한국교육과정평가원</p>`:`<p class="srcl">출처: ${e.year}학년도 법학적성시험 ${esc(e.subject)} · 법학전문대학원협의회</p>`); }
+  $('svR').innerHTML=its.map(i=>{ const q=picQ(i); return `<div class="qb" data-qid="${esc(i.id)}">${q?img(qsrc(i),q,`${noLab(i)} 문항 원본`)+pickHTML(i,'s'+i.id):''}</div>`; }).join('')+(ps?`<p class="srcl">출처: ${e.year}년 ${esc(e.kind)} 공직적격성평가(PSAT) 언어논리영역 ${esc(e.bk)}책형 · 인사혁신처 국가공무원 채용시스템</p>`:m?`<p class="srcl">출처: ${e.year}학년도 중등학교 교사 임용후보자 선정경쟁시험 제1차 국어 · 한국교육과정평가원</p>`:`<p class="srcl">출처: ${e.year}학년도 법학적성시험 ${esc(e.subject)} · 법학전문대학원협의회</p>`); }
 function openSet(id){ const i=TABS.leet.items.find(x=>x.id===id)||TABS.imyong.items.find(x=>x.id===id)||TABS.psat.items.find(x=>x.id===id); if(!i) return; SV=i; setHTML(i); $('setv').setAttribute('data-ink-host','set:'+i.exam+'|'+setOf(i)); $('setv').hidden=false; document.body.classList.add('noscroll'); $('svX').focus(); }
-function closeSet(){ $('setv').hidden=true; document.body.classList.remove('noscroll'); SV=null; }
+function closeSet(){ $('setv').hidden=true; document.body.classList.remove('noscroll'); SV=null; if(FV.on) render(); }
 function pkClick(t){
   if(t.dataset.pk){ const k=t.dataset.pk; if(PK[k]&&PK[k].done) return true; PK[k]={v:+t.dataset.n}; return true; }
   if(t.dataset.grade){ const k=t.dataset.grade; if(PK[k]) PK[k].done=1; return true; }
@@ -569,7 +577,11 @@ $('list').addEventListener('click',e=>{
     if(tg.dataset.q){ S.q=tg.dataset.q; $('q').value=S.q; } else { S.sel={}; S.sel[tg.dataset.ft]=new Set([tg.dataset.v]); buildSide(); } S.page=1; S.open=null; render(); $('ixView').scrollIntoView({behavior:'smooth'}); return; }
   if(e.target.closest('.hid')){ const r=e.target.closest('.row'); const i=findI(r.dataset.id); const a=i.ans; e.target.closest('.hid').outerHTML=`<span class="a${String(a).length>1?' tx2':''}">${String(a).length===1?CIR[+a-1]:esc(a)}</span>`; return; }
   const r=e.target.closest('.row'); if(!r) return;
-  if(FV.on){ const i=findI(r.dataset.id); if(i&&picP(i)){ openSet(i.id); return; } }   /* 즐겨찾기한 지문 묶음: 지문과 문항을 바로 연다 */
+  if(FV.on){ const i=findI(r.dataset.id);
+    if(i&&FV.src==='wrong'&&S.open!==i.id){ delete PK['d'+i.id]; delete PK['s'+i.id]; }   /* 오답 노트: 아까 채점한 표시를 지우고 처음부터 다시 푼다 */
+    if(i&&picP(i)){ openSet(i.id);   /* 즐겨찾기한 지문 묶음·틀린 문항의 지문: 지문과 문항을 바로 연다 */
+      if(FV.src==='wrong'){ const q=[...$('svR').querySelectorAll('.qb')].find(x=>x.dataset.qid===i.id); if(q) setTimeout(()=>q.scrollIntoView({block:'center'}),60); }
+      return; } }
   S.open = S.open===r.dataset.id?null:r.dataset.id; render();
 });
 $('list').addEventListener('keydown',e=>{ if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('row')){ e.preventDefault(); e.target.click(); } });
@@ -585,7 +597,7 @@ window.KMA_ITEMS=function(ids){ const abs=s=>'/advanced-korean/'+s; return ids.m
   return {k:'adv:'+pre+':'+id, a:t==='psat'?'PSAT':t==='leet'?'LEET '+i._ex.subject:'임용 '+String(i.area||'').split('·')[0], title:b.title, topic:b.topic, src:b.src, nc:(t==='imyong'&&i.sec!=='객관식')?0:5,
     q:(b.q||[]).map(x=>({s:abs(x.s),w:x.w,h:x.h})), p:b.p?{lab:b.p.lab, imgs:(b.p.imgs||[]).map(x=>({s:abs(x.s),w:x.w,h:x.h}))}:null, txt:null, ans:i._a||0};
 }).filter(Boolean); };
-function kmaRec(k){ if(!window.KMA||!PK[k]||!PK[k].v) return; const id=k.slice(1); let t=null,i=null; for(const tt of ['psat','leet','imyong']){ i=TABS[tt].items.find(x=>x.id===id); if(i){t=tt;break;} } if(!i||!i._a) return;
+function kmaRec(k){ locRec(k); if(!window.KMA||!PK[k]||!PK[k].v) return; const id=k.slice(1); let t=null,i=null; for(const tt of ['psat','leet','imyong']){ i=TABS[tt].items.find(x=>x.id===id); if(i){t=tt;break;} } if(!i||!i._a) return;
   KMA.record('adv:'+({psat:'psat',leet:'leet',imyong:'im'}[t])+':'+id, PK[k].v===i._a, t==='psat'?'PSAT':t==='leet'?'LEET '+i._ex.subject:'임용 '+String(i.area||'').split('·')[0], PK[k].v); }
 window.BKAPI={page:'kkot',rec:function(id,pick){ PK['b'+id]={v:pick,done:1}; kmaRec('b'+id); },get:function(id){ var i=null; for(const t of ['leet','imyong','psat']){ i=TABS[t].items.find(x=>x.id===id); if(i) break; } if(!i) return null;
   const e=i._ex, q=picQ(i), p=picP(i);
@@ -594,8 +606,10 @@ window.BKAPI={page:'kkot',rec:function(id,pick){ PK['b'+id]={v:pick,done:1}; kma
   return {id, title, topic:i.topic, src, q:q?[{s:qsrc(i),w:q[0],h:q[1]}]:[], p:p?{k:i.exam+'|'+setOf(i), lab:(isM(i)?setLab(i):i.set)+' 지문', imgs:[{s:psrc(i),w:p[0],h:p[1]}]}:null, ans:i._a?CIR[i._a-1]:'' }; }};
 const h=(location.hash||'').slice(1); setTab(TABS[h]?h:'leet',false);
 $('favLink').addEventListener('click',e=>{ e.preventDefault(); openFav(); $('main').scrollIntoView({behavior:'smooth'}); });
+$('wrongLink').addEventListener('click',e=>{ e.preventDefault(); openFav('wrong'); $('main').scrollIntoView({behavior:'smooth'}); });
+wrongPaint();
 document.addEventListener('kfav:change',()=>{ if(FV.on) render(); else document.querySelectorAll('#list .row').forEach(r=>{ const i=findI(r.dataset.id); if(i) r.classList.toggle('fv',isFavI(i)); }); });
-if(h==='fav') openFav();
+if(h==='fav') openFav(); else if(h==='wrong') openFav('wrong');
 })();
 </script>
 <style id="bk-v75">
