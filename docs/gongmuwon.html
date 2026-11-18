@@ -564,7 +564,7 @@ function listView(mode){
       `<div class="gm-filters">${AREAS.concat(['영역 미정']).map(a=>`<button type="button" class="gm-chip${F.a.has(a)?' on':''}" data-a="${a}">${a}</button>`).join('')}</div>`+
       `<div class="gm-filters">${GRPS.map(g=>`<button type="button" class="gm-chip${F.g.has(g)?' on':''}" data-g="${g}">${g}</button>`).join('')}<select id="gmY" aria-label="연도"><option value="">모든 연도</option>${[...new Set(D.exams.map(e=>e.year))].sort((a,b)=>b-a).map(y=>`<option${String(y)===F.y?' selected':''}>${y}</option>`).join('')}</select></div></details>`;
   }
-  if(find) h+=`<div class="gm-bk" id="gmBk"><span>담은 문항 <b>${BK.length}</b>개</span>${BK.length?'<a class="gm-btn pri" href="#set" style="padding:7px 16px">모아 풀기</a>'+(T?'<button class="gm-btn" type="button" id="gmBkGo" style="padding:7px 16px">과제로 내기</button>':'')+'<button class="gm-btn" type="button" id="gmBkX" style="padding:7px 14px">비우기</button>':'<span style="color:var(--sub);font-size:13px">문항 줄 오른쪽 \'담기\'로 골라 모으면 한꺼번에 풀 수 있어요.</span>'}</div>`;
+  if(find) h+=`<div class="gm-bk" id="gmBk"><span>담은 문항 <b>${BK.length}</b>개</span>${BK.length?'<a class="gm-btn pri" href="#set" style="padding:7px 16px">모아 풀기</a>'+'<button class="gm-btn" type="button" id="gmBkPr" style="padding:7px 16px">시험지 인쇄</button>'+(T?'<button class="gm-btn" type="button" id="gmBkGo" style="padding:7px 16px">과제로 내기</button>':'')+'<button class="gm-btn" type="button" id="gmBkX" style="padding:7px 14px">비우기</button>':'<span style="color:var(--sub);font-size:13px">문항 줄 오른쪽 \'담기\'로 골라 모으면 한꺼번에 풀 수 있어요.</span>'}</div>`;
   h+=`<p style="color:var(--sub);font-size:14px;margin:8px 0">${F.q&&find?`‘${esc(F.q)}’ — `:''}${favm?`즐겨찾기 ${G.length}개 · `:''}${nQ.toLocaleString()}문항${nP?` (지문 ${nP}개)`:''}${pages>1?` · ${F.page}/${pages}쪽`:''}</p>`;
   const key=g=>g.fk||g.pk||g.ids[0];
   h+= G.length? '<ul class="gm-list">'+G.slice((F.page-1)*PER,F.page*PER).map(g=>{ const id=g.ids[0], it=IT[id], e=EX[it.e], r=g.ids.length===1?REC[id]:null, k=key(g);
@@ -588,6 +588,7 @@ function listView(mode){
   V.querySelectorAll('[data-bk]').forEach(c=>c.onchange=()=>{ const ids=c.dataset.bk.split(','); ids.forEach(x=>{ const i=BK.indexOf(x); if(c.checked&&i<0) BK.push(x); if(!c.checked&&i>=0) BK.splice(i,1); }); bkSave(); again(); });
   const go=$('gmBkGo'); if(go) go.onclick=()=>KMA.assign(BK.map(GMFind.asgItem));
   const bx=$('gmBkX'); if(bx) bx.onclick=()=>{ BK=[]; bkSave(); again(); };
+  const pr=$('gmBkPr'); if(pr) pr.onclick=()=>printBk(pr);
   if(F.open){ const g=G.find(x=>key(x)===F.open); if(g) detail(g.ids); }
 }
 /* v130: 즐겨찾기한 지문(과 그 문항)·문항 하나만 */
@@ -615,6 +616,20 @@ function detail(ids){
     }
     paint();
   }).catch(()=>{ if(el.isConnected){ el.innerHTML='<p class="gm-empty">문항 그림을 불러오지 못했어요. <button type="button" class="gm-btn" id="gmDetRe">다시 불러오기</button></p>'; const b=el.querySelector('#gmDetRe'); if(b) b.onclick=()=>{ el.innerHTML='<p class="gm-empty">불러오는 중…</p>'; detail(ids); }; } });   /* v121 */
+}
+/* v132: 담은 문항을 시험지로 — 과제 인쇄와 같은 틀(asgprint.js: A4 2단, 지문은 줄 사이에서만 끊고 문항은 쪼개지 않음, 정답표는 따로 한 장)
+   차례: 담은 차례대로 회차를 놓고, 한 회차 안에서는 문항 번호순(같은 지문의 문항이 붙어 나오게) */
+let PRP=null;
+function printBk(btn){
+  const ids=BK.filter(id=>IT[id]); if(!ids.length) return;
+  const ord=[]; ids.forEach(id=>{ if(ord.indexOf(IT[id].e)<0) ord.push(IT[id].e); });
+  ids.sort((a,b)=>(ord.indexOf(IT[a].e)-ord.indexOf(IT[b].e))||(IT[a].n-IT[b].n));
+  const t0=btn.textContent; btn.disabled=true; btn.textContent='만드는 중…';
+  PRP=PRP||(window.KMAPrint?Promise.resolve():new Promise((res,rej)=>{ const sc=document.createElement('script'); sc.src='/suneung-korean/js/asgprint.js?v=132'; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc); }));
+  PRP.then(()=>{ const key={}; ids.forEach(id=>{ if(+IT[id].ans) key['adv:gm:'+id]=+IT[id].ans; });
+    window.KMAPrint.open({title:'공무원 국어 기출 모음',items:ids.map(GMFind.asgItem)},{key});
+    btn.disabled=false; btn.textContent=t0;
+  },()=>{ PRP=null; btn.disabled=false; btn.textContent='인쇄 화면을 불러오지 못했어요 · 다시'; });
 }
 /* ---------------- 모아 풀기 (v111): 담은 문항을 한 화면에서 풀고, 답을 모두 골라야 채점된다 ---------------- */
 function setView(){
