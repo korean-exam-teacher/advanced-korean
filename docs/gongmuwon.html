@@ -430,7 +430,7 @@ mark{background:rgba(242,214,92,.55);color:inherit;padding:0 1px;border-radius:2
   <div id="gmView"><p class="gm-empty">불러오는 중…</p></div>
   <p class="gm-note">※ 출처: 인사혁신처 국가공무원 채용시스템, 각 지방자치단체(서울특별시 등), 국회사무처, 국방부, 법원행정처가 공개한 9급(군무원 7급 포함) 공개경쟁채용·지역인재 선발 필기시험 국어 문제. 문제의 저작권은 출제 기관에 있으며, 문항 그림은 원본 문제지를 그대로 잘라 실은 것으로 비영리 교육 목적으로만 제공합니다. 영역은 선생님 분류와 자동 분류(흐린 표시)를 함께 썼습니다. 지역인재 9급은 해설을 함께 실었습니다. 잘못된 곳은 ‘의견 보내기’로 알려 주세요.</p>
 </main>
-<script src="/suneung-korean/js/fav.js?v=130"></script>
+<script src="/suneung-korean/js/fav.js?v=135"></script>
 <script src="gm/index.js?v=102"></script>
 <script src="gm/gmfind.js?v=102"></script>
 <script>
@@ -440,8 +440,11 @@ const AREAS=['어휘·한자','문법·규범','화법·작문','독해','문학
 const CIR='①②③④⑤', $=id=>document.getElementById(id), V=$('gmView');
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function ls(k,v){ try{ if(v===undefined) return JSON.parse(localStorage.getItem(k)||'null'); if(v===null) localStorage.removeItem(k); else localStorage.setItem(k,JSON.stringify(v)); }catch(e){ return null; } }
-let REC=ls('gm-rec2')||{}, ATT=ls('gm-att')||{}, EXPL=null;
-function rec(id,pick){ const it=IT[id]; if(!it||!it.ans) return; const ok=pick===it.ans; const r=REC[id]||{}; REC[id]={p:pick,ok:ok?1:0,f:r.f===undefined?(ok?1:0):r.f,c:(r.c||0)+1,t:Date.now()}; ls('gm-rec2',REC);
+/* v135: 풀이 기록을 아이디마다 따로 둔다(전에는 이 기기 하나에 하나 'gm-rec2' — 같은 기기를 쓰는 학생끼리 섞였다). 예전 기록은 처음 연 아이디로 옮긴다 */
+const GU=(()=>{ try{ return (JSON.parse(localStorage.getItem('kma.s')||'null')||{}).id||''; }catch(e){ return ''; } })(), RK='gm-rec2'+(GU?':'+GU:'');
+if(GU&&!ls(RK)&&ls('gm-rec2')){ ls(RK,ls('gm-rec2')); ls('gm-rec2',null); }
+let REC=ls(RK)||{}, ATT=ls('gm-att')||{}, EXPL=null;
+function rec(id,pick){ const it=IT[id]; if(!it||!it.ans) return; const ok=pick===it.ans; const r=REC[id]||{}; REC[id]={p:pick,ok:ok?1:0,f:r.f===undefined?(ok?1:0):r.f,c:(r.c||0)+1,t:Date.now()}; ls(RK,REC); if(onId()) KF.put(WNS,id,!ok,REC[id].t);
   if(window.KMA) KMA.record('adv:gm:'+id, ok, '공무원·'+(it.a||'영역 미정'), pick); }
 function short(e){ return e.title.replace(/\s*국어\s*/,' ').replace(/\s+/g,' ').trim(); }
 /* v130: 즐겨찾기 — 여러 문항이 함께 읽는 지문은 지문째(열쇠 "회차|첫 번호-끝 번호"), 그 밖에는 문항 하나(열쇠 = 문항 id). 틀은 /suneung-korean/js/fav.js, 갈래 'gm' */
@@ -451,6 +454,12 @@ function favIds(k){ const p=k.indexOf('|'); if(p<0) return IT[k]?[k]:[]; const e
 const favP=(eid,p)=>KF?KF.btn('gm',eid+'|'+p.rng[0]+'-'+p.rng[1],'지문 즐겨찾기'):'';
 const favQ=(id,Q)=>KF&&!(Q&&Q.p.some(p=>p.rng[0]<=IT[id].n&&IT[id].n<=p.rng[1]))?KF.btn('gm',id,'즐겨찾기'):'';   /* 지문에 딸린 문항은 지문 쪽 별 하나로 */
 if(KF){ KF.use('gm'); KF.valid('gm',k=>favIds(k).length>0); }
+/* v135: 오답 노트를 아이디에 — users/{uid}.fav.gmwr { 문항 id: 틀린 시각(+) / 맞힌 시각(−) }. 이 기기의 기록은 처음 열 때 옮긴다(더 나중 것만) */
+const WNS='gmwr', BNS='gmbk';
+function onId(){ return !!(KF&&KF.user()&&KF.put); }
+if(onId()){ KF.use(WNS); KF.putMany(WNS,Object.keys(REC).filter(id=>REC[id]&&REC[id].t).map(id=>[id,!REC[id].ok,REC[id].t])); }
+function wrongIds(){ if(onId()) return KF.keys(WNS).filter(id=>IT[id]).sort((a,b)=>KF.at(WNS,b)-KF.at(WNS,a));
+  return IDS.filter(id=>REC[id]&&!REC[id].ok).sort((a,b)=>REC[b].t-REC[a].t); }
 function loadExpl(){ if(EXPL) return Promise.resolve(EXPL); return new Promise(r=>{ const s=document.createElement('script'); s.src='gm/explain.js?v=101'; s.onload=()=>{ EXPL=window.GM_EXPLAIN||{}; r(EXPL); }; s.onerror=()=>{ EXPL={}; r(EXPL); }; document.body.appendChild(s); }); }
 const QC={};
 /* v121: 받지 못하면 1.5초·3초 뒤 다시 받는다(3번까지). 끝내 실패한 것은 기억하지 않아, 다시 열면 또 받아 본다 */
@@ -483,7 +492,10 @@ function route(){ clearInterval(TIMER); const h=(location.hash||'#exams').slice(
 /* 선생님으로 들어오거나 나가면 단추(과제로 내기·담기)를 다시 그린다 */
 document.addEventListener('kma:role',()=>{ const v=(location.hash||'#exams').slice(1).split('/')[0]; if(v!=='exam'&&v!=='set') route(); });
 window.addEventListener('hashchange',()=>{ route(); window.scrollTo(0,0); });
-document.addEventListener('kfav:change',()=>{ if((location.hash||'').slice(1)==='fav'){ const y=window.scrollY; listView('fav'); window.scrollTo(0,y); } });
+document.addEventListener('kfav:change',e=>{ const ns=(e.detail&&e.detail.ns)||'', v=(location.hash||'').slice(1).split('/')[0];
+  if(ns===BNS||!ns){ const nb=onId()?KF.list(BNS).filter(id=>IT[id]):BK; if(nb.join('|')!==BK.join('|')){ BK=nb; if(v==='find'||v==='area'){ const y=window.scrollY; listView('find'); window.scrollTo(0,y); } } }
+  if((ns===WNS||!ns)&&v==='wrong'){ const y=window.scrollY; listView('wrong'); window.scrollTo(0,y); }
+  if((ns==='gm'||!ns)&&v==='fav'){ const y=window.scrollY; listView('fav'); window.scrollTo(0,y); } });
 /* ---------------- 회차별 ---------------- */
 function teacher(){ return !!(window.KMA&&KMA.on&&((KMA.role&&KMA.role())||sessionStorage.getItem('kma.tpw'))); }
 function examsView(){
@@ -540,13 +552,15 @@ function fmt(ms){ const s=Math.max(0,Math.round(ms/1000)); return Math.floor(s/6
 /* ---------------- 찾아 풀기 · 오답 노트 ---------------- */
 const F={g:new Set(),a:new Set(),y:'',q:'',page:1,open:null};
 let BK=JSON.parse(sessionStorage.getItem('gm-bk')||'[]');   /* 담은 문항 — 학생: 모아 풀기, 선생님: 과제로도 내기 */
-function bkSave(){ sessionStorage.setItem('gm-bk',JSON.stringify(BK)); }
+/* v135: 담은 문항을 아이디에 — users/{uid}.fav.gmbk(전에는 탭을 닫으면 사라지는 sessionStorage). 차례 = 담은 차례 */
+if(onId()){ KF.use(BNS); if(BK.length) KF.order(BNS,KF.list(BNS).concat(BK.filter(id=>!KF.has(BNS,id)))); try{ sessionStorage.removeItem('gm-bk'); }catch(e){} BK=KF.list(BNS).filter(id=>IT[id]); }
+function bkSave(){ if(onId()) KF.order(BNS,BK); else sessionStorage.setItem('gm-bk',JSON.stringify(BK)); }
 const EGS=['훈민정음','높임 표현','사자성어','외래어 표기','고전 소설','현대시','맞춤법','논증','한자어'];
 function listView(mode){
   const wrong=mode==='wrong', favm=mode==='fav', find=!wrong&&!favm, T=teacher();
   if(find&&F.q&&!GMFind.ready()){ V.innerHTML='<p class="gm-empty">찾는 중…</p>'; GMFind.load().then(()=>listView(mode)); return; }
   let G;
-  if(wrong) G=IDS.filter(id=>REC[id]&&!REC[id].ok).sort((a,b)=>REC[b].t-REC[a].t).map(id=>({ids:[id],pk:'',snip:'',where:''}));
+  if(wrong) G=wrongIds().map(id=>({ids:[id],pk:'',snip:'',where:''}));
   else if(favm){ const ks=KF?KF.keys('gm').sort((a,b)=>KF.at('gm',b)-KF.at('gm',a)):[];   /* 넣은 순. 펼친 채 별을 뺀 것은 닫을 때까지 남긴다 */
     if(F.open&&ks.indexOf(F.open)<0&&favIds(F.open).length) ks.push(F.open);
     G=ks.map(k=>({ids:favIds(k),pk:'',snip:'',where:'',fk:k})); }
