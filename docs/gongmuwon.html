@@ -465,7 +465,7 @@ const QC={};
 /* v121: 받지 못하면 1.5초·3초 뒤 다시 받는다(3번까지). 끝내 실패한 것은 기억하지 않아, 다시 열면 또 받아 본다 */
 function getJ(u,tries){ return new Promise((res,rej)=>{ let k=0; (function go(){ fetch(u+(k?'&r='+k:'')).then(r=>{ if(!r.ok) throw 0; return r.json(); }).then(res,()=>{ if(++k<tries) setTimeout(go,k*1500); else rej(new Error('load')); }); })(); }); }
 function loadQ(eid){ if(QC[eid]) return QC[eid]; const e=EX[eid];
-  QC[eid]=getJ('gm/'+(e.mode==='q'?'q':'pg')+'/'+eid+'.json?v=106',3).then(d=>{ const q={}; (d.q||[]).forEach(x=>q[x.n]=x.img); return {q, p:d.p||[], pages:d.pages||[]}; },err=>{ delete QC[eid]; throw err; });
+  QC[eid]=getJ('gm/'+(e.mode==='q'?'q':'pg')+'/'+eid+'.json?v=143',3).then(d=>{ const q={}; (d.q||[]).forEach(x=>q[x.n]=x.img); return {q, p:d.p||[], pages:d.pages||[]}; },err=>{ delete QC[eid]; throw err; });
   return QC[eid]; }
 function exItem(it){ const x=EXPL&&EXPL[it]; return x?`<div class="gm-ex"><p><b>해설</b>${esc(x.r)}</p><p><b>오답 살피기</b>${esc(x.t)}</p><p><b>기억할 점</b>${esc(x.k)}</p></div>`:''; }
 function chHTML(id,nc,pick,done,ans){ let h='<div class="gm-ch" role="group">'; for(let c=1;c<=nc;c++){ const cls=done&&ans?(c===ans?'ok':c===pick?'no':''):(c===pick?'sel':''); h+=`<button type="button" class="${cls}" data-id="${id}" data-c="${c}"${done?' disabled':''} aria-label="${c}번">${CIR[c-1]}</button>`; } return h+'</div>'; }
@@ -639,7 +639,7 @@ function printBk(btn){
   const ord=[]; ids.forEach(id=>{ if(ord.indexOf(IT[id].e)<0) ord.push(IT[id].e); });
   ids.sort((a,b)=>(ord.indexOf(IT[a].e)-ord.indexOf(IT[b].e))||(IT[a].n-IT[b].n));
   const t0=btn.textContent; btn.disabled=true; btn.textContent='만드는 중…';
-  PRP=PRP||(window.KMAPrint?Promise.resolve():new Promise((res,rej)=>{ const sc=document.createElement('script'); sc.src='/suneung-korean/js/asgprint.js?v=140'; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc); }));
+  PRP=PRP||(window.KMAPrint?Promise.resolve():new Promise((res,rej)=>{ const sc=document.createElement('script'); sc.src='/suneung-korean/js/asgprint.js?v=143'; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc); }));
   PRP.then(()=>{ const key={}; ids.forEach(id=>{ if(+IT[id].ans) key['adv:gm:'+id]=+IT[id].ans; });
     window.KMAPrint.open({title:'공무원 국어 기출 모음',items:ids.map(GMFind.asgItem)},{key});
     btn.disabled=false; btn.textContent=t0;
