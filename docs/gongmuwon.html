@@ -363,6 +363,16 @@ footer .guide details{border-color:var(--line)!important;background:none!importa
 .gm-ch button.ok{border-color:#1f7a4d;background:rgba(31,122,77,.1);color:#1f7a4d}
 .gm-ch button.no{border-color:#b33a2b;background:rgba(179,58,43,.08);color:#b33a2b}
 .gm-ch button:disabled{cursor:default}
+/* v145: 글자로 옮긴 문항 — 선택지를 글과 함께 누른다(인쇄와 같은 글·글꼴) */
+.gm-chs{display:grid;gap:6px;margin-top:10px}
+.gm-chs button{display:flex;gap:10px;align-items:baseline;width:100%;text-align:left;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);padding:9px 14px;cursor:pointer;font-family:"KMA Serif","Noto Serif KR",serif;font-size:16px;line-height:1.65;letter-spacing:-.02em;word-break:keep-all;overflow-wrap:anywhere}
+.gm-chs button .c{flex:none}.gm-chs button .t{flex:1;min-width:0;display:block}
+.gm-chs button.sel{border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.gm-chs button.ok{border-color:#1f7a4d;background:rgba(31,122,77,.1)}
+.gm-chs button.no{border-color:#b33a2b;background:rgba(179,58,43,.08)}
+.gm-chs button:disabled{cursor:default;color:var(--ink)}
+.gm-q .gmx-q,.gm-det .gmx-q{font-size:16.5px;margin-top:4px}.gm-pas .gmx,.gm-pas .gmx-poem{font-size:16px;padding:4px 2px}
+.gmx-qbl{--gmx-bg:var(--paper)}
 .gm-act{margin-top:10px}.gm-act .gm-btn{padding:7px 18px}.gm-res{font-size:14px;margin-top:8px}.gm-res.ok{color:#1f7a4d}.gm-res.no{color:#b33a2b}
 .gm-ex{margin-top:10px;padding:12px 14px;border-radius:12px;background:var(--soft);font-size:14.5px;line-height:1.75}.gm-ex p{margin:0 0 4px}.gm-ex b{margin-right:6px}
 .gm-omr{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px 18px;margin:16px 0}
@@ -431,6 +441,7 @@ mark{background:rgba(242,214,92,.55);color:inherit;padding:0 1px;border-radius:2
   <p class="gm-note">※ 출처: 인사혁신처 국가공무원 채용시스템, 각 지방자치단체(서울특별시 등), 국회사무처, 국방부, 법원행정처가 공개한 9급(군무원 7급 포함) 공개경쟁채용·지역인재 선발 필기시험 국어 문제. 문제의 저작권은 출제 기관에 있으며, 문항 그림은 원본 문제지를 그대로 잘라 실은 것으로 비영리 교육 목적으로만 제공합니다. 영역은 선생님 분류와 자동 분류(흐린 표시)를 함께 썼습니다. 지역인재 9급은 해설을 함께 실었습니다. 잘못된 곳은 ‘의견 보내기’로 알려 주세요.</p>
 </main>
 <script src="/suneung-korean/js/fav.js?v=135"></script>
+<script src="/suneung-korean/js/gmtext.js?v=145"></script>
 <script src="gm/index.js?v=137"></script>
 <script src="gm/gmfind.js?v=137"></script>
 <script>
@@ -465,10 +476,16 @@ const QC={};
 /* v121: 받지 못하면 1.5초·3초 뒤 다시 받는다(3번까지). 끝내 실패한 것은 기억하지 않아, 다시 열면 또 받아 본다 */
 function getJ(u,tries){ return new Promise((res,rej)=>{ let k=0; (function go(){ fetch(u+(k?'&r='+k:'')).then(r=>{ if(!r.ok) throw 0; return r.json(); }).then(res,()=>{ if(++k<tries) setTimeout(go,k*1500); else rej(new Error('load')); }); })(); }); }
 function loadQ(eid){ if(QC[eid]) return QC[eid]; const e=EX[eid];
-  QC[eid]=getJ('gm/'+(e.mode==='q'?'q':'pg')+'/'+eid+'.json?v=143',3).then(d=>{ const q={}; (d.q||[]).forEach(x=>q[x.n]=x.img); return {q, p:d.p||[], pages:d.pages||[]}; },err=>{ delete QC[eid]; throw err; });
+  QC[eid]=Promise.all([getJ('gm/'+(e.mode==='q'?'q':'pg')+'/'+eid+'.json?v=143',3), e.mode==='q'&&window.GMText?GMText.load(eid):null]).then(([d,T])=>{ const q={}; (d.q||[]).forEach(x=>q[x.n]=x.img); return {q, p:d.p||[], pages:d.pages||[], T}; },err=>{ delete QC[eid]; throw err; });
   return QC[eid]; }
+/* v145: 지문·문항을 글자로(gm/t) — 인쇄와 같은 글. 글자로 옮기지 못한 것만 그림 */
+function pasBox(Q,pi,p,eid,lazy){ const tx=Q.T&&window.GMText?GMText.pas(Q.T,pi):''; return `<div class="gm-pas"><div class="no pf"><span>[${p.rng[0]}~${p.rng[1]}] 지문</span>${favP(eid,p)}</div>${tx||`<img src="${p.img}" alt="${p.rng[0]}~${p.rng[1]}번 지문"${lazy?' loading="lazy"':''}>`}</div>`; }
+function qBox(Q,n,lazy){ const t=Q.T&&window.GMText?GMText.q(Q.T,n):null;
+  if(t&&t.ask!==undefined) return {h:`<div class="gmx-q"><div class="gmx-ask">${t.ask}</div>${t.fig}${t.body}</div>`,ch:t.ch,hd:t.chh};
+  if(t&&t.img) return {h:`<div class="gmx-q">${t.img}</div>`,ch:null};
+  return Q.q[n]?{h:`<img src="${Q.q[n]}" alt="${n}번 문항"${lazy?' loading="lazy"':''}>`,ch:null}:null; }
 function exItem(it){ const x=EXPL&&EXPL[it]; return x?`<div class="gm-ex"><p><b>해설</b>${esc(x.r)}</p><p><b>오답 살피기</b>${esc(x.t)}</p><p><b>기억할 점</b>${esc(x.k)}</p></div>`:''; }
-function chHTML(id,nc,pick,done,ans){ let h='<div class="gm-ch" role="group">'; for(let c=1;c<=nc;c++){ const cls=done&&ans?(c===ans?'ok':c===pick?'no':''):(c===pick?'sel':''); h+=`<button type="button" class="${cls}" data-id="${id}" data-c="${c}"${done?' disabled':''} aria-label="${c}번">${CIR[c-1]}</button>`; } return h+'</div>'; }
+function chHTML(id,nc,pick,done,ans,ch,hd){ const tx=ch&&ch.length===nc&&ch.every(Boolean); let h=`<div class="${tx?'gm-ch gm-chs':'gm-ch'}" role="group">`+(tx&&hd?hd:''); for(let c=1;c<=nc;c++){ const cls=done&&ans?(c===ans?'ok':c===pick?'no':''):(c===pick?'sel':''); h+=`<button type="button" class="${cls}" data-id="${id}" data-c="${c}"${done?' disabled':''} aria-label="${c}번">${tx?`<span class="c">${CIR[c-1]}</span><span class="t">${ch[c-1]}</span>`:CIR[c-1]}</button>`; } return h+'</div>'; }
 /* v131: 지문과 문항 나란히 — 지문이 있으면 한 묶음으로 싼다. data-ls 는 수업에서 지문 칸 스크롤을 학생 화면과 맞추는 이름표(live.js) */
 function setWrap(ph,qh,ls){ return ph?`<div class="gm-set"><div class="gm-set-p" data-ls="${esc(ls)}">${ph}</div><div class="gm-set-q">${qh}</div></div>`:qh; }
 /* 답을 고를 때마다 화면을 다시 그리므로, 지문 칸 안에서 내려 둔 자리를 기억했다가 되돌린다. 붙박이 칸의 위·아래 여백도 여기서 잰다 */
@@ -526,9 +543,9 @@ function examView(eid){
         /* v131: 같은 지문의 문항을 한 묶음(.gm-set)으로 — 지문은 .gm-set-p(넓은 화면에서 왼쪽 붙박이 칸), 문항은 .gm-set-q */
         const shownP=new Set(); let cur=null; const grp=[];
         ids.forEach(id=>{ const it=IT[id]; let ph='';
-          Q.p.forEach((p,pi)=>{ if(p.rng[0]<=it.n&&it.n<=p.rng[1]&&!shownP.has(pi)){ shownP.add(pi); ph+=`<div class="gm-pas"><div class="no pf"><span>[${p.rng[0]}~${p.rng[1]}] 지문</span>${favP(eid,p)}</div><img src="${p.img}" alt="${p.rng[0]}~${p.rng[1]}번 지문" loading="lazy"></div>`; } });
-          const ok=done&&it.ans?(R.ans[id]===it.ans):null;
-          const qh=`<div class="gm-q" id="q-${id}"><div class="no pf"><span>${it.n}번${it.a?' · '+esc(it.a):''}</span>${favQ(id,Q)}</div>${Q.q[it.n]?`<img src="${Q.q[it.n]}" alt="${it.n}번 문항" loading="lazy">`:'<p class="gm-empty" style="text-align:left;padding:8px 0">이 문항 그림이 없습니다.</p>'}${chHTML(id,e.nc,R.ans[id],done,it.ans)}${done&&it.ans?`<div class="gm-res ${ok?'ok':'no'}">${ok?'맞았어요':(R.ans[id]?'아쉬워요 · ':'')+'정답 '+CIR[it.ans-1]}</div>${exItem(id)}`:''}</div>`;
+          Q.p.forEach((p,pi)=>{ if(p.rng[0]<=it.n&&it.n<=p.rng[1]&&!shownP.has(pi)){ shownP.add(pi); ph+=pasBox(Q,pi,p,eid,1); } });
+          const ok=done&&it.ans?(R.ans[id]===it.ans):null, qb=qBox(Q,it.n,1);
+          const qh=`<div class="gm-q" id="q-${id}"><div class="no pf"><span>${it.n}번${it.a?' · '+esc(it.a):''}</span>${favQ(id,Q)}</div>${qb?qb.h:'<p class="gm-empty" style="text-align:left;padding:8px 0">이 문항 그림이 없습니다.</p>'}${chHTML(id,e.nc,R.ans[id],done,it.ans,qb&&qb.ch,qb&&qb.hd)}${done&&it.ans?`<div class="gm-res ${ok?'ok':'no'}">${ok?'맞았어요':(R.ans[id]?'아쉬워요 · ':'')+'정답 '+CIR[it.ans-1]}</div>${exItem(id)}`:''}</div>`;
           const inP=Q.p.findIndex(p=>p.rng[0]<=it.n&&it.n<=p.rng[1]);
           if(ph||inP<0||!cur||cur.pi!==inP){ cur={pi:inP,ph,qs:''}; grp.push(cur); }
           cur.qs+=qh; });
@@ -618,10 +635,10 @@ function detail(ids){
   Promise.all([loadQ(it0.e), loadExpl()]).then(([Q])=>{
     const S={};
     function paint(){
-      let ph='', seen=new Set(); ids.forEach(id=>Q.p.forEach((p,pi)=>{ if(p.rng[0]<=IT[id].n&&IT[id].n<=p.rng[1]&&!seen.has(pi)){ seen.add(pi); ph+=`<div class="gm-pas"><div class="no pf"><span>[${p.rng[0]}~${p.rng[1]}] 지문</span>${favP(it0.e,p)}</div><img src="${p.img}" alt="지문"></div>`; } }));
-      let qh=ids.map(id=>{ const it=IT[id], st=S[id]||{};
-        const img=Q.q[it.n]?`<img src="${Q.q[it.n]}" alt="${it.n}번 문항">`:(e.mode==='pg'?`<p style="color:var(--sub);font-size:14px">이 회차는 시험지 쪽 그림으로만 있어요. <a href="#exam/${e.id}">시험지에서 ${it.n}번 보기 →</a></p>`:'');
-        return `<div style="margin:6px 0 16px"><div class="no pf" style="color:var(--faint);font-size:13px"><span>${esc(e.title)} ${it.n}번${it.a?' · '+esc(it.a)+(it.au?'(자동 분류)':''):''}</span>${favQ(id,Q)}</div>${img}${it.ans?chHTML(id,e.nc,st.pick,st.done,it.ans):''}${it.ans&&!st.done?`<div class="gm-act"><button type="button" class="gm-btn pri" data-gr="${id}"${st.pick?'':' disabled'}>채점하기</button></div>`:''}${st.done?`<div class="gm-res ${st.pick===it.ans?'ok':'no'}">${st.pick===it.ans?'맞았어요':'아쉬워요 · 정답 '+CIR[it.ans-1]}</div>${exItem(id)}`:''}</div>`; }).join('');
+      let ph='', seen=new Set(); ids.forEach(id=>Q.p.forEach((p,pi)=>{ if(p.rng[0]<=IT[id].n&&IT[id].n<=p.rng[1]&&!seen.has(pi)){ seen.add(pi); ph+=pasBox(Q,pi,p,it0.e,0); } }));
+      let qh=ids.map(id=>{ const it=IT[id], st=S[id]||{}, qb=qBox(Q,it.n,0);
+        const img=qb?qb.h:(e.mode==='pg'?`<p style="color:var(--sub);font-size:14px">이 회차는 시험지 쪽 그림으로만 있어요. <a href="#exam/${e.id}">시험지에서 ${it.n}번 보기 →</a></p>`:'');
+        return `<div style="margin:6px 0 16px"><div class="no pf" style="color:var(--faint);font-size:13px"><span>${esc(e.title)} ${it.n}번${it.a?' · '+esc(it.a)+(it.au?'(자동 분류)':''):''}</span>${favQ(id,Q)}</div>${img}${it.ans?chHTML(id,e.nc,st.pick,st.done,it.ans,qb&&qb.ch,qb&&qb.hd):''}${it.ans&&!st.done?`<div class="gm-act"><button type="button" class="gm-btn pri" data-gr="${id}"${st.pick?'':' disabled'}>채점하기</button></div>`:''}${st.done?`<div class="gm-res ${st.pick===it.ans?'ok':'no'}">${st.pick===it.ans?'맞았어요':'아쉬워요 · 정답 '+CIR[it.ans-1]}</div>${exItem(id)}`:''}</div>`; }).join('');
       el.innerHTML=setWrap(ph,qh,'d'+ids[0]); el.classList.toggle('has-set',!!ph); boxKeep(el);
       /* v111: 번호를 누르면 고르기만, '채점하기'를 눌러야 채점 */
       el.querySelectorAll('.gm-ch button[data-id]').forEach(b=>b.onclick=()=>{ const id=b.dataset.id; if(S[id]&&S[id].done) return; S[id]={pick:+b.dataset.c}; paint(); });
@@ -639,7 +656,7 @@ function printBk(btn){
   const ord=[]; ids.forEach(id=>{ if(ord.indexOf(IT[id].e)<0) ord.push(IT[id].e); });
   ids.sort((a,b)=>(ord.indexOf(IT[a].e)-ord.indexOf(IT[b].e))||(IT[a].n-IT[b].n));
   const t0=btn.textContent; btn.disabled=true; btn.textContent='만드는 중…';
-  PRP=PRP||(window.KMAPrint?Promise.resolve():new Promise((res,rej)=>{ const sc=document.createElement('script'); sc.src='/suneung-korean/js/asgprint.js?v=144'; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc); }));
+  PRP=PRP||(window.KMAPrint?Promise.resolve():new Promise((res,rej)=>{ const sc=document.createElement('script'); sc.src='/suneung-korean/js/asgprint.js?v=145'; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc); }));
   PRP.then(()=>{ const key={}; ids.forEach(id=>{ if(+IT[id].ans) key['adv:gm:'+id]=+IT[id].ans; });
     window.KMAPrint.open({title:'공무원 국어 기출 모음',items:ids.map(GMFind.asgItem)},{key});
     btn.disabled=false; btn.textContent=t0;
@@ -659,10 +676,10 @@ function setView(){
       let h=`<div class="gm-run"><div class="gm-bar"><div><b>모아 풀기 · ${ids.length}문항</b><div class="meta">${done?`맞힌 문항 ${sc} / ${need.length}`:'답을 모두 고른 뒤 맨 아래 ‘채점하기’를 누르세요. 다 풀어야 채점됩니다.'}</div></div><div style="display:flex;gap:8px;align-items:center"><a class="gm-btn" href="#find">담은 목록으로</a></div></div>`;
       let cur=null; const grp=[];
       ids.forEach((id,i)=>{ const it=IT[id], e=EX[it.e], Q=QQ[it.e]; let ph='';
-        Q.p.forEach((p,pi)=>{ const k=it.e+'|'+pi; if(p.rng[0]<=it.n&&it.n<=p.rng[1]&&!seen.has(k)){ seen.add(k); ph+=`<div class="gm-pas"><div class="no pf"><span>[${p.rng[0]}~${p.rng[1]}] 지문</span>${favP(it.e,p)}</div><img src="${p.img}" alt="지문" loading="lazy"></div>`; } });
-        const img=Q.q[it.n]?`<img src="${Q.q[it.n]}" alt="${it.n}번 문항" loading="lazy">`:(e.mode==='pg'?`<p style="color:var(--sub);font-size:14px">이 회차는 시험지 쪽 그림으로만 있어요. <a href="#exam/${e.id}">시험지에서 ${it.n}번 보기 →</a></p>`:'');
+        Q.p.forEach((p,pi)=>{ const k=it.e+'|'+pi; if(p.rng[0]<=it.n&&it.n<=p.rng[1]&&!seen.has(k)){ seen.add(k); ph+=pasBox(Q,pi,p,it.e,1); } });
+        const qb=qBox(Q,it.n,1), img=qb?qb.h:(e.mode==='pg'?`<p style="color:var(--sub);font-size:14px">이 회차는 시험지 쪽 그림으로만 있어요. <a href="#exam/${e.id}">시험지에서 ${it.n}번 보기 →</a></p>`:'');
         const ok=done&&it.ans?S[id]===it.ans:null;
-        const qh=`<div class="gm-q" id="sq-${id}"><div class="no pf"><span>${i+1}. ${esc(short(e))} ${it.n}번${it.a?' · '+esc(it.a):''}</span>${favQ(id,Q)}</div>${img}${it.ans?chHTML(id,e.nc,S[id],done,it.ans):'<p style="color:var(--sub);font-size:14px">정답이 실려 있지 않아 채점에서 빠져요.</p>'}${done&&it.ans?`<div class="gm-res ${ok?'ok':'no'}">${ok?'맞았어요':'아쉬워요 · 정답 '+CIR[it.ans-1]}</div>${exItem(id)}`:''}</div>`;
+        const qh=`<div class="gm-q" id="sq-${id}"><div class="no pf"><span>${i+1}. ${esc(short(e))} ${it.n}번${it.a?' · '+esc(it.a):''}</span>${favQ(id,Q)}</div>${img}${it.ans?chHTML(id,e.nc,S[id],done,it.ans,qb&&qb.ch,qb&&qb.hd):'<p style="color:var(--sub);font-size:14px">정답이 실려 있지 않아 채점에서 빠져요.</p>'}${done&&it.ans?`<div class="gm-res ${ok?'ok':'no'}">${ok?'맞았어요':'아쉬워요 · 정답 '+CIR[it.ans-1]}</div>${exItem(id)}`:''}</div>`;
         const pi=Q.p.findIndex(p=>p.rng[0]<=it.n&&it.n<=p.rng[1]), pk=pi<0?'':it.e+'|'+pi;   /* v131 */
         if(ph||!pk||!cur||cur.pk!==pk){ cur={pk,ph,qs:''}; grp.push(cur); }
         cur.qs+=qh; });
@@ -699,7 +716,7 @@ route();
 <script src="/middle-korean/js/config.js?v=93"></script>
 <script src="/middle-korean/js/ink.js?v=121"></script>
 <script src="/middle-korean/js/live.js?v=93"></script>
-<script src="/suneung-korean/js/account.js?v=130"></script>
+<script src="/suneung-korean/js/account.js?v=145"></script>
 
 <style id="v111-full">
 /* v111: 화면 가득 — 100%에서 상하좌우 여백을 거의 남기지 않는다 */
