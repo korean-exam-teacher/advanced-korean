@@ -334,7 +334,7 @@ footer .guide details{border-color:var(--line)!important;background:none!importa
 .gm-tabs .kfav-n{display:inline-block;margin-left:6px;min-width:18px;padding:0 6px;border-radius:999px;background:var(--soft);color:var(--sub);font-size:11px;font-weight:700;line-height:18px;text-align:center;vertical-align:1px}
 .gm-fv{display:flex;justify-content:flex-end}
 </style>
-</head>
+<style>/* v140: 글줄은 어절 단위로 나뉜다 */html{word-break:keep-all;overflow-wrap:break-word}</style></head>
 <body>
 <style id="gm-v101">
 .gm-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 22px}
@@ -639,7 +639,7 @@ function printBk(btn){
   const ord=[]; ids.forEach(id=>{ if(ord.indexOf(IT[id].e)<0) ord.push(IT[id].e); });
   ids.sort((a,b)=>(ord.indexOf(IT[a].e)-ord.indexOf(IT[b].e))||(IT[a].n-IT[b].n));
   const t0=btn.textContent; btn.disabled=true; btn.textContent='만드는 중…';
-  PRP=PRP||(window.KMAPrint?Promise.resolve():new Promise((res,rej)=>{ const sc=document.createElement('script'); sc.src='/suneung-korean/js/asgprint.js?v=132'; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc); }));
+  PRP=PRP||(window.KMAPrint?Promise.resolve():new Promise((res,rej)=>{ const sc=document.createElement('script'); sc.src='/suneung-korean/js/asgprint.js?v=140'; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc); }));
   PRP.then(()=>{ const key={}; ids.forEach(id=>{ if(+IT[id].ans) key['adv:gm:'+id]=+IT[id].ans; });
     window.KMAPrint.open({title:'공무원 국어 기출 모음',items:ids.map(GMFind.asgItem)},{key});
     btn.disabled=false; btn.textContent=t0;
