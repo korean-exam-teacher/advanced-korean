@@ -639,7 +639,7 @@ function printBk(btn){
   const ord=[]; ids.forEach(id=>{ if(ord.indexOf(IT[id].e)<0) ord.push(IT[id].e); });
   ids.sort((a,b)=>(ord.indexOf(IT[a].e)-ord.indexOf(IT[b].e))||(IT[a].n-IT[b].n));
   const t0=btn.textContent; btn.disabled=true; btn.textContent='만드는 중…';
-  PRP=PRP||(window.KMAPrint?Promise.resolve():new Promise((res,rej)=>{ const sc=document.createElement('script'); sc.src='/suneung-korean/js/asgprint.js?v=143'; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc); }));
+  PRP=PRP||(window.KMAPrint?Promise.resolve():new Promise((res,rej)=>{ const sc=document.createElement('script'); sc.src='/suneung-korean/js/asgprint.js?v=144'; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc); }));
   PRP.then(()=>{ const key={}; ids.forEach(id=>{ if(+IT[id].ans) key['adv:gm:'+id]=+IT[id].ans; });
     window.KMAPrint.open({title:'공무원 국어 기출 모음',items:ids.map(GMFind.asgItem)},{key});
     btn.disabled=false; btn.textContent=t0;
