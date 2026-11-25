@@ -932,7 +932,7 @@ if(h==='fav') openFav(); else if(h==='wrong') openFav('wrong');
     var groups=[], gi={};
     B.forEach(function(id){ var x=API.get(id), k=x.p?('p:'+x.p.k):('q:'+id); if(!(k in gi)){ gi[k]=groups.length; groups.push([]); } groups[gi[k]].push(id); });
     var ids=[]; groups.forEach(function(g){ g.sort(function(a,b){ return numOf(API.get(a).title)-numOf(API.get(b).title); }); ids=ids.concat(g); });
-    PRP=PRP||(window.KMAPrint?Promise.resolve():new Promise(function(res,rej){ var sc=document.createElement('script'); sc.src='/suneung-korean/js/asgprint.js?v=148'; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc); }));
+    PRP=PRP||(window.KMAPrint?Promise.resolve():new Promise(function(res,rej){ var sc=document.createElement('script'); sc.src='/suneung-korean/js/asgprint.js?v=148b'; sc.onload=res; sc.onerror=rej; document.head.appendChild(sc); }));
     PRP.then(function(){ var items=window.KMA_ITEMS(ids), key={}; items.forEach(function(it){ if(+it.ans) key[it.k]=+it.ans; });
       go.disabled=false; go.textContent=t0; closeP(); window.KMAPrint.open({title:OPT.title||'기출 문항 모음',items:items},{key:key}); },
       function(){ PRP=null; go.disabled=false; go.textContent='인쇄 화면을 불러오지 못했어요 · 다시'; });
@@ -1263,7 +1263,7 @@ footer .guide details{border-color:var(--line)!important;background:none!importa
 <script src="/middle-korean/js/config.js?v=93"></script>
 <script src="/middle-korean/js/ink.js?v=121"></script>
 <script src="/middle-korean/js/live.js?v=93"></script>
-<script src="/suneung-korean/js/account.js?v=148"></script>
+<script src="/suneung-korean/js/account.js?v=148b"></script>
 <style id="v111-full">
 /* v111: 화면 가득 — 100%에서 상하좌우 여백을 거의 남기지 않는다 */
 .inner{padding-inline:12px!important}
