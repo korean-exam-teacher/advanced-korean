@@ -487,7 +487,7 @@ const TXF={}, TXW={};
 /* 화면에 글자로 보이는 것: PSAT. LEET·임용 화면은 원본 그림 그대로(선생님 방침 2026-11-25).
    인쇄용 글자 자료(txKP): PSAT 전부, LEET 2024~2026·2023 언어이해 — 다른 문항과 섞어 찍을 때 같은 글꼴·양식으로 */
 const txK=i=>isP(i)?'psat':'';
-const TXL=new Set(['LEET2009L', 'LEET2009R', 'LEET2010L', 'LEET2010R', 'LEET2011L', 'LEET2011R', 'LEET2012L', 'LEET2012R', 'LEET2013L', 'LEET2013R', 'LEET2014L', 'LEET2014R', 'LEET2015L', 'LEET2015R', 'LEET2016L', 'LEET2016R', 'LEET2017L', 'LEET2017R', 'LEET2018L', 'LEET2018R', 'LEET2019L', 'LEET2019R', 'LEET2020L', 'LEET2020R', 'LEET2021L', 'LEET2021R', 'LEET2022L', 'LEET2022R', 'LEET2023L', 'LEET2023R']);   /* v153: 2023 이전은 원본과 맞춰 본 회차만 · v154: 2009~2021 한글 원본(.hwp)에서 */
+const TXL=new Set(['LEET2009L', 'LEET2009R', 'LEET2010L', 'LEET2010R', 'LEET2011L', 'LEET2011R', 'LEET2012L', 'LEET2012R', 'LEET2013L', 'LEET2013R', 'LEET2014L', 'LEET2014R', 'LEET2015L', 'LEET2015R', 'LEET2016L', 'LEET2016R', 'LEET2017L', 'LEET2017R', 'LEET2018L', 'LEET2018R', 'LEET2019L', 'LEET2019R', 'LEET2020L', 'LEET2020R', 'LEET2021L', 'LEET2021R', 'LEET2022L', 'LEET2022R', 'LEET2023L', 'LEET2023R', 'LEET2027L', 'LEET2027R']);   /* v153: 2023 이전은 원본과 맞춰 본 회차만 · v154: 2009~2021 한글 원본(.hwp)에서 */
 const txKP=i=>isP(i)?'psat':(!isM(i)&&i._ex&&(i._ex.year>=2024&&i._ex.year<=2026||TXL.has(i.exam))?'leet':'');
 function txT(i){ const k=txK(i); return k&&window.GMText?GMText.get(i.exam,k):null; }
 function txWait(i,cb){ const k=txK(i); if(!k||!window.GMText||TXF[i.exam]) return false; if(GMText.get(i.exam,k)) return false;
