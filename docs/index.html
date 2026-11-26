@@ -485,9 +485,10 @@ function img(src,wh,alt){ return `<div class="pic"><img src="${src}" width="${wh
 /* v147: PSAT 문항·지문을 글자로(/advanced-korean/tx/psat/<회차>.json, gmtext.js). 받기 전에는 '불러오는 중', 받지 못하면 원본 그림 */
 const TXF={}, TXW={};
 /* 화면에 글자로 보이는 것: PSAT. LEET·임용 화면은 원본 그림 그대로(선생님 방침 2026-11-25).
-   인쇄용 글자 자료(txKP): PSAT 전부, LEET 2024~2026 — 다른 문항과 섞어 찍을 때 같은 글꼴·양식으로 */
+   인쇄용 글자 자료(txKP): PSAT 전부, LEET 2024~2026·2023 언어이해 — 다른 문항과 섞어 찍을 때 같은 글꼴·양식으로 */
 const txK=i=>isP(i)?'psat':'';
-const txKP=i=>isP(i)?'psat':(!isM(i)&&i._ex&&i._ex.year>=2024&&i._ex.year<=2026?'leet':'');
+const TXL=new Set(['LEET2023L']);   /* v153: 2023 이전은 한 회차씩 손으로 맞춰 본 것만 */
+const txKP=i=>isP(i)?'psat':(!isM(i)&&i._ex&&(i._ex.year>=2024&&i._ex.year<=2026||TXL.has(i.exam))?'leet':'');
 function txT(i){ const k=txK(i); return k&&window.GMText?GMText.get(i.exam,k):null; }
 function txWait(i,cb){ const k=txK(i); if(!k||!window.GMText||TXF[i.exam]) return false; if(GMText.get(i.exam,k)) return false;
   if(!TXW[i.exam]){ TXW[i.exam]=GMText.load(i.exam,k).then(d=>{ if(!d) TXF[i.exam]=1; delete TXW[i.exam]; }); }
