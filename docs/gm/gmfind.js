@@ -17,7 +17,7 @@
     if (T) return Promise.resolve(T);
     if (loading) return loading;
     loading = new Promise(function (res) {
-      var s = document.createElement("script"); s.src = BASE + "search.js?v=137";
+      var s = document.createElement("script"); s.src = BASE + "search.js?v=152";
       s.onload = function () { T = window.GM_TEXT || { p: {}, i: {} }; res(T); };
       s.onerror = function () { T = { p: {}, i: {} }; res(T); };
       document.head.appendChild(s);
